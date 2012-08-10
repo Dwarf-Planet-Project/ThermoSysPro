@@ -1,3 +1,4 @@
+within ThermoSysPro.Thermal.BoundaryConditions ;
 model HeatSink "Heat sink" 
   
   parameter Integer N=1;

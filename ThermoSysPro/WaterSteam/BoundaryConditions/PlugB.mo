@@ -1,3 +1,4 @@
+within ThermoSysPro.WaterSteam.BoundaryConditions;
 model PlugB "Plug" 
   
 public 
