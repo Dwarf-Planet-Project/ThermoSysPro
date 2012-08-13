@@ -28,9 +28,6 @@ TestJunctions4
 TestJunctions5
 TestLumpedStraightPipe
 TestMassFlowMultiplier
-TestNTUWaterHeating0
-TestNTUWaterHeating1
-TestNTUWaterHeating2
 TestPipePressureLoss
 TestRefP
 TestSensors
@@ -61,4 +58,3 @@ TestVolumes
 TestVolumes1
 TestVolumes2
 TestWaterHammer
-TestTwoPhaseVolume
