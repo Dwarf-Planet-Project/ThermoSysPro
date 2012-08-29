@@ -5742,7 +5742,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Modelica.Media.Common.NewtonDerivatives_ph nDerivs 
         "derivatives needed in Newton iteration";
-      Boolean found "flag for iteration success";
+      Boolean found:=false "flag for iteration success";
       Integer subregion "1 for subregion 3a, 2 for subregion 3b";
     algorithm 
       if p < data.PCRIT then

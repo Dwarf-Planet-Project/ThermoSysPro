@@ -596,7 +596,7 @@ package IF97_packages
       Modelica.SIunits.Density rho "density";
       Real vt "derivative of specific volume w.r.t. temperature";
       Modelica.SIunits.SpecificHeatCapacity cp "specific heat capacity";
-      Modelica.SIunits.SpecificHeatCapacity cv "specific heat capacity";
+      Modelica.SIunits.SpecificHeatCapacity cv := 0.0 "specific heat capacity";
       Real vp "derivative of specific volume w.r.t. pressure";
       ThermoSysPro.Units.DerPressureByDensity pd 
         "derivative of pressure wrt density";
@@ -650,7 +650,7 @@ package IF97_packages
       ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd 
                                                    fv 
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.SIunits.SpecificVolume v;
+      Modelica.SIunits.SpecificVolume v := 0.0;
       
       Real ptt "2nd derivative of pressure wrt temperature";
       Real pdd "2nd derivative of pressure wrt density";
@@ -1146,7 +1146,7 @@ package IF97_packages
       Integer phase "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
       Integer region(min=1, max=5) "IF 97 region";
       Modelica.SIunits.Temperature T "temperature";
-      Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
+      Modelica.SIunits.SpecificEnthalpy h := 0.0 "specific enthalpy";
       Modelica.SIunits.SpecificHeatCapacity R "gas constant";
       Modelica.SIunits.SpecificHeatCapacity cp "specific heat capacity";
       Real cpt "derivative of cp w.r.t. temperature";

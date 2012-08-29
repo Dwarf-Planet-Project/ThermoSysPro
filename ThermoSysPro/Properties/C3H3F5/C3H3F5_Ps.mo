@@ -14,7 +14,7 @@ protected
   ThermoSysPro.Units.SpecificEnthalpy hsatV "Condensation specific enthalpy";
   Modelica.SIunits.SpecificEntropy ssatL "Boiling specific entropy";
   Modelica.SIunits.SpecificEntropy ssatV "Condensation specific entropy";
-  Real x "Vapor mass fraction";
+  Real x := 0.0 "Vapor mass fraction";
   Real A;
   Real B;
   Real C;
