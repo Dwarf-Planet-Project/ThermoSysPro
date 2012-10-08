@@ -1,7 +1,7 @@
 within ThermoSysPro.HeatNetworksCooling;
 model AbsorptionRefrigeratorSystem "Refrigeration system by absorption" 
   
-  parameter Real DesEff=.362979 "Desorber efficiency";
+  parameter Real DesEff=0.362979 "Desorber efficiency";
   parameter Real Pth=0.33 "Desorber thermal losses (0-1 %W)";
   parameter Real ExchEff=0.99 "Exchanger water LiBr efficiency";
   parameter Real EvapEff=0.99 "Evaporator efficiency";

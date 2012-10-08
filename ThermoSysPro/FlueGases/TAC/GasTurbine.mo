@@ -9,7 +9,7 @@ model GasTurbine "Combustion turbine for CICO and Barilla plants"
   parameter Real A3 = 0;
   parameter Real A4 = 0;
   parameter Real exp_tau_n=0.05 "Turbine nominal expansion rate";
-  parameter Real exp_eff_n=.9 "Turbine nominal efficiency";
+  parameter Real exp_eff_n=0.9 "Turbine nominal efficiency";
   parameter Real TurbQred=0.01 "Turbine reduced mass flow rate";
   parameter Real B0 = 0.3735955;
   parameter Real B1 = 1.42460674;

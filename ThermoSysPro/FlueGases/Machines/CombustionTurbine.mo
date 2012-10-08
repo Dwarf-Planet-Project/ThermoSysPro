@@ -9,7 +9,7 @@ model CombustionTurbine "Combustion turbine"
   parameter Real Qred=0.01 "Reduced mass flow rate";
   
 public 
-  Real tau(start=.07) "Expansion rate";
+  Real tau(start=0.07) "Expansion rate";
   Real is_eff(start=0.85) "Isentropic efficiency";
   Modelica.SIunits.Power Wcp(start=1e9) "Compressor power";
   Modelica.SIunits.Power Wturb(start=2e9) "Turbine power";

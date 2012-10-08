@@ -129,11 +129,11 @@ model CHPEngineBarkantineSystem
 "));
   ThermoSysPro.Combustion.BoundaryConditions.FuelSourcePQ Fuel(
     Hum=0,
-    Xh=.25,
+    Xh=0.25,
     Xs=0,
     Xashes=0,
     Vol=100,
-    Xc=.75,
+    Xc=0.75,
     Xo=0,
     Xn=0,
     T0=299,

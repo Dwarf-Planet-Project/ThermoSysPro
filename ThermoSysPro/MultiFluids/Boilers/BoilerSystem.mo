@@ -52,15 +52,15 @@ model BoilerSystem
 </HTML>
 "));
   ThermoSysPro.Combustion.BoundaryConditions.FuelSourcePQ Fuel(
-    Xashes=.011,
+    Xashes=0.011,
     rho=1000,
     T0=294.45,
-    Hum=.50,
-    Xc=.2479,
-    Xh=.0297,
-    Xo=.2088,
-    Xn=.0017,
-    Xs=.0003,
+    Hum=0.50,
+    Xc=0.2479,
+    Xh=0.0297,
+    Xo=0.2088,
+    Xn=0.0017,
+    Xs=0.0003,
     LHV=1.5e7,
     Q0=0.0407331) 
     annotation (extent=[-40,-10; -20,10]);

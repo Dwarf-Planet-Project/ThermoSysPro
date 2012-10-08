@@ -97,7 +97,7 @@ model Degasifier
     hv(start=700e3),
     P(start=0.101283e7),
     zl(start=8))    annotation (extent=[-30,-80; 30,-20]);
-  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe TubeVap(L=.1,
+  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe TubeVap(L=0.1,
     D=1,
     continuous_flow_reversal=true,
     Q(fixed=false, start=0),

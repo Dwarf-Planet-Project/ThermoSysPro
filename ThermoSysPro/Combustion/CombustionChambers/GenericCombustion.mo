@@ -150,11 +150,11 @@ equation
   
   /* Air density at the inlet */
   rhoea = ThermoSysPro.Properties.FlueGases.FlueGases_rho(Pea, Tea, XeaCO2, XeaH2O, XeaO2, XeaSO2);
-  Vea = if (rhoea >.001) then 1/rhoea else 1/1.1;
+  Vea = if (rhoea >0.001) then 1/rhoea else 1/1.1;
   
   /* Flue gases density at the outlet */
   rhosf = ThermoSysPro.Properties.FlueGases.FlueGases_rho(Psf, Tsf, XsfCO2, XsfH2O, XsfO2, XsfSO2);
-  Vsf = if (rhosf >.001) then 1/rhosf else 1/0.1;
+  Vsf = if (rhosf >0.001) then 1/rhosf else 1/0.1;
   
   amCO2 = amC + 2*amO;
   amH2O = 2*amH + amO;

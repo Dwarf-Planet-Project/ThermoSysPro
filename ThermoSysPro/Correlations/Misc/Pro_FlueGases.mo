@@ -1,7 +1,7 @@
 within ThermoSysPro.Correlations.Misc;
 record Pro_FlueGases 
   "Flue gases properties for the computation of correlations" 
-  Modelica.SIunits.Density rhoMF(start=.5) "Flue gases average density";
+  Modelica.SIunits.Density rhoMF(start=0.5) "Flue gases average density";
   Modelica.SIunits.SpecificHeatCapacity cpMF(start=500) 
     "Flue gases average specific heat capacity";
   Modelica.SIunits.DynamicViscosity muMF(start=1.e-5) 

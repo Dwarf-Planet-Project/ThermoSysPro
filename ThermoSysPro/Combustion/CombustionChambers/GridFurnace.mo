@@ -82,7 +82,7 @@ public
   Real XCeom(start=0.1) "Biomass C mass fraction";
   Real XHeom(start=0.1) "Biomass H mass fraction";
   Real XOeom(start=0.1) "Biomass O mass fraction";
-  Real XNeom(start=.01) "Biomass N mass fraction";
+  Real XNeom(start=0.01) "Biomass N mass fraction";
   Real XSeom(start=0.1) "Biomass S mass fraction";
   Real XCENDeom(start=0.1) "Biomass ashes mass fraction";
   Real XH2Oeom(start=0.1) "Biomass humidity";

@@ -4,7 +4,7 @@ model GTCICOBarilla "Combustion turbine for CICO and Barilla plants"
   parameter Real comp_tau_n=11.5 "Nominal compression nominal rate";
   parameter Real comp_eff_n=0.79257 "Compressor nominal efficiency";
   parameter Real exp_tau_n=0.079255386 "Turbine nominal expansion rate";
-  parameter Real exp_eff_n=.881225 "Turbine nominal efficiency";
+  parameter Real exp_eff_n=0.881225 "Turbine nominal efficiency";
   parameter Real TurbQred=0.00449194 "Turbine reduced mass flow rate";
   parameter Modelica.SIunits.Power Wpth=50000 
     "Combustion chamber thermal losses";
