@@ -90,7 +90,7 @@ algorithm
     
     /* Boiling heat transfer coefficient */
     pred := -Modelica.Math.log10(Pmc/Pc);
-    heb := 55*(((Pmc/Pc)^.12)*(pred^(-0.55))*(18.015^(-0.5))*(max((flux/Si),0)^(0.67)));
+    heb := 55*(((Pmc/Pc)^0.12)*(pred^(-0.55))*(18.015^(-0.5))*(max((flux/Si),0)^(0.67)));
     
     /* Corrective term for the removal of nucleation */
     S := 1/(1 + (1.15e-6*E^2*Rel^1.17));
