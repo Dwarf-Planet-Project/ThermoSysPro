@@ -15,12 +15,12 @@ model TestStaticCentrifugalPump
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump StaticCentrifugalPump1 
     annotation (extent=[0, -40; -20, -20]);
   ThermoSysPro.WaterSteam.Volumes.Tank Bache1(
-                                  ze2=10, zs2=10) 
+                                        ze2=10, zs2=10) 
     annotation (extent=[-20, 20; 0, 40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1 
     annotation (extent=[40, 20; 60, 40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                            k=0.5) annotation (extent=[0, 60; 20, 80]);
+                                                  k=0.5) annotation (extent=[0, 60; 20, 80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Pulse pulse(
     width=200,
     period=500,

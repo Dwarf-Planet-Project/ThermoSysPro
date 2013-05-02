@@ -12,33 +12,33 @@ block Table2D
     Icon(
       Rectangle(extent=[-80, 80; 80, -80], style(fillPattern=0)),
       Line(points=[-54, 40; -54, -40; 54, -40; 54, 40; 28, 40; 28, -40; -28, -40;
-       -28, 40; -54, 40; -54, 20; 54, 20; 54, 0; -54, 0; -54, -20; 54, -20;
-       54, -40; -54, -40; -54, 40; 54, 40; 54, -40], style(color=0)),
+             -28, 40; -54, 40; -54, 20; 54, 20; 54, 0; -54, 0; -54, -20; 54, -20;
+             54, -40; -54, -40; -54, 40; 54, 40; 54, -40], style(color=0)),
       Line(points=[0, 40; 0, -40], style(color=0)),
       Rectangle(extent=[-54, 20; -28, 0], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54, 0; -28, -20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54, -20; -28, -40], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-28, 40; 0, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[0, 40; 28, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[28, 40; 54, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[-54, 40; -28, 20], style(color=0)),
       Line(points=[-28, 40; -54, 20], style(color=0)),
       Text(extent=[-54, -40; -30, -56], string="u1"),
@@ -56,33 +56,33 @@ block Table2D
     Diagram(
       Rectangle(extent=[-80, 80; 80, -80], style(fillPattern=0)),
       Line(points=[-54, 40; -54, -40; 54, -40; 54, 40; 28, 40; 28, -40; -28, -40;
-       -28, 40; -54, 40; -54, 20; 54, 20; 54, 0; -54, 0; -54, -20; 54, -20;
-       54, -40; -54, -40; -54, 40; 54, 40; 54, -40], style(color=0)),
+             -28, 40; -54, 40; -54, 20; 54, 20; 54, 0; -54, 0; -54, -20; 54, -20;
+             54, -40; -54, -40; -54, 40; 54, 40; 54, -40], style(color=0)),
       Line(points=[0, 40; 0, -40], style(color=0)),
       Rectangle(extent=[-54, 20; -28, 0], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54, 0; -28, -20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54, -20; -28, -40], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-28, 40; 0, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[0, 40; 28, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[28, 40; 54, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[-54, 40; -28, 20], style(color=0)),
       Line(points=[-28, 40; -54, 20], style(color=0)),
       Text(extent=[-54, -40; -30, -56], string="u1"),
@@ -100,11 +100,11 @@ block Table2D
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u1 
-                                 annotation (extent=[-120, 50; -100, 70]);
+                                       annotation (extent=[-120, 50; -100, 70]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u2 
-                                 annotation (extent=[-120, -70; -100, -50]);
+                                       annotation (extent=[-120, -70; -100, -50]);
 equation 
   
   y.signal = ThermoSysPro.Functions.TableLinearInterpolation(Tu1[:, 1], Tu2[1, :], Ty, u1.signal, u2.signal);
@@ -112,33 +112,33 @@ equation
   annotation (Icon(
       Rectangle(extent=[-80,80; 80,-80],   style(fillPattern=0)),
       Line(points=[-54,40; -54,-40; 54,-40; 54,40; 28,40; 28,-40; -28,-40; -28,
-      40; -54,40; -54,20; 54,20; 54,0; -54,0; -54,-20; 54,-20; 54,-40;
-      -54,-40; -54,40; 54,40; 54,-40],               style(color=0)),
+            40; -54,40; -54,20; 54,20; 54,0; -54,0; -54,-20; 54,-20; 54,-40;
+            -54,-40; -54,40; 54,40; 54,-40],               style(color=0)),
       Line(points=[0,40; 0,-40],   style(color=0)),
       Rectangle(extent=[-54,20; -28,0],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54,0; -28,-20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54,-20; -28,-40],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-28,40; 0,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[0,40; 28,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[28,40; 54,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[-54,40; -28,20],   style(color=0)),
       Line(points=[-28,40; -54,20],   style(color=0)),
       Text(extent=[-54,-40; -30,-56],   string="u1"),
@@ -149,33 +149,33 @@ equation
       Line(points=[-80,-60; -100,-60])), Diagram(
       Rectangle(extent=[-80,80; 80,-80],   style(fillPattern=0)),
       Line(points=[-54,40; -54,-40; 54,-40; 54,40; 28,40; 28,-40; -28,-40; -28,
-      40; -54,40; -54,20; 54,20; 54,0; -54,0; -54,-20; 54,-20; 54,-40;
-      -54,-40; -54,40; 54,40; 54,-40],               style(color=0)),
+            40; -54,40; -54,20; 54,20; 54,0; -54,0; -54,-20; 54,-20; 54,-40;
+            -54,-40; -54,40; 54,40; 54,-40],               style(color=0)),
       Line(points=[0,40; 0,-40],   style(color=0)),
       Rectangle(extent=[-54,20; -28,0],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54,0; -28,-20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-54,-20; -28,-40],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-28,40; 0,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[0,40; 28,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[28,40; 54,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[-54,40; -28,20],   style(color=0)),
       Line(points=[-28,40; -54,20],   style(color=0)),
       Text(extent=[-54,-40; -30,-56],   string="u1"),

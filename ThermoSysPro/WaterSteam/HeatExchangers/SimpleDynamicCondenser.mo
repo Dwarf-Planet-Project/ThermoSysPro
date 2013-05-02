@@ -84,7 +84,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat 
     annotation (extent=[-30,40; -10,60]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
-                                     annotation (extent=[10,40; 30,60]);
+                                           annotation (extent=[10,40; 30,60]);
   annotation (
     Coordsys(
       extent=[-100, -100; 100, 100],
@@ -92,165 +92,165 @@ public
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[100,20; 80,-60], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170},
-    fillPattern=1)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170},
+          fillPattern=1)),
       Rectangle(extent=[-100,20; -80,-60], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,6; -80,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,-18; -80,-24],
-                                 style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+                                       style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,-40; -80,-46],
-                                 style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+                                       style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[80,6; 20,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-40; 20,-46],
-                               style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+                                     style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-18; 20,-24],
-                               style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+                                     style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[30,-18; -30,-24],
-                                style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+                                      style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[30,-40; -30,-46],
-                                style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+                                      style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[30,6; -30,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[-100,-72; 100,-100], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=71,
-    rgbfillColor={85,170,255},
-    fillPattern=1)),
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=71,
+          rgbfillColor={85,170,255},
+          fillPattern=1)),
       Line(points=[-20,100; 20,100; 100,20; 100,-100; -100,-100; -100,20; -20,
-      100],     style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2))),
+            100],     style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2))),
     Icon(
       Line(points=[-20,100; 20,100; 100,20; 100,-100; -100,-100; -100,20; -20,
-      100],     style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2)),
+            100],     style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2)),
       Rectangle(extent=[100,20; 80,-60], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170},
-    fillPattern=1)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170},
+          fillPattern=1)),
       Rectangle(extent=[-100,20; -80,-60], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,6; -80,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,-18; -80,-24],
-                                 style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+                                       style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[-20,-40; -80,-46],
-                                 style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=4,
-    rgbfillColor={0,255,255})),
+                                       style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=4,
+          rgbfillColor={0,255,255})),
       Rectangle(extent=[80,6; 20,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-40; 20,-46],
-                               style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+                                     style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-18; 20,-24],
-                               style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+                                     style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Rectangle(extent=[30,-18; -30,-24],
-                                style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+                                      style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[30,-40; -30,-46],
-                                style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+                                      style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[30,6; -30,0], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=76,
-    rgbfillColor={170,170,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=76,
+          rgbfillColor={170,170,255})),
       Rectangle(extent=[-100,-72; 100,-100], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=71,
-    rgbfillColor={85,170,255})),
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=71,
+          rgbfillColor={85,170,255})),
       Polygon(points=[-2,102; -22,100; -42,94; -62,82; -82,62; -94,42; -100,22;
-      -100,20; -98,20; 100,20; 100,20; 96,28; 90,42; 78,62; 58,82; 38,94;
-      18,100; -2,102], style(fillColor=9, rgbfillColor={175,175,175})),
+            -100,20; -98,20; 100,20; 100,20; 96,28; 90,42; 78,62; 58,82; 38,94;
+            18,100; -2,102], style(fillColor=9, rgbfillColor={175,175,175})),
       Text(
-  extent=[-66,66; 72,22],
-  style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=9,
-    rgbfillColor={175,175,175},
-    fillPattern=1),
-  string="Simple")),
+        extent=[-66,66; 72,22],
+        style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=9,
+          rgbfillColor={175,175,175},
+          fillPattern=1),
+        string="Simple")),
     Window(
       x=0.11,
       y=0.06,
@@ -265,7 +265,7 @@ public
 "));
   Connectors.FluidInlet Cv     annotation (extent=[-10, 90; 10, 110]);
   Connectors.FluidOutlet Cl     annotation (extent=[-8, -110; 12, -90]);
-  ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal yNiveau    annotation (extent=[100,-82; 120,-62]);
+  ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal yNiveau          annotation (extent=[100,-82; 120,-62]);
 public 
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prod 
     annotation (extent=[-60,20; -40,40]);
@@ -273,7 +273,7 @@ public
   Connectors.FluidInlet Cee    annotation(extent=[-110,-32; -90,-12]);
   Connectors.FluidOutlet Cse   annotation(extent=[90,-30; 110,-10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proe 
-    "Propriétés de l'eau "             annotation (extent=[40,20; 60,40]);
+    "Propriétés de l'eau "                   annotation (extent=[40,20; 60,40]);
 initial equation 
   if steady_state then
     der(hl) = 0;

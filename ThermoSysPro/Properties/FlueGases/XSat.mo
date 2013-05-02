@@ -35,10 +35,10 @@ algorithm
   if ((40 < T) and (T < 90)) then
    TT := T/273.16;
    Ps0 := 0.78614
-      + 10.7954*TT/(1+TT)
-      - 5.028*Modelica.Math.log10(1+TT)
-      + 1.50475e-5*(1.-1./(10^(8.2969*TT))
-      +  0.00042873*(10^(4.76955*TT/(1.+TT)))-1.);
+            + 10.7954*TT/(1+TT)
+            - 5.028*Modelica.Math.log10(1+TT)
+            + 1.50475e-5*(1.-1./(10^(8.2969*TT))
+            +  0.00042873*(10^(4.76955*TT/(1.+TT)))-1.);
    Ps :=(10^Ps0)*100.;
    xs := 0.622*Ps / (Patm-Ps);
   end if;
@@ -53,9 +53,9 @@ algorithm
       Text(extent=[-136,102; 140,42],   string="%name"),
       Ellipse(extent=[-100,40; 100,-100],   style(color=45, fillColor=7)),
       Text(
-  extent=[-84,-4; 84,-52],
-  string="function",
-  style(color=45))),
+        extent=[-84,-4; 84,-52],
+        string="function",
+        style(color=45))),
     Documentation(info="<html>
 <p>Problem: discontinuous function. Should be replaced by a continuous one. </p>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>

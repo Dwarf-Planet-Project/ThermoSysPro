@@ -16,19 +16,19 @@ model TestStaticCentrifugalPump2
       fixed_rot_or_power=2) 
     annotation (extent=[0, -40; -20, -20]);
   ThermoSysPro.WaterSteam.Volumes.Tank Bache1(
-                                  ze2=10, zs2=10) 
+                                        ze2=10, zs2=10) 
     annotation (extent=[-20, 20; 0, 40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1 
     annotation (extent=[40, 20; 60, 40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                            k=0.5) annotation (extent=[0, 60; 20, 80]);
+                                                  k=0.5) annotation (extent=[0, 60; 20, 80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Pulse pulse(
     width=200,
     period=500,
     amplitude=0.5e5,
     startTime=0,
     offset=1000) 
-          annotation (extent=[-80,-70; -60,-50]);
+                annotation (extent=[-80,-70; -60,-50]);
 equation 
   connect(StaticCentrifugalPump1.C2, Bache1.Ce2) 
     annotation (points=[-20,-30; -60,-30; -60,24; -20,24],     style(color=3));

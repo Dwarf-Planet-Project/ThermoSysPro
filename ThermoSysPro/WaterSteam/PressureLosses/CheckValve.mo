@@ -5,7 +5,7 @@ model CheckValve "Check valve"
   parameter ThermoSysPro.Units.DifferentialPressure dPFerme=0 
     "Pressure difference when the valve closes";
   parameter ThermoSysPro.Units.PressureLossCoefficient k=
-                                                  1000 
+                                                        1000 
     "Pressure loss coefficient";
   parameter Modelica.SIunits.MassFlowRate Qmin=1.e-6 
     "Mass flow when the valve is closed";
@@ -43,16 +43,16 @@ public
     Diagram(
       Ellipse(extent=[-70, 70; -50, 50], style(fillColor=73)),
       Line(points=[-60, -60; -60, 60; 60, -60; 60, 60], style(
-    color=58,
-    rgbcolor={0,203,0},
-    thickness=2)),
+          color=58,
+          rgbcolor={0,203,0},
+          thickness=2)),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0])),
     Icon(
       Line(points=[-60, -60; -60, 60; 60, -60; 60, 60], style(
-    color=58,
-    rgbcolor={0,203,0},
-    thickness=2)),
+          color=58,
+          rgbcolor={0,203,0},
+          thickness=2)),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0]),
       Ellipse(extent=[-70, 70; -50, 50], style(fillColor=73))),
@@ -75,8 +75,8 @@ public
 </ul>
 </html>
 "));
-  Connectors.FluidInlet C1    annotation(extent=[-120, -10; -100, 10]);
-  Connectors.FluidOutlet C2   annotation(extent=[100, -10; 120, 10]);
+  Connectors.FluidInlet C1          annotation(extent=[-120, -10; -100, 10]);
+  Connectors.FluidOutlet C2         annotation(extent=[100, -10; 120, 10]);
 equation 
   
   C1.Q = C2.Q;

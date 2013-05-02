@@ -7,27 +7,27 @@ model LoopBreakerQ "Mass flow loop breaker for the water solution connector"
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-    color=77,
-    rgbcolor={127,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
-                                Line(points=[0,100; 0,-100], style(color=
-        3, rgbcolor={0,0,255})),
+          color=77,
+          rgbcolor={127,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
+                                      Line(points=[0,100; 0,-100], style(color=
+              3, rgbcolor={0,0,255})),
       Text(
-  extent=[-42,38; 38,-42],
-  style(color=3, rgbcolor={0,0,255}),
-  string="Q")),
+        extent=[-42,38; 38,-42],
+        style(color=3, rgbcolor={0,0,255}),
+        string="Q")),
     Icon(
       Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-    color=77,
-    rgbcolor={127,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170})),
+          color=77,
+          rgbcolor={127,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170})),
       Line(points=[0,100; 0,-100], style(color=3, rgbcolor={0,0,255})),
       Text(
-  extent=[-40,38; 40,-42],
-  style(color=3, rgbcolor={0,0,255}),
-  string="Q")),
+        extent=[-40,38; 40,-42],
+        style(color=3, rgbcolor={0,0,255}),
+        string="Q")),
     Window(
       x=0.33,
       y=0.09,

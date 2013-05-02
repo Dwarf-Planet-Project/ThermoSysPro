@@ -20,7 +20,7 @@ model DynamicExchangerWaterSteamFlueGases
     L=L,
     D=Dint,
     Ns=Ns,
-    ntubes=Ntubes)                 annotation (extent=[-10,-10; 10,10]);
+    ntubes=Ntubes)                       annotation (extent=[-10,-10; 10,10]);
   ThermoSysPro.WaterSteam.HeatExchangers.DynamicTwoPhaseFlowPipe 
     TwoPhaseFlowPipe(
     L=L,
@@ -34,15 +34,15 @@ model DynamicExchangerWaterSteamFlueGases
     annotation (extent=[-10,40; 10,60]);
   annotation (Diagram, Icon(
       Rectangle(extent=[-100,50; 100,-50], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=71,
-    rgbfillColor={85,170,255},
-    fillPattern=8)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=71,
+          rgbfillColor={85,170,255},
+          fillPattern=8)),
       Rectangle(extent=[-100,20; 100,-20],   style(gradient=2, fillColor=45)),
       Rectangle(extent=[-100,30; 100,-30],   style(color=0, fillColor=8)),
       Rectangle(extent=[-100,20; 100,-20], style(fillColor=71, rgbfillColor={85,
-        170,255})),
+              170,255})),
       Line(points=[-60,50; -60,-50]),
       Line(points=[-20,50; -20,-50]),
       Line(points=[20,50; 20,-50]),
@@ -70,12 +70,12 @@ model DynamicExchangerWaterSteamFlueGases
     annotation (extent=[90,-10; 110,10]);
 equation 
   connect(Cws2, TwoPhaseFlowPipe.C2) 
-                             annotation (points=[100,0; 40,0; 40,-20; 10,
-  -20],    style(color=1, rgbcolor={255,0,0}));
+                                   annotation (points=[100,0; 40,0; 40,-20; 10,
+        -20],    style(color=1, rgbcolor={255,0,0}));
   connect(Cws1, TwoPhaseFlowPipe.C1) 
     annotation (points=[-100,0; -20,0; -20,-20; -10,-20]);
   connect(Cfg1, ExchangerFlueGasesMetal.C1) annotation (points=[0,50; -20,50;
-  -20,20; -10,20], style(
+        -20,20; -10,20], style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,
@@ -83,7 +83,7 @@ equation
       rgbfillColor={255,255,0},
       fillPattern=8));
   connect(ExchangerFlueGasesMetal.C2, Cfg2) annotation (points=[10,20; 20,20;
-  20,-50; 0,-50], style(
+        20,-50; 0,-50], style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,

@@ -20,26 +20,26 @@ package Functions "General purpose functions"
       y := sqrt(x);
     else
       if (x < -adx) then
-  y := -sqrt(-x);
+        y := -sqrt(-x);
       else
-  dx2 := adx*adx;
-  sqrtdx := sqrt(adx);
-  C3 := -0.25/(sqrtdx*dx2);
-  C1 := 0.5/sqrtdx - 3.0*C3*dx2;
-  y := (C1 + C3*x*x)*x;
+        dx2 := adx*adx;
+        sqrtdx := sqrt(adx);
+        C3 := -0.25/(sqrtdx*dx2);
+        C1 := 0.5/sqrtdx - 3.0*C3*dx2;
+        y := (C1 + C3*x*x)*x;
       end if;
     end if;
     
     annotation (smoothOrder=1,
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Window(
-  x=0.2,
-  y=0.17,
-  width=0.6,
-  height=0.6),
+        x=0.2,
+        y=0.17,
+        width=0.6,
+        height=0.6),
       Icon,
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b> </p>
@@ -58,15 +58,15 @@ package Functions "General purpose functions"
     
     annotation (smoothOrder = 1,
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Icon,
       Window(
-  x=0.11,
-  y=0.2,
-  width=0.6,
-  height=0.6),
+        x=0.11,
+        y=0.2,
+        width=0.6,
+        height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -92,7 +92,7 @@ package Functions "General purpose functions"
     
     annotation (
       smoothorder=1,
-       Icon,           Documentation(info="<html>
+       Icon,                 Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
 <p><h4>ThermoSysPro Version 3.0</h4></p>
 </html><html>
@@ -118,13 +118,13 @@ package Functions "General purpose functions"
     
     annotation (
       smoothOrder=2,
-      Icon,            Documentation(info="<html>
+      Icon,                  Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2012</b></p>
 </HTML>
 <html>
 <p><b>ThermoSysPro Version 3.0</b></p>
 </HTML>
-",    revisions="<html>
+",          revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>
@@ -141,24 +141,24 @@ package Functions "General purpose functions"
     Icon(
       Rectangle(extent=[-100, -100; 80, 50], style(fillColor=30, fillPattern=1)),
       Polygon(points=[-100, 50; -80, 70; 100, 70; 80, 50; -100, 50], style(
-      fillColor=30, fillPattern=1)),
+            fillColor=30, fillPattern=1)),
       Polygon(points=[100, 70; 100, -80; 80, -100; 80, 50; 100, 70], style(
-      fillColor=30, fillPattern=1)),
+            fillColor=30, fillPattern=1)),
       Text(
-  extent=[-90, 40; 70, 10],
-  string="Library",
-  style(
-    color=9,
-    fillColor=0,
-    fillPattern=1)),
+        extent=[-90, 40; 70, 10],
+        string="Library",
+        style(
+          color=9,
+          fillColor=0,
+          fillPattern=1)),
       Rectangle(extent=[-32, -6; 16, -35], style(color=0)),
       Rectangle(extent=[-32, -56; 16, -85], style(color=0)),
       Line(points=[16, -20; 49, -20; 49, -71; 16, -71], style(color=0)),
       Line(points=[-32, -72; -64, -72; -64, -21; -32, -21], style(color=0)),
       Text(
-  extent=[-120, 135; 120, 70],
-  string="%name",
-  style(color=1))),
+        extent=[-120, 135; 120, 70],
+        string="%name",
+        style(color=1))),
     Window(
       x=0.05,
       y=0.26,
@@ -181,9 +181,9 @@ package Functions "General purpose functions"
     
     annotation (smoothorder=2,
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Icon,
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2011</b></p>
@@ -256,8 +256,8 @@ package Functions "General purpose functions"
     
     for i in 2:dimX - 1 loop
        if ((X <= TabX[i]) and (not IndXcal)) then
-  IndX := i;
-  IndXcal := true;
+        IndX := i;
+        IndXcal := true;
       end if;
     end for;
     
@@ -275,7 +275,7 @@ package Functions "General purpose functions"
     
     annotation (
       smoothorder=1,
-       Icon,           Documentation(info="<html>
+       Icon,                 Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
 <p><b>ThermoSysPro Version 3.0</b> </p>
 </html>" "<html>
@@ -316,8 +316,8 @@ package Functions "General purpose functions"
     
     for i in 2:dimP - 1 loop
       if ((P <= TabP[i]) and (not IndPcal)) then
-  IndP := i;
-  IndPcal := true;
+        IndP := i;
+        IndPcal := true;
       end if;
     end for;
     
@@ -335,13 +335,13 @@ package Functions "General purpose functions"
     
     annotation (
       smoothOrder=2,
-      Icon,            Documentation(info="<html>
+      Icon,                  Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2012</b></p>
 </HTML>
 <html>
 <p><b>ThermoSysPro Version 3.0</b></p>
 </HTML>
-",    revisions="<html>
+",          revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

@@ -30,9 +30,9 @@ algorithm
       Text(extent=[-136,102; 140,42],   string="%name"),
       Ellipse(extent=[-100,40; 100,-100],   style(color=45, fillColor=7)),
       Text(
-  extent=[-84,-4; 84,-52],
-  string="function",
-  style(color=45))), Documentation(info="<html>
+        extent=[-84,-4; 84,-52],
+        string="function",
+        style(color=45))), Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

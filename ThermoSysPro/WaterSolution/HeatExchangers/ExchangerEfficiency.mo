@@ -123,35 +123,35 @@ equation
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100, 60; 100, -60], style(fillColor=44, rgbfillColor={
-        255,170,170})),
-                      Line(points=[-56,-50; -56,2; 2,2; 60,2; 60,-50],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+              255,170,170})),
+                            Line(points=[-56,-50; -56,2; 2,2; 60,2; 60,-50],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Text(
-  extent=[-50,66; 46,-2],
-  style(color=3, rgbcolor={0,0,255}),
-  string="E"),
+        extent=[-50,66; 46,-2],
+        style(color=3, rgbcolor={0,0,255}),
+        string="E"),
       Line(points=[-100,60; 100,-60], style(color=3, rgbcolor={0,0,255}))),
     Diagram(
       Rectangle(extent=[-100,60; 100,-60], style(fillColor=44, rgbfillColor={
-        255,170,170})),
-                  Line(points=[-58,-50; -58,0; 0,0; 58,0; 58,-50],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+              255,170,170})),
+                        Line(points=[-58,-50; -58,0; 0,0; 58,0; 58,-50],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Text(
-  extent=[-50,66; 46,-2],
-  style(color=3, rgbcolor={0,0,255}),
-  string="E"),
+        extent=[-50,66; 46,-2],
+        style(color=3, rgbcolor={0,0,255}),
+        string="E"),
       Line(points=[-100,60; 100,-60], style(color=3, rgbcolor={0,0,255}))),
     Window(
       x=0.05,

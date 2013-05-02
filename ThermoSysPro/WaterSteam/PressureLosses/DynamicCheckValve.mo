@@ -63,29 +63,29 @@ protected
       component=[20, 20]),
     Icon(
       Ellipse(extent=[-70, 70; -50, 50], style(
-    color=79,
-    rgbcolor={170,85,255},
-    fillColor=79,
-    rgbfillColor={170,85,255})),
+          color=79,
+          rgbcolor={170,85,255},
+          fillColor=79,
+          rgbfillColor={170,85,255})),
       Line(points=[-60, -60; -60, 60; 60, -60; 60, 60], style(
-    color=79,
-    rgbcolor={170,85,255},
-    thickness=2,
-    fillColor=79,
-    rgbfillColor={170,85,255})),
+          color=79,
+          rgbcolor={170,85,255},
+          thickness=2,
+          fillColor=79,
+          rgbfillColor={170,85,255})),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0]),
       Text(extent=[-28, 80; 32, 20], string="D")),
     Diagram(
       Ellipse(extent=[-70, 70; -50, 50], style(
-    color=79,
-    rgbcolor={170,85,255},
-    fillColor=79,
-    rgbfillColor={170,85,255})),
+          color=79,
+          rgbcolor={170,85,255},
+          fillColor=79,
+          rgbfillColor={170,85,255})),
       Line(points=[-60, -60; -60, 60; 60, -60; 60, 60], style(
-    color=79,
-    rgbcolor={170,85,255},
-    thickness=2)),
+          color=79,
+          rgbcolor={170,85,255},
+          thickness=2)),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0]),
       Text(extent=[-28, 80; 32, 20], string="D")),
@@ -109,7 +109,7 @@ protected
 public 
   Connectors.FluidInlet C1 
     annotation(extent=[-110, -10; -90, 10]);
-  Connectors.FluidOutlet C2          annotation(extent=[90, -12; 110, 8]);
+  Connectors.FluidOutlet C2                annotation(extent=[90, -12; 110, 8]);
 initial equation 
   if permanent_meca then
     der(theta) = 0;

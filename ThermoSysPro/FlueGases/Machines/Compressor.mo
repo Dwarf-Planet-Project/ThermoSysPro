@@ -55,24 +55,24 @@ public
   ThermoSysPro.FlueGases.Connectors.FlueGasesInlet Ce 
     annotation (extent=[-100,-10; -80,10]);
   ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet Cs 
-                                     annotation (extent=[80,-10; 100,10]);
+                                           annotation (extent=[80,-10; 100,10]);
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal Power 
     annotation (extent=[80,-40; 100,-20],   rotation=0);
   annotation (
     Diagram(
-   Polygon(points=[-80,80; -80,-80; 80,-40; 80,40; -80,80],    style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=2,
-    rgbfillColor={0,255,0},
-    fillPattern=8))),
+         Polygon(points=[-80,80; -80,-80; 80,-40; 80,40; -80,80],    style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=2,
+          rgbfillColor={0,255,0},
+          fillPattern=8))),
     Icon(Polygon(points=[-80,80; -80,-80; 80,-40; 80,40; -80,80],    style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=2,
-    rgbfillColor={0,255,0},
-    fillPattern=8))),
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=2,
+          rgbfillColor={0,255,0},
+          fillPattern=8))),
     Coordsys(extent=[-120, -100; 120, 100]),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>

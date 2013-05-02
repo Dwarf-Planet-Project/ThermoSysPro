@@ -17,7 +17,7 @@ public
     Diagram(
       Line(points=[0, 90; 0, -100]),
       Ellipse(extent=[-98,96; 98,-96],   style(fillColor=6, rgbfillColor={255,
-        255,0})),
+              255,0})),
       Line(points=[-86, -44; 86, -44], style(pattern=2)),
       Line(points=[-44, -86; 44, -86], style(pattern=2)),
       Line(points=[-64, -72; 64, -72], style(pattern=2)),
@@ -26,7 +26,7 @@ public
     Icon(
       Line(points=[0, 90; 0, -100]),
       Ellipse(extent=[-98, 96; 98, -96], style(fillColor=6, rgbfillColor={255,
-        255,0})),
+              255,0})),
       Line(points=[-86, -44; 86, -44], style(pattern=2)),
       Line(points=[-44, -86; 44, -86], style(pattern=2)),
       Line(points=[-64, -72; 64, -72], style(pattern=2)),
@@ -71,8 +71,8 @@ public
     annotation (extent=[-104, 66; -78, 98]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
     annotation (extent=[72, 68; 100, 100]);
-  Thermal.Connectors.ThermalPort        Cth 
-                               annotation (extent=[-10,-10; 10,10]);
+  Thermal.Connectors.ThermalPort              Cth 
+                                     annotation (extent=[-10,-10; 10,10]);
 equation 
   /* Unconnected connectors */
   

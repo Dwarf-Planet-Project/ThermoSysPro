@@ -13,11 +13,11 @@ model TestSwitchValve
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP SourceP1 
     annotation (extent=[-100, 20; -80, 40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP PuitsP1 
-                                    annotation (extent=[60, 20; 80, 40]);
+                                          annotation (extent=[60, 20; 80, 40]);
   ThermoSysPro.WaterSteam.PressureLosses.SwitchValve SwitchValve 
-                                    annotation (extent=[-20,26; 0,46]);
+                                          annotation (extent=[-20,26; 0,46]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Logique.Pulse pulse(
-                                   width=10, period=20) 
+                                         width=10, period=20) 
     annotation (extent=[-60,60; -40,80]);
 equation 
   connect(SwitchValve.C2, PuitsP1.C) 

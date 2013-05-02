@@ -3,7 +3,7 @@ function WBInternalTwoPhaseFlowHeatTransferCoefficient
   "Internal two-phase water/steam flow heat transfer coefficient" 
   
   input ThermoSysPro.Correlations.Misc.Pro_TwoPhaseWaterSteam hy 
-                                                      annotation (extent=[-26,-74; -6,-54]);
+                                                            annotation (extent=[-26,-74; -6,-54]);
   input Real geomt[6] "Geometrical data vector";
   input Real Gm "Water mass velocity at the inlet (kg/m2s)";
   input Real Xmc "Steam average mass fraction";

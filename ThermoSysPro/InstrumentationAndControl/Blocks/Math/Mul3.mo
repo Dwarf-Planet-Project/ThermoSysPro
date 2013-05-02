@@ -19,9 +19,9 @@ block Mul3
       Line(points=[-98, 80; 0, 80]),
       Line(points=[-98, -80; 0, -80]),
       Text(
-  extent=[-38, 20; 38, -48],
-  string="*",
-  style(color=0)),
+        extent=[-38, 20; 38, -48],
+        string="*",
+        style(color=0)),
       Line(points=[-100, 0; -80, 0])),
     Diagram(
       Line(points=[80, 0; 100, 0]),
@@ -32,9 +32,9 @@ block Mul3
       Line(points=[-98, 80; 0, 80]),
       Line(points=[-98, -80; 0, -80]),
       Text(
-  extent=[-38, 20; 38, -48],
-  string="*",
-  style(color=0)),
+        extent=[-38, 20; 38, -48],
+        string="*",
+        style(color=0)),
       Line(points=[-100, 0; -80, 0])),
     Window(
       x=0.26,
@@ -49,13 +49,13 @@ block Mul3
 </HTML>
 "));
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u1 
-                                 annotation (extent=[-120, 70; -100, 90]);
+                                       annotation (extent=[-120, 70; -100, 90]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u2 
-                                 annotation (extent=[-120, -10; -100, 10]);
+                                       annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u3 
-                                 annotation (extent=[-120, -90; -100, -70]);
+                                       annotation (extent=[-120, -90; -100, -70]);
 equation 
   
   y.signal = u1.signal*u2.signal*u3.signal;

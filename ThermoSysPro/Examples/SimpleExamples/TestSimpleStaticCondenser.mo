@@ -14,28 +14,28 @@ model TestSimpleStaticCondenser
     annotation (extent=[20,-20; 40,0]);
 equation 
   connect(sourceP.C, simpleStaticCondenser.Ef) annotation (points=[-40,30; -20,
-  30], style(
+        30], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,
       rgbfillColor={255,255,0},
       fillPattern=1));
   connect(sourceP1.C, simpleStaticCondenser.Ec) annotation (points=[-40,-10;
-  -16,-10; -16,20], style(
+        -16,-10; -16,20], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,
       rgbfillColor={255,255,0},
       fillPattern=1));
   connect(simpleStaticCondenser.Sf, sinkP.C) annotation (points=[0,29.9; 10,
-  29.9; 10,30; 20,30], style(
+        29.9; 10,30; 20,30], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,
       rgbfillColor={255,255,0},
       fillPattern=1));
   connect(simpleStaticCondenser.Sc, sinkP1.C) annotation (points=[-4,20; -4,-10;
-  20,-10], style(
+        20,-10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,

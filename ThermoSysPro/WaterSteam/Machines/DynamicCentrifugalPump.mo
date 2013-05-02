@@ -74,7 +74,7 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-100,100; 100,-100], style(fillColor=71, rgbfillColor={85,
-        170,255})),
+              170,255})),
       Line(points=[-80, 0; 80, 0], style(color=0, rgbcolor={0,0,0})),
       Line(points=[80, 0; 2, 60], style(color=0, rgbcolor={0,0,0})),
       Line(points=[80, 0; 0, -60], style(color=0, rgbcolor={0,0,0}))),
@@ -84,10 +84,10 @@ public
       Line(points=[80, 0; 0, -60]),
       Text(extent=[-28, -54; 32, -106], string="Q"),
       Ellipse(extent=[-100,100; 100,-100], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=71,
-    rgbfillColor={85,170,255})),
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=71,
+          rgbfillColor={85,170,255})),
       Line(points=[80, 0; 2, 60], style(color=0, rgbcolor={0,0,0})),
       Line(points=[-80, 0; 80, 0], style(color=0, rgbcolor={0,0,0})),
       Line(points=[80, 0; 0, -60], style(color=0, rgbcolor={0,0,0}))),
@@ -112,8 +112,8 @@ public
 "));
   ThermoSysPro.ElectroMechanics.Connectors.MechanichalTorque M 
     annotation(extent=[-10,-120; 10,-100],  rotation=90);
-  Connectors.FluidInlet C1    annotation(extent=[-110, -10; -90, 10]);
-  Connectors.FluidOutlet C2   annotation(extent=[90, -12; 110, 8]);
+  Connectors.FluidInlet C1          annotation(extent=[-110, -10; -90, 10]);
+  Connectors.FluidOutlet C2         annotation(extent=[90, -12; 110, 8]);
 initial equation 
   if steady_state_mech then
     der(w) = 0;

@@ -3,7 +3,7 @@ model TestSteamExtractionSplitter
   
   ThermoSysPro.WaterSteam.Junctions.SteamExtractionSplitter 
     steamExtractionSplitter(alpha=0.9) 
-                      annotation (extent=[-20,20; 0,40]);
+                            annotation (extent=[-20,20; 0,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceQ sourceQ(h0=2600000) 
     annotation (extent=[-100,20; -80,40]);
   annotation (Diagram);
@@ -15,12 +15,12 @@ model TestSteamExtractionSplitter
     singularPressureLoss1 annotation (extent=[20,20; 40,40]);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 
     singularPressureLoss3(K=2.e-3) 
-                    annotation (extent=[0,-20; 20,0]);
+                          annotation (extent=[0,-20; 20,0]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkQ sink(Q0=10) 
     annotation (extent=[40,-20; 60,0]);
 equation 
   connect(sourceQ.C, singularPressureLoss2.C1) annotation (points=[-80,30; -60,
-  30], style(
+        30], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,

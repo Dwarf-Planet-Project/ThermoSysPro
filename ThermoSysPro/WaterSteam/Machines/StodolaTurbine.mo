@@ -55,16 +55,16 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-100,40; -100,-40; 100,-100; 100,100; -100,40], style(
-      fillColor=53, rgbfillColor={128,255,0})), Line(points=[0,-70; 0,-90],
-    style(
-    color=0,
-    rgbcolor={0,0,0},
-    thickness=2))),
+            fillColor=53, rgbfillColor={128,255,0})), Line(points=[0,-70; 0,-90],
+          style(
+          color=0,
+          rgbcolor={0,0,0},
+          thickness=2))),
     Icon(Polygon(points=[-100, 40; -100, -40; 100, -100; 100, 100; -100, 40],
-    style(fillColor=53)), Line(points=[0,-70; 0,-90], style(
-    color=0,
-    rgbcolor={0,0,0},
-    thickness=2))),
+          style(fillColor=53)), Line(points=[0,-70; 0,-90], style(
+          color=0,
+          rgbcolor={0,0,0},
+          thickness=2))),
     Window(
       x=0.17,
       y=0.1,
@@ -86,14 +86,14 @@ public
 "));
   Connectors.FluidInlet Ce 
     annotation (extent=[-111,-10; -91,10]);
-  Connectors.FluidOutlet Cs          annotation (extent=[91,-10; 111,10]);
+  Connectors.FluidOutlet Cs                annotation (extent=[91,-10; 111,10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ps props 
     annotation (extent=[-100,-100; -80,-80]);
   ThermoSysPro.ElectroMechanics.Connectors.MechanichalTorque M 
     annotation(extent=[-10,-90; 10,-110],   rotation=90);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal MechPower 
-                        annotation (extent=[120,-100; 100,-80],
-                                                              rotation=180);
+                              annotation (extent=[120,-100; 100,-80],
+                                                                    rotation=180);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pros1 
     annotation (extent=[-20,80; 0,100]);
 equation 

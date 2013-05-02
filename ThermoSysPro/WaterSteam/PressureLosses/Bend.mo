@@ -49,21 +49,21 @@ public
       Rectangle(extent=[-100, 20; -20, -20], style(fillColor=53, fillPattern=1)),
       Rectangle(extent=[-20, -18; 20, -100], style(fillColor=53, fillPattern=1)),
       Polygon(points=[-20, 20; -12, 20; -2, 18; 6, 14; 12, 10; 18, 2; 20, -6;
-      20, -18; -20, 20], style(fillColor=53)),
+            20, -18; -20, 20], style(fillColor=53)),
       Polygon(points=[-20, 20; -20, -20; 20, -18; -20, 20], style(color=53,
-      fillColor=53)),
+            fillColor=53)),
       Polygon(points=[-30, -20; -24, -22; -22, -24; -20, -28; -20, -20; -30,
-      -20], style(color=8, fillColor=53)),
+            -20], style(color=8, fillColor=53)),
       Line(points=[-30, -20; -24, -22; -22, -24; -20, -28], style(fillColor=53))),
     Icon(
       Rectangle(extent=[-100, 20; -20, -20], style(fillColor=53, fillPattern=1)),
       Rectangle(extent=[-20, -18; 20, -100], style(fillColor=53, fillPattern=1)),
       Polygon(points=[-20, 20; -12, 20; -2, 18; 6, 14; 12, 10; 18, 2; 20, -6;
-      20, -18; -20, 20], style(fillColor=53)),
+            20, -18; -20, 20], style(fillColor=53)),
       Polygon(points=[-20, 20; -20, -20; 20, -18; -20, 20], style(color=53,
-      fillColor=53)),
+            fillColor=53)),
       Polygon(points=[-30, -20; -24, -22; -22, -24; -20, -28; -20, -20; -30,
-      -20], style(color=8, fillColor=53)),
+            -20], style(color=8, fillColor=53)),
       Line(points=[-30, -20; -24, -22; -22, -24; -20, -28])),
     Window(
       x=0.04,
@@ -87,18 +87,18 @@ public
   
 public 
   ThermoSysPro.InstrumentationAndControl.Blocks.Tables.Table1D TA1(
-              Table=[0, 0; 20, 0.31; 30, 0.45; 45, 0.60; 60, 0.78;
-  75, 0.90; 90, 1; 110, 1.13; 130, 1.20; 150, 1.28; 180, 1.40]) 
+                    Table=[0, 0; 20, 0.31; 30, 0.45; 45, 0.60; 60, 0.78;
+        75, 0.90; 90, 1; 110, 1.13; 130, 1.20; 150, 1.28; 180, 1.40]) 
     annotation(extent=[-20, 80; 0, 100]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Tables.Table1D TB1(
-              Table=[0.5, 1.18; 0.6, 0.77; 0.7, 0.51; 0.8, 0.37;
-  0.9, 0.28; 1, 0.21; 1.25, 0.19; 1.50, 0.17; 2, 0.15; 4, 0.11; 6, 0.09;
-  8, 0.07; 10, 0.07; 15, 0.06; 20, 0.05; 25, 0.05; 30, 0.04; 35, 0.04; 40,
-  0.03; 45, 0.03; 50, 0.03]) annotation(extent=[20, 80; 40, 100]);
+                    Table=[0.5, 1.18; 0.6, 0.77; 0.7, 0.51; 0.8, 0.37;
+        0.9, 0.28; 1, 0.21; 1.25, 0.19; 1.50, 0.17; 2, 0.15; 4, 0.11; 6, 0.09;
+        8, 0.07; 10, 0.07; 15, 0.06; 20, 0.05; 25, 0.05; 30, 0.04; 35, 0.04; 40,
+        0.03; 45, 0.03; 50, 0.03]) annotation(extent=[20, 80; 40, 100]);
   Connectors.FluidInlet C1 
-                    annotation(extent=[-110, -10; -90, 10]);
+                          annotation(extent=[-110, -10; -90, 10]);
   Connectors.FluidOutlet C2 
-                    annotation(extent=[-10, -110; 10, -90]);
+                          annotation(extent=[-10, -110; 10, -90]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-100, 80; -80, 100]);
 equation 
@@ -121,7 +121,7 @@ equation
   
   /* Pressure loss */
   deltaP = 8*khi*ThermoSysPro.Functions.ThermoSquare(
-                                              Q, eps)/(pi^2*D^4*rho);
+                                                    Q, eps)/(pi^2*D^4*rho);
   
     /* Coude à parois concentriques (Idel'cik p. 192). Quadratic flow regime is assumed and Re > 2e5 (Re > Relim). */
   assert(R0/D > 0.5, "Coude: on doit avoir R0/D > 0.5");
@@ -152,7 +152,7 @@ equation
   yC1 = 1;
   
   kdelta = if ((rugosrel < 0.001)) and (R0/D < 1.5) then 1.0 + 1.e3*rugosrel else 
-    if (rugosrel < 0.001) then 1.0 + 1.e6*rugosrel^2 else 2.0;
+          if (rugosrel < 0.001) then 1.0 + 1.e6*rugosrel^2 else 2.0;
   
   khif = 0.0175*lambda*R0*delta/D;
   
@@ -160,7 +160,7 @@ equation
     lambda = 1/(2*Modelica.Math.log10(3.7/rugosrel))^2;
   else
     lambda = if noEvent(Re > 0) then 1/(1.8*Modelica.Math.log10(Re) - 1.64)^2 else 
-      0;
+            0;
   end if;
   
   Relim = if (rugosrel > 0.00005) then max(560/rugosrel, 2.e5) else 2.e5;

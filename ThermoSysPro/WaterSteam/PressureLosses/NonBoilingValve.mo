@@ -31,11 +31,11 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-100, -60; 0, 0; -100, 60; -100, -42; -100, -60],
-    style(fillColor=53, fillPattern=1)), Polygon(points=[86, -52; 0, 0;
-      100, 60; 100, -60; 86, -52], style(fillColor=53, fillPattern=1))),
+          style(fillColor=53, fillPattern=1)), Polygon(points=[86, -52; 0, 0;
+            100, 60; 100, -60; 86, -52], style(fillColor=53, fillPattern=1))),
     Icon(Polygon(points=[-90, -54; 0, 0; -100, 60; -100, -60; -90, -54], style(
-      fillColor=53, fillPattern=1)), Polygon(points=[100, -60; 0, 0; 100,
-       60; 100, -42; 100, -60], style(fillColor=53, fillPattern=1))),
+            fillColor=53, fillPattern=1)), Polygon(points=[100, -60; 0, 0; 100,
+             60; 100, -42; 100, -60], style(fillColor=53, fillPattern=1))),
     Window(
       x=0.09,
       y=0.08,
@@ -58,7 +58,7 @@ public
 public 
   Connectors.FluidInlet C1 
     annotation (extent=[-110, -12; -90, 8]);
-  Connectors.FluidOutlet C2          annotation (extent=[90, -12; 110, 8]);
+  Connectors.FluidOutlet C2                annotation (extent=[90, -12; 110, 8]);
 equation 
   
   Pec = C1.P;

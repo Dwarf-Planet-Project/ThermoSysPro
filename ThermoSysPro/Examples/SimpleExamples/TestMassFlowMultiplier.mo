@@ -13,7 +13,7 @@ model TestMassFlowMultiplier
     annotation (extent=[-20,0; 0,20]);
 equation 
   connect(sourcePQ.C, singularPressureLoss.C1) annotation (points=[-80,10; -60,
-  10], style(
+        10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,
@@ -27,14 +27,14 @@ equation
       rgbfillColor={255,255,0},
       fillPattern=1));
   connect(singularPressureLoss.C2, massFlowMultiplier.Ce) annotation (points=[
-  -40,10; -20,10], style(
+        -40,10; -20,10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,
       rgbfillColor={255,255,0},
       fillPattern=1));
   connect(massFlowMultiplier.Cs, singularPressureLoss1.C1) annotation (points=[
-  0,10; 20,10], style(
+        0,10; 20,10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,

@@ -13,16 +13,16 @@ model TestControlValve
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP SourceP1 
     annotation (extent=[-100, 20; -80, 40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP PuitsP1 
-                                    annotation (extent=[60, 20; 80, 40]);
+                                          annotation (extent=[60, 20; 80, 40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve ControlValve(mode_caract=1, caract=[
-  0,0; 0.5,3000; 0.75,7000; 1,8000]) 
-                                    annotation (extent=[-20,26; 0,46]);
+        0,0; 0.5,3000; 0.75,7000; 1,8000]) 
+                                          annotation (extent=[-20,26; 0,46]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                      k=0.5) 
+                                            k=0.5) 
     annotation (extent=[-40, 60; -20, 80]);
 equation 
   connect(ControlValve.C2, PuitsP1.C) 
-    annotation (points=[0,30; 40,30; 40,30; 60,30],    style(color=3));
+    annotation (points=[0,30; 40,30; 40,30; 60,30],          style(color=3));
   connect(Constante1.y, ControlValve.Ouv) 
     annotation (points=[-19,70; -10,70; -10,47],  style(color=3));
   connect(SourceP1.C, ControlValve.C1) 

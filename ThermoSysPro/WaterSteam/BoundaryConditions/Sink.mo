@@ -18,10 +18,10 @@ protected
       Line(points=[-54, -10; -40, 0]),
       Text(extent=[10,-40; 30,-60], string="h"),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-        255,0}))),
+              255,0}))),
     Icon(
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-        255,0})),
+              255,0})),
       Text(extent=[10,-40; 30,-60], string="h"),
       Line(points=[-92,0; -40,0; -54,10]),
       Line(points=[-54, -10; -40, 0])),

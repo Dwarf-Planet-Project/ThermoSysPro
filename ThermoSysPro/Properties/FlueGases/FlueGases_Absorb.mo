@@ -15,7 +15,7 @@ algorithm
   (EG,ES,emigaz) := ThermoSysPro.Properties.FlueGases.Absorb(PC*1e-5, PW*1e-5, FV, L, T);
   
   annotation (smoothOrder=2,Icon,
-        Documentation(info="<html>
+              Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

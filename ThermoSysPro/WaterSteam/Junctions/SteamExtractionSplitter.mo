@@ -18,17 +18,17 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-100,30; -100,-30; -40,-30; 20,-100; 20,-100; 60,
-      -100; 70,-100; 0,-30; 100,-30; 100,30; -100,30], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0}))),
+            -100; 70,-100; 0,-30; 100,-30; 100,30; -100,30], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0}))),
     Icon(Polygon(points=[-100,28; -100,-32; -40,-32; 20,-102; 20,-102; 60,-102;
-      70,-102; 0,-32; 100,-32; 100,28; -100,28], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0}))),
+            70,-102; 0,-32; 100,-32; 100,28; -100,28], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0}))),
     Window(
       x=0.17,
       y=0.1,
@@ -58,7 +58,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
     annotation (extent=[-20,80; 0,100]);
   Connectors.FluidOutlet Cex "Extraction outlet" 
-                           annotation (extent=[30,-110; 50,-90]);
+                                 annotation (extent=[30,-110; 50,-90]);
 equation 
   
   /* Fluid pressure */

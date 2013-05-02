@@ -19,21 +19,21 @@ protected
       Text(extent=[78, 14; 102, 2], string="y"),
       Line(points=[0, 40; 28, 40], style(color=0, fillColor=0)),
       Rectangle(extent=[-26, 40; 0, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 20; 0, 0], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 0; 0, -20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, -20; 0, -40], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[28, 40; 28, -40], style(color=0)),
       Line(points=[0, 20; 28, 20], style(color=0, fillColor=0)),
       Line(points=[0, 0; 28, 0], style(color=0)),
@@ -54,21 +54,21 @@ protected
       Text(extent=[78, 14; 102, 2], string="y"),
       Line(points=[0, 40; 28, 40], style(color=0, fillColor=0)),
       Rectangle(extent=[-26, 40; 0, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 20; 0, 0], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 0; 0, -20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, -20; 0, -40], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Line(points=[28, 40; 28, -40], style(color=0)),
       Line(points=[0, 20; 28, 20], style(color=0, fillColor=0)),
       Line(points=[0, 0; 28, 0], style(color=0)),
@@ -85,7 +85,7 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = ThermoSysPro.Functions.LinearInterpolation(Tu, Ty, time);

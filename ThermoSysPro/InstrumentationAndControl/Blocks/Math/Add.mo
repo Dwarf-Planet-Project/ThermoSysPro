@@ -22,17 +22,17 @@ block Add
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-  extent=[-36, 34; 40, -34],
-  string="+",
-  style(color=0)),
+        extent=[-36, 34; 40, -34],
+        string="+",
+        style(color=0)),
       Text(
-  extent=[-96, 94; -56, 64],
-  string="%k1",
-  style(color=0)),
+        extent=[-96, 94; -56, 64],
+        string="%k1",
+        style(color=0)),
       Text(
-  extent=[-94, -66; -54, -96],
-  string="%k2",
-  style(color=0))),
+        extent=[-94, -66; -54, -96],
+        string="%k2",
+        style(color=0))),
     Diagram(
       Line(points=[50, 0; 100, 0]),
       Line(points=[50, 0; 100, 0]),
@@ -45,17 +45,17 @@ block Add
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-  extent=[-36, 34; 40, -34],
-  string="+",
-  style(color=0)),
+        extent=[-36, 34; 40, -34],
+        string="+",
+        style(color=0)),
       Text(
-  extent=[-96, 94; -56, 64],
-  string="k1",
-  style(color=0)),
+        extent=[-96, 94; -56, 64],
+        string="k1",
+        style(color=0)),
       Text(
-  extent=[-94, -66; -54, -96],
-  string="k2",
-  style(color=0))),
+        extent=[-94, -66; -54, -96],
+        string="k2",
+        style(color=0))),
     Window(
       x=0.31,
       y=0.06,
@@ -69,11 +69,11 @@ block Add
 </HTML>
 "));
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u1 
-                                 annotation (extent=[-120, 50; -100, 70]);
+                                       annotation (extent=[-120, 50; -100, 70]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u2 
-                                 annotation (extent=[-120, -70; -100, -50]);
+                                       annotation (extent=[-120, -70; -100, -50]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = k1*u1.signal + k2*u2.signal;

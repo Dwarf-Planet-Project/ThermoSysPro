@@ -11,17 +11,17 @@ model TestWaterHammer
       height=0.6),
     Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP PSource1(P0=3000000) 
-                                              annotation (extent=[-100,
-  -20; -80, 0]);
+                                                    annotation (extent=[-100,
+        -20; -80, 0]);
   ThermoSysPro.WaterSteam.PressureLosses.WaterHammer waterHammer(
     L=600,
     D=0.5,
     lambda=0.018,
     a=1200) annotation (extent=[-60,-20; -40,0]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP PSink1(P0=2400000) 
-                             annotation (extent=[60, -20; 80, 0]);
-  WaterSteam.PressureLosses.ControlValve       VanneTORC1(
-      continuous_flow_reversal=true)                         annotation (
+                                   annotation (extent=[60, -20; 80, 0]);
+  WaterSteam.PressureLosses.ControlValve             VanneTORC1(
+      continuous_flow_reversal=true)                               annotation (
       extent=[20,-14; 40,6]);
   InstrumentationAndControl.Blocks.Sources.Rampe rampe(
     Initialvalue=1,
@@ -30,7 +30,7 @@ model TestWaterHammer
   WaterSteam.Volumes.VolumeA volumeA annotation (extent=[-20,-20; 0,0]);
 equation 
   connect(PSource1.C, waterHammer.C1) 
-                            annotation (points=[-80,-10; -60,-10],
+                                  annotation (points=[-80,-10; -60,-10],
       style(color=3));
   connect(VanneTORC1.C2, PSink1.C)  annotation (points=[40,-10; 60,-10],
       style(color=3));

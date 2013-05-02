@@ -20,31 +20,31 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40;
-      -60,40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=8)),            Polygon(points=[-60,-40; -40,-20; -20,-12;
-      0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=8))),
+            -60,40], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=8)),            Polygon(points=[-60,-40; -40,-20; -20,-12;
+            0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=8))),
     Icon(   Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40;
-      -60,40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=8)),            Polygon(points=[-60,-40; -40,-20; -20,-12;
-      0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=8))),
+            -60,40], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=8)),            Polygon(points=[-60,-40; -40,-20; -20,-12;
+            0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=8))),
     Window(
       x=0.11,
       y=0.04,
@@ -68,9 +68,9 @@ public
 "));
 public 
   ThermoSysPro.FlueGases.Connectors.FlueGasesInlet C1 
-                    annotation(extent=[-110,-10; -90,10]);
+                          annotation(extent=[-110,-10; -90,10]);
   ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet C2 
-                    annotation(extent=[90,-10; 110,10]);
+                          annotation(extent=[90,-10; 110,10]);
   
 equation 
   C1.P - C2.P = deltaPf;

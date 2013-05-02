@@ -39,14 +39,14 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Ellipse(extent=[-102,60; 100,-60], style(
-    pattern=0,
-    fillColor=71,
-    rgbfillColor={85,170,255}))),
+          pattern=0,
+          fillColor=71,
+          rgbfillColor={85,170,255}))),
     Icon(   Ellipse(extent=[-102,60; 100,-60], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=71,
-    rgbfillColor={85,170,255}))),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=71,
+          rgbfillColor={85,170,255}))),
     Window(
       x=0.09,
       y=0.2,
@@ -68,17 +68,17 @@ public
 "));
 public 
   Connectors.FluidInlet Ce1 
-                     annotation (extent=[-110,-10; -90,10]);
+                           annotation (extent=[-110,-10; -90,10]);
   Connectors.FluidInlet Ce2 
-                     annotation (extent=[-50,50; -30,70]);
+                           annotation (extent=[-50,50; -30,70]);
   Connectors.FluidOutlet Cs 
-                    annotation (extent=[-50,-70; -30,-50]);
+                          annotation (extent=[-50,-70; -30,-50]);
   Connectors.FluidInlet Ce3 
-                     annotation (extent=[30,50; 50,70]);
+                           annotation (extent=[30,50; 50,70]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat 
     annotation (extent=[-60,80; -40,100]);
   Connectors.FluidInlet Ce4 
-                     annotation (extent=[30,-68; 50,-48]);
+                           annotation (extent=[30,-68; 50,-48]);
 initial equation 
   if steady_state then
     der(P) = 0;

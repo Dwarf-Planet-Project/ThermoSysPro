@@ -18,9 +18,9 @@ model TestJunctions4
     annotation (extent=[-100,-20; -80,0]);
 equation 
   connect(singularPressureLoss.C2, deheaterMixer2_1.Ce) annotation (points=[-40,
-  30; -30,30; -30,36; -20,36], style(color=3, rgbcolor={0,0,255}));
+        30; -30,30; -30,36; -20,36], style(color=3, rgbcolor={0,0,255}));
   connect(deheaterMixer2_1.Cs, singularPressureLoss1.C1) annotation (points=[0,
-  36; 10,36; 10,30; 20,30], style(color=3, rgbcolor={0,0,255}));
+        36; 10,36; 10,30; 20,30], style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLoss2.C2, deheaterMixer2_1.Ce_mix) annotation (points=
        [-40,-10; -9.9,-10; -9.9,20], style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLoss1.C2, sinkP.C) 

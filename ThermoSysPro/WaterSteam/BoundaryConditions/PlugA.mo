@@ -15,18 +15,18 @@ public
       Line(points=[40,0; 90,0; 72,10]),
       Line(points=[90,0; 72,-10]), 
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3, 
-    rgbcolor={0,0,255}, 
-    fillColor=53, 
-    rgbfillColor={128,255,0}))),
+          color=3, 
+          rgbcolor={0,0,255}, 
+          fillColor=53, 
+          rgbfillColor={128,255,0}))),
     Icon(
       Line(points=[40,0; 90,0; 72,10]),
       Line(points=[90,0; 72,-10]), 
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3, 
-    rgbcolor={0,0,255}, 
-    fillColor=53, 
-    rgbfillColor={128,255,0}))),
+          color=3, 
+          rgbcolor={0,0,255}, 
+          fillColor=53, 
+          rgbfillColor={128,255,0}))),
     Window(
       x=0.23,
       y=0.15,
@@ -48,7 +48,7 @@ public
 </ul>
 </html>
 "));
-  Connectors.FluidOutlet C          annotation (extent=[90,-10; 110,10]);
+  Connectors.FluidOutlet C                annotation (extent=[90,-10; 110,10]);
 equation 
   
   C.P = P;

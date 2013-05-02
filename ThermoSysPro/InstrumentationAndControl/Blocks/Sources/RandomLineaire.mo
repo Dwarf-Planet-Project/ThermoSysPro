@@ -12,27 +12,27 @@ block RandomLineaire
       Line(points=[-80, 68; -80, -80], style(color=8)),
       Line(points=[-90,0; 82,0],       style(color=8)),
       Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(color=8,
-      fillColor=8)),
-      Polygon(points=[98,0; 76,8; 76,-8; 98,0],      style(color=8,
-      fillColor=8)),
+            fillColor=8)),
+      Polygon(points=[98,0; 76,8; 76,-8; 98,0],            style(color=8,
+            fillColor=8)),
       Text(
-  extent=[-89, 90; -36, 72],
-  string="y",
-  style(color=9)),
+        extent=[-89, 90; -36, 72],
+        string="y",
+        style(color=9)),
       Text(
-  extent=[72,-8; 96,-28],
-  string="temps",
-  style(color=9)),
+        extent=[72,-8; 96,-28],
+        string="temps",
+        style(color=9)),
       Line(points=[-60, -20; -40, 20; -20, -40; 0, -60; 20, 0; 40, 40; 60, 0],
-    style(color=0)),
+          style(color=0)),
       Text(
-  extent=[-88,64; -58,46],
-  style(color=3, rgbcolor={0,0,255}),
-  string="1"),
+        extent=[-88,64; -58,46],
+        style(color=3, rgbcolor={0,0,255}),
+        string="1"),
       Text(
-  extent=[-88,-52; -58,-70],
-  style(color=3, rgbcolor={0,0,255}),
-  string="-1")),
+        extent=[-88,-52; -58,-70],
+        style(color=3, rgbcolor={0,0,255}),
+        string="-1")),
     Icon(
       Line(points=[50, 0; 100, 0]),
       Line(points=[50, 0; 100, 0]),
@@ -41,19 +41,19 @@ block RandomLineaire
       Line(points=[-82,66; -82,-82],   style(color=8)),
       Line(points=[-92,-2; 80,-2],     style(color=8)),
       Polygon(points=[-82,88; -90,66; -74,66; -82,88],     style(color=8,
-      fillColor=8)),
-      Polygon(points=[96,-2; 74,6; 74,-10; 96,-2],   style(color=8,
-      fillColor=8)),
+            fillColor=8)),
+      Polygon(points=[96,-2; 74,6; 74,-10; 96,-2],         style(color=8,
+            fillColor=8)),
       Line(points=[-62,-22; -42,18; -22,-42; -2,-62; 18,-2; 38,38; 58,-2],
-    style(color=0)),
+          style(color=0)),
       Text(
-  extent=[-90,62; -60,44],
-  style(color=3, rgbcolor={0,0,255}),
-  string="1"),
+        extent=[-90,62; -60,44],
+        style(color=3, rgbcolor={0,0,255}),
+        string="1"),
       Text(
-  extent=[-90,-54; -60,-72],
-  style(color=3, rgbcolor={0,0,255}),
-  string="-1")),
+        extent=[-90,-54; -60,-72],
+        style(color=3, rgbcolor={0,0,255}),
+        string="-1")),
     Window(
       x=0.32,
       y=0.33,
@@ -71,7 +71,7 @@ protected
   discrete Real Interval;
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                             annotation (extent=[100,-10; 120,10]);
+                                   annotation (extent=[100,-10; 120,10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical uL 
     annotation (extent=[-10,-120; 10,-100],rotation=90);
 algorithm 

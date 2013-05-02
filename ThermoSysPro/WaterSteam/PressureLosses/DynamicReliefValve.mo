@@ -49,22 +49,22 @@ protected
       component=[20, 20]),
     Icon(
       Polygon(points=[0, 0; -30, -60; 30, -60; 0, 0], style(fillColor=79,
-      rgbfillColor={170,85,255})),
+            rgbfillColor={170,85,255})),
       Polygon(points=[0, 0; 60, -30; 60, 30; 0, 0], style(fillColor=79,
-      rgbfillColor={170,85,255})),
+            rgbfillColor={170,85,255})),
       Line(points=[0, -60; 0, -98]),
       Line(points=[60, 0; 90, 0]),
       Line(points=[0, 0; 10, 10; -10, 20; 10, 28; -10, 40; 10, 50; -10, 60; 10,
-      70], style(color=79, rgbcolor={170,85,255}))),
+            70], style(color=79, rgbcolor={170,85,255}))),
     Diagram(
       Polygon(points=[0, 0; -30, -60; 30, -60; 0, 0], style(fillColor=79,
-      rgbfillColor={170,85,255})),
+            rgbfillColor={170,85,255})),
       Polygon(points=[0, 0; 60, -30; 60, 30; 0, 0], style(fillColor=79,
-      rgbfillColor={170,85,255})),
+            rgbfillColor={170,85,255})),
       Line(points=[0, -60; 0, -98]),
       Line(points=[60, 0; 90, 0]),
       Line(points=[0, 0; 10, 10; -10, 20; 10, 28; -10, 40; 10, 50; -10, 60; 10,
-      70])),
+            70])),
     Window(
       x=0.12,
       y=0.05,
@@ -85,7 +85,7 @@ protected
 public 
   Connectors.FluidInlet C1 
     annotation(extent=[-10, -108; 10, -88]);
-  Connectors.FluidOutlet C2          annotation(extent=[90, -12; 110, 8]);
+  Connectors.FluidOutlet C2                annotation(extent=[90, -12; 110, 8]);
 initial equation 
   if (D > 0) then
     Ouv = c;

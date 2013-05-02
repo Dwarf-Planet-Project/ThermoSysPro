@@ -17,7 +17,7 @@ model TestDynamicOnePhaseFlowPipe
     annotation (extent=[-20,40; 0,60]);
 equation 
   connect(sourceP.C, dynamicOnePhaseFlowPipe.C1) annotation (points=[-40,30;
-  -20,30], style(
+        -20,30], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=68,
@@ -31,7 +31,7 @@ equation
       rgbfillColor={170,213,255},
       fillPattern=1));
   connect(heatSource.C, heatExchangerWall.WT2) annotation (points=[-10,60.2;
-  -10,52], style(color=46, rgbcolor={191,95,0}));
+        -10,52], style(color=46, rgbcolor={191,95,0}));
   connect(heatExchangerWall.WT1, dynamicOnePhaseFlowPipe.CTh) 
     annotation (points=[-10,48; -10,33], style(color=46, rgbcolor={191,95,0}));
 end TestDynamicOnePhaseFlowPipe;

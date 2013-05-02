@@ -27,7 +27,7 @@ model TestVolumes2
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP1 
     annotation (extent=[80,10; 100,30]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe V4(Starttime=4, Duration=
-       2)   annotation (extent=[-40,60; -20,80]);
+       2)         annotation (extent=[-40,60; -20,80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe V5(Initialvalue=1) 
     annotation (extent=[0,60; 20,80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe V3(
@@ -49,7 +49,7 @@ equation
   connect(sourceP1.C, lumpedStraightPipe1.C1) 
     annotation (points=[-80,-90; -70,-90], style(color=3, rgbcolor={0,0,255}));
   connect(lumpedStraightPipe1.C2, controlValve1.C1) annotation (points=[-50,-90;
-  -40,-90; -40,-80], style(color=3, rgbcolor={0,0,255}));
+        -40,-90; -40,-80], style(color=3, rgbcolor={0,0,255}));
   connect(controlValve4.C2, sinkP.C) 
     annotation (points=[20,-40; 40,-40], style(color=3, rgbcolor={0,0,255}));
   connect(controlValve2.C2, controlValve3.C1) 
@@ -66,7 +66,7 @@ equation
   connect(volumeC.Cs, controlValve2.C1) 
     annotation (points=[-30,20; -20,20], style(color=3, rgbcolor={0,0,255}));
   connect(lumpedStraightPipe.C2, volumeC.Ce2) annotation (points=[-50,50; -40,
-  50; -40,29], style(color=3, rgbcolor={0,0,255}));
+        50; -40,29], style(color=3, rgbcolor={0,0,255}));
   connect(volumeC.Ce3, controlValve.C2) annotation (points=[-40,10; -40,0]);
   connect(controlValve.C1, volumeA.Cs2) annotation (points=[-40,-20; -40,-30]);
   connect(volumeA.Cs1, controlValve4.C1) 

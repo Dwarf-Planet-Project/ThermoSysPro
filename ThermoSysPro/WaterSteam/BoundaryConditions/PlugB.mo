@@ -15,18 +15,18 @@ public
       Line(points=[-90,0; -40,0; -54,10]),
       Line(points=[-54, -10; -40, 0]), 
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3, 
-    rgbcolor={0,0,255}, 
-    fillColor=53, 
-    rgbfillColor={128,255,0}))),
+          color=3, 
+          rgbcolor={0,0,255}, 
+          fillColor=53, 
+          rgbfillColor={128,255,0}))),
     Icon(
       Line(points=[-92,0; -40,0; -54,10]),
       Line(points=[-54, -10; -40, 0]), 
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3, 
-    rgbcolor={0,0,255}, 
-    fillColor=53, 
-    rgbfillColor={128,255,0}))),
+          color=3, 
+          rgbcolor={0,0,255}, 
+          fillColor=53, 
+          rgbfillColor={128,255,0}))),
     Window(
       x=0.23,
       y=0.15,

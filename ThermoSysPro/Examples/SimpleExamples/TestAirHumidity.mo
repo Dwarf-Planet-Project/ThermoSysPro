@@ -12,7 +12,7 @@ model TestAirHumidity
   annotation (Diagram);
 equation 
   connect(sourceFlueGasesPQ.C, airHumidity.C1) annotation (points=[-60,10; -40,
-  10], style(
+        10], style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,
@@ -20,7 +20,7 @@ equation
       rgbfillColor={255,255,0},
       fillPattern=8));
   connect(airHumidity.C2, singularPressureLoss.C1) annotation (points=[-20,10;
-  0,10], style(
+        0,10], style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,
@@ -28,7 +28,7 @@ equation
       rgbfillColor={255,255,0},
       fillPattern=8));
   connect(singularPressureLoss.C2, sinkFlueGases.C) annotation (points=[20,10;
-  40.2,10], style(
+        40.2,10], style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,

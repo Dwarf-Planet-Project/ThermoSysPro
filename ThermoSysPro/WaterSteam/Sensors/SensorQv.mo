@@ -34,7 +34,7 @@ public
       Line(points=[0,-30; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(extent=[-60,64; 60,4],    string="Qv",
-  style(fillColor=6, rgbfillColor={255,255,0}))),
+        style(fillColor=6, rgbfillColor={255,255,0}))),
     Window(
       x=0.3,
       y=0.19,
@@ -45,7 +45,7 @@ public
       Line(points=[0,-30; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(extent=[-60,64; 60,4],    string="Qv",
-  style(fillColor=6, rgbfillColor={255,255,0}))),
+        style(fillColor=6, rgbfillColor={255,255,0}))),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

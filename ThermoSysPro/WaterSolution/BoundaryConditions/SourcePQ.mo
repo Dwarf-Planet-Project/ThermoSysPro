@@ -16,19 +16,19 @@ model SourcePQ "Pressure and mass flow source"
       Line(points=[40, 0; 90, 0; 72, 10]),
       Line(points=[90, 0; 72, -10]),
       Polygon(points=[-40,-40; -40,40; 40,-40; -40,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170}))),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170}))),
     Icon(
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=9)),
       Line(points=[40, 0; 90, 0; 72, 10]),
       Line(points=[90, 0; 72, -10]),
       Polygon(points=[-40,-40; -40,40; 40,-40; -40,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=44,
-    rgbfillColor={255,170,170}))),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=44,
+          rgbfillColor={255,170,170}))),
     Window(
       x=0.09,
       y=0.2,

@@ -6,12 +6,12 @@ model LoopingPQ
   parameter Modelica.SIunits.MassFlowRate Q=1.0 "Débit imposé";
   
   annotation (Diagram,    Icon(Rectangle(extent=[-100,30; 100,-30], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=0,
-    rgbfillColor={0,0,0}))),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=0,
+          rgbfillColor={0,0,0}))),
     Coordsys(extent=[-100,-100; 100,100],
-                                scale=0.01),
+                                      scale=0.01),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -40,10 +40,10 @@ model LoopingPQ
   ThermoSysPro.WaterSteam.BoundaryConditions.RefQ massFlowSetWaterSteam 
     annotation (extent=[-40,-10; -20,10]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Debit(
-                                      k=Q) 
+                                            k=Q) 
     annotation (extent=[-80,30; -60,50]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Pression(
-                                         k=P) 
+                                               k=P) 
     annotation (extent=[20,30; 40,50]);
 equation 
   connect(Debit.y, massFlowSetWaterSteam.IMassFlow) 

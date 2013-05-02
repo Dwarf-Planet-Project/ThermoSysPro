@@ -23,17 +23,17 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[64,-18; 42,-64; -22,-80; -68,-60; -90,-20; -90,20;
-      -70,60; -30,80; 90,80; 90,20; 54,20; 64,-18], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=44,
-    rgbfillColor={255,170,170}))),
+            -70,60; -30,80; 90,80; 90,20; 54,20; 64,-18], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=44,
+          rgbfillColor={255,170,170}))),
     Icon(   Polygon(points=[64,-18; 42,-64; -22,-80; -68,-60; -90,-20; -90,20;
-      -70,60; -30,80; 90,80; 90,20; 54,20; 64,-18], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=44,
-    rgbfillColor={255,170,170}))),
+            -70,60; -30,80; 90,80; 90,20; 54,20; 64,-18], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=44,
+          rgbfillColor={255,170,170}))),
     Window(
       x=0.09,
       y=0.2,

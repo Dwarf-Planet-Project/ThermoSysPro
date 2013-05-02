@@ -41,75 +41,75 @@ public
   Modelica.SIunits.Power W(start=1e8) "Power exchanged";
   
   annotation (Diagram(Rectangle(extent=[-100,80; 100,-80], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
       Text(
-  extent=[-30,76; 28,66],
-  style(
-    color=0,
-    rgbcolor={0,0,0},
-    thickness=2,
-    gradient=2,
-    fillColor=9,
-    rgbfillColor={175,175,175}),
-  string="Flue gases"),
+        extent=[-30,76; 28,66],
+        style(
+          color=0,
+          rgbcolor={0,0,0},
+          thickness=2,
+          gradient=2,
+          fillColor=9,
+          rgbfillColor={175,175,175}),
+        string="Flue gases"),
       Polygon(points=[-94,12; -80,12; -80,56; 80,56; 80,12; 92,12; 92,6; 74,6;
-      74,50; -74,50; -74,6; -94,6; -94,12], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0})),
+            74,50; -74,50; -74,6; -94,6; -94,12], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0})),
       Polygon(points=[-94,-12; -80,-12; -80,-56; 80,-56; 80,-12; 92,-12; 92,-6;
-      74,-6; 74,-50; -74,-50; -74,-6; -94,-6; -94,-12], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0})),
+            74,-6; 74,-50; -74,-50; -74,-6; -94,-6; -94,-12], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0})),
       Text(
-  extent=[-114,28; -48,18],
-  style(
-    color=0,
-    rgbcolor={0,0,0},
-    thickness=2,
-    gradient=2,
-    fillColor=9,
-    rgbfillColor={175,175,175}),
-  string="Water/Steam"),
+        extent=[-114,28; -48,18],
+        style(
+          color=0,
+          rgbcolor={0,0,0},
+          thickness=2,
+          gradient=2,
+          fillColor=9,
+          rgbfillColor={175,175,175}),
+        string="Water/Steam"),
       Polygon(points=[-94,3; 90,3; 90,-3; -94,-3; -94,3], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1))), Icon(
-                Rectangle(extent=[-100,80; 100,-80], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1))), Icon(
+                      Rectangle(extent=[-100,80; 100,-80], style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
       Polygon(points=[-94,12; -80,12; -80,56; 80,56; 80,12; 92,12; 92,6; 74,6;
-      74,50; -74,50; -74,6; -94,6; -94,12], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0})),
+            74,50; -74,50; -74,6; -94,6; -94,12], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0})),
       Polygon(points=[-92,3; 92,3; 92,-3; -92,-3; -92,3], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Polygon(points=[-94,-12; -80,-12; -80,-56; 80,-56; 80,-12; 92,-12; 92,-6;
-      74,-6; 74,-50; -74,-50; -74,-6; -94,-6; -94,-12], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0}))),
+            74,-6; 74,-50; -74,-50; -74,-6; -94,-6; -94,-12], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
@@ -138,7 +138,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proem 
     annotation (extent=[-76,80; -56,100]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
-                                     annotation (extent=[80,80; 100,100]);
+                                           annotation (extent=[80,80; 100,100]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat 
     annotation (extent=[58,80; 78,100]);
 equation 
@@ -172,9 +172,9 @@ equation
   
   /* Pressure losses */
   Pef = Psf + Kdpf*ThermoSysPro.Functions.ThermoSquare(
-                                                Qf, eps)/rhof;
+                                                      Qf, eps)/rhof;
   Pee = Pse + Kdpe*ThermoSysPro.Functions.ThermoSquare(
-                                                Qe, eps)/rhoe;
+                                                      Qe, eps)/rhoe;
   
   /* Power exchanged */
   W = Qf*(Hef - Hsf);

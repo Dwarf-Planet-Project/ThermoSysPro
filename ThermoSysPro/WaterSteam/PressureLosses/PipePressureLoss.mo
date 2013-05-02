@@ -37,25 +37,25 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Rectangle(extent=[-100,20; 100,-20], style(fillColor=53,
-      rgbfillColor={85,255,85})), Text(
-  extent=[-12,14; 16,-14],
-  style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=59,
-    rgbfillColor={85,255,85},
-    fillPattern=1),
-  string="K")),
+            rgbfillColor={85,255,85})), Text(
+        extent=[-12,14; 16,-14],
+        style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=59,
+          rgbfillColor={85,255,85},
+          fillPattern=1),
+        string="K")),
     Icon(Rectangle(extent=[-100,20; 100,-20], style(fillColor=53, rgbfillColor=
-        {85,255,85})), Text(
-  extent=[-12,14; 16,-14],
-  style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=59,
-    rgbfillColor={85,255,85},
-    fillPattern=1),
-  string="K")),
+              {85,255,85})), Text(
+        extent=[-12,14; 16,-14],
+        style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=59,
+          rgbfillColor={85,255,85},
+          fillPattern=1),
+        string="K")),
     Window(
       x=0.11,
       y=0.04,
@@ -77,9 +77,9 @@ public
 "));
 public 
   Connectors.FluidInlet C1 
-                    annotation(extent=[-110,-10; -90,10]);
+                          annotation(extent=[-110,-10; -90,10]);
   Connectors.FluidOutlet C2 
-                    annotation(extent=[90,-10; 110,10]);
+                          annotation(extent=[90,-10; 110,10]);
   
 equation 
   C1.P - C2.P = deltaP;

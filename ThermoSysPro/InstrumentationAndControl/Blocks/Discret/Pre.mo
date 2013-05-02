@@ -18,26 +18,26 @@ protected
       Line(points=[-60, 0; 60, 0], style(color=0, thickness=2)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Text(
-  extent=[-55, 55; 55, 5],
-  string="1",
-  style(color=0)),
+        extent=[-55, 55; 55, 5],
+        string="1",
+        style(color=0)),
       Text(
-  extent=[-55, -5; 55, -55],
-  string="z",
-  style(color=0))),
+        extent=[-55, -5; 55, -55],
+        string="z",
+        style(color=0))),
     Diagram(
       Rectangle(extent=[-60, 60; 60, -60], style(color=73)),
       Line(points=[-100, 0; -60, 0], style(color=73)),
       Line(points=[60, 0; 100, 0], style(color=73)),
       Line(points=[40, 0; -40, 0], style(color=0)),
       Text(
-  extent=[-55, 55; 55, 5],
-  string="1",
-  style(color=0)),
+        extent=[-55, 55; 55, 5],
+        string="1",
+        style(color=0)),
       Text(
-  extent=[-55, -5; 55, -55],
-  string="z",
-  style(color=0))),
+        extent=[-55, -5; 55, -55],
+        string="z",
+        style(color=0))),
     Window(
       x=0.23,
       y=0.2,
@@ -49,9 +49,9 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                annotation (extent=[-120, -10; -100, 10]);
+                                      annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 algorithm 
   
   when sample(SampleOffset, SampleInterval) then

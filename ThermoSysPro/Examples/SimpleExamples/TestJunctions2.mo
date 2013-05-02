@@ -17,7 +17,7 @@ model TestJunctions2
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkQ sinkP 
     annotation (extent=[80,60; 100,80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante(k=0) 
-       annotation (extent=[-40,60; -20,80]);
+             annotation (extent=[-40,60; -20,80]);
   ThermoSysPro.WaterSteam.Junctions.Mixer3 mixer2_2 
     annotation (extent=[0,-60; 20,-40]);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 
@@ -33,7 +33,7 @@ model TestJunctions2
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkQ sinkP1 
     annotation (extent=[80,-60; 100,-40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante1(k=
-  0.5) annotation (extent=[-40,-20; -20,0]);
+        0.5) annotation (extent=[-40,-20; -20,0]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceQ sourceQ 
     annotation (extent=[-80,-60; -60,-40]);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 
@@ -50,9 +50,9 @@ model TestJunctions2
     annotation (extent=[80,20; 100,40]);
 equation 
   connect(singularPressureLoss1.C2, mixer2_1.Ce1) annotation (points=[-20,90; 6,
-  90; 6,80], style(color=3, rgbcolor={0,0,255}));
+        90; 6,80], style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLoss2.C2, mixer2_1.Ce2) annotation (points=[-20,50; 6,
-  50; 6,60], style(color=3, rgbcolor={0,0,255}));
+        50; 6,60], style(color=3, rgbcolor={0,0,255}));
   connect(mixer2_1.Cs, singularPressureLoss.C1) 
     annotation (points=[20,70; 40,70], style(color=3, rgbcolor={0,0,255}));
   connect(sourceP.C, singularPressureLoss1.C1) 
@@ -64,9 +64,9 @@ equation
   connect(constante.y, mixer2_1.Ialpha1) 
     annotation (points=[-19,70; -8,70; -8,76; 3,76]);
   connect(singularPressureLoss4.C2, mixer2_2.Ce1) annotation (points=[-20,-30;
-  6,-30; 6,-40], style(color=3, rgbcolor={0,0,255}));
+        6,-30; 6,-40], style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLoss5.C2, mixer2_2.Ce2) annotation (points=[-20,-70;
-  6,-70; 6,-60], style(color=3, rgbcolor={0,0,255}));
+        6,-70; 6,-60], style(color=3, rgbcolor={0,0,255}));
   connect(mixer2_2.Cs, singularPressureLoss3.C1) 
     annotation (points=[20,-50; 40,-50], style(color=3, rgbcolor={0,0,255}));
   connect(sourceP2.C, singularPressureLoss4.C1) 
@@ -78,7 +78,7 @@ equation
   connect(sourceQ.C, singularPressureLoss6.C1) 
     annotation (points=[-60,-50; -40,-50], style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLoss6.C2, mixer2_2.Ce3) annotation (points=[-20,-50;
-  -10,-50; -10,-50; 0,-50], style(color=3, rgbcolor={0,0,255}));
+        -10,-50; -10,-50; 0,-50], style(color=3, rgbcolor={0,0,255}));
   connect(constante1.y, mixer2_2.Ialpha1) 
     annotation (points=[-19,-10; -8,-10; -8,-44; 3,-44]);
   connect(sourceQ1.C, singularPressureLoss7.C1) 

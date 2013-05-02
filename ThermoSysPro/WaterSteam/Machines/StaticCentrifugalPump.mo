@@ -66,9 +66,9 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-100,100; 100,-100],   style(
-    gradient=0,
-    fillColor=53,
-    fillPattern=1)),
+          gradient=0,
+          fillColor=53,
+          fillPattern=1)),
       Line(points=[-80, 0; 80, 0]),
       Line(points=[80, 0; 2, 60]),
       Line(points=[80, 0; 0, -60])),
@@ -79,9 +79,9 @@ public
       height=0.95),
     Icon(
       Ellipse(extent=[-100,100; 100,-100],   style(
-    gradient=0,
-    fillColor=53,
-    fillPattern=1)),
+          gradient=0,
+          fillColor=53,
+          fillPattern=1)),
       Line(points=[-80, 0; 80, 0]),
       Line(points=[80, 0; 2, 60]),
       Line(points=[80, 0; 0, -60])),
@@ -100,14 +100,14 @@ public
 </html>
 "), DymolaStoredErrors);
   Connectors.FluidInlet C1 
-                    annotation(extent=[-110, -10; -90, 10]);
+                          annotation(extent=[-110, -10; -90, 10]);
   Connectors.FluidOutlet C2 
-                    annotation(extent=[90,-10; 110,10]);
+                          annotation(extent=[90,-10; 110,10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-100, 80; -80, 100]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal rpm_or_mpower 
     annotation (extent=[-10,-120; 10,-100],
-                                    rotation=90);
+                                          rotation=90);
 equation 
   if (cardinality(rpm_or_mpower) == 0) then
     if (fixed_rot_or_power == 1) then

@@ -36,30 +36,30 @@ public
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100,60; 100,-60], style(
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
-                  Line(points=[-60,-50; -60,30; 0,-14; 60,30; 60,-50],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1))),
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
+                        Line(points=[-60,-50; -60,30; 0,-14; 60,30; 60,-50],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1))),
     Diagram(
       Rectangle(extent=[-100,60; 100,-60], style(
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
-                  Line(points=[-60,-50; -60,30; 0,-14; 60,30; 60,-50],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1))),
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
+                        Line(points=[-60,-50; -60,30; 0,-14; 60,30; 60,-50],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1))),
     Window(
       x=0.05,
       y=0.01,

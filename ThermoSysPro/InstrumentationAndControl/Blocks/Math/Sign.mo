@@ -17,14 +17,14 @@ block Sign
       Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=8)),
       Line(points=[0, -80; 0, 68], style(color=8)),
       Text(
-  extent=[-90, 72; -18, 24],
-  string="sign",
-  style(color=8)),
+        extent=[-90, 72; -18, 24],
+        string="sign",
+        style(color=8)),
       Line(points=[0, 80; 80, 80], style(color=0)),
       Rectangle(extent=[-2, 2; 2, -4], style(
-    color=0,
-    fillColor=0,
-    fillPattern=1))),
+          color=0,
+          fillColor=0,
+          fillPattern=1))),
     Diagram(
       Line(points=[-90, 0; 68, 0], style(color=8)),
       Polygon(points=[90, 0; 68, 8; 68, -8; 90, 0], style(color=8, fillColor=8)),
@@ -32,20 +32,20 @@ block Sign
       Line(points=[-0.01, 0; 0.01, 0], style(color=0)),
       Line(points=[0, 80; 80, 80], style(color=0)),
       Rectangle(extent=[-2, 2; 2, -4], style(
-    color=0,
-    fillColor=0,
-    fillPattern=1)),
+          color=0,
+          fillColor=0,
+          fillPattern=1)),
       Polygon(points=[0, 100; -6, 84; 6, 84; 0, 100], style(color=8, fillColor=
-        8)),
+              8)),
       Line(points=[0, -90; 0, 84], style(color=8)),
       Text(
-  extent=[5, 102; 30, 82],
-  string="y",
-  style(color=9)),
+        extent=[5, 102; 30, 82],
+        string="y",
+        style(color=9)),
       Text(
-  extent=[70, -6; 94, -26],
-  string="u",
-  style(color=9)),
+        extent=[70, -6; 94, -26],
+        string="u",
+        style(color=9)),
       Text(extent=[-25, 86; -5, 70], string="1"),
       Text(extent=[5, -72; 25, -88], string="-1")),
     Window(
@@ -62,9 +62,9 @@ block Sign
 "));
   
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                annotation (extent=[-120, -10; -100, 10]);
+                                      annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = sign(u.signal);

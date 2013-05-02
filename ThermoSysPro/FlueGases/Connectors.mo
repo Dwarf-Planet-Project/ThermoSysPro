@@ -23,19 +23,19 @@ package Connectors "Connectors"
     
     annotation (
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Icon(Rectangle(extent=[-100, -100; 102, 100], style(
-      color=0,
-      thickness=4,
-      gradient=3,
-      fillColor=42))),
+            color=0,
+            thickness=4,
+            gradient=3,
+            fillColor=42))),
       Window(
-  x=0.31,
-  y=0.13,
-  width=0.6,
-  height=0.6),
+        x=0.31,
+        y=0.13,
+        width=0.6,
+        height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -75,19 +75,19 @@ package Connectors "Connectors"
     
     annotation (
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-      color=0,
-      gradient=3,
-      thickness=4,
-      fillColor=75))),
+            color=0,
+            gradient=3,
+            thickness=4,
+            fillColor=75))),
       Window(
-  x=0.31,
-  y=0.13,
-  width=0.6,
-  height=0.6),
+        x=0.31,
+        y=0.13,
+        width=0.6,
+        height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -126,23 +126,23 @@ package Connectors "Connectors"
       "Pseudo-variable for the verification of the connection orientation";
     
       annotation (
-  Coordsys(
-    extent=[-100, -100; 100, 100],
-    grid=[2, 2],
-    component=[20, 20]),
-  Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-        color=0,
-        rgbcolor={0,0,0},
-        thickness=4,
-        fillColor=75,
-        rgbfillColor={127,127,255},
-        fillPattern=7))),
-  Window(
-    x=0.31,
-    y=0.13,
-    width=0.6,
-    height=0.6),
-  Documentation(info="<html>
+        Coordsys(
+          extent=[-100, -100; 100, 100],
+          grid=[2, 2],
+          component=[20, 20]),
+        Icon(Rectangle(extent=[-100, -100; 100, 100], style(
+              color=0,
+              rgbcolor={0,0,0},
+              thickness=4,
+              fillColor=75,
+              rgbfillColor={127,127,255},
+              fillPattern=7))),
+        Window(
+          x=0.31,
+          y=0.13,
+          width=0.6,
+          height=0.6),
+        Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
@@ -180,23 +180,23 @@ package Connectors "Connectors"
       "Pseudo-variable for the verification of the connection orientation";
     
       annotation (
-  Coordsys(
-    extent=[-100, -100; 100, 100],
-    grid=[2, 2],
-    component=[20, 20]),
-  Icon(Rectangle(extent=[-100,-100; 100,100], style(
-        color=0,
-        rgbcolor={0,0,0},
-        thickness=4,
-        fillColor=1,
-        rgbfillColor={255,0,0},
-        fillPattern=7))),
-  Window(
-    x=0.31,
-    y=0.13,
-    width=0.6,
-    height=0.6),
-  Documentation(info="<html>
+        Coordsys(
+          extent=[-100, -100; 100, 100],
+          grid=[2, 2],
+          component=[20, 20]),
+        Icon(Rectangle(extent=[-100,-100; 100,100], style(
+              color=0,
+              rgbcolor={0,0,0},
+              thickness=4,
+              fillColor=1,
+              rgbfillColor={255,0,0},
+              fillPattern=7))),
+        Window(
+          x=0.31,
+          y=0.13,
+          width=0.6,
+          height=0.6),
+        Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

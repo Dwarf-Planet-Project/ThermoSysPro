@@ -14,7 +14,7 @@ model TestStodolaTurbine2
     Diagram);
   ThermoSysPro.WaterSteam.Machines.StodolaTurbine stodolaTurbine 
     annotation (extent=[-60,60; -40,80]);
-  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(           mode=0, P0=5000) 
+  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(                 mode=0, P0=5000) 
     annotation (extent=[-20,60; 0,80]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
     h0=3.e6,

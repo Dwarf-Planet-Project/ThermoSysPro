@@ -4,7 +4,7 @@ model TestRefP
   ThermoSysPro.WaterSteam.BoundaryConditions.RefP refP 
     annotation (extent=[-90,0; -70,20]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante(
-                                           k=2.e5) 
+                                                 k=2.e5) 
     annotation (extent=[-100,60; -80,80]);
   annotation (Diagram);
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump pump 
@@ -31,12 +31,12 @@ equation
       rgbfillColor={128,255,0},
       fillPattern=1));
   connect(constante.y, refP.IPressure) annotation (points=[-79,70; -60,70; -60,
-  34; -80,34; -80,21], style(
+        34; -80,34; -80,21], style(
       fillColor=53,
       rgbfillColor={128,255,0},
       fillPattern=1));
   connect(lumpedStraightPipe.C2, refP.C1) annotation (points=[80,10; 100,10;
-  100,-20; -100,-20; -100,10; -90,10], style(
+        100,-20; -100,-20; -100,10; -90,10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=53,

@@ -3,35 +3,35 @@ model TestVolumes1
   
   annotation (Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
-                                     annotation (extent=[-104,0; -84,20]);
+                                           annotation (extent=[-104,0; -84,20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(
-                                      P0=2e5) 
+                                            P0=2e5) 
     annotation (extent=[-104,-60; -84,-40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve1 
     annotation (extent=[-10,66; 10,86]);
-  WaterSteam.Volumes.VolumeD        volumeD     annotation (extent=[-50,20; -30,0]);
+  WaterSteam.Volumes.VolumeD              volumeD     annotation (extent=[-50,20; -30,0]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP 
-                                   annotation (extent=[20,60; 40,80]);
-  WaterSteam.Volumes.VolumeD        volumeD1 
+                                         annotation (extent=[20,60; 40,80]);
+  WaterSteam.Volumes.VolumeD              volumeD1 
     annotation (extent=[-50,-60; -30,-40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve4 
     annotation (extent=[-10,-94; 10,-74]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP1 
-                                    annotation (extent=[20,-100; 40,-80]);
+                                          annotation (extent=[20,-100; 40,-80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe(
-      Initialvalue=0.5)      annotation (extent=[-30,80; -10,100]);
+      Initialvalue=0.5)            annotation (extent=[-30,80; -10,100]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe1(
-      Initialvalue=0.5)       annotation (extent=[-30,-80; -10,-60]);
+      Initialvalue=0.5)             annotation (extent=[-30,-80; -10,-60]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve2 
     annotation (extent=[-10,6; 10,26]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve3 
     annotation (extent=[-10,-54; 10,-34]);
-  WaterSteam.Volumes.VolumeC        volumeB1(dynamic_mass_balance=true) 
+  WaterSteam.Volumes.VolumeC              volumeB1(dynamic_mass_balance=true) 
     annotation (extent=[20,-30; 40,-10], rotation=0);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve5 
     annotation (extent=[50,-24; 70,-4]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP2 
-                                    annotation (extent=[82,-30; 102,-10]);
+                                          annotation (extent=[82,-30; 102,-10]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe2(
     Duration=1,
     Initialvalue=1,
@@ -45,28 +45,28 @@ model TestVolumes1
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe pipe2(lambda=0) 
     annotation (extent=[-80,-60; -60,-40]);
 equation 
-  connect(valve4.C2, puitsP1.C)   annotation (points=[10,-90; 20,-90],
-           style(color=3, rgbcolor={0,0,255}));
-  connect(rampe.y, valve1.Ouv)  annotation (points=[-9,90; 0,90; 0,87]);
+  connect(valve4.C2, puitsP1.C)         annotation (points=[10,-90; 20,-90],
+                 style(color=3, rgbcolor={0,0,255}));
+  connect(rampe.y, valve1.Ouv)        annotation (points=[-9,90; 0,90; 0,87]);
   connect(rampe1.y, valve4.Ouv) 
     annotation (points=[-9,-70; 0,-70; 0,-73]);
-  connect(volumeD1.Cs2, valve4.C1)   annotation (points=[-40,-59.8; -40,
-  -90; -10,-90],style(color=3, rgbcolor={0,0,255}));
-  connect(valve5.C2, puitsP2.C)   annotation (points=[70,-20; 82,-20],
-               style(color=3, rgbcolor={0,0,255}));
+  connect(volumeD1.Cs2, valve4.C1)         annotation (points=[-40,-59.8; -40,
+        -90; -10,-90],style(color=3, rgbcolor={0,0,255}));
+  connect(valve5.C2, puitsP2.C)         annotation (points=[70,-20; 82,-20],
+                     style(color=3, rgbcolor={0,0,255}));
   connect(rampe2.y, valve5.Ouv) 
     annotation (points=[53,30; 60,30; 60,-3]);
-  connect(rampe3.y, valve2.Ouv)   annotation (points=[-9,40; 0,40; 0,27]);
-  connect(rampe4.y, valve3.Ouv)   annotation (points=[-9,-20; 0,-20; 0,
-  -33]);
+  connect(rampe3.y, valve2.Ouv)         annotation (points=[-9,40; 0,40; 0,27]);
+  connect(rampe4.y, valve3.Ouv)         annotation (points=[-9,-20; 0,-20; 0,
+        -33]);
   connect(sourceP.C, pipe1.C1) 
     annotation (points=[-84,10; -80,10], style(color=3, rgbcolor={0,0,255}));
   connect(sourceP1.C, pipe2.C1) 
     annotation (points=[-84,-50; -80,-50], style(color=3, rgbcolor={0,0,255}));
-  connect(volumeD.Cs2, valve1.C1)  annotation (points=[-40,19.8; -40,70;
-  -10,70], style(color=3, rgbcolor={0,0,255}));
-  connect(valve1.C2, puitsP.C)  annotation (points=[10,70; 20,70],
-              style(color=3, rgbcolor={0,0,255}));
+  connect(volumeD.Cs2, valve1.C1)        annotation (points=[-40,19.8; -40,70;
+        -10,70], style(color=3, rgbcolor={0,0,255}));
+  connect(valve1.C2, puitsP.C)        annotation (points=[10,70; 20,70],
+                    style(color=3, rgbcolor={0,0,255}));
   connect(volumeD.Cs3, valve2.C1) annotation (points=[-30,10; -10,10], style(
       color=3,
       rgbcolor={0,0,255},

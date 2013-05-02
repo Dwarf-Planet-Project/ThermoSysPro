@@ -34,7 +34,7 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal humidity 
     "Air humidity" 
     annotation (extent=[-10,100; 10,120],
-                                  rotation=-90);
+                                        rotation=-90);
   ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet C2 
     annotation (extent=[90,-10; 110,10]);
 equation 
@@ -88,43 +88,43 @@ equation
   
   annotation (Diagram(
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
       Line(points=[0,100; 0,40], style(color=3, rgbcolor={0,0,255})),
       Line(points=[20,60; 0,40; -20,60], style(color=3, rgbcolor={0,0,255})),
       Line(points=[-90,0; -40,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[40,0; 90,0], style(color=3, rgbcolor={0,0,255})),
       Text(
-  extent=[-28,30; 28,-26],
-  style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=1),
-  string="H2O")),                  Icon(
+        extent=[-28,30; 28,-26],
+        style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=1),
+        string="H2O")),                  Icon(
       Ellipse(extent=[-40,40; 40,-40], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=8)),
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=8)),
       Line(points=[0,100; 0,40], style(color=3, rgbcolor={0,0,255})),
       Line(points=[20,60; 0,40; -20,60], style(color=3, rgbcolor={0,0,255})),
       Line(points=[-90,0; -40,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[40,0; 90,0], style(color=3, rgbcolor={0,0,255})),
       Text(
-  extent=[-28,30; 28,-26],
-  style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=53,
-    rgbfillColor={128,255,0},
-    fillPattern=1),
-  string="H2O")),
+        extent=[-28,30; 28,-26],
+        style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=53,
+          rgbfillColor={128,255,0},
+          fillPattern=1),
+        string="H2O")),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>

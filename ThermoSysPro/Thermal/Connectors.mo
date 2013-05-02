@@ -6,19 +6,19 @@ package Connectors "Connectors"
       "Thermal flow rate. Positive when going into the component";
     annotation (
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Diagram,
       Icon(Rectangle(extent=[-100, 100; 100, -100], style(
-      color=46,
-      gradient=3,
-      fillColor=45))),
+            color=46,
+            gradient=3,
+            fillColor=45))),
       Window(
-  x=0.12,
-  y=0.27,
-  width=0.6,
-  height=0.6),
+        x=0.12,
+        y=0.27,
+        width=0.6,
+        height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

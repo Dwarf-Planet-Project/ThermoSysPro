@@ -17,22 +17,22 @@ public
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-80, 20; 80, -20], style(
-    color=0,
-    gradient=2,
-    fillColor=9)),
+          color=0,
+          gradient=2,
+          fillColor=9)),
       Polygon(points=[-100, 10; -100, -8; -80, -14; -80, 14; -100, 10], style(
-      color=9, fillColor=9)),
+            color=9, fillColor=9)),
       Polygon(points=[80, 14; 100, 10; 100, -12; 80, -14; 80, 14], style(color=
-        9, fillColor=9))),
+              9, fillColor=9))),
     Diagram(
       Rectangle(extent=[-80, 20; 80, -20], style(
-    color=0,
-    gradient=2,
-    fillColor=9)),
+          color=0,
+          gradient=2,
+          fillColor=9)),
       Polygon(points=[-100, 10; -100, -8; -80, -14; -80, 14; -100, 10], style(
-      color=9, fillColor=9)),
+            color=9, fillColor=9)),
       Polygon(points=[80, 14; 100, 10; 100, -12; 80, -14; 80, 14], style(color=
-        9, fillColor=9))),
+              9, fillColor=9))),
     Window(
       x=0.06,
       y=0.13,
@@ -53,9 +53,9 @@ public
 </html>
 "));
   ThermoSysPro.ElectroMechanics.Connectors.MechanichalTorque C2 
-                            annotation (extent=[100, -10; 120, 10]);
+                                  annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.ElectroMechanics.Connectors.MechanichalTorque C1 
-                            annotation (extent=[-120, -10; -100, 10]);
+                                  annotation (extent=[-120, -10; -100, 10]);
 initial equation 
   if steady_state_mech then
     der(delta) = 0;

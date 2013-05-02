@@ -34,12 +34,12 @@ public
       Line(points=[-90, 0; 90, 0]),
       Line(points=[0, 90; 0, -100]),
       Ellipse(extent=[-60, 60; 60, -60], style(fillColor=71, rgbfillColor={85,
-        170,255}))),
+              170,255}))),
     Icon(
       Line(points=[0, 90; 0, -100]),
       Line(points=[-90, 0; 90, 0]),
       Ellipse(extent=[-58,60; 62,-60], style(fillColor=71, rgbfillColor={85,170,
-        255}))),
+              255}))),
     Window(
       x=0.03,
       y=0.23,
@@ -61,13 +61,13 @@ public
 "));
 public 
   Connectors.FluidInlet Ce 
-                    annotation (extent=[-110, -10; -90, 10]);
+                          annotation (extent=[-110, -10; -90, 10]);
   Connectors.FluidOutlet Cs1 
-                     annotation (extent=[-10, 90; 10, 110]);
+                           annotation (extent=[-10, 90; 10, 110]);
   Connectors.FluidOutlet Cs2 
-                     annotation (extent=[-10, -108; 10, -88]);
+                           annotation (extent=[-10, -108; 10, -88]);
   Connectors.FluidOutlet Cs3 
-                     annotation (extent=[90, -10; 110, 10]);
+                           annotation (extent=[90, -10; 110, 10]);
 initial equation 
   if steady_state then
     if dynamic_mass_balance then

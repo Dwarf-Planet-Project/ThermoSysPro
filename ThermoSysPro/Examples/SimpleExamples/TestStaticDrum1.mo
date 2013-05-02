@@ -32,41 +32,41 @@ model TestStaticDrum1
     annotation (extent=[-90,-90; -70,-70]);
 equation 
   connect(singularPressureLossVALI2.C2, StaticDrumTh1.Ce_eco) 
-                                                    annotation (points=[-60,-40; 
-  -60,0.6; -48,0.6],           style(
+                                                          annotation (points=[-60,-40; 
+        -60,0.6; -48,0.6],           style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=2,
       rgbfillColor={0,255,0},
       fillPattern=1));
   connect(singularPressureLossVALI1.C2, sinkP1.C) annotation (points=[20,0; 40,
-  0],     style(
+        0],     style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=2,
       rgbfillColor={0,255,0},
       fillPattern=1));
   connect(sensorT.C2, singularPressureLossVALI2.C1) annotation (points=[30.2,-80; 
-  40,-80; 40,-60; -80,-60; -80,-40],        style(color=3, rgbcolor={0,
-    0,255}));
+        40,-80; 40,-60; -80,-60; -80,-40],        style(color=3, rgbcolor={0,
+          0,255}));
   connect(heatSource.C[1], StaticDrumTh1.Cth) 
-                                    annotation (points=[-70,20.2; -70,
-  10; -44,10],     style(color=46, rgbcolor={191,95,0}));
+                                          annotation (points=[-70,20.2; -70,
+        10; -44,10],     style(color=46, rgbcolor={191,95,0}));
   connect(StaticDrumTh1.Cs_purg, singularPressureLossVALI1.C1) 
-                                                     annotation (points=[-34.6,
-  6.6; -19.3,6.6; -19.3,0; 0,0],         style(color=3, rgbcolor={0,0,
-    255}));
+                                                           annotation (points=[-34.6,
+        6.6; -19.3,6.6; -19.3,0; 0,0],         style(color=3, rgbcolor={0,0,
+          255}));
   connect(StaticDrumTh1.Cs_sur, singularPressureLossVALI3.C1) 
-                                                    annotation (points=[-40.2,
-  19.4; -40.2,60; -20,60],        style(color=3, rgbcolor={0,0,255}));
+                                                          annotation (points=[-40.2,
+        19.4; -40.2,60; -20,60],        style(color=3, rgbcolor={0,0,255}));
   connect(singularPressureLossVALI3.C2, sensorT1.C1) 
     annotation (points=[0,60; 20,60], style(color=3, rgbcolor={0,0,255}));
   connect(sensorT1.C2, sinkP2.C) 
     annotation (points=[40.2,60; 60,60], style(color=3, rgbcolor={0,0,255}));
   connect(refP.C2, sensorT.C1) annotation (points=[-6,-80; 10,-80],   style(
-  color=3, rgbcolor={0,0,255}));
+        color=3, rgbcolor={0,0,255}));
   connect(refQ.C2, refP.C1) annotation (points=[-36,-80; -26,-80], style(
-  color=3, rgbcolor={0,0,255}));
+        color=3, rgbcolor={0,0,255}));
   connect(sourcePlug.C, refQ.C1) annotation (points=[-70,-80; -56,-80], style(
-  color=3, rgbcolor={0,0,255}));
+        color=3, rgbcolor={0,0,255}));
 end TestStaticDrum1;

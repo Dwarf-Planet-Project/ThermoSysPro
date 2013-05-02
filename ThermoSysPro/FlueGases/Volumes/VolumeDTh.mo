@@ -196,18 +196,18 @@ equation
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-60,60; 60,-60], style(
-    fillColor=71,
-    rgbfillColor={85,170,255},
-    fillPattern=8)),
+          fillColor=71,
+          rgbfillColor={85,170,255},
+          fillPattern=8)),
       Line(points=[-60,0; -90,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[60,0; 90,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[0,90; 0,60], style(color=3, rgbcolor={0,0,255})),
       Line(points=[0,-60; 0,-92], style(color=3, rgbcolor={0,0,255}))),
     Icon(
       Ellipse(extent=[-60,60; 60,-60], style(
-    fillColor=71,
-    rgbfillColor={85,170,255},
-    fillPattern=8)),
+          fillColor=71,
+          rgbfillColor={85,170,255},
+          fillPattern=8)),
       Line(points=[-60,0; -90,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[60,0; 90,0], style(color=3, rgbcolor={0,0,255})),
       Line(points=[0,90; 0,60], style(color=3, rgbcolor={0,0,255})),

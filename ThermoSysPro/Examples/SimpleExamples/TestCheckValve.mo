@@ -13,9 +13,9 @@ model TestCheckValve
       width=0.5,
       height=0.6));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
-                              annotation (extent=[-104,20; -84,40]);
+                                    annotation (extent=[-104,20; -84,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(
-                            P0=6e5) annotation (extent=[84,20; 104,40]);
+                                  P0=6e5) annotation (extent=[84,20; 104,40]);
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump staticCentrifugalPump1 
     annotation (extent=[-30,60; -10,80]);
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump staticCentrifugalPump2 
@@ -27,13 +27,13 @@ model TestCheckValve
     annotation (extent=[8,-20; 28,0]);
   ThermoSysPro.WaterSteam.Volumes.VolumeC volumeC annotation (extent=[30,20; 50,40]);
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe perteDP 
-                                  annotation (extent=[-80,20; -60,40]);
+                                        annotation (extent=[-80,20; -60,40]);
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe perteDP1 
-                                   annotation (extent=[60,20; 80,40]);
+                                         annotation (extent=[60,20; 80,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1 
-                               annotation (extent=[-60,-80; -40,-60]);
+                                     annotation (extent=[-60,-80; -40,-60]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP1(
-                             P0=6e5) annotation (extent=[20,-80; 40,-60]);
+                                   P0=6e5) annotation (extent=[20,-80; 40,-60]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Pulse pulse(
     amplitude=6e5,
     width=50,
@@ -43,17 +43,17 @@ model TestCheckValve
     annotation (extent=[-20,-80; 0,-60]);
 equation 
   connect(volumeD.Cs1, staticCentrifugalPump1.C1) annotation (points=[-40,40;
-  -40,70; -30,70], style(color=3, rgbcolor={0,0,255}));
+        -40,70; -30,70], style(color=3, rgbcolor={0,0,255}));
   connect(volumeD.Cs2, staticCentrifugalPump2.C1) annotation (points=[-40,20.2;
-  -40,-10; -30,-10], style(color=3, rgbcolor={0,0,255}));
+        -40,-10; -30,-10], style(color=3, rgbcolor={0,0,255}));
   connect(staticCentrifugalPump1.C2, checkValve1.C1) annotation (points=[-10,70;
-  -2,70; -2,70; 9,70],         style(color=3, rgbcolor={0,0,255}));
+        -2,70; -2,70; 9,70],         style(color=3, rgbcolor={0,0,255}));
   connect(checkValve1.C2, volumeC.Ce2) annotation (points=[31,70; 40,70; 40,39],
       style(color=3, rgbcolor={0,0,255}));
   connect(checkValve2.C2, volumeC.Ce3) annotation (points=[29,-10; 40,-10; 40,
-  20], style(color=3, rgbcolor={0,0,255}));
+        20], style(color=3, rgbcolor={0,0,255}));
   connect(staticCentrifugalPump2.C2, checkValve2.C1) annotation (points=[-10,-10;
-  0,-10; 0,-10; 7,-10],          style(color=3, rgbcolor={0,0,255}));
+        0,-10; 0,-10; 7,-10],          style(color=3, rgbcolor={0,0,255}));
   connect(perteDP.C2, volumeD.Ce) 
     annotation (points=[-60,30; -50,30], style(color=3, rgbcolor={0,0,255}));
   connect(volumeC.Cs, perteDP1.C1) 

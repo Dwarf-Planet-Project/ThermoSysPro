@@ -5,17 +5,17 @@ package Connectors "Connectors"
     Modelica.SIunits.AngularVelocity w "Angular velocity";
     annotation (
       Coordsys(
-  extent=[-100, -100; 100, 100],
-  grid=[2, 2],
-  component=[20, 20]),
+        extent=[-100, -100; 100, 100],
+        grid=[2, 2],
+        component=[20, 20]),
       Window(
-  x=0.25,
-  y=0.14,
-  width=0.6,
-  height=0.6),
+        x=0.25,
+        y=0.14,
+        width=0.6,
+        height=0.6),
       Diagram,
       Icon(Polygon(points=[-100, 60; 0, 60; 100, 0; 0, -60; -100, -60; -100, 60],
-       style(fillColor=49))),
+             style(fillColor=49))),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

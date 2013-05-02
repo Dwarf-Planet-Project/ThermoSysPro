@@ -13,7 +13,7 @@ model DynamicTwoPhaseFlowPipe "Dynamic two-phase flow pipe"
   parameter Integer Ns=10 "Number of segments";
   parameter ThermoSysPro.Units.AbsoluteTemperature T0[Ns]=fill(300, Ns) 
     "Initial fluid temperature (active if steady_state = false and option_temperature = 1)"
-                                                                                      annotation(Evaluate=false);
+                                                                                            annotation(Evaluate=false);
   parameter ThermoSysPro.Units.SpecificEnthalpy h0[Ns]=fill(1e5, Ns) 
     "Initial fluid specific enthalpy (active if steady_state = false and option_temperature = 2)";
   parameter Boolean inertia=true 
@@ -155,31 +155,31 @@ public
     "Friction pressure loss coefficient in node i for the vapor)";
   Real filo[N] "Pressure loss coefficient for two-phase flow";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro1[
-                                                        N - 1] 
+                                                              N - 1] 
     annotation (extent=[-100,80; -80,100]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proc[
-                                                        2] 
+                                                              2] 
     annotation (extent=[-20,80; 0,100]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro2[
-                                                        N] 
+                                                              N] 
     annotation (extent=[-60,80; -40,100]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat2[
-                                                   N] 
+                                                         N] 
     annotation (extent=[80,-100; 100,-80]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat2[
-                                                   N] 
+                                                         N] 
     annotation (extent=[40,-100; 60,-80]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat1[
-                                                   N - 1] 
+                                                         N - 1] 
     annotation (extent=[-60,-100; -40,-80]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat1[
-                                                   N - 1] 
+                                                         N - 1] 
     annotation (extent=[-100,-100; -80,-80]);
 public 
-  Connectors.FluidInlet C1    annotation(extent=[-110,-10; -90,10]);
+  Connectors.FluidInlet C1          annotation(extent=[-110,-10; -90,10]);
   ThermoSysPro.Thermal.Connectors.ThermalPort CTh[Ns] 
     annotation (extent=[-10,20; 10,40]);
-  Connectors.FluidOutlet C2   annotation(extent=[90,-10; 110,10]);
+  Connectors.FluidOutlet C2         annotation(extent=[90,-10; 110,10]);
 initial equation 
   if steady_state then
     for i in 2:N loop
@@ -188,11 +188,11 @@ initial equation
   else
     if (option_temperature == 1) then
       for i in 2:N loop
-  h[i] = ThermoSysPro.Properties.WaterSteam.IF97.SpecificEnthalpy_PT(Pb[i], T0[i - 1], mode);
+        h[i] = ThermoSysPro.Properties.WaterSteam.IF97.SpecificEnthalpy_PT(Pb[i], T0[i - 1], mode);
       end for;
     elseif (option_temperature == 2) then
       for i in 2:N loop
-  h[i] = h0[i - 1];
+        h[i] = h0[i - 1];
       end for;
     else
       assert(false, "DynamicTwoPhaseFlowPipe: incorrect option");
@@ -208,7 +208,7 @@ initial equation
   if inertia then
     if dynamic_mass_balance then
       for i in 1:N loop
-  der(Q[i]) = 0;
+        der(Q[i]) = 0;
       end for;
     else
       der(Q[1]) = 0;
@@ -249,9 +249,9 @@ equation
     /* Energy balance equation */
     if dynamic_energy_balance then
       if simplified_dynamic_energy_balance then
-  A*(-der(P[i + 1]) + rho1[i]*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
+        A*(-der(P[i + 1]) + rho1[i]*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
       else
-  A*((h[i + 1]*pro1[i].ddph - 1)*der(P[i + 1]) + (h[i + 1]*pro1[i].ddhp + rho1[i])*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
+        A*((h[i + 1]*pro1[i].ddph - 1)*der(P[i + 1]) + (h[i + 1]*pro1[i].ddhp + rho1[i])*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
       end if;
     else
       A*rho1[i]*der(h[i + 1])*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
@@ -263,16 +263,16 @@ equation
     if (xv1[i] < xb1) then
       hi[i] = (1 - xv1[i]/xb1)*hcl[i] + xv1[i]/xb1*(E[i]*hcl[i] + S[i]*heb[i]);
       Xtt[i] = ((1 - xb1)/xb1)^0.9*(rhov1[i]/rhol1[i])^0.5*(mul1[i]/muv1[i])^
-  0.1;
+        0.1;
     elseif (xv1[i] > xb2) then
       hi[i] = (xv1[i] - xb2)/(1 - xb2)*hcv[i] + (1 - xv1[i])/(1 - xb2)*(E[i]*
-  hcl[i] + S[i]*heb[i]);
+        hcl[i] + S[i]*heb[i]);
       Xtt[i] = ((1 - xb2)/xb2)^0.9*(rhov1[i]/rhol1[i])^0.5*(mul1[i]/muv1[i])^
-  0.1;
+        0.1;
     else
       hi[i] = E[i]*hcl[i] + S[i]*heb[i];
       Xtt[i] = ((1 - xv1[i])/xv1[i])^0.9*(rhov1[i]/rhol1[i])^0.5*(mul1[i]/muv1[
-  i])^0.1;
+        i])^0.1;
     end if;
     
     E[i] = if noEvent(Bo[i] > 0) then 1 + 24000*Bo[i]^1.16 + 1.37*Xtt[i]^(-0.86) else 1;
@@ -331,8 +331,8 @@ equation
     /* Flow reversal */
     if continuous_flow_reversal then
       0 = noEvent(if (Q[i] > Qeps) then hb[i] - h[i] else if (Q[i] < -Qeps) then 
-        hb[i] - h[i + 1] else hb[i] - 0.5*((h[i] - h[i + 1])*
-  Modelica.Math.sin(pi*Q[i]/2/Qeps) + h[i + 1] + h[i]));
+              hb[i] - h[i + 1] else hb[i] - 0.5*((h[i] - h[i + 1])*
+        Modelica.Math.sin(pi*Q[i]/2/Qeps) + h[i + 1] + h[i]));
     else
       0 = if (Q[i] > 0) then hb[i] - h[i] else hb[i] - h[i + 1];
     end if;
@@ -369,7 +369,7 @@ equation
       filo[i] = 1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)/exp(Pb[i]*1.e-5/84);
     else
       filo[i] = (1 - xv2[i]*rgliss)/0.2*(1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)
-  /exp(Pb[i]*1.e-5/84)) + (xv2[i]*rgliss - 0.8)/0.2*rhol2[i]/rhov2[i]*lambdav[i]/lambdal[i];
+        /exp(Pb[i]*1.e-5/84)) + (xv2[i]*rgliss - 0.8)/0.2*rhol2[i]/rhov2[i]*lambdav[i]/lambdal[i];
     end if;
     
     /* Fluid thermodynamic properties */
@@ -409,18 +409,18 @@ equation
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[-100,0; 100,-20],    style(fillColor=71, rgbfillColor={
-        85,170,255})),
+              85,170,255})),
       Rectangle(extent=[-100,20; 100,0], style(fillColor=68, rgbfillColor={170,
-        213,255})),
+              213,255})),
       Line(points=[-60,20; -60,-20]),
       Line(points=[-20,20; -20,-20]),
       Line(points=[20,20; 20,-20]),
       Line(points=[60,20; 60,-20])),
     Icon(
       Rectangle(extent=[-100,20; 100,0], style(fillColor=68, rgbfillColor={170,
-        213,255})),
+              213,255})),
       Rectangle(extent=[-100,0; 100,-20],    style(fillColor=71, rgbfillColor={
-        85,170,255})),
+              85,170,255})),
       Line(points=[-60,20; -60,-20]),
       Line(points=[-20,20; -20,-20]),
       Line(points=[20,20; 20,-20]),

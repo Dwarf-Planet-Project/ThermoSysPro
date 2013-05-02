@@ -18,21 +18,21 @@ protected
       Line(points=[80, 0; 100, 0]),
       Line(points=[28, 40; 28, -40], style(color=0)),
       Rectangle(extent=[-26, 40; 0, 20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 20; 0, 0], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, 0; 0, -20], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26, -20; 0, -40], style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Text(extent=[-24, 56; -6, 44], string="u"),
       Text(extent=[2, 56; 26, 44], string="y"),
       Text(extent=[-98, 14; -80, 2], string="u"),
@@ -49,21 +49,21 @@ protected
       Line(points=[80, 0; 100, 0]),
       Line(points=[28,40; 28,-40],   style(color=0)),
       Rectangle(extent=[-26,40; 0,20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26,20; 0,0],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26,0; 0,-20],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Rectangle(extent=[-26,-20; 0,-40],   style(
-    color=0,
-    fillColor=6,
-    fillPattern=1)),
+          color=0,
+          fillColor=6,
+          fillPattern=1)),
       Text(extent=[-24,56; -6,44],   string="u"),
       Text(extent=[2,56; 26,44],   string="y"),
       Text(extent=[-98, 14; -80, 2], string="u"),
@@ -88,9 +88,9 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                annotation (extent=[-120, -10; -100, 10]);
+                                      annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = ThermoSysPro.Functions.LinearInterpolation(Tu, Ty, u.signal);

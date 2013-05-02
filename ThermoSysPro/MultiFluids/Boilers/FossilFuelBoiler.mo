@@ -104,9 +104,9 @@ public
     annotation (extent=[90,-72; 110,-52]);
 public 
   ThermoSysPro.WaterSteam.Connectors.FluidInlet Cws1 
-                    annotation(extent=[-110,50; -90,70]);
+                          annotation(extent=[-110,50; -90,70]);
   ThermoSysPro.WaterSteam.Connectors.FluidOutlet Cws2 
-                    annotation(extent=[90,50; 110,70]);
+                          annotation(extent=[90,50; 110,70]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pros 
     annotation(extent=[-100,84; -80,104]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prom 
@@ -178,12 +178,12 @@ equation
   /* Flue gases pressure losses */
   Pea - Psf = deltaPf;
   deltaPf = Kf*ThermoSysPro.Functions.ThermoSquare(
-                                            Qsf, eps)/rhof;
+                                                  Qsf, eps)/rhof;
   
   /* Water/steam pressure losses */
   Pee - Pse = deltaPe;
   deltaPe = Ke*ThermoSysPro.Functions.ThermoSquare(
-                                            Qe, eps)/rhoe;
+                                                  Qe, eps)/rhoe;
   
   /* Fuel specific enthalpy at the inlet */
   Hcomb = Cpcomb*Tcomb;
@@ -235,51 +235,51 @@ equation
   
     annotation (Diagram(
       Rectangle(extent=[-100,80; 100,-80],
-                                   style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0})),
+                                         style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0})),
       Polygon(points=[0,-42; 12,-46; 22,-34; 26,-20; 24,-6; 22,2; 18,12; 14,22;
-      12,30; 10,36; 6,54; 2,44; -2,36; -6,24; -6,20; -8,16; -10,24; -12,
-      26; -14,22; -18,14; -20,8; -24,0; -26,-10; -28,-20; -28,-28; -22,
-      -36; -18,-42; -8,-48; 0,-42],   style(
-    color=85,
-    rgbcolor={255,0,128},
-    fillColor=45,
-    rgbfillColor={255,128,0},
-    fillPattern=1)),
+            12,30; 10,36; 6,54; 2,44; -2,36; -6,24; -6,20; -8,16; -10,24; -12,
+            26; -14,22; -18,14; -20,8; -24,0; -26,-10; -28,-20; -28,-28; -22,
+            -36; -18,-42; -8,-48; 0,-42],   style(
+          color=85,
+          rgbcolor={255,0,128},
+          fillColor=45,
+          rgbfillColor={255,128,0},
+          fillPattern=1)),
       Polygon(points=[-8,-22; -6,-18; -2,-16; 2,-16; 6,-18; 8,-20; 10,-26; 10,
-      -30; 8,-28; 6,-24; 4,-20; -2,-20; -4,-22; -8,-26; -10,-28; -10,-28;
-      -8,-22], style(
-    color=42,
-    rgbcolor={127,0,0},
-    fillColor=42,
-    rgbfillColor={127,0,0},
-    fillPattern=1))),  Icon(
+            -30; 8,-28; 6,-24; 4,-20; -2,-20; -4,-22; -8,-26; -10,-28; -10,-28;
+            -8,-22], style(
+          color=42,
+          rgbcolor={127,0,0},
+          fillColor=42,
+          rgbfillColor={127,0,0},
+          fillPattern=1))),  Icon(
       Rectangle(extent=[-100,80; 100,-80],
-                                   style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0})),
+                                         style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0})),
       Polygon(points=[-2,-42; 10,-46; 20,-34; 24,-20; 22,-6; 20,2; 16,12; 12,22;
-      10,30; 8,36; 4,54; 0,44; -4,36; -8,24; -8,20; -10,16; -12,24; -14,
-      26; -16,22; -20,14; -22,8; -26,0; -28,-10; -30,-20; -30,-28; -24,
-      -36; -20,-42; -10,-48; -2,-42], style(
-    color=85,
-    rgbcolor={255,0,128},
-    fillColor=45,
-    rgbfillColor={255,128,0},
-    fillPattern=1)),
+            10,30; 8,36; 4,54; 0,44; -4,36; -8,24; -8,20; -10,16; -12,24; -14,
+            26; -16,22; -20,14; -22,8; -26,0; -28,-10; -30,-20; -30,-28; -24,
+            -36; -20,-42; -10,-48; -2,-42], style(
+          color=85,
+          rgbcolor={255,0,128},
+          fillColor=45,
+          rgbfillColor={255,128,0},
+          fillPattern=1)),
       Polygon(points=[-10,-24; -8,-20; -4,-18; 0,-18; 4,-20; 6,-22; 8,-28; 8,
-      -32; 6,-30; 4,-26; 2,-22; -4,-22; -6,-24; -10,-28; -12,-30; -12,-30;
-      -10,-24], style(
-    color=42,
-    rgbcolor={127,0,0},
-    fillColor=42,
-    rgbfillColor={127,0,0},
-    fillPattern=1))),
+            -32; 6,-30; 4,-26; 2,-22; -4,-22; -6,-24; -10,-28; -12,-30; -12,-30;
+            -10,-24], style(
+          color=42,
+          rgbcolor={127,0,0},
+          fillColor=42,
+          rgbfillColor={127,0,0},
+          fillPattern=1))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>

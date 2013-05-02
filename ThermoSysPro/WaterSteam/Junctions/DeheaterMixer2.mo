@@ -18,25 +18,25 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-100,80; -100,40; -20,40; -20,-100; 20,-100; 20,40;
-      100,40; 100,80; -100,80], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)), Text(
-  extent=[-16,72; 24,32],
-  style(color=3, rgbcolor={0,0,255}),
-  string="D")),
+            100,40; 100,80; -100,80], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)), Text(
+        extent=[-16,72; 24,32],
+        style(color=3, rgbcolor={0,0,255}),
+        string="D")),
     Icon(Polygon(points=[-100,80; -100,40; -20,40; -20,-100; 20,-100; 20,40;
-      100,40; 100,80; -100,80], style(
-    color=3,
-    rgbcolor={0,0,255},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)), Text(
-  extent=[-16,72; 24,32],
-  style(color=3, rgbcolor={0,0,255}),
-  string="D")),
+            100,40; 100,80; -100,80], style(
+          color=3,
+          rgbcolor={0,0,255},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)), Text(
+        extent=[-16,72; 24,32],
+        style(color=3, rgbcolor={0,0,255}),
+        string="D")),
     Window(
       x=0.33,
       y=0.09,

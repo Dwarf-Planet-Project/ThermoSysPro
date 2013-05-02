@@ -9,11 +9,11 @@ block BandeMorte
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100, -100; 100, 100], style(
-    color=3,
-    pattern=1,
-    thickness=1,
-    arrow=0,
-    fillPattern=0)),
+          color=3,
+          pattern=1,
+          thickness=1,
+          arrow=0,
+          fillPattern=0)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Line(points=[0, -90; 0, 68], style(color=8)),
       Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=8)),
@@ -27,21 +27,21 @@ block BandeMorte
       Polygon(points=[84, 0; 74, -5; 74, 5; 84, 0], style(color=8, fillColor=8)),
       Line(points=[-81, -40; -38, 0; 40, 0; 80, 40], style(color=0)),
       Text(
-  extent=[62, -5; 88, -23],
-  string="u",
-  style(color=10)),
+        extent=[62, -5; 88, -23],
+        string="u",
+        style(color=10)),
       Text(
-  extent=[-34, 68; -3, 46],
-  string="y",
-  style(color=10)),
+        extent=[-34, 68; -3, 46],
+        string="y",
+        style(color=10)),
       Text(
-  extent=[-51, 1; -28, 19],
-  string="uMin",
-  style(color=10)),
+        extent=[-51, 1; -28, 19],
+        string="uMin",
+        style(color=10)),
       Text(
-  extent=[27, 21; 52, 5],
-  string="uMax",
-  style(color=10))),
+        extent=[27, 21; 52, 5],
+        string="uMax",
+        style(color=10))),
     Window(
       x=0.05,
       y=0.3,
@@ -56,11 +56,11 @@ block BandeMorte
 "));
   
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                annotation (extent=[-120, -10; -100, 10]);
+                                      annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                 annotation (extent=[100, -10; 120, 10]);
+                                       annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = if (u.signal) > uMax then u.signal - uMax else if (u.signal < uMin) then 
-    u.signal - uMin else 0;
+          u.signal - uMin else 0;
 end BandeMorte;

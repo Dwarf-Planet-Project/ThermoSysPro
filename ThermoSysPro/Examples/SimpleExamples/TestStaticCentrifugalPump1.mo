@@ -21,7 +21,7 @@ model TestStaticCentrifugalPump1
     annotation (extent=[40,20; 60,40]);
 equation 
   connect(sourceP.C, StaticCentrifugalPump1.C1) annotation (points=[-60,30; -20,
-  30], style(
+        30], style(
       color=3,
       rgbcolor={0,0,255},
       smooth=0));

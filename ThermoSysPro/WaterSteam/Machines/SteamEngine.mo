@@ -35,38 +35,38 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(
-   Polygon(points=[-60,100; -60,-100; 60,-100; 60,100; -60,100], style(
-      fillColor=53, rgbfillColor={128,255,0})),
+         Polygon(points=[-60,100; -60,-100; 60,-100; 60,100; -60,100], style(
+            fillColor=53, rgbfillColor={128,255,0})),
       Rectangle(extent=[-20,100; 20,12], style(fillColor=7, rgbfillColor={255,
-        255,255})),
+              255,255})),
       Ellipse(extent=[-22,-16; 30,-66], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=1)),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=1)),
       Line(points=[0,60; 24,-42], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=1)),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=1)),
       Rectangle(extent=[-20,80; 20,40], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=7))),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=7))),
     Icon(Polygon(points=[-60,100; -60,-100; 60,-100; 60,100; -60,100], style(
-      fillColor=53, rgbfillColor={128,255,0})),
+            fillColor=53, rgbfillColor={128,255,0})),
       Rectangle(extent=[-20,100; 20,20], style(fillColor=7, rgbfillColor={255,
-        255,255})),
+              255,255})),
       Ellipse(extent=[-22,-16; 30,-66], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=1)),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=1)),
       Line(points=[0,60; 24,-42], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=1)),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=1)),
       Rectangle(extent=[-20,80; 20,40], style(
-    fillColor=7,
-    rgbfillColor={255,255,255},
-    fillPattern=7))),
+          fillColor=7,
+          rgbfillColor={255,255,255},
+          fillPattern=7))),
     Window(
       x=0.17,
       y=0.1,

@@ -28,11 +28,11 @@ public
   
 public 
   ThermoSysPro.WaterSteam.Connectors.FluidInlet Ec 
-                    annotation(extent=[-84,-72; -64,-52]);
+                          annotation(extent=[-84,-72; -64,-52]);
   ThermoSysPro.WaterSteam.Connectors.FluidOutlet Svap 
-                    annotation(extent=[-10,80; 10,101]);
+                          annotation(extent=[-10,80; 10,101]);
   ThermoSysPro.WaterSteam.Connectors.FluidOutlet Sc 
-                    annotation(extent=[-82,50; -62,70]);
+                          annotation(extent=[-82,50; -62,70]);
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ef 
     annotation (extent=[64,50; 84,70]);
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionOutlet Sf 
@@ -72,7 +72,7 @@ equation
   Qs_min = Ef.Q*(1 - Ef.Xh2o)/(1 - Xmin);
   Qv_max = Ef.Q*(1 - (1-Ef.Xh2o)/(1 - Xmin));
   Wmaxf = Ef.Q*ThermoSysPro.Properties.WaterSolution.SpecificEnthalpy_TX(Ef.T, Ef.Xh2o)
-    - Qs_min * ThermoSysPro.Properties.WaterSolution.SpecificEnthalpy_TX(proce.T, Xmin) + Qv_max*Svap.h;
+          - Qs_min * ThermoSysPro.Properties.WaterSolution.SpecificEnthalpy_TX(proce.T, Xmin) + Qv_max*Svap.h;
   
   /* Power exchanged */
   Wmax = min(Wmaxf, Wmaxc);
@@ -114,58 +114,58 @@ equation
       component=[20, 20]),
     Icon(
       Polygon(points=[-74,80; -64,90; 64,90; 74,80; 74,-80; 64,-90; -64,-90;
-      -74,-80; -74,80], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+            -74,-80; -74,80], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Polygon(points=[74,-10; 74,-80; 64,-90; -64,-90; -74,-80; -74,-10; -26,
-      -10; -4,66; 64,66; 64,54; 8,54; 26,-10; 74,-10], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=30,
-    rgbfillColor={215,215,215},
-    fillPattern=1)),
-                  Line(points=[-64,60; 0,60; 0,-16; 0,-62; -64,-62],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+            -10; -4,66; 64,66; 64,54; 8,54; 26,-10; 74,-10], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=30,
+          rgbfillColor={215,215,215},
+          fillPattern=1)),
+                        Line(points=[-64,60; 0,60; 0,-16; 0,-62; -64,-62],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Line(points=[-12,68; 0,78; 14,68], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2))),
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2))),
     Diagram(
       Polygon(points=[-74,80; -64,90; 64,90; 74,80; 74,-80; 64,-90; -64,-90;
-      -74,-80; -74,80], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+            -74,-80; -74,80], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Polygon(points=[74,-10; 74,-80; 64,-90; -64,-90; -74,-80; -74,-10; -26,
-      -10; -4,66; 64,66; 64,54; 8,54; 26,-10; 74,-10], style(
-    color=0,
-    rgbcolor={0,0,0},
-    fillColor=30,
-    rgbfillColor={215,215,215},
-    fillPattern=1)),
-                  Line(points=[-64,60; 0,60; 0,-16; 0,-62; -64,-62],
-    style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2,
-    fillColor=6,
-    rgbfillColor={255,255,0},
-    fillPattern=1)),
+            -10; -4,66; 64,66; 64,54; 8,54; 26,-10; 74,-10], style(
+          color=0,
+          rgbcolor={0,0,0},
+          fillColor=30,
+          rgbfillColor={215,215,215},
+          fillPattern=1)),
+                        Line(points=[-64,60; 0,60; 0,-16; 0,-62; -64,-62],
+          style(
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2,
+          fillColor=6,
+          rgbfillColor={255,255,0},
+          fillPattern=1)),
       Line(points=[-12,68; 0,78; 14,68], style(
-    color=3,
-    rgbcolor={0,0,255},
-    thickness=2))),
+          color=3,
+          rgbcolor={0,0,255},
+          thickness=2))),
     Window(
       x=0.05,
       y=0.01,

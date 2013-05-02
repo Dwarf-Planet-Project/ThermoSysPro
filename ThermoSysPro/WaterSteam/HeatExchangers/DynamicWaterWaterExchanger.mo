@@ -97,10 +97,10 @@ public
   ThermoSysPro.Units.SpecificEnthalpy Hmf[N](start=fill(100000, N)) 
     "Cold fluid average specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proc[
-                                                        N] 
+                                                              N] 
     "Propriétés du fluide chaud" annotation(extent=[-60, -100; -40, -80]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prof[
-                                                        N] 
+                                                              N] 
     "Propriétés du fluide froid" annotation(extent=[-100, -100; -80, -80]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proce 
     "Propriétés du fluide chaud en entrée" annotation(extent=[-20, 80; 0, 100]);
@@ -119,13 +119,13 @@ public
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100, 60; 100, -60], style(
-    gradient=0,
-    fillColor=53,
-    fillPattern=1)),
+          gradient=0,
+          fillColor=53,
+          fillPattern=1)),
       Line(points=[-80, 60; -80, -60]),
       Line(points=[80, 60; 80, -60]),
       Line(points=[-80, 0; -60, 0; -40, 20; 40, -20; 60, 0; 80, 0], style(
-      fillColor=8, fillPattern=1)),
+            fillColor=8, fillPattern=1)),
       Line(points=[-40, 60; -40, -60], style(pattern=3)),
       Line(points=[0, 60; 0, -60], style(pattern=3)),
       Line(points=[40, 60; 40, -60], style(pattern=3))),
@@ -134,7 +134,7 @@ public
       Line(points=[-80, 60; -80, -60]),
       Line(points=[80, 60; 80, -60]),
       Line(points=[-80, 0; -60, 0; -40, 20; 40, -20; 60, 0; 80, 0], style(
-      fillColor=8, fillPattern=1)),
+            fillColor=8, fillPattern=1)),
       Line(points=[-40, 60; -40, -60], style(pattern=3)),
       Line(points=[0, 60; 0, -60], style(pattern=3)),
       Line(points=[40, 60; 40, -60], style(pattern=3))),
@@ -158,10 +158,10 @@ public
 </html>
 "));
 public 
-  Connectors.FluidInlet Ec    annotation(extent=[-110, -10; -90, 10]);
-  Connectors.FluidInlet Ef    annotation(extent=[-60, -70; -40, -50]);
-  Connectors.FluidOutlet Sf   annotation(extent=[40, -70; 60, -50]);
-  Connectors.FluidOutlet Sc   annotation(extent=[90,-10; 110,10]);
+  Connectors.FluidInlet Ec          annotation(extent=[-110, -10; -90, 10]);
+  Connectors.FluidInlet Ef          annotation(extent=[-60, -70; -40, -50]);
+  Connectors.FluidOutlet Sf         annotation(extent=[40, -70; 60, -50]);
+  Connectors.FluidOutlet Sc         annotation(extent=[90,-10; 110,10]);
 initial equation 
   if steady_state then
     for i in 1:N loop
@@ -228,14 +228,14 @@ equation
       hf[i] = p_hf;
     elseif (heat_exchange_correlation == 1) then
       hc[i] = noEvent(if (qmc[i] < 1.e-3) then 0 else 11.245*abs(qmc[i])^0.8*
-  abs(muc[i]*proc[i].cp/lambdac[i])^0.4*lambdac[i]);
+        abs(muc[i]*proc[i].cp/lambdac[i])^0.4*lambdac[i]);
       hf[i] = noEvent(if (qmf[i] < 1.e-3) then 0 else 11.245*abs(qmf[i])^0.8*
-  abs(muf[i]*prof[i].cp/lambdaf[i])^0.4*lambdaf[i]);
+        abs(muf[i]*prof[i].cp/lambdaf[i])^0.4*lambdaf[i]);
     else
       hc[i] = 0;
       hf[i] = 0;
       assert(false,
-  "DynamicWaterWaterExchanger: incorrect heat exchange correlation number");
+        "DynamicWaterWaterExchanger: incorrect heat exchange correlation number");
     end if;
     
     /* Pressure losses correlations */
@@ -247,15 +247,15 @@ equation
       DPf[i] = p_Kf*Qf[i]^2/(2*rhof[i]);
     elseif (pressure_loss_correlation == 1) then
       DPc[i] = noEvent(if (qmc[i] < 1.e-3) then 0 else c1*14423.2/rhoc[i]*abs(
-  qmc[i])^(-0.097)*quc[i]^2*(1472.47 + 1.54*(M - 1)/2 + 104.97*abs(qmc[i])
-  ^(-0.25)));
+        qmc[i])^(-0.097)*quc[i]^2*(1472.47 + 1.54*(M - 1)/2 + 104.97*abs(qmc[i])
+        ^(-0.25)));
       DPf[i] = noEvent(if (qmf[i] < 1.e-3) then 0 else 14423.2/rhof[i]*abs(qmf[
-  i])^(-0.097)*quf[i]^2*(1472.47 + 1.54*(M - 1)/2 + 104.97*abs(qmf[i])^(-0.25)));
+        i])^(-0.097)*quf[i]^2*(1472.47 + 1.54*(M - 1)/2 + 104.97*abs(qmf[i])^(-0.25)));
     else
       DPc[i] = 0;
       DPf[i] = 0;
       assert(false,
-  "DynamicWaterWaterExchanger: incorrect pressure loss correlation number");
+        "DynamicWaterWaterExchanger: incorrect pressure loss correlation number");
     end if;
     
     /* Fluid thermodynamic properties */

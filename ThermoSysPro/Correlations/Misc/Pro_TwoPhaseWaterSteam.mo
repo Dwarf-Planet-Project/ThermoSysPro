@@ -24,7 +24,7 @@ record Pro_TwoPhaseWaterSteam
   
   annotation (Icon(
       Rectangle(extent=[-100,50; 100,-100],   style(fillColor=51, fillPattern=
-       1)),
+             1)),
       Text(extent=[-127,115; 127,55],   string="%name"),
       Line(points=[-100,-50; 100,-50],   style(color=0)),
       Line(points=[-100,0; 100,0],   style(color=0)),
