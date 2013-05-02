@@ -32,11 +32,11 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
+        255})),
       Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Line(points=[-90, 80; -60, 80; -40, 46]),
       Line(points=[92, 80; 60, 80; 40, 46]),
       Line(points=[-90, -80; -60, -80; -40, -46]),
@@ -45,11 +45,11 @@ public
       Line(points=[-90, 0; 92, 0]),
       Line(points=[0, 92; 0, -100]),
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
+        255})),
       Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Line(points=[-90, 80; -60, 80; -40, 46]),
       Line(points=[92, 80; 60, 80; 40, 46]),
       Line(points=[-90, -80; -60, -80; -40, -46]),
@@ -80,15 +80,15 @@ public
   Connectors.FluidInlet Ce4 
     annotation (extent=[-10, -110; 10, -90], layer="icon");
   Connectors.FluidInlet Ce1 
-                           annotation (extent=[-110, 70; -90, 90], layer="icon");
+                     annotation (extent=[-110, 70; -90, 90], layer="icon");
   Connectors.FluidOutlet Cs4 
-                           annotation (extent=[-10, 90; 10, 110], layer="icon");
+                     annotation (extent=[-10, 90; 10, 110], layer="icon");
   Connectors.FluidOutlet Cs1 
-                           annotation (extent=[90, 70; 110, 90], layer="icon");
+                     annotation (extent=[90, 70; 110, 90], layer="icon");
   Connectors.FluidOutlet Cs2 
-                           annotation (extent=[90, -10; 110, 10], layer="icon");
+                     annotation (extent=[90, -10; 110, 10], layer="icon");
   Connectors.FluidOutlet Cs3 
-                           annotation (extent=[90, -90; 110, -70], layer="icon");
+                     annotation (extent=[90, -90; 110, -70], layer="icon");
 initial equation 
   if steady_state then
     if dynamic_mass_balance then

@@ -32,11 +32,11 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
+        255})),
       Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Line(points=[-90, 80; -60, 80; -40, 46]),
       Line(points=[92, 80; 60, 80; 40, 46]),
       Line(points=[-90, -80; -60, -80; -40, -46]),
@@ -45,11 +45,11 @@ public
       Line(points=[-90, 0; 92, 0]),
       Line(points=[0, 92; 0, -100]),
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
+        255})),
       Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Line(points=[-90, 80; -60, 80; -40, 46]),
       Line(points=[92, 80; 60, 80; 40, 46]),
       Line(points=[-90, -80; -60, -80; -40, -46]),
@@ -91,7 +91,7 @@ public
   Connectors.FluidOutlet Cs3 
     annotation (extent=[90, -90; 110, -70]);
   ThermoSysPro.Thermal.Connectors.ThermalPort Cth 
-                           annotation (extent=[-10, -10; 10, 10]);
+                     annotation (extent=[-10, -10; 10, 10]);
 initial equation 
   if steady_state then
     if dynamic_mass_balance then

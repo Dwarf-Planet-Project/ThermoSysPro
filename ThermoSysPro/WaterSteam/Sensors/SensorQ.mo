@@ -30,10 +30,10 @@ public
       Line(points=[0,-28; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(extent=[-60,60; 60,0],    string="Q",
-        style(
-          gradient=1,
-          fillColor=58,
-          rgbfillColor={120,255,0}))),
+  style(
+    gradient=1,
+    fillColor=58,
+    rgbfillColor={120,255,0}))),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -52,9 +52,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal Measure 
     annotation (extent=[-10,92; 10,112],    rotation=90);
   Connectors.FluidInlet C1 
-                          annotation (extent=[-110, -90; -90, -70]);
+                    annotation (extent=[-110, -90; -90, -70]);
   Connectors.FluidOutlet C2 
-                          annotation (extent=[92, -90; 112, -70]);
+                    annotation (extent=[92, -90; 112, -70]);
 equation 
   
   C1.P = C2.P;

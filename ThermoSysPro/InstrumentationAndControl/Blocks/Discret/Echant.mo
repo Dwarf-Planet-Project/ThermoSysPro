@@ -41,9 +41,9 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical continu 
     annotation (extent=[-10, -120; 10, -100], rotation=90);
 equation 

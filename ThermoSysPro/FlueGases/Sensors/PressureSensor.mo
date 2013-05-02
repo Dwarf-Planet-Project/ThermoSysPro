@@ -8,9 +8,9 @@ model PressureSensor "Pressure sensor"
       component=[20, 20]),
     Icon(
       Ellipse(extent=[-60,92; 60,-28], style(
-          fillColor=2,
-          rgbfillColor={0,255,0},
-          fillPattern=8)),
+    fillColor=2,
+    rgbfillColor={0,255,0},
+    fillPattern=8)),
       Line(points=[0,-28; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(extent=[-60,60; 60,0],    string="P")),
@@ -21,9 +21,9 @@ model PressureSensor "Pressure sensor"
       height=0.49),
     Diagram(
       Ellipse(extent=[-60,92; 60,-28], style(
-          fillColor=2,
-          rgbfillColor={0,255,0},
-          fillPattern=8)),
+    fillColor=2,
+    rgbfillColor={0,255,0},
+    fillPattern=8)),
       Line(points=[0,-28; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(extent=[-60,60; 60,0],    string="P")),
@@ -38,9 +38,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal Mesure 
     annotation (extent=[-10,92; 10,112],    rotation=90);
   Connectors.FlueGasesInlet C1 
-                          annotation (extent=[-110, -90; -90, -70]);
+                    annotation (extent=[-110, -90; -90, -70]);
   Connectors.FlueGasesOutlet C2 
-                          annotation (extent=[90,-90; 110,-70]);
+                    annotation (extent=[90,-90; 110,-70]);
 equation 
   
   C1.P = C2.P;

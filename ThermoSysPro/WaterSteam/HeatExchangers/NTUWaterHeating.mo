@@ -61,272 +61,272 @@ public
       scale=0.01),
     Icon(
       Ellipse(extent=[-100,-30; -36,32], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=59,
-          rgbfillColor={85,255,85},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=59,
+    rgbfillColor={85,255,85},
+    fillPattern=1)),
       Ellipse(extent=[38,-30; 102,32], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=59,
-          rgbfillColor={85,255,85},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=59,
+    rgbfillColor={85,255,85},
+    fillPattern=1)),
       Rectangle(extent=[-68,32; 72,-30], style(
-          color=59,
-          rgbcolor={85,255,85},
-          thickness=2,
-          fillColor=59,
-          rgbfillColor={85,255,85},
-          fillPattern=1)),
+    color=59,
+    rgbcolor={85,255,85},
+    thickness=2,
+    fillColor=59,
+    rgbfillColor={85,255,85},
+    fillPattern=1)),
       Line(points=[-70,32; 74,32; 74,32], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Line(points=[-70,-30; 74,-30; 74,-30], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Line(points=[74,32; 74,-30], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Line(points=[74,0; 102,0], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Rectangle(extent=[-58,-14; 74,-16], style(
-          color=4,
-          rgbcolor={0,255,255},
-          thickness=4,
-          fillColor=4,
-          rgbfillColor={0,255,255},
-          fillPattern=1)),
+    color=4,
+    rgbcolor={0,255,255},
+    thickness=4,
+    fillColor=4,
+    rgbfillColor={0,255,255},
+    fillPattern=1)),
       Rectangle(extent=[-58,16; 74,14], style(
-          color=4,
-          rgbcolor={0,255,255},
-          thickness=4,
-          fillColor=4,
-          rgbfillColor={0,255,255},
-          fillPattern=1)),
+    color=4,
+    rgbcolor={0,255,255},
+    thickness=4,
+    fillColor=4,
+    rgbfillColor={0,255,255},
+    fillPattern=1)),
       Ellipse(extent=[-78,-16; -44,16], style(
-          color=4,
-          rgbcolor={0,255,255},
-          thickness=4,
-          fillColor=4,
-          rgbfillColor={0,255,255},
-          fillPattern=1)),
+    color=4,
+    rgbcolor={0,255,255},
+    thickness=4,
+    fillColor=4,
+    rgbfillColor={0,255,255},
+    fillPattern=1)),
       Ellipse(extent=[-76,-14; -48,14], style(
-          color=2,
-          rgbcolor={0,255,0},
-          thickness=4,
-          fillColor=59,
-          rgbfillColor={85,255,85})),
+    color=2,
+    rgbcolor={0,255,0},
+    thickness=4,
+    fillColor=59,
+    rgbfillColor={85,255,85})),
       Rectangle(extent=[-62,14; 72,-14], style(
-          color=59,
-          rgbcolor={85,255,85},
-          fillColor=59,
-          rgbfillColor={85,255,85},
-          fillPattern=1)),
+    color=59,
+    rgbcolor={85,255,85},
+    fillColor=59,
+    rgbfillColor={85,255,85},
+    fillPattern=1)),
       Line(points=[-94,-12; 74,-12], style(
-          color=3,
-          rgbcolor={0,0,255},
-          pattern=2,
-          fillColor=3,
-          rgbfillColor={0,0,255},
-          fillPattern=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    pattern=2,
+    fillColor=3,
+    rgbfillColor={0,0,255},
+    fillPattern=1)),
       Line(points=[-94,-18; 74,-18], style(
-          color=3,
-          rgbcolor={0,0,255},
-          pattern=2,
-          fillColor=3,
-          rgbfillColor={0,0,255},
-          fillPattern=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    pattern=2,
+    fillColor=3,
+    rgbfillColor={0,0,255},
+    fillPattern=1)),
       Line(points=[-86,-24; 74,-24], style(
-          color=3,
-          rgbcolor={0,0,255},
-          pattern=2,
-          fillColor=3,
-          rgbfillColor={0,0,255},
-          fillPattern=1))),
+    color=3,
+    rgbcolor={0,0,255},
+    pattern=2,
+    fillColor=3,
+    rgbfillColor={0,0,255},
+    fillPattern=1))),
     Diagram(
       Line(points=[-40,-40; 20,-24], style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1)),
       Line(points=[-40,-20; -20,0], style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2)),
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2)),
       Line(points=[-20,0; 20,0], style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2)),
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2)),
       Line(points=[60,0; 80,20], style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2)),
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2)),
       Text(
-        extent=[76,28; 84,20],
-        style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2),
-        string="1C"),
+  extent=[76,28; 84,20],
+  style(
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2),
+  string="1C"),
       Text(
-        extent=[56,10; 64,2],
-        style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2),
-        string="2C"),
+  extent=[56,10; 64,2],
+  style(
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2),
+  string="2C"),
       Text(
-        extent=[-24,8; -16,0],
-        style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2),
-        string="3C"),
+  extent=[-24,8; -16,0],
+  style(
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2),
+  string="3C"),
       Text(
-        extent=[-44,-10; -36,-18],
-        style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2),
-        string="4C"),
+  extent=[-44,-10; -36,-18],
+  style(
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2),
+  string="4C"),
       Text(
-        extent=[76,-10; 82,-16],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2),
-        string="1F"),
+  extent=[76,-10; 82,-16],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2),
+  string="1F"),
       Text(
-        extent=[58,-18; 64,-24],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2),
-        string="2F"),
+  extent=[58,-18; 64,-24],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2),
+  string="2F"),
       Text(
-        extent=[-22,-38; -16,-44],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2),
-        string="3F"),
+  extent=[-22,-38; -16,-44],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2),
+  string="3F"),
       Text(
-        extent=[-42,-44; -36,-50],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2),
-        string="4F"),
+  extent=[-42,-44; -36,-50],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2),
+  string="4F"),
       Line(points=[20,0; 60,0], style(
-          color=1,
-          rgbcolor={255,0,0},
-          thickness=2,
-          arrow=2)),
+    color=1,
+    rgbcolor={255,0,0},
+    thickness=2,
+    arrow=2)),
       Line(points=[20,-24; 80,-8], style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2)),
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2)),
       Text(
-        extent=[-40,8; -24,2],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1),
-        string="Drain"),
+  extent=[-40,8; -24,2],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1),
+  string="Drain"),
       Text(
-        extent=[66,-18; 82,-24],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1),
-        string="Deheating"),
+  extent=[66,-18; 82,-24],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1),
+  string="Deheating"),
       Text(
-        extent=[-36,-18; -16,-24],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1),
-        string="Drain cooling"),
+  extent=[-36,-18; -16,-24],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1),
+  string="Drain cooling"),
       Line(points=[-26,4; -22,0], style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          arrow=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    arrow=1)),
       Line(points=[-40,-20; -40,-40], style(
-          color=0,
-          rgbcolor={0,0,0},
-          pattern=3)),
+    color=0,
+    rgbcolor={0,0,0},
+    pattern=3)),
       Line(points=[-20,0; -20,-34], style(
-          color=0,
-          rgbcolor={0,0,0},
-          pattern=3)),
+    color=0,
+    rgbcolor={0,0,0},
+    pattern=3)),
       Line(points=[60,0; 60,-14], style(
-          color=0,
-          rgbcolor={0,0,0},
-          pattern=3)),
+    color=0,
+    rgbcolor={0,0,0},
+    pattern=3)),
       Line(points=[80,20; 80,-8], style(
-          color=0,
-          rgbcolor={0,0,0},
-          pattern=3)),
+    color=0,
+    rgbcolor={0,0,0},
+    pattern=3)),
       Text(
-        extent=[48,50; 74,44],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Vapor inlet"),
+  extent=[48,50; 74,44],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Vapor inlet"),
       Text(
-        extent=[-74,52; -48,46],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Drain inlet"),
+  extent=[-74,52; -48,46],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Drain inlet"),
       Text(
-        extent=[-74,-16; -48,-22],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Drain outlet"),
+  extent=[-74,-16; -48,-22],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Drain outlet"),
       Text(
-        extent=[-114,18; -88,12],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Water inlet"),
+  extent=[-114,18; -88,12],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Water inlet"),
       Text(
-        extent=[86,18; 112,12],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Water outlet"),
+  extent=[86,18; 112,12],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Water outlet"),
       Text(
-        extent=[12,-10; 34,-18],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1),
-        string="Condensation"),
+  extent=[12,-10; 34,-18],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1),
+  string="Condensation"),
       Text(
-        extent=[-26,-4; -12,-8],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          arrow=1),
-        string="Flash")),
+  extent=[-26,-4; -12,-8],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    arrow=1),
+  string="Flash")),
     Window(
       x=0.05,
       y=0.01,
@@ -356,15 +356,15 @@ public
     "Drain outlet fluid properties (4C)" 
     annotation(extent=[-100,80; -80,100]);
   Connectors.FluidInlet Ee(h_vol(start=200e3)) "Water inlet" 
-                          annotation(extent=[-92,-10; -112,10]);
+                    annotation(extent=[-92,-10; -112,10]);
   Connectors.FluidOutlet Se "Water outlet" 
-                          annotation(extent=[110,-10; 90,10]);
+                    annotation(extent=[110,-10; 90,10]);
   Connectors.FluidInlet Ep(h_vol(start=200e3)) "Drain inlet" 
-                          annotation(extent=[-50,24; -70,44]);
+                    annotation(extent=[-50,24; -70,44]);
   Connectors.FluidOutlet Sp "Drain outlet" 
-                          annotation(extent=[-50,-43; -70,-23]);
+                    annotation(extent=[-50,-43; -70,-23]);
   Connectors.FluidInlet Ev(h_vol(start=200e3)) "Vapor inlet" 
-                          annotation(extent=[70,22; 50,42]);
+                    annotation(extent=[70,22; 50,42]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proevC 
     "Vapor inlet fluid properties (1C)" 
     annotation(extent=[-70,80; -50,100]);
@@ -455,7 +455,7 @@ equation
     Wdes = Ev.Q*(Ev.h - HsatvC);
     Wdes = Ee.Q*(Se.h - HDesF);
     Wdes = noEvent(min(Ev.Q*prodesmC.cp, Ee.Q*prodesmF.cp)*ThermoSysPro.Correlations.Thermal.WBHeatExchangerEfficiency(Ev.Q, Ee.Q, prodesmC.cp, prodesmF.cp,
-           KCond/2, SDes, 1) *(proevC.T - prodesF.T));
+     KCond/2, SDes, 1) *(proevC.T - prodesF.T));
   /* If deheating is absent */
   else
     Wdes = 1e-9;
@@ -501,7 +501,7 @@ equation
     Wpurge = Sp.Q*(Hep - Sp.h);
     Wpurge = Ee.Q*(HeiF - Ee.h);
     Wpurge = noEvent(min(Sp.Q*prompC.cp, Ee.Q*prompF.cp)*ThermoSysPro.Correlations.Thermal.WBHeatExchangerEfficiency(Sp.Q, Ee.Q, prompC.cp, prompF.cp,
-              KPurge, SPurge, 0)*(prosp.T - proeeF.T));
+        KPurge, SPurge, 0)*(prosp.T - proeeF.T));
     TeiF = proecF.T;
   else
     HeiF = Ee.h;

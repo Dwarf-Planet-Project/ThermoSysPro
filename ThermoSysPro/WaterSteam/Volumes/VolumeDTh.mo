@@ -29,14 +29,14 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-60, 60; 60, -60], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Line(points=[-90, 0; 90, 0]),
       Line(points=[0, 90; 0, -100])),
     Icon(
       Line(points=[0, 90; 0, -100]),
       Line(points=[-90, 0; 90, 0]),
       Ellipse(extent=[-60, 60; 60, -60], style(fillColor=71, rgbfillColor={85,
-              170,255}))),
+        170,255}))),
     Window(
       x=0.16,
       y=0.23,
@@ -57,12 +57,12 @@ public
 </html>
 "));
 public 
-  Connectors.FluidInlet Ce          annotation (extent=[-110, -10; -90, 10]);
-  Connectors.FluidOutlet Cs1         annotation (extent=[-10, 90; 10, 110]);
-  Connectors.FluidOutlet Cs2         annotation (extent=[-10, -108; 10, -88]);
+  Connectors.FluidInlet Ce    annotation (extent=[-110, -10; -90, 10]);
+  Connectors.FluidOutlet Cs1   annotation (extent=[-10, 90; 10, 110]);
+  Connectors.FluidOutlet Cs2   annotation (extent=[-10, -108; 10, -88]);
   ThermoSysPro.Thermal.Connectors.ThermalPort Cth 
-                                     annotation (extent=[-10, -10; 10, 10]);
-  Connectors.FluidOutlet Cs3         annotation (extent=[90, -10; 110, 10]);
+                               annotation (extent=[-10, -10; 10, 10]);
+  Connectors.FluidOutlet Cs3   annotation (extent=[90, -10; 110, 10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation (extent=[-100, 80; -80, 100]);
 initial equation 

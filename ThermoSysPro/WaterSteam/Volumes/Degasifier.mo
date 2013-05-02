@@ -3,48 +3,48 @@ model Degasifier
   
   annotation (Diagram, Icon(
       Rectangle(extent=[-82,12; 82,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Ellipse(extent=[-48,98; 48,20], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[20,26; 24,12], style(
-          color=7,
-          rgbcolor={255,255,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=7,
+    rgbcolor={255,255,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[-24,26; -20,12], style(
-          color=7,
-          rgbcolor={255,255,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=7,
+    rgbcolor={255,255,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Line(points=[-90,80; -40,80; -40,80; -40,80], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=61,
-          rgbfillColor={0,255,128},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=61,
+    rgbfillColor={0,255,128},
+    fillPattern=1)),
       Line(points=[-92,40; -38,40], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=61,
-          rgbfillColor={0,255,128},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=61,
+    rgbfillColor={0,255,128},
+    fillPattern=1)),
       Line(points=[90,80; 40,80], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=61,
-          rgbfillColor={0,255,128},
-          fillPattern=1)),
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=61,
+    rgbfillColor={0,255,128},
+    fillPattern=1)),
       Rectangle(extent=[-82,12; 82,-34], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=7,
-          rgbfillColor={255,255,255}))),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=7,
+    rgbfillColor={255,255,255}))),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -65,7 +65,7 @@ model Degasifier
     steady_state=true,
     h(start=700e3),
     Cs(h_vol(start=700e3))) 
-                    annotation (extent=[-20,20; 20,60]);
+              annotation (extent=[-20,20; 20,60]);
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe DPEau(     D=1,
     continuous_flow_reversal=true,
     Q(start=1000),
@@ -137,25 +137,25 @@ equation
   connect(DPEau.C2, dega1.Ce2) annotation (points=[-40,70; -8,70; -8,52],
       style(color=3, rgbcolor={0,0,255}));
   connect(DPvapeur.C2, dega1.Ce1) annotation (points=[-40,30; -32.6,30; -32.6,
-        40; -20,40], style(color=3, rgbcolor={0,0,255}));
+  40; -20,40], style(color=3, rgbcolor={0,0,255}));
   connect(TubeVap.C1,ballon. Cv) 
-                               annotation (points=[30,-8; 30,-20]);
+                         annotation (points=[30,-8; 30,-20]);
   connect(DPvapeur1.C1, ballon.Cd) annotation (points=[-60,-70; -40,-70; -40,
-        -80; -30,-80]);
+  -80; -30,-80]);
   connect(sourceEau, DPEau.C1) annotation (points=[-100,80; -80,80; -80,70; -60,
-        70]);
+  70]);
   connect(DPvapeur1.C2,puitsEauFond)  annotation (points=[-80,-70; -86,-70; -86,
-        -80; -100,-80],style(color=3, rgbcolor={0,0,255}));
+  -80; -100,-80],style(color=3, rgbcolor={0,0,255}));
   connect(sourceVapeur, DPvapeur.C1) annotation (points=[-100,40; -80,40; -80,
-        30; -60,30]);
+  30; -60,30]);
   connect(ballon.Cm, DPEau2.C2) annotation (points=[30,-80; 40,-80; 40,-70; 60,
-        -70]);
+  -70]);
   connect(DPEau2.C1, sourceEauFond) 
     annotation (points=[80,-70; 86,-70; 86,-80; 100,-80]);
   connect(dega1.Ce3, DPEau1.C2) annotation (points=[8,52; 8,70; 40,70]);
   connect(DPEau1.C1, sourceSup) annotation (points=[60,70; 80,70; 80,80; 100,80]);
   connect(dega1.Cs, ballon.Ce1) annotation (points=[-8,28; -8,20; -30,20; -30,
-        -20], style(
+  -20], style(
       color=3,
       rgbcolor={0,0,255},
       gradient=3,

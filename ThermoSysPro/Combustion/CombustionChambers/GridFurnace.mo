@@ -859,30 +859,30 @@ end if;
   0 = if ((FVN0 < 0) or (FVN > 0.1)) then (FVN - 0.001) else (FVN - FVN0);
   
   annotation (Diagram(Polygon(points=[-80,20; -80,-80; 100,-80; 100,20; 62,20;
-            20,40; 20,80; -40,80; -40,40; -80,20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)), Polygon(points=[-80,0; 60,-40; 80,-80; -80,-80; -80,
-            0], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=9,
-          rgbfillColor={175,175,175},
-          fillPattern=1))), Icon(Polygon(points=[-80,20; -80,-80; 100,-80; 100,
-            20; 62,20; 20,40; 20,80; -40,80; -40,40; -80,20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)), Polygon(points=[-80,0; 60,-40; 80,-80; -80,-80; -80,
-            0], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=9,
-          rgbfillColor={175,175,175},
-          fillPattern=1))),
+      20,40; 20,80; -40,80; -40,40; -80,20], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)), Polygon(points=[-80,0; 60,-40; 80,-80; -80,-80; -80,
+      0], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=9,
+    rgbfillColor={175,175,175},
+    fillPattern=1))), Icon(Polygon(points=[-80,20; -80,-80; 100,-80; 100,
+      20; 62,20; 20,40; 20,80; -40,80; -40,40; -80,20], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)), Polygon(points=[-80,0; 60,-40; 80,-80; -80,-80; -80,
+      0], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=9,
+    rgbfillColor={175,175,175},
+    fillPattern=1))),
     DymolaStoredErrors,
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>

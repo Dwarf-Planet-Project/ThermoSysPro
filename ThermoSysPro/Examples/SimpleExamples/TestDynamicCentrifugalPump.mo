@@ -13,10 +13,10 @@ model TestDynamicCentrifugalPump
       height=0.47),
     Diagram);
   ThermoSysPro.InstrumentationAndControl.Blocks.Logique.Pulse Pulse1(
-                                          width=200, period=400) 
+                                    width=200, period=400) 
     annotation (extent=[-100, -60; -80, -40]);
   ThermoSysPro.ElectroMechanics.Machines.SynchronousMotor Motor1 
-                                           annotation (extent=[-80, -80; -60, -60]);
+                                     annotation (extent=[-80, -80; -60, -60]);
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump 
     DynamicCentrifugalPump1 
     annotation (extent=[0, -40; -20, -20]);
@@ -27,7 +27,7 @@ model TestDynamicCentrifugalPump
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve 
     annotation (extent=[40, 20; 60, 40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                                  k=0.5) annotation (extent=[0, 60; 20, 80]);
+                                            k=0.5) annotation (extent=[0, 60; 20, 80]);
   ThermoSysPro.ElectroMechanics.Machines.Shaft Shaft1 
     annotation (extent=[-40, -80; -20, -60]);
 equation 

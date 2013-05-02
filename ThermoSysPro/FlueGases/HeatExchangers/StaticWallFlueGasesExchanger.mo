@@ -91,22 +91,22 @@ public
   Real Mmt "Total flue gases molar mass";
   
   annotation (Diagram(Rectangle(extent=[-100,20; 100,-20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[-60,20; -60,-20]),
       Line(points=[-20,20; -20,-20]),
       Line(points=[20,20; 20,-20]),
       Line(points=[60,20; 60,-20])),
-                           Icon(
-                      Rectangle(extent=[-100,20; 100,-20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+                     Icon(
+                Rectangle(extent=[-100,20; 100,-20], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[-60,20; -60,-20]),
       Line(points=[-20,20; -20,-20]),
       Line(points=[20,20; 20,-20]),
@@ -191,11 +191,11 @@ equation
     if (abs(Q) >= Qmin) then
       /* Convective heat exchange coefficient */
       if (exchanger_type == 1) then
-        /* Crossed flux */
-        Kcc[i] = ThermoSysPro.Correlations.Thermal.WBCrossedCurrentConvectiveHeatTransferCoefficient(TFilm[i], abs(Q), Xh2o*100, Sgaz, Dext, Fa);
+  /* Crossed flux */
+  Kcc[i] = ThermoSysPro.Correlations.Thermal.WBCrossedCurrentConvectiveHeatTransferCoefficient(TFilm[i], abs(Q), Xh2o*100, Sgaz, Dext, Fa);
       else
-        /* Longitudinal flux */
-        Kcc[i] = ThermoSysPro.Correlations.Thermal.WBLongitudinalCurrentConvectiveHeatTransferCoefficient(TFilm[i], Tm[i], abs(Q), Xh2o*100, Sgaz, Deq);
+  /* Longitudinal flux */
+  Kcc[i] = ThermoSysPro.Correlations.Thermal.WBLongitudinalCurrentConvectiveHeatTransferCoefficient(TFilm[i], Tm[i], abs(Q), Xh2o*100, Sgaz, Deq);
       end if;
       
       /* Radiative heat exchange coefficient */

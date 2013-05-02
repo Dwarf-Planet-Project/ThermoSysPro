@@ -31,79 +31,79 @@ model DynamicCondenser "Dynamic condenser"
     hv(fixed=false, start=1500e3),
     steady_state=false) 
     annotation (extent=[-20,0; 20,40],  Placement(transformation(extent={{-20,0},
-            {20,40}})));
+      {20,40}})));
   annotation (Diagram, Icon(
       Rectangle(extent=[100,20; 80,-60], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1)),
       Rectangle(extent=[-100,20; -80,-60], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[-20,6; -80,0], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[-20,-18; -80,-24], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[-20,-40; -80,-46], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Rectangle(extent=[80,6; 20,0], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-40; 20,-46],
-                                     style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+                               style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Rectangle(extent=[80,-18; 20,-24],
-                                     style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+                               style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Rectangle(extent=[30,-18; -30,-24],
-                                      style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=76,
-          rgbfillColor={170,170,255})),
+                                style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=76,
+    rgbfillColor={170,170,255})),
       Rectangle(extent=[30,-40; -30,-46],
-                                      style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=76,
-          rgbfillColor={170,170,255})),
+                                style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=76,
+    rgbfillColor={170,170,255})),
       Rectangle(extent=[30,6; -30,0], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=76,
-          rgbfillColor={170,170,255})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=76,
+    rgbfillColor={170,170,255})),
       Line(points=[-20,100; 20,100; 100,20; 100,-100; -100,-100; -100,20; -20,
-            100],     style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2)),
+      100],     style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2)),
       Rectangle(extent=[-100,-72; 100,-100], style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          fillColor=71,
-          rgbfillColor={85,170,255}))),
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    fillColor=71,
+    rgbfillColor={85,170,255}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
@@ -129,7 +129,7 @@ model DynamicCondenser "Dynamic condenser"
     D=Dc,
     Ns=1) 
     annotation (extent=[-60,-34; -20,-6],
-                                        rotation=0);
+                                  rotation=0);
   Connectors.FluidInletI C1vap "Vapor inlet" 
     annotation (extent=[-10,90; 10,110]);
   Connectors.FluidOutletI C2ex "Condensed water extraction outlet" 
@@ -151,17 +151,17 @@ equation
     C1.b = true;
   end if;
   
-  connect(Ce1, pipe.C1)           annotation (points=[-100,-20; -60,-20]);
-  connect(pipe.C2, Ce2)           annotation (points=[-20,-20; -2,-20; -2,-18;
-        2,-18; 2,-20; 58,-20; 58,-18; 62,-18; 62,-20; 100,-20], style(color=3,
-        rgbcolor={0,0,255}));
+  connect(Ce1, pipe.C1)     annotation (points=[-100,-20; -60,-20]);
+  connect(pipe.C2, Ce2)     annotation (points=[-20,-20; -2,-20; -2,-18;
+  2,-18; 2,-20; 58,-20; 58,-18; 62,-18; 62,-20; 100,-20], style(color=3,
+  rgbcolor={0,0,255}));
   connect(C1vap, condenser.Cv)  annotation (points=[0,100; 0,40]);
   connect(condenser.Cl, C2ex)  annotation (points=[0,0; 0,-100],       style(
-        color=3, rgbcolor={0,0,255}));
+  color=3, rgbcolor={0,0,255}));
   connect(C1, condenser.Ce) 
     annotation (points=[-100,60; -60,60; -60,20; -20,20]);
   connect(condenser.Cth, pipe.CTh[1]) annotation (points=[0,24; -40,24; -40,
-        -15.8], style(color=46, rgbcolor={191,95,0}));
+  -15.8], style(color=46, rgbcolor={191,95,0}));
   connect(condenser.yLevel, sortieReelle) 
     annotation (points=[22,20; 60,20; 60,-70; 110,-70]);
 end DynamicCondenser;

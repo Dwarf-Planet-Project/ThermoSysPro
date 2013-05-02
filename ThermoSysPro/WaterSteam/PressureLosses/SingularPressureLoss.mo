@@ -28,28 +28,28 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40;
-            -60,40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
-            0,-10; 20,-12; 40,-20; 60,-40; -60,-40],
-                                                   style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0}))),
+      -60,40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
+      0,-10; 20,-12; 40,-20; 60,-40; -60,-40],
+                                             style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0}))),
     Icon(Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40; -60,
-            40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
-            0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0}))),
+      40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
+      0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0}))),
     Window(
       x=0.09,
       y=0.2,
@@ -73,7 +73,7 @@ public
 "));
   Connectors.FluidInlet C1 
     annotation (extent=[-110,-10; -90,10]);
-  Connectors.FluidOutlet C2                annotation (extent=[90,-10; 110,10]);
+  Connectors.FluidOutlet C2          annotation (extent=[90,-10; 110,10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-100,80; -80,100]);
 equation 

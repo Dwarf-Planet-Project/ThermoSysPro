@@ -14,7 +14,7 @@ model TestStodolaTurbine1
     Diagram);
   ThermoSysPro.WaterSteam.Machines.StodolaTurbine stodolaTurbine 
     annotation (extent=[-60,60; -40,80]);
-  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(                 mode=0, P0=45e5) 
+  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(           mode=0, P0=45e5) 
     annotation (extent=[-20,60; 0,80]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
     h0=3.e6,
@@ -22,12 +22,12 @@ model TestStodolaTurbine1
     mode=2,
     P0=65e5) annotation (extent=[-100,60; -80,80]);
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump 
-    DynamicCentrifugalPump1(                                                      C2(P(
-          start=3.e5)), Q(fixed=true, start=50)) 
+    DynamicCentrifugalPump1(                                                C2(P(
+    start=3.e5)), Q(fixed=true, start=50)) 
     annotation (extent=[20,-40; 40,-20]);
   ThermoSysPro.ElectroMechanics.Machines.Shaft Shaft1 
     annotation (extent=[-20,-90; 0,-70]);
-  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP1(                 mode=0, P0(fixed=false) = 45e5) 
+  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP1(           mode=0, P0(fixed=false) = 45e5) 
     annotation (extent=[60,-40; 80,-20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(
     h0=3.e6,
@@ -42,7 +42,7 @@ equation
   connect(sourceP1.C, DynamicCentrifugalPump1.C1) 
     annotation (points=[0,-30; 20,-30], style(color=3, rgbcolor={0,0,255}));
   connect(DynamicCentrifugalPump1.C2, puitsP1.C) annotation (points=[40,-30.2;
-        50,-30.2; 50,-30; 60,-30], style(color=3, rgbcolor={0,0,255}));
+  50,-30.2; 50,-30; 60,-30], style(color=3, rgbcolor={0,0,255}));
   connect(sourceP.C, stodolaTurbine.Ce) 
     annotation (points=[-80,70; -60.1,70], style(color=3, rgbcolor={0,0,255}));
   connect(stodolaTurbine.Cs, puitsP.C) 

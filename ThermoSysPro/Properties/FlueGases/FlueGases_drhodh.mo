@@ -36,18 +36,18 @@ algorithm
   annotation (
     smoothOrder=2,
     Icon(graphics={
-        Text(extent={{-136,102},{140,42}}, textString=
-                                               "%name"),
-        Ellipse(
-          extent={{-100,40},{100,-100}},
-          lineColor={255,127,0},
-          fillColor={255,255,255},
-          fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-84,-4},{84,-52}},
-          lineColor={255,127,0},
-          textString=
-               "function")}),
+  Text(extent={{-136,102},{140,42}}, textString=
+                                         "%name"),
+  Ellipse(
+    extent={{-100,40},{100,-100}},
+    lineColor={255,127,0},
+    fillColor={255,255,255},
+    fillPattern=FillPattern.Solid),
+  Text(
+    extent={{-84,-4},{84,-52}},
+    lineColor={255,127,0},
+    textString=
+         "function")}),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

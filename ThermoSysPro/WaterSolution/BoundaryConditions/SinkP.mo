@@ -22,10 +22,10 @@ public
       Text(extent=[-28, -40; -10, -60], string="Xh2o"),
       Rectangle(extent=[-40,40; 40,-40],   style(fillColor=9)),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Text(extent=[-94,26; 98,-30],   string="P")),
     Window(
       x=0.06,
@@ -40,10 +40,10 @@ public
       Text(extent=[-28, -40; -10, -60], string="Xh2o"),
       Rectangle(extent=[-40,40; 40,-40],   style(fillColor=9)),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Text(extent=[-94,26; 98,-30],   string="P")),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
@@ -68,7 +68,7 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal IXh2o 
     annotation (extent=[-10, -40; 10, -60], rotation=-90);
   Connectors.WaterSolutionInlet C 
-                                annotation (extent=[-110, -10; -90, 10]);
+                          annotation (extent=[-110, -10; -90, 10]);
 equation 
   
   C.P = P;

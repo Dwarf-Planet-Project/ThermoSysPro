@@ -28,27 +28,27 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40;
-            -60,40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
-            0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0}))),
+      -60,40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
+      0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0}))),
     Icon(   Polygon(points=[-60,40; -40,20; -20,10; 0,8; 20,10; 40,20; 60,40;
-            -60,40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
-            0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0}))),
+      -60,40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})), Polygon(points=[-60,-40; -40,-20; -20,-12;
+      0,-10; 20,-12; 40,-20; 60,-40; -60,-40], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0}))),
     Window(
       x=0.33,
       y=0.09,

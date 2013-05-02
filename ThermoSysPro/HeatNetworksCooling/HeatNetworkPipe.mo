@@ -12,7 +12,7 @@ model HeatNetworkPipe
   parameter Modelica.SIunits.CoefficientOfHeatTransfer K=0.1 
     "Heat exchange coefficient with ambient";
   parameter ThermoSysPro.Units.PressureLossCoefficient Ks=
-                                                         1000 
+                                                   1000 
     "Singular pressure losses coefficient";
   parameter Boolean continuous_flow_reversal=false 
     "true: continuous flow reversal - false: discontinuous flow reversal";
@@ -49,9 +49,9 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[60,80; 100,80; 100,-100; -100,-100; -100,80; -60,80;
-            -60,-60; 60,-60; 60,80], style(fillColor=6, rgbfillColor={255,255,0}))),
+      -60,-60; 60,-60; 60,80], style(fillColor=6, rgbfillColor={255,255,0}))),
     Icon(   Polygon(points=[60,80; 100,80; 100,-100; -100,-100; -100,80; -60,80;
-            -60,-60; 60,-60; 60,80], style(fillColor=6, rgbfillColor={255,255,0}))),
+      -60,-60; 60,-60; 60,80], style(fillColor=6, rgbfillColor={255,255,0}))),
     Window(
       x=0.06,
       y=0.08,
@@ -73,9 +73,9 @@ public
 "));
 public 
   ThermoSysPro.WaterSteam.Connectors.FluidInlet C1 
-                          annotation(extent=[-90,80; -70,100]);
+                    annotation(extent=[-90,80; -70,100]);
   ThermoSysPro.WaterSteam.Connectors.FluidOutlet C2 
-                          annotation(extent=[70,80; 90,100]);
+                    annotation(extent=[70,80; 90,100]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-10,60; 10,80]);
 equation 
@@ -100,9 +100,9 @@ equation
   /* Pressure losses */
   deltaP = deltaPr + deltaPs + rho*g*(z2 - z1);
   deltaPs = 8*Ks * ThermoSysPro.Functions.ThermoSquare(
-                                                      Q, eps)/(pi^2*D^4*rho^2);
+                                                Q, eps)/(pi^2*D^4*rho^2);
   deltaPr = 8*khi*ThermoSysPro.Functions.ThermoSquare(
-                                                     Q, eps)/(pi^2*D^4*rho);
+                                               Q, eps)/(pi^2*D^4*rho);
   
   /* Darcy-Weisbach formula (Idel'cik p. 55). Quadratic flow regime is assumed and Re > 4000 (Re > Relim). */
   khi = lambda*L/D;

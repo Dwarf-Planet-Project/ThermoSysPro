@@ -13,24 +13,24 @@ protected
       component=[20, 20]),
     Icon(
       Polygon(points=[-15, 65; 15, 65; 0, 90; -15, 65], style(color=41,
-            fillColor=41)),
+      fillColor=41)),
       Line(points=[0, 70; 0, 40; -20, 30; 20, 10; -20, -10; 20, -30; 0, -40; 0,
-             -70], style(
-          color=41,
-          thickness=2,
-          fillColor=41)),
+       -70], style(
+    color=41,
+    thickness=2,
+    fillColor=41)),
       Polygon(points=[-15, -65; 15, -65; 0, -90; -15, -65], style(color=41,
-            fillColor=41))),
+      fillColor=41))),
     Diagram(
       Polygon(points=[-15, 65; 15, 65; 0, 90; -15, 65], style(color=41,
-            fillColor=41)),
+      fillColor=41)),
       Line(points=[0, 70; 0, 40; -20, 30; 20, 10; -20, -10; 20, -30; 0, -40; 0,
-             -70], style(
-          color=41,
-          thickness=2,
-          fillColor=41)),
+       -70], style(
+    color=41,
+    thickness=2,
+    fillColor=41)),
       Polygon(points=[-15, -65; 15, -65; 0, -90; -15, -65], style(color=41,
-            fillColor=41))),
+      fillColor=41))),
     Window(
       x=0.24,
       y=0.27,

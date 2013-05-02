@@ -25,7 +25,7 @@ public
   
 protected 
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
-                     annotation (extent=[-60,80; -40,100]);
+               annotation (extent=[-60,80; -40,100]);
 algorithm 
   
   /* Critical pressure */
@@ -50,13 +50,13 @@ algorithm
   
   /* Properties on the saturation line */
   hsatV := -0.00000274*Pcalc^6 + 0.00032217*Pcalc^5 - 0.01489673*Pcalc^4 + 0.34258030*Pcalc^3
-            - 4.15381744*Pcalc^2 + 27.64876596*Pcalc + 385.22149853;
+      - 4.15381744*Pcalc^2 + 27.64876596*Pcalc + 385.22149853;
   hsatL := -0.0000039275*Pcalc^6 + 0.0004780040*Pcalc^5 - 0.0227439765*Pcalc^4 + 0.5370471515*Pcalc^3
-            - 6.6496487588*Pcalc^2 + 46.8685173786*Pcalc + 166.7823742593;
+      - 6.6496487588*Pcalc^2 + 46.8685173786*Pcalc + 166.7823742593;
   ssatV := 0.0000000017*Pcalc^6 - 0.0000002159*Pcalc^5 + 0.0000102230*Pcalc^4 - 0.0002295813*Pcalc^3
-            + 0.0023692545*Pcalc^2 - 0.0062966866*Pcalc + 1.7667560947;
+      + 0.0023692545*Pcalc^2 - 0.0062966866*Pcalc + 1.7667560947;
   ssatL := -0.0000000164*Pcalc^6 + 0.0000019814*Pcalc^5 - 0.0000934768*Pcalc^4 + 0.0021827510*Pcalc^3
-            - 0.0265228817*Pcalc^2 + 0.1740890297*Pcalc + 0.8685336198;
+      - 0.0265228817*Pcalc^2 + 0.1740890297*Pcalc + 0.8685336198;
   
   /* Determination of the property zone (liquid, two-phase or steam) and compuation of the properties */
   if ((scalc >= ssatL) and (scalc <= ssatV)) then
@@ -68,7 +68,7 @@ algorithm
       /* Liquid zone */
       h := 1000*(112.482*scalc^2 + 50.525*scalc + 39.292);
       if (h > hsatL) then
-          h := 1000*hsatL;
+    h := 1000*hsatL;
       end if;
   else
       /* Steam zone */
@@ -77,7 +77,7 @@ algorithm
       C :=   0.1219352*Pcalc^2 - 13.8031170*Pcalc + 540.5578010;
       h := 1000*(A*scalc^2 + B*scalc + C);
       if (h < hsatV) then
-          h := 1000*hsatV;
+    h := 1000*hsatV;
       end if;
   end if;
   

@@ -61,16 +61,16 @@ public
     "Glass temperature";
   
   annotation (Diagram(Rectangle(extent=[-80,60; 80,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0}))), Icon(Rectangle(extent=[-80,60; 80,-40],
-          style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})), Bitmap(extent=[-72,58; 84,-38], name=
-            "../../../EDF_EUROSYSLIB/documentation/solarcollector.bmp")),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0}))), Icon(Rectangle(extent=[-80,60; 80,-40],
+    style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})), Bitmap(extent=[-72,58; 84,-38], name=
+      "../../../EDF_EUROSYSLIB/documentation/solarcollector.bmp")),
     DymolaStoredErrors,
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>

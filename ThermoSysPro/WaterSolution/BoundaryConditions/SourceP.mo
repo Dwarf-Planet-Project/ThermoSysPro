@@ -22,10 +22,10 @@ public
       Text(extent=[-28, -40; -10, -60], string="Xh20"),
       Rectangle(extent=[-40,40; 40,-40],   style(fillColor=9)),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Text(extent=[-96,28; 96,-28],   string="S")),
     Icon(
       Line(points=[40, 0; 90, 0; 72, 10]),
@@ -35,10 +35,10 @@ public
       Text(extent=[-28, -40; -10, -60], string="h"),
       Rectangle(extent=[-40,40; 40,-40],   style(fillColor=9)),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Text(extent=[-96,28; 96,-28],   string="S")),
     Window(
       x=0.45,
@@ -68,7 +68,7 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal IXh2o 
     annotation (extent=[-10, -40; 10, -60], rotation=-90);
   Connectors.WaterSolutionOutlet C 
-                                annotation (extent=[90, -10; 110, 10]);
+                          annotation (extent=[90, -10; 110, 10]);
 equation 
   
   C.P = P;

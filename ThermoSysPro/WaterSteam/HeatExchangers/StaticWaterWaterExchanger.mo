@@ -94,18 +94,18 @@ public
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100, 60; 100, -60], style(fillColor=6, rgbfillColor={
-              255,255,0})),
+        255,255,0})),
       Line(points=[-80, 60; -80, -60]),
       Line(points=[80, 60; 80, -60]),
       Line(points=[-80, 0; -60, 0; -40, 20; 40, -20; 60, 0; 80, 0], style(
-            fillColor=8, fillPattern=1))),
+      fillColor=8, fillPattern=1))),
     Diagram(
       Rectangle(extent=[-100, 60; 100, -60], style(fillColor=6, rgbfillColor={
-              255,255,0})),
+        255,255,0})),
       Line(points=[-80, 60; -80, -60]),
       Line(points=[80, 60; 80, -60]),
       Line(points=[-80, 0; -60, 0; -40, 20; 40, -20; 60, 0; 80, 0], style(
-            fillColor=8, fillPattern=1))),
+      fillColor=8, fillPattern=1))),
     Window(
       x=0.05,
       y=0.01,
@@ -127,13 +127,13 @@ public
 "));
 public 
   Connectors.FluidInlet Ec 
-                          annotation(extent=[-110, -10; -90, 10]);
+                    annotation(extent=[-110, -10; -90, 10]);
   Connectors.FluidInlet Ef 
-                          annotation(extent=[-60, -70; -40, -50]);
+                    annotation(extent=[-60, -70; -40, -50]);
   Connectors.FluidOutlet Sf 
-                          annotation(extent=[40, -70; 60, -50]);
+                    annotation(extent=[40, -70; 60, -50]);
   Connectors.FluidOutlet Sc 
-                          annotation(extent=[90, -8; 110, 12]);
+                    annotation(extent=[90, -8; 110, 12]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proce 
     annotation(extent=[-60, 80; -40, 100]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph procs 

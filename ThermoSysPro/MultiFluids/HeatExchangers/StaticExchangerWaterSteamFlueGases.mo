@@ -59,116 +59,116 @@ public
   
   annotation (Diagram(
       Rectangle(extent=[-100,50; 100,-50], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})),
       Rectangle(extent=[-100,-50; 100,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Rectangle(extent=[-100,80; 100,50], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),              Line(points=[-94,-2; -44,-2; -24,46; 16,
-            -48; 36,-2; 90,-2],
-                              style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),              Line(points=[-94,-2; -44,-2; -24,46; 16,
+      -48; 36,-2; 90,-2],
+                        style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Text(
-        extent=[-28,72; 34,56],
-        string="HotFlueGases",
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175})),
+  extent=[-28,72; 34,56],
+  string="HotFlueGases",
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175})),
       Text(
-        extent=[-34,8; 42,-6],
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175}),
-        string="WaterSteam"),
+  extent=[-34,8; 42,-6],
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175}),
+  string="WaterSteam"),
       Text(
-        extent=[-30,-58; 32,-74],
-        string="HotFlueGases",
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175}))),
-                            Icon(
+  extent=[-30,-58; 32,-74],
+  string="HotFlueGases",
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175}))),
+                      Icon(
       Rectangle(extent=[-100,80; 100,50], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Rectangle(extent=[-100,50; 100,-50], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})),   Line(points=[-94,-2; -44,-2; -24,46; 16,
-            -48; 36,-2; 90,-2],
-                              style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          fillColor=0,
-          rgbfillColor={0,0,0},
-          fillPattern=1)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})),   Line(points=[-94,-2; -44,-2; -24,46; 16,
+      -48; 36,-2; 90,-2],
+                        style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    fillColor=0,
+    rgbfillColor={0,0,0},
+    fillPattern=1)),
       Text(
-        extent=[-34,8; 42,-6],
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175}),
-        string="WaterSteam"),
+  extent=[-34,8; 42,-6],
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175}),
+  string="WaterSteam"),
       Rectangle(extent=[-100,-50; 100,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Text(
-        extent=[-30,-58; 32,-74],
-        string="HotFlueGases",
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175})),
+  extent=[-30,-58; 32,-74],
+  string="HotFlueGases",
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175})),
       Text(
-        extent=[-30,72; 32,56],
-        string="HotFlueGases",
-        style(
-          color=0,
-          rgbcolor={0,0,0},
-          thickness=2,
-          gradient=2,
-          fillColor=9,
-          rgbfillColor={175,175,175}))),
+  extent=[-30,72; 32,56],
+  string="HotFlueGases",
+  style(
+    color=0,
+    rgbcolor={0,0,0},
+    thickness=2,
+    gradient=2,
+    fillColor=9,
+    rgbfillColor={175,175,175}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
@@ -250,16 +250,16 @@ equation
      W = Qe*(Hse - Hee);
   else
      DT2 = if (exchanger_conf == 1) then DT1*Modelica.Math.exp(-K*S*(1/(Qf*Cpf) - 1/(Qe*Cpe))) else 
-                                         DT1*Modelica.Math.exp(-K*S*(1/(Qf*Cpf) + 1/(Qe*Cpe)));
+                                   DT1*Modelica.Math.exp(-K*S*(1/(Qf*Cpf) + 1/(Qe*Cpe)));
      W = Qf*Cpf*(Tef - Tsf);
      W = Qe*(Hse - Hee);
   end if;
   
   /* Pressure losses */
   Pef = Psf + Kdpf*ThermoSysPro.Functions.ThermoSquare(
-                                                      Qf, eps)/rhof;
+                                                Qf, eps)/rhof;
   Pee = Pse + Kdpe*ThermoSysPro.Functions.ThermoSquare(
-                                                      Qe, eps)/rhoe;
+                                                Qe, eps)/rhoe;
   
   /* Flue gas specific enthalpy at the inlet */
   Hef = ThermoSysPro.Properties.FlueGases.FlueGases_h(Pef, Tef, Cfg1.Xco2, Cfg1.Xh2o, Cfg1.Xo2, Cfg1.Xso2);

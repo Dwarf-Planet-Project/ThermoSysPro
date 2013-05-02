@@ -27,20 +27,20 @@ protected
       Line(points=[62, 0; 102, 0]),
       Line(points=[-50, 0; 50, 0], style(color=0)),
       Text(
-        extent=[-55, 55; 55, 5],
-        string="b(s)",
-        style(color=0)),
+  extent=[-55, 55; 55, 5],
+  string="b(s)",
+  style(color=0)),
       Text(
-        extent=[-55, -5; 55, -55],
-        string="a(s)",
-        style(color=0))),
+  extent=[-55, -5; 55, -55],
+  string="a(s)",
+  style(color=0))),
     Icon(
       Rectangle(extent=[-100, -100; 100, 100], style(
-          color=3,
-          pattern=1,
-          thickness=1,
-          arrow=0,
-          fillPattern=0)),
+    color=3,
+    pattern=1,
+    thickness=1,
+    arrow=0,
+    fillPattern=0)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Rectangle(extent=[-100, -100; 100, 100], style(color=3, fillColor=7)),
       Text(extent=[-90, 10; 90, 90], string="b(s)"),
@@ -61,12 +61,12 @@ protected
   
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u0 
-                                       annotation (extent=[-120,-90; -100,-70]);
+                                 annotation (extent=[-120,-90; -100,-70]);
 initial equation 
   if permanent then
     der(x) = zeros(nx);

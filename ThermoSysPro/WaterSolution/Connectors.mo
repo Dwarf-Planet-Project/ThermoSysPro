@@ -16,24 +16,24 @@ package Connectors "Connectors"
     
     annotation (
       Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
+  extent=[-100, -100; 100, 100],
+  grid=[2, 2],
+  component=[20, 20]),
       Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            fillColor=3,
-            rgbfillColor={0,0,255})),     Line(points=[-100,100; 100,-100], style(
-            color=7,
-            rgbcolor={255,255,255},
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=1))),
+      color=0,
+      rgbcolor={0,0,0},
+      fillColor=3,
+      rgbfillColor={0,0,255})),     Line(points=[-100,100; 100,-100], style(
+      color=7,
+      rgbcolor={255,255,255},
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=1))),
       Window(
-        x=0.31,
-        y=0.13,
-        width=0.6,
-        height=0.6),
+  x=0.31,
+  y=0.13,
+  width=0.6,
+  height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -65,25 +65,25 @@ package Connectors "Connectors"
     
     annotation (
       Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
+  extent=[-100, -100; 100, 100],
+  grid=[2, 2],
+  component=[20, 20]),
       Icon(Rectangle(extent=[-100, -100; 102, 100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            fillColor=43,
-            rgbfillColor={255,85,85})),
-                                      Line(points=[-100,100; 102,-100], style(
-            color=7,
-            rgbcolor={255,255,255},
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=1))),
+      color=0,
+      rgbcolor={0,0,0},
+      fillColor=43,
+      rgbfillColor={255,85,85})),
+                                Line(points=[-100,100; 102,-100], style(
+      color=7,
+      rgbcolor={255,255,255},
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=1))),
       Window(
-        x=0.31,
-        y=0.13,
-        width=0.6,
-        height=0.6),
+  x=0.31,
+  y=0.13,
+  width=0.6,
+  height=0.6),
       Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

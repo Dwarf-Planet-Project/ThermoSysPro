@@ -28,9 +28,9 @@ public
       Line(points=[0,-30; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Text(
-        extent=[-60,60; 60,0],
-        string="T",
-        style(fillColor=53))),
+  extent=[-60,60; 60,0],
+  string="T",
+  style(fillColor=53))),
     Icon(
       Ellipse(extent=[-60,90; 60,-30], style(fillColor=2, rgbfillColor={0,255,0})),
       Line(points=[0,-30; 0,-80]),
@@ -59,9 +59,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal Measure 
     annotation (extent=[-10,90; 10,110],    rotation=90);
   Connectors.FluidInlet C1 
-                          annotation (extent=[-110, -90; -90, -70]);
+                    annotation (extent=[-110, -90; -90, -70]);
   Connectors.FluidOutlet C2 
-                          annotation (extent=[92, -90; 112, -70]);
+                    annotation (extent=[92, -90; 112, -70]);
 equation 
   
   C1.P = C2.P;
@@ -87,7 +87,7 @@ equation
   h = (C1.h + C2.h)/2;
   
   pro = ThermoSysPro.Properties.WaterSteam.IF97.Water_Ph(
-                                                P, h, mode);
+                                          P, h, mode);
   
   T = pro.T;
 end SensorT;

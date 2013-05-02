@@ -13,8 +13,8 @@ model TestDynamicCentrifugalPump1
       height=0.47),
     Diagram);
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump 
-    DynamicCentrifugalPump1(                                                      C2(P(
-          start=3.e5))) 
+    DynamicCentrifugalPump1(                                                C2(P(
+    start=3.e5))) 
     annotation (extent=[0, -40; -20, -20]);
   ThermoSysPro.WaterSteam.Volumes.Tank Tank(
     ze2=10,
@@ -24,7 +24,7 @@ model TestDynamicCentrifugalPump1
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve 
     annotation (extent=[40, 20; 60, 40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                                  k=0.5) annotation (extent=[0, 60; 20, 80]);
+                                            k=0.5) annotation (extent=[0, 60; 20, 80]);
   ThermoSysPro.ElectroMechanics.BoundaryConditions.SourceMechanicalPower 
     sourceTorque 
     annotation (extent=[-70,-80; -50,-60]);

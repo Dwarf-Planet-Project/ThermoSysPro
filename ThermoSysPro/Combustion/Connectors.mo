@@ -23,19 +23,19 @@ package Connectors "Connectors"
     output Boolean b 
       "Pseudo-variable for the verification of the connection orientation";
     annotation (Icon(
-           Rectangle(extent=[-100,-100; 100,100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            gradient=1,
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
-            color=3,
-            rgbcolor={0,0,255},
-            gradient=3,
-            fillColor=69,
-            rgbfillColor={0,128,255}))), Documentation(revisions="",
-          info="<html>
+     Rectangle(extent=[-100,-100; 100,100], style(
+      color=0,
+      rgbcolor={0,0,0},
+      gradient=1,
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
+      color=3,
+      rgbcolor={0,0,255},
+      gradient=3,
+      fillColor=69,
+      rgbfillColor={0,128,255}))), Documentation(revisions="",
+    info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
@@ -66,18 +66,18 @@ package Connectors "Connectors"
     input Boolean b=true 
       "Pseudo-variable for the verification of the connection orientation";
     annotation (Icon(
-           Rectangle(extent=[-100,-100; 100,100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
-            color=3,
-            rgbcolor={0,0,255},
-            gradient=3,
-            fillColor=1,
-            rgbfillColor={255,0,0}))), Documentation(revisions="",
-          info="<html>
+     Rectangle(extent=[-100,-100; 100,100], style(
+      color=0,
+      rgbcolor={0,0,0},
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
+      color=3,
+      rgbcolor={0,0,255},
+      gradient=3,
+      fillColor=1,
+      rgbfillColor={255,0,0}))), Documentation(revisions="",
+    info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
@@ -108,19 +108,19 @@ package Connectors "Connectors"
     output Boolean b 
       "Pseudo-variable for the verification of the connection orientation";
     annotation (Icon(
-           Rectangle(extent=[-100,-100; 100,100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            gradient=1,
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
-            color=3,
-            rgbcolor={0,0,255},
-            fillColor=69,
-            rgbfillColor={0,128,255},
-            fillPattern=8))), Documentation(revisions="",
-          info="<html>
+     Rectangle(extent=[-100,-100; 100,100], style(
+      color=0,
+      rgbcolor={0,0,0},
+      gradient=1,
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
+      color=3,
+      rgbcolor={0,0,255},
+      fillColor=69,
+      rgbfillColor={0,128,255},
+      fillPattern=8))), Documentation(revisions="",
+    info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
@@ -151,19 +151,19 @@ package Connectors "Connectors"
     input Boolean b 
       "Pseudo-variable for the verification of the connection orientation";
     annotation (Icon(
-           Rectangle(extent=[-100,-100; 100,100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            gradient=1,
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
-            color=3,
-            rgbcolor={0,0,255},
-            fillColor=1,
-            rgbfillColor={255,0,0},
-            fillPattern=8))), Documentation(revisions="",
-          info="<html>
+     Rectangle(extent=[-100,-100; 100,100], style(
+      color=0,
+      rgbcolor={0,0,0},
+      gradient=1,
+      fillColor=0,
+      rgbfillColor={0,0,0},
+      fillPattern=7)), Ellipse(extent=[-100,100; 100,-100], style(
+      color=3,
+      rgbcolor={0,0,255},
+      fillColor=1,
+      rgbfillColor={255,0,0},
+      fillPattern=8))), Documentation(revisions="",
+    info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

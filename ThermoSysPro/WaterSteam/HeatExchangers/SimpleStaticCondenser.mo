@@ -64,60 +64,60 @@ public
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100,60; 100,-60], style(fillColor=6, rgbfillColor={255,
-              255,0})), Line(points=[-60,-90; -60,38; 0,-8; 60,40; 60,-90],
-          style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1))),
+        255,0})), Line(points=[-60,-90; -60,38; 0,-8; 60,40; 60,-90],
+    style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1))),
     Diagram(
       Rectangle(extent=[-100,60; 100,-60], style(fillColor=6, rgbfillColor={255,
-              255,0})), Line(points=[-60,-90; -60,38; 0,-8; 60,40; 60,-90],
-          style(
-          color=3,
-          rgbcolor={0,0,255},
-          thickness=2,
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)),
+        255,0})), Line(points=[-60,-90; -60,38; 0,-8; 60,40; 60,-90],
+    style(
+    color=3,
+    rgbcolor={0,0,255},
+    thickness=2,
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)),
       Text(
-        extent=[-110,21; -90,11],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170},
-          fillPattern=1),
-        string="Cold inlet"),
+  extent=[-110,21; -90,11],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170},
+    fillPattern=1),
+  string="Cold inlet"),
       Text(
-        extent=[-46,-93; -26,-103],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170},
-          fillPattern=1),
-        string="Hot inlet"),
+  extent=[-46,-93; -26,-103],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170},
+    fillPattern=1),
+  string="Hot inlet"),
       Text(
-        extent=[28,-93; 48,-103],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170},
-          fillPattern=1),
-        string="Hot outlet"),
+  extent=[28,-93; 48,-103],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170},
+    fillPattern=1),
+  string="Hot outlet"),
       Text(
-        extent=[88,20; 110,9],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170},
-          fillPattern=1),
-        string="Cold outlet")),
+  extent=[88,20; 110,9],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170},
+    fillPattern=1),
+  string="Cold outlet")),
     Window(
       x=0.05,
       y=0.01,
@@ -139,13 +139,13 @@ public
 "), DymolaStoredErrors);
 public 
   Connectors.FluidInlet Ec 
-                          annotation(extent=[-70,-110; -50,-90]);
+                    annotation(extent=[-70,-110; -50,-90]);
   Connectors.FluidInlet Ef 
-                          annotation(extent=[-110,-10; -90,10]);
+                    annotation(extent=[-110,-10; -90,10]);
   Connectors.FluidOutlet Sf 
-                          annotation(extent=[90,-11; 110,9]);
+                    annotation(extent=[90,-11; 110,9]);
   Connectors.FluidOutlet Sc 
-                          annotation(extent=[50,-110; 70,-90]);
+                    annotation(extent=[50,-110; 70,-90]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proce 
     annotation(extent=[-100,-100; -80,-80]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph procs 
@@ -157,7 +157,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat 
     annotation (extent=[80,80; 100,100]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
-                                           annotation (extent=[40,80; 60,100]);
+                                     annotation (extent=[40,80; 60,100]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph promc 
     annotation(extent=[0,-100; 20,-80]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph profs 
@@ -167,8 +167,8 @@ equation
   /* Flow reversal in the hot side */
   if continuous_flow_reversal then
     0 = noEvent(if (Qc > Qeps) then Ec.h - Ec.h_vol else if (Qc < -Qeps) then 
-        Sc.h - Sc.h_vol else Ec.h - 0.5*((Ec.h_vol - Sc.h_vol)*Modelica.Math.sin(pi
-        *Qc/2/Qeps) + Ec.h_vol + Sc.h_vol));
+  Sc.h - Sc.h_vol else Ec.h - 0.5*((Ec.h_vol - Sc.h_vol)*Modelica.Math.sin(pi
+  *Qc/2/Qeps) + Ec.h_vol + Sc.h_vol));
   else
     0 = if (Qc > 0) then Ec.h - Ec.h_vol else Sc.h - Sc.h_vol;
   end if;
@@ -176,8 +176,8 @@ equation
   /* Flow reversal in the cold side */
   if continuous_flow_reversal then
     0 = noEvent(if (Qf > Qeps) then Ef.h - Ef.h_vol else if (Qf < -Qeps) then 
-        Sf.h - Sf.h_vol else Ef.h - 0.5*((Ef.h_vol - Sf.h_vol)*Modelica.Math.sin(pi
-        *Qf/2/Qeps) + Ef.h_vol + Sf.h_vol));
+  Sf.h - Sf.h_vol else Ef.h - 0.5*((Ef.h_vol - Sf.h_vol)*Modelica.Math.sin(pi
+  *Qf/2/Qeps) + Ef.h_vol + Sf.h_vol));
   else
     0 = if (Qf > 0) then Ef.h - Ef.h_vol else Sf.h - Sf.h_vol;
   end if;

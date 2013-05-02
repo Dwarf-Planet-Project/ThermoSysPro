@@ -31,7 +31,7 @@ model ThreeWayValve "Three way valve"
 </ul>
 </html>
 "), Diagram(Text(extent=[-46,-30; -12,-52], string="Valve 1"),
-            Text(extent=[36,-6; 70,-28], string="Valve 2")));
+      Text(extent=[36,-6; 70,-28], string="Valve 2")));
   annotation (
     Coordsys(
       extent=[-100, -100; 100, 100],
@@ -39,14 +39,14 @@ model ThreeWayValve "Three way valve"
       component=[20, 20]),
     Icon(
       Polygon(points=[-100, 0; -100, -80; 100, 0; 100, -80; -100, 0], style(
-            fillColor=53)),
+      fillColor=53)),
       Polygon(points=[-20, -100; 0, -40; 20, -100; -20, -100], style(fillColor=
-              53)),
+        53)),
       Polygon(points=[40, 40; -40, 40; -40, 56; -38, 74; -32, 84; -20, 94; 0,
-            100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
-            fillPattern=1)),
+      100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
+      fillPattern=1)),
       Polygon(points=[0, -40; 40, 40; -40, 40; 0, -40], style(fillColor=53,
-            fillPattern=1))),
+      fillPattern=1))),
     Window(
       x=0.09,
       y=0.11,
@@ -73,8 +73,8 @@ model ThreeWayValve "Three way valve"
     mode=mode,
     continuous_flow_reversal=continuous_flow_reversal,
     fluid=fluid) 
-               annotation (extent=[16, -30; -4, -50], rotation=90);
-  Connectors.FluidOutletI C3         annotation (extent=[-10, -110; 10, -90]);
+         annotation (extent=[16, -30; -4, -50], rotation=90);
+  Connectors.FluidOutletI C3   annotation (extent=[-10, -110; 10, -90]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve2(
     Cvmax=Cvmax2,
     caract=caract2,
@@ -83,17 +83,17 @@ model ThreeWayValve "Three way valve"
     mode=mode,
     continuous_flow_reversal=continuous_flow_reversal,
     fluid=fluid) 
-               annotation (extent=[40, -4; 60, 16]);
+         annotation (extent=[40, -4; 60, 16]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1 
-                                         annotation (extent=[-80,60; -60,80]);
+                                   annotation (extent=[-80,60; -60,80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Math.Add Add1(
-                              k2=-1) annotation (extent=[-40, 40; -20, 60]);
+                        k2=-1) annotation (extent=[-40, 40; -20, 60]);
   ThermoSysPro.WaterSteam.Volumes.VolumeA VolumeA1(
     V=V,
     p_rho=p_rho,
     mode=mode) annotation (extent=[-10, -10; 10, 10]);
   ThermoSysPro.WaterSteam.PressureLosses.PipePressureLoss PerteDP1(K=0, continuous_flow_reversal=
-        continuous_flow_reversal,
+  continuous_flow_reversal,
     fluid=fluid) 
     annotation (extent=[-60, -10; -40, 10]);
 equation 
@@ -109,10 +109,10 @@ equation
     annotation (points=[10, 0; 40, 0], style(color=3));
   connect(VolumeA1.Cs2, Valve1.C1) 
     annotation (points=[0,-10; 0,-30; 8.88178e-016,-30],
-                                         style(color=3));
+                                   style(color=3));
   connect(Valve1.C2, C3) 
     annotation (points=[-8.88178e-016,-50; -8.88178e-016,-78; 0,-78; 0,-100],
-                                         style(color=3));
+                                   style(color=3));
   connect(PerteDP1.C2, VolumeA1.Ce1) 
     annotation (points=[-40, 0; -10, 0], style(color=3));
   connect(Valve2.C2, C2) 

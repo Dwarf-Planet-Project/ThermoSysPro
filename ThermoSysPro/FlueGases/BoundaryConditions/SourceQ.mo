@@ -20,45 +20,45 @@ public
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[40, 0; 90, 0; 72, 10]),
       Line(points=[90, 0; 72, -10]),
       Text(
-        extent=[-40,40; 40,-40],
-        style(fillColor=9, fillPattern=1),
-        string="Q"),
+  extent=[-40,40; 40,-40],
+  style(fillColor=9, fillPattern=1),
+  string="Q"),
       Text(
-        extent=[-40,60; -6,40],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Q"),
+  extent=[-40,60; -6,40],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Q"),
       Text(
-        extent=[-40,-40; -2,-60],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
+  extent=[-40,-40; -2,-60],
+  style(color=3, rgbcolor={0,0,255}),
+  string="T")),
     Icon(
       Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[40, 0; 90, 0; 72, 10]),
       Line(points=[90, 0; 72, -10]),
       Text(
-        extent=[-40,40; 40,-40],
-        style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8),
-        string="Q"),
+  extent=[-40,40; 40,-40],
+  style(
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8),
+  string="Q"),
       Text(
-        extent=[-40,60; -6,40],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Q"),
+  extent=[-40,60; -6,40],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Q"),
       Text(
-        extent=[-40,-40; -2,-60],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
+  extent=[-40,-40; -2,-60],
+  style(color=3, rgbcolor={0,0,255}),
+  string="T")),
     Window(
       x=0.09,
       y=0.2,

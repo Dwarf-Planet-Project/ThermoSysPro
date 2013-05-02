@@ -19,15 +19,15 @@ protected
   Real Pperl "Intermediate variable";
   
   /****************************************************************************
-        Valeurs du coefficient de rayonnement de base tirées de :
-                D. Annaratone - GENERATORI DI VAPORE - fig. 9.8.6
-                The Babcock & Wilcox Company - STEAM - fig 26.
-        Les valeurs correspondantes à une température de paroi de 1366.483
-        (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe 
-        une droite et en actionnant une conversion d'unités de mesure
-                                7.75      9
-          Kr = 5.67826*[15.5 + ------- * --- DeltaT(°K)]
-                                1500.     5
+  Valeurs du coefficient de rayonnement de base tirées de :
+          D. Annaratone - GENERATORI DI VAPORE - fig. 9.8.6
+          The Babcock & Wilcox Company - STEAM - fig 26.
+  Les valeurs correspondantes à une température de paroi de 1366.483
+  (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe 
+  une droite et en actionnant une conversion d'unités de mesure
+                          7.75      9
+    Kr = 5.67826*[15.5 + ------- * --- DeltaT(°K)]
+                          1500.     5
  
   ******************************************************************************/
   constant Real TabDeltaT[20]={-1100,-1000,-900,-800,-700,-600,-500,-400,-300,-200,
@@ -44,7 +44,7 @@ protected
       109.14, 119.7, 130.26, 140.82, 161.94, 167.23];
   
   /******************************************************************************
-        Modification to take into account the influence of different fuels
+  Modification to take into account the influence of different fuels
   ********************************************************************************/
   constant Real TabPl[6]={0.,0.06,0.12,0.18,0.24,0.30};
   constant Real TabRap[4]={0.3,0.4,0.76,2.};
@@ -68,13 +68,13 @@ algorithm
   
   annotation (
       smoothOrder=2,
-      Icon,                Documentation(info="<html>
+      Icon,          Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
 <p><b>ThermoSysPro Version 2.0</b></p>
 </HTML>
-",        revisions="<html>
+",  revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

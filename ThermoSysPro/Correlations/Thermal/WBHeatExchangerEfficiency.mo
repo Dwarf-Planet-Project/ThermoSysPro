@@ -64,7 +64,7 @@ algorithm
   
   annotation (
     smoothOrder=2,
-    Icon,                  Documentation(revisions="<html>
+    Icon,            Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

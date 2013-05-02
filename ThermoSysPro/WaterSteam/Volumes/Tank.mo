@@ -25,7 +25,7 @@ protected
     "Gravity constant";
   parameter Modelica.SIunits.Thickness e=0.25 "Inlet/outlet thickness";
   parameter ThermoSysPro.Units.PressureLossCoefficient k=
-                                                        1 
+                                                  1 
     "Inlet/outlet pressure loss coefficient";
   parameter Real eps=1.e-0 "Small number for ths square function";
   parameter Modelica.SIunits.Position zmin=1.e-6 "Minimum fluid level";
@@ -53,11 +53,11 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Icon(Rectangle(extent=[-100, 20; 100, -100], style(fillColor=71,
-            rgbfillColor={85,170,255})),
-                             Rectangle(extent=[-100, 100; 100, 20])),
+      rgbfillColor={85,170,255})),
+                       Rectangle(extent=[-100, 100; 100, 20])),
     Diagram(Rectangle(extent=[-100, 20; 100, -100], style(fillColor=71,
-            rgbfillColor={85,170,255})),
-        Rectangle(extent=[-100, 100; 100, 20], style(fillPattern=0))),
+      rgbfillColor={85,170,255})),
+  Rectangle(extent=[-100, 100; 100, 20], style(fillPattern=0))),
     Window(
       x=0.16,
       y=0.03,
@@ -79,13 +79,13 @@ public
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal yLevel 
-    "Water level"                        annotation (extent=[100, 10; 120, 30]);
-  Connectors.FluidInlet Ce1          annotation (extent=[-110, 50; -90, 70]);
-  Connectors.FluidOutlet Cs2         annotation (extent=[90, -70; 110, -50]);
+    "Water level"                  annotation (extent=[100, 10; 120, 30]);
+  Connectors.FluidInlet Ce1    annotation (extent=[-110, 50; -90, 70]);
+  Connectors.FluidOutlet Cs2   annotation (extent=[90, -70; 110, -50]);
   ThermoSysPro.Thermal.Connectors.ThermalPort Cth 
-                                     annotation (extent=[-10, -10; 10, 10]);
-  Connectors.FluidInlet Ce2          annotation (extent=[-110, -70; -90, -50]);
-  Connectors.FluidOutlet Cs1         annotation (extent=[92, 50; 112, 70]);
+                               annotation (extent=[-10, -10; 10, 10]);
+  Connectors.FluidInlet Ce2    annotation (extent=[-110, -70; -90, -50]);
+  Connectors.FluidOutlet Cs1   annotation (extent=[92, 50; 112, 70]);
 initial equation 
   if steady_state then
     der(h) = 0;
@@ -132,7 +132,7 @@ equation
     (Ce1.P - (Patm + rho*g*max(z - ze1, 0)))*Oe1 = k*
       ThermoSysPro.Functions.ThermoSquare(Ce1.Q, eps)/2/rho;
     Oe1 = if ((Ce1.Q >= 0) or (z > ze1 + e)) then 1 else if (z < ze1) then 0 else 
-            (z - ze1)/e;
+      (z - ze1)/e;
   end if;
   
   if (cardinality(Ce2) == 0) then
@@ -142,7 +142,7 @@ equation
     (Ce2.P - (Patm + rho*g*max(z - ze2, 0)))*Oe2 = k*
       ThermoSysPro.Functions.ThermoSquare(Ce2.Q, eps)/2/rho;
     Oe2 = if ((Ce2.Q >= 0) or (z > ze2 + e)) then 1 else if (z < ze2) then 0 else 
-            (z - ze2)/e;
+      (z - ze2)/e;
   end if;
   
   if (cardinality(Cs1) == 0) then
@@ -152,7 +152,7 @@ equation
     (Patm + rho*g*max(z - zs1, 0) - Cs1.P)*Os1 = k*
       ThermoSysPro.Functions.ThermoSquare(Cs1.Q, eps)/2/rho;
     Os1 = if ((Cs1.Q <= 0) or (z > zs1 + e)) then 1 else if (z < zs1) then 0 else 
-            (z - zs1)/e;
+      (z - zs1)/e;
   end if;
   
   if (cardinality(Cs2) == 0) then
@@ -162,7 +162,7 @@ equation
     (Patm + rho*g*max(z - zs2, 0) - Cs2.P)*Os2 = k*
       ThermoSysPro.Functions.ThermoSquare(Cs2.Q, eps)/2/rho;
     Os2 = if ((Cs2.Q <= 0) or (z > zs2 + e)) then 1 else if (z < zs2) then 0 else 
-            (z - zs2)/e;
+      (z - zs2)/e;
   end if;
   
   /* Mass balance equation */

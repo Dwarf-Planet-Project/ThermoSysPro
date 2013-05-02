@@ -33,64 +33,64 @@ public
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[-60, 32; 62, -34], style(fillColor=69, rgbfillColor={0,
-              128,255})),
+        128,255})),
       Rectangle(extent=[-60, -4; 62, 0], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, 16; 62, 20], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, -22; 62, -18], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[62, 12; 92, -12], style(fillColor=69, rgbfillColor={0,
-              128,255})),
+        128,255})),
       Rectangle(extent=[-90, 12; -60, -12], style(fillColor=69, rgbfillColor={0,
-              128,255})),
+        128,255})),
       Line(points=[92, -22; 90, -26; 88, -28; 84, -30; 80, -30; 76, -28; 72,
-            -22; 70, -14; 70, -6; 70, 16; 72, 22; 74, 26; 76, 28; 80, 30; 82,
-            30; 86, 28; 88, 26; 90, 22; 90, 28; 86, 24; 90, 22]),
+      -22; 70, -14; 70, -6; 70, 16; 72, 22; 74, 26; 76, 28; 80, 30; 82,
+      30; 86, 28; 88, 26; 90, 22; 90, 28; 86, 24; 90, 22]),
       Rectangle(extent=[-60, 30; 62, 34], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, -36; 62, -32], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1))),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1))),
     Icon(
       Rectangle(extent=[-60, 32; 62, -34], style(fillColor=69, rgbfillColor={0,
-              128,255})),
+        128,255})),
       Rectangle(extent=[-60, -4; 62, 0], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, 16; 62, 20], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, -22; 62, -18], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[62,12; 92,-12], style(fillColor=69, rgbfillColor={0,128,
-              255})),
+        255})),
       Rectangle(extent=[-90, 12; -60, -12], style(fillColor=69, rgbfillColor={0,
-              128,255})),
+        128,255})),
       Line(points=[92, -22; 90, -26; 88, -28; 84, -30; 80, -30; 76, -28; 72,
-            -22; 70, -14; 70, -6; 70, 16; 72, 22; 74, 26; 76, 28; 80, 30; 82,
-            30; 86, 28; 88, 26; 90, 22; 90, 28; 86, 24; 90, 22]),
+      -22; 70, -14; 70, -6; 70, 16; 72, 22; 74, 26; 76, 28; 80, 30; 82,
+      30; 86, 28; 88, 26; 90, 22; 90, 28; 86, 24; 90, 22]),
       Rectangle(extent=[-60, 30; 62, 34], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1)),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1)),
       Rectangle(extent=[-60, -36; 62, -32], style(
-          gradient=3,
-          fillColor=1,
-          fillPattern=1))),
+    gradient=3,
+    fillColor=1,
+    fillPattern=1))),
     Window(
       x=0.07,
       y=0.04,
@@ -115,7 +115,7 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical marche 
     annotation (extent=[-10, 34; 10, 54], rotation=-90);
   ThermoSysPro.ElectroMechanics.Connectors.MechanichalTorque C 
-                                 annotation (extent=[92, -10; 112, 10]);
+                           annotation (extent=[92, -10; 112, 10]);
 initial equation 
   if steady_state_mech then
     if mech_coupling then

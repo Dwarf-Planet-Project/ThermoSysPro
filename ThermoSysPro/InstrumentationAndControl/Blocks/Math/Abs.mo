@@ -16,9 +16,9 @@ block Abs
       Line(points=[0, -14; 0, 68], style(color=8)),
       Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=8)),
       Text(
-        extent=[-34, -28; 38, -76],
-        string="abs",
-        style(color=8)),
+  extent=[-34, -28; 38, -76],
+  string="abs",
+  style(color=8)),
       Line(points=[-88, 0; 76, 0], style(color=8))),
     Diagram(
       Line(points=[-100, 0; 76, 0], style(color=8)),
@@ -29,13 +29,13 @@ block Abs
       Line(points=[0, -80; 0, 68], style(color=8)),
       Polygon(points=[0, 90; -8, 68; 8, 68; 0, 90], style(color=8, fillColor=8)),
       Text(
-        extent=[3, 92; 30, 72],
-        string="y",
-        style(color=9)),
+  extent=[3, 92; 30, 72],
+  string="y",
+  style(color=9)),
       Text(
-        extent=[74, -8; 96, -28],
-        string="u",
-        style(color=9)),
+  extent=[74, -8; 96, -28],
+  string="u",
+  style(color=9)),
       Text(extent=[52, -3; 72, -23], string="1"),
       Text(extent=[-86, -1; -66, -21], string="-1"),
       Text(extent=[-28, 79; -8, 59], string="1")),
@@ -53,9 +53,9 @@ block Abs
 "));
   
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = abs(u.signal);

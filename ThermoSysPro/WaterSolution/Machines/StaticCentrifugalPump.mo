@@ -1,9 +1,9 @@
 within ThermoSysPro.WaterSolution.Machines;
 model StaticCentrifugalPump "Water solution static centrifugal pump" 
   parameter ThermoSysPro.Units.RotationVelocity VRot=
-                                                    1400 "Rotational speed";
+                                              1400 "Rotational speed";
   parameter ThermoSysPro.Units.RotationVelocity VRotn=
-                                                     1400 
+                                               1400 
     "Nominal rotational speed";
   parameter Real rm=0.85 
     "Product of the pump mechanical and electrical efficiencies";
@@ -53,19 +53,19 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-100,100; 100,-100], style(
-          gradient=0,
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1)),
+    gradient=0,
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1)),
       Line(points=[-80,0; 80,0]),
       Line(points=[80,0; 2,60]),
       Line(points=[80,0; 0,-60])),
     Icon(
       Ellipse(extent=[-100,100; 100,-100], style(
-          gradient=0,
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1)),
+    gradient=0,
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1)),
       Line(points=[-80,0; 80,0]),
       Line(points=[80,0; 2,60]),
       Line(points=[80,0; 0,-60])),
@@ -96,7 +96,7 @@ public
     annotation(extent=[-10,100; 10,120],  rotation=-90);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal VRotation 
     annotation (extent=[-10,-120; 10,-100],
-                                          rotation=90);
+                                    rotation=90);
 equation 
   if (cardinality(commandePompe) == 0) then
     commandePompe.signal = true;

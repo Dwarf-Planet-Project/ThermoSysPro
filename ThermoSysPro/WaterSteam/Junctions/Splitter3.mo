@@ -12,87 +12,87 @@ public
   ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
   
   annotation (
-    Diagram(               Text(extent=[10,-60; 48,-90], string="3"),
+    Diagram(         Text(extent=[10,-60; 48,-90], string="3"),
       Rectangle(extent=[44,-27; 50,-65],style(
-          pattern=0,
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)),
+    pattern=0,
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)),
       Polygon(points=[-100,-20; -100,20; 20,20; 20,100; 60,100; 60,20; 100,20;
-            100,-20; 60,-20; 60,-100; 20,-100; 20,-20; -100,-20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)),
+      100,-20; 60,-20; 60,-100; 20,-100; 20,-20; -100,-20], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)),
       Text(
-        extent=[20,80; 60,40],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="1"),
+  extent=[20,80; 60,40],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="1"),
       Text(
-        extent=[20,-40; 60,-80],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="2"),
+  extent=[20,-40; 60,-80],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="2"),
       Text(
-        extent=[60,20; 100,-20],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="3")),
+  extent=[60,20; 100,-20],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="3")),
     Coordsys(extent=[-100, -100; 100, 100]),
-    Icon(                  Text(extent=[10,-60; 48,-90], string="3"),
+    Icon(            Text(extent=[10,-60; 48,-90], string="3"),
       Rectangle(extent=[44,-27; 50,-65],style(
-          pattern=0,
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)),
+    pattern=0,
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)),
       Polygon(points=[-100,-20; -100,20; 20,20; 20,100; 60,100; 60,20; 100,20;
-            100,-20; 60,-20; 60,-100; 20,-100; 20,-20; -100,-20], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1)),
+      100,-20; 60,-20; 60,-100; 20,-100; 20,-20; -100,-20], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1)),
       Text(
-        extent=[20,80; 60,40],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="1"),
+  extent=[20,80; 60,40],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="1"),
       Text(
-        extent=[20,-40; 60,-80],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="2"),
+  extent=[20,-40; 60,-80],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="2"),
       Text(
-        extent=[60,20; 100,-20],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="3")),
+  extent=[60,20; 100,-20],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="3")),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

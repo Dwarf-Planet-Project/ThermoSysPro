@@ -14,7 +14,7 @@ model TestStodolaTurbine
     Diagram);
   ThermoSysPro.WaterSteam.Machines.StodolaTurbine stodolaTurbine(fluid=1) 
     annotation (extent=[-60,60; -40,80]);
-  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(                 mode=0, P0=45e5) 
+  ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(           mode=0, P0=45e5) 
     annotation (extent=[-20,60; 0,80]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
     h0=3.e6,
@@ -25,17 +25,17 @@ model TestStodolaTurbine
     DynamicCentrifugalPump1 
     annotation (extent=[20,-40; 0,-20]);
   ThermoSysPro.WaterSteam.Volumes.Tank Bache1(
-                                        ze2=10, zs2=10) 
+                                  ze2=10, zs2=10) 
     annotation (extent=[0,20; 20,40]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1 
     annotation (extent=[60,20; 80,40]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                                  k=0.5) annotation (extent=[20,60;
-        40,80]);
+                                            k=0.5) annotation (extent=[20,60;
+  40,80]);
 equation 
   connect(DynamicCentrifugalPump1.C2,Bache1. Ce2) 
     annotation (points=[0,-30.2; -10,-30; -20,-30; -20,24; 0,24],
-                                                               style(color=3));
+                                                         style(color=3));
   connect(Bache1.Cs2,VanneReglante1. C1) 
     annotation (points=[20,24; 60,24],  style(color=3));
   connect(VanneReglante1.C2,DynamicCentrifugalPump1. C1) 

@@ -27,9 +27,9 @@ algorithm
       Text(extent=[-134, 104; 142, 44], string="%name"),
       Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
       Text(
-        extent=[-84, -4; 84, -52],
-        string="fonction",
-        style(color=45))),
+  extent=[-84, -4; 84, -52],
+  string="fonction",
+  style(color=45))),
     Window(
       x=0.06,
       y=0.1,

@@ -20,7 +20,7 @@ model TestFlueGasesVolumes1
     annotation (extent=[-20,20; 0,40], rotation=-90);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases3 annotation (extent=[-20,0; 0,-20], rotation=
-        90);
+  90);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases5 annotation (extent=[-60,20; -40,40]);
   ThermoSysPro.FlueGases.BoundaryConditions.SourceP sourceFlueGasesP1 
@@ -32,7 +32,7 @@ model TestFlueGasesVolumes1
 equation 
   connect(sourceFlueGasesP.C, singularPressureLossFlueGases1.C1) annotation (
       points=[-80,-50; -60,-50],
-                               style(
+                         style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4));
@@ -72,7 +72,7 @@ equation
       rgbcolor={0,0,0},
       thickness=4));
   connect(sourceFlueGasesP1.C, singularPressureLossFlueGases5.C1) 
-                                                                 annotation (
+                                                           annotation (
       points=[-80,30; -60,30], style(
       color=0,
       rgbcolor={0,0,0},
@@ -83,7 +83,7 @@ equation
       rgbcolor={0,0,0},
       thickness=4));
   connect(sourceFlueGasesP2.C, singularPressureLossFlueGases6.C1) 
-                                                                 annotation (
+                                                           annotation (
       points=[-80,70; -60,70], style(
       color=0,
       rgbcolor={0,0,0},

@@ -13,7 +13,7 @@ model TestStaticCentrifugalPumpWaterSolution
       height=0.47),
     Diagram);
   ThermoSysPro.InstrumentationAndControl.Blocks.Logique.Pulse Pulse1(
-                                          width=200, period=400) 
+                                    width=200, period=400) 
     annotation (extent=[-40,60; -20,80]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Pulse pulse(
     width=200,

@@ -24,23 +24,23 @@ protected
       Text(extent=[-28,60; -10,40],   string="Q"),
       Text(extent=[-30,-40; -12,-60], string="h"),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0})),
+        255,0})),
       Text(
-        extent=[-22,20; 20,-24],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P Q")),
+  extent=[-22,20; 20,-24],
+  style(color=3, rgbcolor={0,0,255}),
+  string="P Q")),
     Icon(
       Line(points=[40,0; 90,0; 72,10]),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0})),
+        255,0})),
       Line(points=[90,0; 72,-10]),
       Text(extent=[-30,60; -10,40],   string="Q"),
       Text(extent=[-60,30; -40,10],   string="P"),
       Text(extent=[-32,-40; -12,-60], string="h"),
       Text(
-        extent=[-22,20; 20,-24],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P Q")),
+  extent=[-22,20; 20,-24],
+  style(color=3, rgbcolor={0,0,255}),
+  string="P Q")),
     Window(
       x=0.23,
       y=0.15,
@@ -69,7 +69,7 @@ public
     annotation (extent=[-60, -10; -40, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ISpecificEnthalpy 
     annotation (extent=[-10, -40; 10, -60], rotation=-90);
-  Connectors.FluidOutlet C                annotation (extent=[90,-10; 110,10]);
+  Connectors.FluidOutlet C          annotation (extent=[90,-10; 110,10]);
 equation 
   
   C.P = P;

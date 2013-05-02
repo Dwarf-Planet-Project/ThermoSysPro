@@ -73,54 +73,54 @@ public
   annotation (Icon(
       Line(points=[100,90; 100,60; 80,60; 80,60],   style(thickness=4)),
       Ellipse(extent=[-80,-92; 80,-42], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-80,-14; 80,-68], style(
-          color=71,
-          rgbcolor={85,170,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=71,
+    rgbcolor={85,170,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Ellipse(extent=[-80, 42; 80, 92], style(fillColor=7)),
       Line(points=[0, 40; 0, 92], style(thickness=4)),
       Line(points=[0, 38; 0, 92], style(
-          color=7,
-          fillColor=7,
-          fillPattern=1)),
+    color=7,
+    fillColor=7,
+    fillPattern=1)),
       Rectangle(extent=[-80, -14; 80, 68], style(fillColor=7)),
       Line(points=[-79, 68; 80, 68], style(
-          color=7,
-          fillColor=7,
-          fillPattern=1)),
+    color=7,
+    fillColor=7,
+    fillPattern=1)),
       Line(points=[80,60; 100,60; 100,90],  style(
-          color=7,
-          fillColor=7,
-          fillPattern=1))), Diagram(
+    color=7,
+    fillColor=7,
+    fillPattern=1))), Diagram(
       Ellipse(extent=[-80,-92; 80,-42], style(fillColor=71, rgbfillColor={85,
-              170,255})),
+        170,255})),
       Rectangle(extent=[-80,-14; 80,-68], style(
-          color=71,
-          rgbcolor={85,170,255},
-          fillColor=71,
-          rgbfillColor={85,170,255})),
+    color=71,
+    rgbcolor={85,170,255},
+    fillColor=71,
+    rgbfillColor={85,170,255})),
       Ellipse(extent=[-80, 42; 80, 92], style(fillColor=7)),
       Line(points=[0, 40; 0, 92], style(thickness=4)),
       Line(points=[0, 38; 0, 92], style(
-          color=7,
-          fillColor=7,
-          fillPattern=1)),
+    color=7,
+    fillColor=7,
+    fillPattern=1)),
       Rectangle(extent=[-80, -14; 80, 68], style(fillColor=7)),
       Line(points=[-79, 68; 80, 68], style(
-          color=7,
-          fillColor=7,
-          fillPattern=1)),
+    color=7,
+    fillColor=7,
+    fillPattern=1)),
       Text(
-        extent=[58, 4; 58, -10],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Niveau"),
+  extent=[58, 4; 58, -10],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Niveau"),
       Line(points=[100,90; 100,60; 80,60; 80,60],   style(thickness=4)),
       Line(points=[80,60; 100,60; 100,90],  style(
-          color=7,
-          fillColor=7,
-          fillPattern=1))),
+    color=7,
+    fillColor=7,
+    fillPattern=1))),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
@@ -138,7 +138,7 @@ public
 </html>
 "));
   Connectors.FluidInlet Cas "Water input" 
-                                 annotation (extent=[-8, 92; 8, 108]);
+                           annotation (extent=[-8, 92; 8, 108]);
   Connectors.FluidOutlet Cs "Steam output" 
     annotation (extent=[92,90; 108,106]);
   ThermoSysPro.Thermal.Connectors.ThermalPort Ca "Thermal input to the wall" 
@@ -223,11 +223,11 @@ equation
   
   /* Liquid phase energy balance equation */
   rhol*Vl*der(hl) - Vl*der(P) = (Qcond + Cas.Q)*(hls - hl) - Qevap*(hvs - hl)
-                                - Cex.Q*(Cex.h - hl) - Wpl + Wlv + Wch;
+                          - Cex.Q*(Cex.h - hl) - Wpl + Wlv + Wch;
   
   /* Gas phase energy balance equation */
   rhov*Vv*der(hv) - Vv*der(P) = Qevap*(hvs - hv) - Qcond*(hls - hv)
-                                - Cas.Q*(hls - Cas.h) - Wpv - Wlv - Cs.Q*(Cs.h - hv);
+                          - Cas.Q*(hls - Cas.h) - Wpv - Wlv - Cs.Q*(Cs.h - hv);
   
   /* Energy balance equation at the wall */
   Mp*cpp*der(Tp) = Wpl + Wpv + Wpa;

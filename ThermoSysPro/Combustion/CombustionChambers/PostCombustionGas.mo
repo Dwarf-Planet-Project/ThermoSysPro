@@ -452,30 +452,30 @@ equation
   Wrad = P2t*Xrad;
   
   annotation (Diagram(Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=58,
-          rgbfillColor={120,255,0})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=58,
+    rgbfillColor={120,255,0})),
       Polygon(points=[-20,62; 46,46; 2,30; 58,18; 6,0; 48,-16; 2,-32; 54,-44;
-            -20,-60; -20,62], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0},
-          fillPattern=10)),
+      -20,-60; -20,62], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0},
+    fillPattern=10)),
       Line(points=[-20,80; -20,-80], style(color=3, rgbcolor={0,0,255}))),
-                                       Icon(Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=58,
-          rgbfillColor={120,255,0})),
+                                 Icon(Rectangle(extent=[-80,80; 80,-80], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=58,
+    rgbfillColor={120,255,0})),
       Polygon(points=[-20,62; 46,46; 2,30; 58,18; 6,0; 48,-16; 2,-32; 54,-44;
-            -20,-60; -20,62], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0},
-          fillPattern=10)),
+      -20,-60; -20,62], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0},
+    fillPattern=10)),
       Line(points=[-20,80; -20,-80], style(color=3, rgbcolor={0,0,255}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>

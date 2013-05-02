@@ -21,7 +21,7 @@ public
 public 
   Connectors.FlueGasesInlet Ce2 
     annotation (extent=[-50,-110; -30,-90]);
-  Connectors.FlueGasesOutlet Cs            annotation (extent=[90,-10; 110,10]);
+  Connectors.FlueGasesOutlet Cs      annotation (extent=[90,-10; 110,10]);
 public 
   Connectors.FlueGasesInlet Ce1 
     annotation (extent=[-50,90; -30,110]);
@@ -85,23 +85,23 @@ equation
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-60,-100; -20,-100; -20,-20; 100,-20; 100,20; -20,
-            20; -20,100; -60,100; -60,-100], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),                                          Text(extent=[-60,80;
-            -20,40],          string="1"),                          Text(extent=[-60,-40;
-            -20,-80], string="2")),
+      20; -20,100; -60,100; -60,-100], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),                                          Text(extent=[-60,80;
+      -20,40],          string="1"),                          Text(extent=[-60,-40;
+      -20,-80], string="2")),
     Icon(   Polygon(points=[-60,-100; -20,-100; -20,-20; 100,-20; 100,20; -20,
-            20; -20,100; -60,100; -60,-100], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),                                          Text(extent=[-60,80;
-            -20,40],          string="1"),                          Text(extent=[-60,-40;
-            -20,-80], string="2")),
+      20; -20,100; -60,100; -60,-100], style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),                                          Text(extent=[-60,80;
+      -20,40],          string="1"),                          Text(extent=[-60,-40;
+      -20,-80], string="2")),
     Window(
       x=0.33,
       y=0.09,

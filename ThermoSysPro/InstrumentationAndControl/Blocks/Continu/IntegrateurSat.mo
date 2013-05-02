@@ -18,31 +18,31 @@ protected
     Diagram,
     Icon(
       Rectangle(extent=[-100, -100; 100, 100], style(
-          color=3,
-          pattern=1,
-          thickness=1,
-          arrow=0,
-          fillPattern=0)),
+    color=3,
+    pattern=1,
+    thickness=1,
+    arrow=0,
+    fillPattern=0)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Rectangle(extent=[-100, -100; 100, 100], style(color=3, fillColor=7)),
       Line(points=[-80, 78; -80, -90], style(color=8)),
       Polygon(points=[-80, 90; -88, 68; -72, 68; -80, 90], style(
-          color=8,
-          fillColor=8,
-          fillPattern=1)),
+    color=8,
+    fillColor=8,
+    fillPattern=1)),
       Line(points=[-90, -80; 82, -80], style(color=8)),
       Polygon(points=[90, -80; 68, -72; 68, -88; 90, -80], style(
-          color=8,
-          fillColor=8,
-          fillPattern=1)),
+    color=8,
+    fillColor=8,
+    fillPattern=1)),
       Text(
-        extent=[-54, 84; 6, 24],
-        string="I",
-        style(color=8)),
+  extent=[-54, 84; 6, 24],
+  string="I",
+  style(color=8)),
       Text(
-        extent=[-36, -34; 54, -74],
-        string="K=%k",
-        style(color=0)),
+  extent=[-36, -34; 54, -74],
+  string="K=%k",
+  style(color=0)),
       Line(points=[-80, -80; 20, 20; 80, 20])),
     Window(
       x=0.39,
@@ -58,11 +58,11 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ureset 
-                                           annotation (extent=[-120, -90; -100, -70]);
+                                     annotation (extent=[-120, -90; -100, -70]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical reset 
     annotation (extent=[-10, -120; 10, -100], rotation=90);
 initial equation 

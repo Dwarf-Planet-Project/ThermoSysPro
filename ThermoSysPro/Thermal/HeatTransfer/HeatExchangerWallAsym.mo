@@ -42,43 +42,43 @@ public
     Icon(
       Rectangle(extent=[-100,10; 100,-10],   style(color=0, fillColor=8)),
       Text(
-        extent=[-80,40; -20,20],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1),
-        string="2"),
+  extent=[-80,40; -20,20],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1),
+  string="2"),
       Text(
-        extent=[-80,-20; -20,-40],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1),
-        string="1")),
+  extent=[-80,-20; -20,-40],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1),
+  string="1")),
     Diagram(
       Rectangle(extent=[-100,10; 100,-10],   style(color=0, fillColor=8)),
       Text(
-        extent=[-80,30; -20,10],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1),
-        string="Side 2"),
+  extent=[-80,30; -20,10],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1),
+  string="Side 2"),
       Text(
-        extent=[-80,-10; -20,-30],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170},
-          fillPattern=1),
-        string="Side 1")),
+  extent=[-80,-10; -20,-30],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=44,
+    rgbfillColor={255,170,170},
+    fillPattern=1),
+  string="Side 1")),
     DymolaStoredErrors,
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>

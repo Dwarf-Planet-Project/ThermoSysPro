@@ -27,14 +27,14 @@ protected
   
 protected 
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsatm 
-                                   annotation (extent=[-40,40; -20,60]);
+                             annotation (extent=[-40,40; -20,60]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsatm 
-                                   annotation (extent=[0,40; 20,60]);
+                             annotation (extent=[0,40; 20,60]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prol 
     annotation (extent=[-40,0; -20,20]);
 public 
   output ThermoSysPro.Correlations.Misc.Pro_TwoPhaseWaterSteam hy 
-                                           annotation (extent=[0,0; 20,20]);
+                                     annotation (extent=[0,0; 20,20]);
 algorithm 
   
   /* Saturation temperature at Pmc */

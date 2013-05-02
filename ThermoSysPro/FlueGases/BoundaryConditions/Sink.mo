@@ -18,16 +18,16 @@ public
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[-90, 0; -40, 0; -58, 10]),
       Line(points=[-40, 0; -58, -10])),
     Icon(
       Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),
       Line(points=[-90, 0; -40, 0; -58, 10]),
       Line(points=[-40, 0; -58, -10])),
     Window(

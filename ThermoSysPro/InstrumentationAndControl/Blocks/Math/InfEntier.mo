@@ -20,17 +20,17 @@ block InfEntier
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-        extent=[-36, 34; 40, -34],
-        string="<",
-        style(color=0)),
+  extent=[-36, 34; 40, -34],
+  string="<",
+  style(color=0)),
       Text(
-        extent=[-100,100; -38,68],
-        style(color=3, rgbcolor={0,0,255}),
-        string="C1"),
+  extent=[-100,100; -38,68],
+  style(color=3, rgbcolor={0,0,255}),
+  string="C1"),
       Text(
-        extent=[-100,-68; -38,-100],
-        style(color=3, rgbcolor={0,0,255}),
-        string="C2")),
+  extent=[-100,-68; -38,-100],
+  style(color=3, rgbcolor={0,0,255}),
+  string="C2")),
     Window(
       x=0.27,
       y=0.13,
@@ -45,17 +45,17 @@ block InfEntier
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-        extent=[-36, 34; 40, -34],
-        string="<",
-        style(color=0)),
+  extent=[-36, 34; 40, -34],
+  string="<",
+  style(color=0)),
       Text(
-        extent=[-100,100; -38,68],
-        style(color=3, rgbcolor={0,0,255}),
-        string="C1"),
+  extent=[-100,100; -38,68],
+  style(color=3, rgbcolor={0,0,255}),
+  string="C1"),
       Text(
-        extent=[-100,-68; -38,-100],
-        style(color=3, rgbcolor={0,0,255}),
-        string="C2")),
+  extent=[-100,-68; -38,-100],
+  style(color=3, rgbcolor={0,0,255}),
+  string="C2")),
     Documentation(info="<html>
 <p><b>Adapted from the Modelica.Blocks.Math library</b></p>
 </HTML>
@@ -64,11 +64,11 @@ block InfEntier
 </HTML>
 "));
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputLogical yL 
-                                     annotation (extent=[100, -10; 120, 10]);
+                               annotation (extent=[100, -10; 120, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputInteger u1 
-                                          annotation (extent=[-120,50; -100,70]);
+                                    annotation (extent=[-120,50; -100,70]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputInteger u2 
-                                          annotation (extent=[-120,-70; -100,-50]);
+                                    annotation (extent=[-120,-70; -100,-50]);
 equation 
   
   if (cardinality(u1) == 0) then

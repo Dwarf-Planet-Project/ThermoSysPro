@@ -91,24 +91,24 @@ equation
       grid=[2, 2],
       component=[20, 20]),
     Diagram(
-         Polygon(points=[60,100; 60,-100; 20,-100; 20,-20; -100,-20; -100,20;
-            20,20; 20,100; 60,100], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),                                          Text(extent=[20,80;
-            60,40],           string="1"),                          Text(extent=[20,-40;
-            60,-80],  string="2")),
+   Polygon(points=[60,100; 60,-100; 20,-100; 20,-20; -100,-20; -100,20;
+      20,20; 20,100; 60,100], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),                                          Text(extent=[20,80;
+      60,40],           string="1"),                          Text(extent=[20,-40;
+      60,-80],  string="2")),
     Icon(Polygon(points=[60,100; 60,-100; 20,-100; 20,-20; -100,-20; -100,20;
-            20,20; 20,100; 60,100], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),                                          Text(extent=[20,80;
-            60,40],           string="1"),                          Text(extent=[20,-40;
-            60,-80],  string="2")),
+      20,20; 20,100; 60,100], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=8)),                                          Text(extent=[20,80;
+      60,40],           string="1"),                          Text(extent=[20,-40;
+      60,-80],  string="2")),
     Window(
       x=0.33,
       y=0.09,

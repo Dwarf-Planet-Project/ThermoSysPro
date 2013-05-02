@@ -17,13 +17,13 @@ model TestFlueGasesVolumes
     annotation (extent=[-40,0; -20,20]);
   ThermoSysPro.Thermal.BoundaryConditions.HeatSource heatSource(
       option_temperature=2, W0={2e4}) 
-                            annotation (extent=[-80,42; -60,62]);
+                      annotation (extent=[-80,42; -60,62]);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases(K(fixed=true) = 10, Q(fixed=false, start=10)) 
-                                  annotation (extent=[0,0; 20,20]);
+                            annotation (extent=[0,0; 20,20]);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases1(K(fixed=true) = 0.01, Q(fixed=false, start=
-          11))                    annotation (extent=[-80,0; -60,20]);
+    11))                    annotation (extent=[-80,0; -60,20]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe(
     Starttime=50,
     Duration=50,
@@ -36,20 +36,20 @@ model TestFlueGasesVolumes
     a1=45.876,
     a2=-50,
     b1=-3.0752) 
-               annotation (extent=[40,0; 60,20]);
+         annotation (extent=[40,0; 60,20]);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases2(
-                                  K(fixed=true) = 10, Q(fixed=false, start=10)) 
-                                  annotation (extent=[80,0; 100,20]);
+                            K(fixed=true) = 10, Q(fixed=false, start=10)) 
+                            annotation (extent=[80,0; 100,20]);
 equation 
   connect(Source_Fumees.C, singularPressureLossFlueGases1.C1) annotation (
       points=[-100,10; -80,10],
-                             style(
+                       style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4));
   connect(singularPressureLossFlueGases.C2, staticFan.C1) annotation (points=[20,10;
-        40,10],   style(
+  40,10],   style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,
@@ -57,7 +57,7 @@ equation
       fillColor=3,
       rgbfillColor={0,0,255}));
   connect(staticFan.C2, singularPressureLossFlueGases2.C1) annotation (points=[60,10;
-        80,10],                        style(
+  80,10],                        style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4,
@@ -66,7 +66,7 @@ equation
       rgbfillColor={0,0,255}));
   connect(singularPressureLossFlueGases1.C2, dynamicExchanger.Ce) annotation (
       points=[-60,10; -40,10],
-                             style(
+                       style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4));
@@ -76,17 +76,17 @@ equation
       rgbcolor={0,0,0},
       thickness=4));
   connect(singularPressureLossFlueGases2.C2, Puits_Fumees.C) annotation (points=[100,10;
-        110.1,10; 110.1,10; 120.2,10],         style(
+  110.1,10; 110.1,10; 120.2,10],         style(
       color=0,
       rgbcolor={0,0,0},
       thickness=4));
   connect(rampe.y, heatSource.ISignal) annotation (points=[-41,70; -70,70; -70,
-        57], style(
+  57], style(
       fillColor=6,
       rgbfillColor={255,255,0},
       fillPattern=8));
   connect(heatSource.C[1], dynamicExchanger.Cth) annotation (points=[-70,42.2;
-        -30,10], style(
+  -30,10], style(
       color=46,
       rgbcolor={191,95,0},
       fillColor=6,

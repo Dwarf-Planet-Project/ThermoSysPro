@@ -184,8 +184,8 @@ equation
   
   /* Combusiton air ratio */
   exc = Qea*(1 - XeaH2O)/
-        ((Qfuel*amO*(2*XCfuel/amC + 0.5*XHfuel/amH + 2*XSfuel/amS - XOfuel/amO) -
-         Qfuel*amO*2*(Qcv*ImbCV + Qbf*ImbBF)/amC)/(XeaO2/(1 - XeaH2O)));
+  ((Qfuel*amO*(2*XCfuel/amC + 0.5*XHfuel/amH + 2*XSfuel/amS - XOfuel/amO) -
+   Qfuel*amO*2*(Qcv*ImbCV + Qbf*ImbBF)/amC)/(XeaO2/(1 - XeaH2O)));
   
   /* Pressure losses */
   Pea - Psf = deltaPccb;
@@ -211,40 +211,40 @@ equation
   
     annotation (Diagram(
       Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})),
       Polygon(points=[-50,-36; -44,30; -34,-2; -10,66; 10,-4; 44,54; 66,-44; 38,
-            -80; -34,-80; -50,-36], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=45,
-          rgbfillColor={255,128,0})),
+      -80; -34,-80; -50,-36], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=45,
+    rgbfillColor={255,128,0})),
       Polygon(points=[-32,-36; -18,-44; -26,-16; -16,6; 4,-44; 8,-28; 36,-72;
-            16,-80; -16,-80; -32,-36], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0}))),
-                             Icon(
+      16,-80; -16,-80; -32,-36], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0}))),
+                       Icon(
       Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})),
       Polygon(points=[-50,-36; -44,30; -34,-2; -10,66; 10,-4; 44,54; 66,-44; 38,
-            -80; -34,-80; -50,-36], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=45,
-          rgbfillColor={255,128,0})),
+      -80; -34,-80; -50,-36], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=45,
+    rgbfillColor={255,128,0})),
       Polygon(points=[-32,-36; -18,-44; -26,-16; -16,6; 4,-44; 8,-28; 36,-72;
-            16,-80; -16,-80; -32,-36], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0}))),
+      16,-80; -16,-80; -32,-36], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>

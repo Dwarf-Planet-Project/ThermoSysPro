@@ -52,13 +52,13 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Rectangle(extent=[-100,20; 100,-20],   style(
-          fillColor=71,
-          rgbfillColor={85,170,255},
-          fillPattern=1))),
+    fillColor=71,
+    rgbfillColor={85,170,255},
+    fillPattern=1))),
     Icon(   Rectangle(extent=[-100,20; 100,-20],   style(
-          fillColor=71,
-          rgbfillColor={85,170,255},
-          fillPattern=1))),
+    fillColor=71,
+    rgbfillColor={85,170,255},
+    fillPattern=1))),
     Window(
       x=0.06,
       y=0.08,
@@ -78,9 +78,9 @@ public
 "));
 public 
   Connectors.FluidInlet C1 
-                          annotation(extent=[-110, -10; -90, 10]);
+                    annotation(extent=[-110, -10; -90, 10]);
   Connectors.FluidOutlet C2 
-                          annotation(extent=[90, -10; 110, 10]);
+                    annotation(extent=[90, -10; 110, 10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-100, 80; -80, 100]);
 initial equation 

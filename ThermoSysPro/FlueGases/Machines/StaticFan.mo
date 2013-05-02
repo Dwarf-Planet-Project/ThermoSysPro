@@ -55,12 +55,12 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical commandeFan 
     annotation(extent=[-10,100; 10,120],  rotation=-90);
   Connectors.FlueGasesInlet C1 
-                          annotation(extent=[-110, -10; -90, 10]);
+                    annotation(extent=[-110, -10; -90, 10]);
   Connectors.FlueGasesOutlet C2 
-                          annotation(extent=[90,-10; 110,10]);
+                    annotation(extent=[90,-10; 110,10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal VRotation 
     annotation (extent=[-10,-120; 10,-100],
-                                          rotation=90);
+                                    rotation=90);
 equation 
   if (cardinality(commandeFan) == 0) then
     commandeFan.signal = true;
@@ -128,17 +128,17 @@ equation
     Diagram(
       Ellipse(extent=[-100,100; 100,-100], style(gradient=0)),
       Polygon(points=[-40,92; 40,92; -40,-92; 40,-92; -40,92], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8)),
       Polygon(points=[-92,40; -92,-40; 92,40; 92,-40; -92,40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8))),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8))),
     Window(
       x=0.03,
       y=0.02,
@@ -147,17 +147,17 @@ equation
     Icon(
       Ellipse(extent=[-100,100; 100,-100], style(gradient=0)),
       Polygon(points=[-40,92; 40,92; -40,-92; 40,-92; -40,92], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8)),
       Polygon(points=[-92,40; -92,-40; 92,40; 92,-40; -92,40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8))),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8))),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>

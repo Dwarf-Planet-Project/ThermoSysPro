@@ -42,9 +42,9 @@ equation
       Line(points=[0,-28; 0,-80]),
       Line(points=[-98, -80; 102, -80]),
       Ellipse(extent=[-60,92; 60,-28], style(
-          fillColor=2,
-          rgbfillColor={0,255,0},
-          fillPattern=10)),
+    fillColor=2,
+    rgbfillColor={0,255,0},
+    fillPattern=10)),
       Text(extent=[-60,60; 60,0],    string="Q")),
     Window(
       x=0.25,
@@ -53,15 +53,15 @@ equation
       height=0.6),
     Diagram(
       Line(points=[0,-28; 0,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=42,
-          rgbfillColor={127,0,0})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=42,
+    rgbfillColor={127,0,0})),
       Line(points=[-98, -80; 102, -80]),
       Ellipse(extent=[-60,92; 60,-28], style(
-          fillColor=2,
-          rgbfillColor={0,255,0},
-          fillPattern=10)),
+    fillColor=2,
+    rgbfillColor={0,255,0},
+    fillPattern=10)),
       Text(extent=[-60,60; 60,0],    string="Q")),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>

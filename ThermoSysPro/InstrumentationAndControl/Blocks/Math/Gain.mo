@@ -8,17 +8,17 @@ block Gain
       component=[20, 20]),
     Icon(
       Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
-            fillPattern=0)),
+      fillPattern=0)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Text(
-        extent=[-54, 20; -6, -16],
-        string="%Gain",
-        style(color=0))),
+  extent=[-54, 20; -6, -16],
+  string="%Gain",
+  style(color=0))),
     Diagram(Polygon(points=[-100, 100; 100, 0; -100, -100; -100, 100], style(
-            fillPattern=0)), Text(
-        extent=[-54, 20; -6, -16],
-        string="Gain",
-        style(color=0))),
+      fillPattern=0)), Text(
+  extent=[-54, 20; -6, -16],
+  string="Gain",
+  style(color=0))),
     Window(
       x=0.24,
       y=0.2,
@@ -32,9 +32,9 @@ block Gain
 </HTML>
 "));
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = Gain*u.signal;

@@ -33,38 +33,38 @@ public
       component=[20, 20]),
     Diagram(
       Line(points=[-40, 100; -40, 20], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[-40, -20; -40, -100], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[40, 100; 40, 18], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[40, -20; 40, -100], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2))),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2))),
     Icon(
       Line(points=[-40, 100; -40, 20], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[-40, -20; -40, -100], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[40, 100; 40, 18], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2)),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2)),
       Line(points=[40, -20; 40, -100], style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2))),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2))),
     Window(
       x=0.13,
       y=0.05,
@@ -86,9 +86,9 @@ public
 "));
 public 
   Connectors.FluidInlet C1 
-                          annotation(extent=[-110, -10; -90, 10]);
+                    annotation(extent=[-110, -10; -90, 10]);
   Connectors.FluidOutlet C2 
-                          annotation(extent=[90, -10; 110, 10]);
+                    annotation(extent=[90, -10; 110, 10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     annotation(extent=[-100, 80; -80, 100]);
 equation 

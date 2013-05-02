@@ -15,7 +15,7 @@ public
     Icon(
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=45)),
       Text(extent=[-40,40; 40,-38],   string="C", 
-        style(color=3, rgbcolor={0,0,255})),
+  style(color=3, rgbcolor={0,0,255})),
       Line(points=[0, -40; 0, -88]),
       Line(points=[-12,-60; 0,-40]),
       Line(points=[12,-60; 0,-40])),
@@ -24,7 +24,7 @@ public
       Line(points=[0, -40; 0, -88]),
       Line(points=[-12,-60; 0,-40]),
       Text(extent=[-40,40; 40,-38],   string="C", 
-        style(color=3, rgbcolor={0,0,255})),
+  style(color=3, rgbcolor={0,0,255})),
       Line(points=[12,-60; 0,-40])),
     Window(
       x=0.33,
@@ -40,7 +40,7 @@ public
 "));
 public 
   input ThermoSysPro.Thermal.Connectors.ThermalPort C[N] 
-                                                       annotation (extent=[-10, -108; 10, -88]);
+                                                 annotation (extent=[-10, -108; 10, -88]);
 equation 
   
   T = C.T;

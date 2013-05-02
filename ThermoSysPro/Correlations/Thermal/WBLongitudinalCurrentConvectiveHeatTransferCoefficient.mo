@@ -68,13 +68,13 @@ algorithm
   
   annotation (
     smoothOrder=2,
-    Icon,                  Documentation(info="<html>
+    Icon,            Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>
 <p><b>ThermoSysPro Version 2.0</b></p>
 </HTML>
-",        revisions="<html>
+",  revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

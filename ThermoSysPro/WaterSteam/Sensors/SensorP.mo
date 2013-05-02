@@ -48,9 +48,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal Measure 
     annotation (extent=[-10,92; 10,112],    rotation=90);
   Connectors.FluidInlet C1 
-                          annotation (extent=[-110, -90; -90, -70]);
+                    annotation (extent=[-110, -90; -90, -70]);
   Connectors.FluidOutlet C2 
-                          annotation (extent=[92, -90; 112, -70]);
+                    annotation (extent=[92, -90; 112, -70]);
 equation 
   
   C1.P = C2.P;

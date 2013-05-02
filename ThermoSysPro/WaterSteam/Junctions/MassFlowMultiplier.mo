@@ -18,31 +18,31 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-100,60; -100,-60; 90,0; -100,60], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})), Text(
-        extent=[-60,24; -20,-16],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="%alpha")),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})), Text(
+  extent=[-60,24; -20,-16],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="%alpha")),
     Icon(Polygon(points=[-100,60; -100,-60; 90,0; -100,60], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0})), Text(
-        extent=[-60,24; -20,-16],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=1),
-        string="%alpha")),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0})), Text(
+  extent=[-60,24; -20,-16],
+  style(
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=1),
+  string="%alpha")),
     Window(
       x=0.33,
       y=0.09,
@@ -67,8 +67,8 @@ public
 public 
   Connectors.FluidInlet Ce 
     annotation (extent=[-110,-10; -90,10]);
-  Connectors.FluidOutlet Cs                annotation (extent=[90,-10; 110,
-        10]);
+  Connectors.FluidOutlet Cs          annotation (extent=[90,-10; 110,
+  10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     "Propriétés de l'eau" 
     annotation (extent=[-100,80; -80,100]);

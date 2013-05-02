@@ -18,9 +18,9 @@ public
       grid=[2, 2],
       component=[20, 20]),
     Diagram(Polygon(points=[-98,40; -18,-100; 22,-100; 102,40; -98,40], style(
-            fillColor=6, rgbfillColor={255,255,0}))),
+      fillColor=6, rgbfillColor={255,255,0}))),
     Icon(   Polygon(points=[-100,40; -20,-100; 20,-100; 100,40; -100,40], style(
-            fillColor=6, rgbfillColor={255,255,0}))),
+      fillColor=6, rgbfillColor={255,255,0}))),
     Window(
       x=0.17,
       y=0.1,
@@ -44,12 +44,12 @@ public
 "));
   Connectors.FluidInlet Cev 
     annotation (extent=[-109,30; -89,50]);
-  Connectors.FluidOutlet Csv               annotation (extent=[89,30; 109,50]);
+  Connectors.FluidOutlet Csv         annotation (extent=[89,30; 109,50]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat1 
     annotation (extent=[-100,-98; -80,-78]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat1 
     annotation (extent=[-76,-98; -56,-78]);
-  Connectors.FluidOutlet Csl               annotation (extent=[-9,-110; 11,-90]);
+  Connectors.FluidOutlet Csl         annotation (extent=[-9,-110; 11,-90]);
   
 equation 
   assert((eta > 0) and (eta <= 1), "SteamDryer - Parameter eta should be > 0 and <= 1");

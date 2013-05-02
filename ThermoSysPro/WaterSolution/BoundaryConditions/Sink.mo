@@ -15,10 +15,10 @@ public
     Diagram(
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=9)),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170})),
       Line(points=[-90, 0; -40, 0; -58, 10]),
       Line(points=[-40, 0; -58, -10])),
     Icon(
@@ -26,10 +26,10 @@ public
       Line(points=[-90, 0; -40, 0; -58, 10]),
       Line(points=[-40, 0; -58, -10]),
       Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170}))),
+    pattern=0,
+    thickness=4,
+    fillColor=44,
+    rgbfillColor={255,170,170}))),
     Window(
       x=0.09,
       y=0.2,

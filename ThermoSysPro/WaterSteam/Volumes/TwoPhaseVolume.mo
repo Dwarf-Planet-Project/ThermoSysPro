@@ -59,7 +59,7 @@ public
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsat 
     annotation (extent=[-60, -80; -20, -40]);
   ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsat 
-                                           annotation (extent=[0, -80; 40, -40]);
+                                     annotation (extent=[0, -80; 40, -40]);
   annotation (
     Coordsys(
       extent=[-100, -100; 100, 100],
@@ -68,14 +68,14 @@ public
     Diagram,
     Icon(
       Polygon(points=[0, 100; -20, 98; -40, 92; -60, 80; -80, 60; -92, 40; -98,
-             20; -100, 0; -98, -20; 98, -20; 100, 0; 98, 20; 92, 40; 80, 60; 60,
-             80; 40, 92; 20, 98; 0, 100], style(fillColor=7)),
+       20; -100, 0; -98, -20; 98, -20; 100, 0; 98, 20; 92, 40; 80, 60; 60,
+       80; 40, 92; 20, 98; 0, 100], style(fillColor=7)),
       Ellipse(extent=[-100, 100; 100, -100], style(fillColor=71, rgbfillColor={
-              85,170,255})),
+        85,170,255})),
       Polygon(points=[0, 100; -20, 98; -40, 92; -60, 80; -80, 60; -92, 40; -98,
-             20; -100, 0; -98, -20; 98, -20; 100, 0; 98, 20; 92, 40; 80, 60; 60,
-             80; 40, 92; 20, 98; 0, 100], style(fillColor=68, rgbfillColor={170,
-              213,255}))),
+       20; -100, 0; -98, -20; 98, -20; 100, 0; 98, 20; 92, 40; 80, 60; 60,
+       80; 40, 92; 20, 98; 0, 100], style(fillColor=68, rgbfillColor={170,
+        213,255}))),
     Window(
       x=0.11,
       y=0.06,
@@ -96,18 +96,18 @@ public
 </html>
 "));
   Connectors.FluidInlet Cv "Steam input" 
-                                    annotation (extent=[-10, 90; 10, 110]);
+                              annotation (extent=[-10, 90; 10, 110]);
   Connectors.FluidOutlet Cl "Water output" 
-                                     annotation (extent=[-10,-110; 10,-90]);
+                               annotation (extent=[-10,-110; 10,-90]);
   ThermoSysPro.Thermal.Connectors.ThermalPort Cth 
-                                     annotation (extent=[-10, 10; 10, 30]);
+                               annotation (extent=[-10, 10; 10, 30]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal yLevel 
-    "Water level"                        annotation (extent=[100, -10; 120, 10]);
+    "Water level"                  annotation (extent=[100, -10; 120, 10]);
 public 
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prod 
     annotation (extent=[-60,-20; -20,20]);
   Connectors.FluidInlet Ce "Water input" 
-                                    annotation (extent=[-110,-10; -90,10]);
+                              annotation (extent=[-110,-10; -90,10]);
 initial equation 
   if steady_state then
     der(hl) = 0;

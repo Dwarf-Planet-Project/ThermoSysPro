@@ -34,16 +34,16 @@ public
       component=[20, 20]),
     Icon(
       Polygon(points=[-100, -100; 0, -60; -100, -20; -100, -100; -100, -100],
-          style(fillColor=53, fillPattern=1)),
+    style(fillColor=53, fillPattern=1)),
       Polygon(points=[0, -60; 100, -20; 100, -100; 0, -60; 0, -60], style(
-            fillColor=53, fillPattern=1)),
+      fillColor=53, fillPattern=1)),
       Line(points=[-40, 60; 40, 60], style(thickness=4)),
       Line(points=[0, 60; 0, -60])),
     Diagram(
       Polygon(points=[-100,-100; 0,-60; -100,-20; -100,-100; -100,-100],
-          style(fillColor=53, fillPattern=1)),
+    style(fillColor=53, fillPattern=1)),
       Polygon(points=[0, -60; 100, -20; 100, -100; 0, -60; 0, -60], style(
-            fillColor=53, fillPattern=1)),
+      fillColor=53, fillPattern=1)),
       Line(points=[-40, 60; 40, 60], style(thickness=4)),
       Line(points=[0, 60; 0, -60])),
     Window(
@@ -69,9 +69,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical Ouv 
     annotation(extent=[-10, 62; 10, 82], rotation=-90);
   Connectors.FluidInlet C1 
-                          annotation(extent=[-110, -70; -90, -50]);
+                    annotation(extent=[-110, -70; -90, -50]);
   Connectors.FluidOutlet C2 
-                          annotation(extent=[90, -68; 110, -48]);
+                    annotation(extent=[90, -68; 110, -48]);
 equation 
   
   C1.Q = C2.Q;

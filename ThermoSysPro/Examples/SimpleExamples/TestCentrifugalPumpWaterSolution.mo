@@ -4,7 +4,7 @@ model TestCentrifugalPumpWaterSolution
   ThermoSysPro.WaterSolution.BoundaryConditions.RefP refP 
     annotation (extent=[-100,0; -80,20]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante(
-                                                 k=2.e5) 
+                                           k=2.e5) 
     annotation (extent=[-100,60; -80,80]);
   ThermoSysPro.WaterSolution.Machines.StaticCentrifugalPump pump 
     annotation (extent=[-20,0; 0,20]);
@@ -35,7 +35,7 @@ equation
       rgbfillColor={128,255,0},
       fillPattern=1));
   connect(constante.y, refP.IPressure) annotation (points=[-79,70; -60,70; -60,
-        34; -90,34; -90,21], style(
+  34; -90,34; -90,21], style(
       fillColor=53,
       rgbfillColor={128,255,0},
       fillPattern=1));
@@ -47,7 +47,7 @@ equation
       rgbfillColor={255,170,170},
       fillPattern=1));
   connect(loopBreakerH.Cs, loopBreakerXh20_1.Ce) annotation (points=[60,10; 70,
-        10], style(
+  10], style(
       color=0,
       rgbcolor={0,0,0},
       fillColor=44,
@@ -66,14 +66,14 @@ equation
       rgbfillColor={255,170,170},
       fillPattern=1));
   connect(loopBreakerXh20_1.Cs, lumpedStraightPipe.C1) annotation (points=[90,
-        10; 100,10; 100,-30; -1,-30], style(
+  10; 100,10; 100,-30; -1,-30], style(
       color=0,
       rgbcolor={0,0,0},
       fillColor=44,
       rgbfillColor={255,170,170},
       fillPattern=1));
   connect(lumpedStraightPipe.C2, refP.C1) annotation (points=[-19,-30; -100,-30;
-        -100,10], style(
+  -100,10], style(
       color=0,
       rgbcolor={0,0,0},
       fillColor=44,

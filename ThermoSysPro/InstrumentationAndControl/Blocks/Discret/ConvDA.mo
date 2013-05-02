@@ -17,10 +17,10 @@ protected
     Icon(
       Rectangle(extent=[-100, 100; 100, -100], style(fillColor=8)),
       Line(points=[-80, -30; -46, -30; -46, 0; -20, 0; -20, 22; -8, 22; -8, 44;
-             12, 44; 12, 20; 30, 20; 30, 0; 62, 0; 62, -22; 88, -22]),
+       12, 44; 12, 20; 30, 20; 30, 0; 62, 0; 62, -22; 88, -22]),
       Text(extent=[-150, 150; 150, 110], string="%name")),
     Diagram(Line(points=[-80, -30; -46, -30; -46, 0; -20, 0; -20, 22; -8, 22; -8,
-             44; 12, 44; 12, 20; 30, 20; 30, 0; 62, 0; 62, -22; 88, -22])),
+       44; 12, 44; 12, 20; 30, 20; 30, 0; 62, 0; 62, -22; 88, -22])),
     Window(
       x=0.15,
       y=0.24,
@@ -32,9 +32,9 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 algorithm 
   
   qInterval := ((maxval - minval)/2^bits);

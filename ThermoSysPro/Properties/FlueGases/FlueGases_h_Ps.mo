@@ -38,7 +38,7 @@ algorithm
        -ThermoSysPro.Properties.ModelicaMediaFlueGases.specificEnthalpy(state0) + Xh2o*Hlat;
   
   annotation (smoothOrder=2,Icon,
-              Documentation(info="<html>
+        Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

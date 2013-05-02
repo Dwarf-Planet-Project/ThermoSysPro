@@ -31,12 +31,12 @@ public
       Line(points=[-90, 0; 90, 0]),
       Line(points=[0, 90; 0, -100]),
       Ellipse(extent=[-60, 60; 60, -60], style(fillColor=71, rgbfillColor={85,
-              170,255}))),
+        170,255}))),
     Icon(
       Line(points=[0, 90; 0, -100]),
       Line(points=[-90, 0; 90, 0]),
       Ellipse(extent=[-60, 60; 60, -60], style(fillColor=71, rgbfillColor={85,
-              170,255}))),
+        170,255}))),
     Window(
       x=0.14,
       y=0.2,
@@ -58,16 +58,16 @@ public
 "));
 public 
   Connectors.FluidInlet Ce1 
-                           annotation (extent=[-110,-10; -90,10]);
+                     annotation (extent=[-110,-10; -90,10]);
   Connectors.FluidInlet Ce2 
-                           annotation (extent=[-10,88; 10,108]);
+                     annotation (extent=[-10,88; 10,108]);
   Connectors.FluidOutlet Cs1 
-                           annotation (extent=[90,-10; 110,10]);
+                     annotation (extent=[90,-10; 110,10]);
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
     "Propriétés de l'eau" 
     annotation (extent=[-100,80; -80,100]);
   Connectors.FluidOutlet Cs2 
-                           annotation (extent=[-10,-110; 10,-90]);
+                     annotation (extent=[-10,-110; 10,-90]);
 initial equation 
   if steady_state then
     if dynamic_mass_balance then

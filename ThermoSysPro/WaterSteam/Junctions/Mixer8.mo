@@ -16,11 +16,11 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=6, rgbfillColor={255,255,
-              0})),
+        0})),
       Ellipse(extent=[-40,2; 40,-80], style(fillColor=6, rgbfillColor={255,255,
-              0})),
+        0})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0})),
+        255,0})),
       Line(points=[40,0; 92,0]),
       Line(points=[-92,-40; -40,-40]),
       Line(points=[-30,90; -30,66], style(color=3, rgbcolor={0,0,255})),
@@ -32,11 +32,11 @@ public
       Line(points=[-38,54; -92,90], style(color=3, rgbcolor={0,0,255}))),
     Icon(
       Ellipse(extent=[-40, 80; 40, 0], style(fillColor=6, rgbfillColor={255,255,
-              0})),
+        0})),
       Ellipse(extent=[-40, 0; 40, -80], style(fillColor=6, rgbfillColor={255,
-              255,0})),
+        255,0})),
       Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0})),
+        255,0})),
       Line(points=[-30,90; -30,66], style(color=3, rgbcolor={0,0,255})),
       Line(points=[-30,-66; -30,-90], style(color=3, rgbcolor={0,0,255})),
       Line(points=[30,92; 30,66], style(color=3, rgbcolor={0,0,255})),
@@ -74,15 +74,15 @@ public
   Connectors.FluidInlet Ce7 
     annotation (extent=[-40,-109; -20,-89],  layer="icon");
   Connectors.FluidInlet Ce3 
-                           annotation (extent=[-112,90; -92,110],  layer="icon");
+                     annotation (extent=[-112,90; -92,110],  layer="icon");
   Connectors.FluidInlet Ce2 
-                           annotation (extent=[-40,90; -20,110],  layer="icon");
+                     annotation (extent=[-40,90; -20,110],  layer="icon");
   Connectors.FluidInlet Ce1 
-                           annotation (extent=[20,92; 40,112],   layer="icon");
+                     annotation (extent=[20,92; 40,112],   layer="icon");
   Connectors.FluidOutlet Cs 
-                           annotation (extent=[90, -10; 110, 10], layer="icon");
+                     annotation (extent=[90, -10; 110, 10], layer="icon");
   Connectors.FluidInlet Ce8 
-                           annotation (extent=[20,-109; 40,-89],   layer="icon");
+                     annotation (extent=[20,-109; 40,-89],   layer="icon");
   
   Connectors.FluidInlet Ce4 
     annotation (extent=[-112,30; -92,50],    layer="icon");

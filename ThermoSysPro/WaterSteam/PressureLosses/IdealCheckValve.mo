@@ -30,18 +30,18 @@ public
       Line(points=[60, 0; 100, 0]),
       Text(extent=[-96, -56; 96, -112], string="DP=0"),
       Line(points=[-60,-60; -60,60; 60,-60; 60,60],     style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2))),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2))),
     Icon(
       Ellipse(extent=[-70, 70; -50, 50], style(fillColor=73)),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0]),
       Text(extent=[-96, -56; 96, -112], string="DP=0"),
       Line(points=[-60,-60; -60,60; 60,-60; 60,60],     style(
-          color=58,
-          rgbcolor={0,203,0},
-          thickness=2))),
+    color=58,
+    rgbcolor={0,203,0},
+    thickness=2))),
     Window(
       x=0.08,
       y=0.02,
@@ -61,8 +61,8 @@ public
 </ul>
 </html>
 "));
-  Connectors.FluidOutlet C2         annotation (extent=[90,-10; 110,10]);
-  Connectors.FluidInlet C1          annotation (extent=[-110,-10; -90,10]);
+  Connectors.FluidOutlet C2   annotation (extent=[90,-10; 110,10]);
+  Connectors.FluidInlet C1    annotation (extent=[-110,-10; -90,10]);
 equation 
   
   C1.Q = C2.Q;

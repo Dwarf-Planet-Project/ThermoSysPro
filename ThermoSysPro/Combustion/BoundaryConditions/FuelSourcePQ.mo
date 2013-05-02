@@ -18,7 +18,7 @@ model FuelSourcePQ "Fuel source with fixed pressure and mass flow rate"
   parameter Real Vol=0 "Volatile matter mass fraction";
   parameter Modelica.SIunits.Density rho=0.72 "Fuel density";
   
-  Connectors.FuelOutlet C                   annotation (extent=[90,-10; 110,10],
+  Connectors.FuelOutlet C             annotation (extent=[90,-10; 110,10],
       style(fillPattern=10));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal IMassFlow 
@@ -67,32 +67,32 @@ equation
       Line(points=[40,0; 90,0; 72,10]),
       Line(points=[90,0; 72,-10]),
       Rectangle(extent=[-40,40; 40,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=10)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=10)),
       Text(extent=[-30,60; -12,40],   string="Q"),
       Text(
-        extent=[-64,26; -40,6],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P")), Icon(
+  extent=[-64,26; -40,6],
+  style(color=3, rgbcolor={0,0,255}),
+  string="P")), Icon(
       Text(
-        extent=[-38,60; -4,40],
-        style(color=3, rgbcolor={0,0,255}),
-        string="Q"),
+  extent=[-38,60; -4,40],
+  style(color=3, rgbcolor={0,0,255}),
+  string="Q"),
       Rectangle(extent=[-40,40; 40,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=10)),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=6,
+    rgbfillColor={255,255,0},
+    fillPattern=10)),
       Line(points=[40,0; 90,0; 72,10]),
       Line(points=[90,0; 72,-10]),
       Text(
-        extent=[-64,26; -40,6],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P")),
+  extent=[-64,26; -40,6],
+  style(color=3, rgbcolor={0,0,255}),
+  string="P")),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>

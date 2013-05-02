@@ -23,12 +23,12 @@ public
       component=[20, 20]),
     Diagram(
       Ellipse(extent=[-100,100; 100,-100], style(fillColor=53, rgbfillColor={
-              128,255,0})), Line(points=[-60,80; 60,20; 60,-20; -60,-80], style(
-            color=3, rgbcolor={0,0,255}))),
+        128,255,0})), Line(points=[-60,80; 60,20; 60,-20; -60,-80], style(
+      color=3, rgbcolor={0,0,255}))),
     Icon(
       Ellipse(extent=[-100,100; 100,-100], style(fillColor=53, rgbfillColor={
-              128,255,0})), Line(points=[-60,80; 60,20; 60,-20; -60,-80], style(
-            color=3, rgbcolor={0,0,255}))),
+        128,255,0})), Line(points=[-60,80; 60,20; 60,-20; -60,-80], style(
+      color=3, rgbcolor={0,0,255}))),
     Window(
       x=0.17,
       y=0.1,
@@ -52,7 +52,7 @@ public
 "));
   Connectors.FluidInlet C1 
     annotation (extent=[-110,-10; -90,10]);
-  Connectors.FluidOutlet C2                annotation (extent=[90,-10; 110,10]);
+  Connectors.FluidOutlet C2          annotation (extent=[90,-10; 110,10]);
 public 
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proe 
     annotation (extent=[-100,80; -80,100]);

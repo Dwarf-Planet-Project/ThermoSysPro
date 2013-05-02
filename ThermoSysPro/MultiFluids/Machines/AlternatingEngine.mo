@@ -129,50 +129,50 @@ public
     annotation (extent=[80,-10; 100,10]);
     annotation (Diagram(
       Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170})),
       Polygon(points=[-10,-64; 4,-46; 0,-56; 18,-54; 2,-60; 22,-66; 6,-64; -10,
-            -76; -2,-66; -10,-64], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0})),
+      -76; -2,-66; -10,-64], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0})),
       Polygon(points=[-46,-42; -46,0; -6,0; -6,58; 0,50; 6,58; 6,0; 48,0; 48,
-            -42; -46,-42], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=60,
-          rgbfillColor={170,255,170})),
+      -42; -46,-42], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=60,
+    rgbfillColor={170,255,170})),
       Polygon(points=[-80,30; -34,30; -34,54; 38,54; 38,30; 80,30; 80,38; 46,38;
-            46,62; -42,62; -42,38; -80,38; -80,30], style(
-          pattern=0,
-          fillColor=0,
-          rgbfillColor={0,0,0}))),
-                             Icon(
+      46,62; -42,62; -42,38; -80,38; -80,30], style(
+    pattern=0,
+    fillColor=0,
+    rgbfillColor={0,0,0}))),
+                       Icon(
       Rectangle(extent=[-80,80; 80,-80], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=52,
-          rgbfillColor={255,213,170})),
+    color=3,
+    rgbcolor={0,0,255},
+    fillColor=52,
+    rgbfillColor={255,213,170})),
       Polygon(points=[-10,-64; 4,-46; 0,-56; 18,-54; 2,-60; 22,-66; 6,-64; -10,
-            -76; -2,-66; -10,-64], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=1,
-          rgbfillColor={255,0,0})),
+      -76; -2,-66; -10,-64], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=1,
+    rgbfillColor={255,0,0})),
       Polygon(points=[-46,-42; -46,0; -6,0; -6,58; 0,50; 6,58; 6,0; 48,0; 48,
-            -42; -46,-42], style(
-          color=0,
-          rgbcolor={0,0,0},
-          fillColor=60,
-          rgbfillColor={170,255,170})),
+      -42; -46,-42], style(
+    color=0,
+    rgbcolor={0,0,0},
+    fillColor=60,
+    rgbfillColor={170,255,170})),
       Polygon(points=[-80,30; -34,30; -34,54; 38,54; 38,30; 80,30; 80,38; 46,38;
-            46,62; -42,62; -42,38; -80,38; -80,30], style(
-          pattern=0,
-          fillColor=0,
-          rgbfillColor={0,0,0}))),
+      46,62; -42,62; -42,38; -80,38; -80,30], style(
+    pattern=0,
+    fillColor=0,
+    rgbfillColor={0,0,0}))),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
@@ -293,8 +293,8 @@ equation
     Rmeca = Coef_Rm_a * Wcomb/1000*Wcomb/1000 + Coef_Rm_b*Wcomb/1000 + Coef_Rm_c;
   else
     Rmeca = ((Qcomb*(Hcomb - Hrcomb + PCIcomb) + Qea*(Hea - Hrair))
-            -(Qsf*(ThermoSysPro.Properties.FlueGases.FlueGases_h(Psf, Tfe, XsfCO2, XsfH2O, XsfO2, XsfSO2)
-            -Hrfum) + Wpth_ref))/Wcomb;
+      -(Qsf*(ThermoSysPro.Properties.FlueGases.FlueGases_h(Psf, Tfe, XsfCO2, XsfH2O, XsfO2, XsfSO2)
+      -Hrfum) + Wpth_ref))/Wcomb;
   end if;
   
   Wmeca = Rmeca*Wcomb;

@@ -38,7 +38,7 @@ public
   ThermoSysPro.FlueGases.Connectors.FlueGasesInlet Ce 
     annotation (extent=[-110,-10; -90,10]);
   ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet Cs 
-                                           annotation (extent=[90,-10; 110,10]);
+                                     annotation (extent=[90,-10; 110,10]);
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal CompressorPower 
     annotation(extent=[-120,-50; -100,-30],rotation=0);
@@ -47,15 +47,15 @@ public
     annotation (extent=[100,-100; 120,-80], rotation=0);
   annotation (
     Diagram(Polygon(points=[-100,40; -100,-40; 100,-100; 100,100; -100,40],
-          style(
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8))),
+    style(
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8))),
     Icon(   Polygon(points=[-100,40; -100,-40; 100,-100; 100,100; -100,40],
-          style(
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=8))),
+    style(
+    fillColor=53,
+    rgbfillColor={128,255,0},
+    fillPattern=8))),
     Coordsys(extent=[-100,-100; 100,100], scale=0.1),
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>

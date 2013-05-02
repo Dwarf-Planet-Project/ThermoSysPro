@@ -23,24 +23,24 @@ protected
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Line(points=[82, 0; -84, 0], style(color=73)),
       Text(
-        extent=[-92, 92; 86, 12],
-        string="b(z)",
-        style(color=73)),
+  extent=[-92, 92; 86, 12],
+  string="b(z)",
+  style(color=73)),
       Text(
-        extent=[-90, -12; 90, -90],
-        string="a(z)",
-        style(color=73))),
+  extent=[-90, -12; 90, -90],
+  string="a(z)",
+  style(color=73))),
     Diagram(
       Rectangle(extent=[-60, 60; 60, -60], style(fillPattern=0)),
       Line(points=[40, 0; -44, 0], style(color=0, thickness=2)),
       Text(
-        extent=[-54, 54; 54, 4],
-        string="b(z)",
-        style(color=0)),
+  extent=[-54, 54; 54, 4],
+  string="b(z)",
+  style(color=0)),
       Text(
-        extent=[-54, -6; 56, -56],
-        string="a(z)",
-        style(color=0)),
+  extent=[-54, -6; 56, -56],
+  string="a(z)",
+  style(color=0)),
       Line(points=[-100, 0; -60, 0]),
       Line(points=[60, 0; 100, 0])),
     Window(
@@ -57,9 +57,9 @@ protected
 "));
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 equation 
   
   when sample(SampleOffset, SampleInterval) then

@@ -9,7 +9,7 @@ model TestInvSingularPressureLoss
     invSingularPressureLoss annotation (extent=[-20,0; 0,20]);
 equation 
   connect(sourcePQ.C, invSingularPressureLoss.C1) annotation (points=[-60,10;
-        -20,10], style(
+  -20,10], style(
       color=3,
       rgbcolor={0,0,255},
       fillColor=6,

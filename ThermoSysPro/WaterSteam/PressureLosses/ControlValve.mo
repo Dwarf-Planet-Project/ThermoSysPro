@@ -37,24 +37,24 @@ public
       component=[20, 20]),
     Icon(
       Polygon(points=[40, 40; -40, 40; -40, 56; -38, 74; -32, 84; -20, 94; 0,
-            100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
-            fillPattern=1)),
+      100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
+      fillPattern=1)),
       Polygon(points=[0, -60; 40, 40; -40, 40; 0, -60], style(fillColor=53,
-            fillPattern=1)),
+      fillPattern=1)),
       Polygon(points=[-100, -100; 0, -60; -100, -20; -100, -102; -100, -100],
-          style(fillColor=53, fillPattern=1)),
+    style(fillColor=53, fillPattern=1)),
       Polygon(points=[0, -60; 100, -20; 100, -102; 0, -60; 0, -60], style(
-            fillColor=53, fillPattern=1))),
+      fillColor=53, fillPattern=1))),
     Diagram(
       Polygon(points=[-100, -100; 0, -60; -100, -20; -100, -102; -100, -100],
-          style(fillColor=53, fillPattern=1)),
+    style(fillColor=53, fillPattern=1)),
       Polygon(points=[0,-60; 100,-20; 100,-102; 0,-60; 0,-60],      style(
-            fillColor=53, fillPattern=1)),
+      fillColor=53, fillPattern=1)),
       Polygon(points=[0, -60; 40, 40; -40, 40; 0, -60], style(fillColor=53,
-            fillPattern=1)),
+      fillPattern=1)),
       Polygon(points=[40, 40; -40, 40; -40, 56; -38, 74; -32, 84; -20, 94; 0,
-            100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
-            fillPattern=1))),
+      100; 20, 94; 32, 84; 38, 72; 40, 54; 40, 40], style(fillColor=53,
+      fillPattern=1))),
     Window(
       x=0.07,
       y=0.13,
@@ -76,9 +76,9 @@ public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal Ouv 
     annotation(extent=[-10, 100; 10, 120], rotation=-90);
   Connectors.FluidInlet C1 
-                          annotation(extent=[-110, -70; -90, -50]);
+                    annotation(extent=[-110, -70; -90, -50]);
   Connectors.FluidOutlet C2 
-                          annotation(extent=[90,-70; 110,-50]);
+                    annotation(extent=[90,-70; 110,-50]);
 equation 
   
   C1.h = C2.h;

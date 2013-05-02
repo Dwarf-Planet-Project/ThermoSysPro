@@ -11,11 +11,11 @@ block LimiteurVitesse
       component=[20, 20]),
     Icon(
       Rectangle(extent=[-100, -100; 100, 100], style(
-          color=3,
-          pattern=1,
-          thickness=1,
-          arrow=0,
-          fillPattern=0)),
+    color=3,
+    pattern=1,
+    thickness=1,
+    arrow=0,
+    fillPattern=0)),
       Text(extent=[-150, 150; 150, 110], string="%name"),
       Line(points=[78, 60; 40, 60; -40, -60; -80, -60], style(color=0)),
       Line(points=[-86, 0; 88, 0], style(color=9)),
@@ -23,13 +23,13 @@ block LimiteurVitesse
       Polygon(points=[0, 84; -5, 74; 5, 74; 0, 84], style(color=9, fillColor=9)),
       Line(points=[0, -80; 0, 74], style(color=9)),
       Text(
-        extent=[-94, -8; -32, -30],
-        string="%dmin",
-        style(color=9, fillColor=0)),
+  extent=[-94, -8; -32, -30],
+  string="%dmin",
+  style(color=9, fillColor=0)),
       Text(
-        extent=[30, 34; 92, 12],
-        string="%dmax",
-        style(color=9, fillColor=0))),
+  extent=[30, 34; 92, 12],
+  string="%dmax",
+  style(color=9, fillColor=0))),
     Diagram,
     Window(
       x=0.19,
@@ -43,9 +43,9 @@ block LimiteurVitesse
   
 public 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u 
-                                      annotation (extent=[-120, -10; -100, 10]);
+                                annotation (extent=[-120, -10; -100, 10]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
   Continu.Derivee Derivee1(Ti=Ti) annotation (extent=[-60, -10; -40, 10]);
   Continu.Integrateur Integrateur1 annotation (extent=[40, -10; 60, 10]);
   Limiteur Limiteur1(maxval=dmax, minval=dmin) 
@@ -65,9 +65,9 @@ equation
   connect(u, Integrateur1.ureset) 
     annotation (points=[-110,0; -80,0; -80,-20; 28,-20; 28,-8; 39,-8]);
   connect(Horloge1.y, Supeg1.u1) annotation (points=[-59,-50; -50,-50; -50,-64;
-        -41,-64],   style(color=3));
+  -41,-64],   style(color=3));
   connect(Constante1.y, Supeg1.u2) annotation (points=[-59,-90; -50,-90; -50,
-        -76; -41,-76],   style(color=3));
+  -76; -41,-76],   style(color=3));
   connect(Supeg1.yL, Edge1.uL) annotation (points=[-19,-70; -1,-70]);
   connect(Edge1.yL, Integrateur1.reset) 
     annotation (points=[21,-70; 50,-70; 50,-11]);

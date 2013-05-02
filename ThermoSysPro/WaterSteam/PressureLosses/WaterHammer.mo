@@ -45,48 +45,48 @@ public
       component=[20, 20]),
     Diagram(
       Rectangle(extent=[-100, 20; -60, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[-60, 20; -20, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[-20, 20; 20, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[20, 20; 60, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[60, 20; 100, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255}))),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255}))),
     Icon(
       Rectangle(extent=[-100, 20; -60, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[-60, 20; -20, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[-20, 20; 20, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[20, 20; 60, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Rectangle(extent=[60, 20; 100, -20], style(
-          gradient=3,
-          fillColor=79,
-          rgbfillColor={170,85,255})),
+    gradient=3,
+    fillColor=79,
+    rgbfillColor={170,85,255})),
       Text(extent=[-20, 60; 20, 20], string="C",
-        style(fillColor=79, rgbfillColor={170,85,255}))),
+  style(fillColor=79, rgbfillColor={170,85,255}))),
     Window(
       x=0.08,
       y=0,
@@ -108,10 +108,10 @@ public
 "));
 public 
   Connectors.FluidInlet C1 
-                          annotation(extent=[-110, -10; -90, 10], layer="icon",
+                    annotation(extent=[-110, -10; -90, 10], layer="icon",
     style(fillPattern=8));
   Connectors.FluidOutlet C2 
-                          annotation(extent=[90, -10; 110, 10], layer="icon",
+                    annotation(extent=[90, -10; 110, 10], layer="icon",
     style(
       gradient=3,
       fillColor=79,

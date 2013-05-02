@@ -18,9 +18,9 @@ block Div
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-        extent=[-36, 34; 40, -34],
-        string="/",
-        style(color=0))),
+  extent=[-36, 34; 40, -34],
+  string="/",
+  style(color=0))),
     Diagram(
       Line(points=[50, 0; 100, 0]),
       Line(points=[50, 0; 100, 0]),
@@ -32,9 +32,9 @@ block Div
       Line(points=[-100, 60; -52, 60]),
       Line(points=[-100, -60; -52, -60]),
       Text(
-        extent=[-36, 34; 40, -34],
-        string="/",
-        style(color=0))),
+  extent=[-36, 34; 40, -34],
+  string="/",
+  style(color=0))),
     Window(
       x=0.31,
       y=0.18,
@@ -48,11 +48,11 @@ block Div
 </HTML>
 "));
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u1 
-                                       annotation (extent=[-120, 50; -100, 70]);
+                                 annotation (extent=[-120, 50; -100, 70]);
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal u2 
-                                       annotation (extent=[-120, -70; -100, -50]);
+                                 annotation (extent=[-120, -70; -100, -50]);
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y 
-                                       annotation (extent=[100, -10; 120, 10]);
+                                 annotation (extent=[100, -10; 120, 10]);
 equation 
   
   y.signal = u1.signal/u2.signal;
