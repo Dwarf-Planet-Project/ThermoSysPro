@@ -36,5 +36,6 @@ annotation (
 <p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
 <p><b>ThermoSysPro Version 3.0</b> </p>
 </html>"),
-  uses(Modelica(version="2.2.2")));
+  version="3.0",
+  uses(Modelica(version="3.1")));
 end ThermoSysPro;
