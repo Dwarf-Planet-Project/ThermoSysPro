@@ -6,7 +6,7 @@ model TestDynamicTwoPhaseFlowPipe
                             annotation (extent=[-20,20; 0,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
     annotation (extent=[-60,20; -40,40]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000),Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP 
     annotation (extent=[20,20; 40,40]);
   ThermoSysPro.Thermal.BoundaryConditions.HeatSource heatSource(

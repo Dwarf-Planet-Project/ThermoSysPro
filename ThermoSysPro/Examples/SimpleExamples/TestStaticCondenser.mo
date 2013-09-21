@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStaticCondenser 
   
-  annotation (Diagram, Coordsys(extent=[-200,-200; 200,200]));
+  annotation (experiment(stopTime=1000), Diagram, Coordsys(extent=[-200,-200; 200,200]));
   WaterSteam.BoundaryConditions.SourceQ               Source_condenseur(
     h0=60e3, Q0(fixed=true) = 4000) 
           annotation (extent=[-180,0; -160,20]);

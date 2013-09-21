@@ -5,7 +5,7 @@ model TestTank
     annotation (extent=[20,-40; 40,-20]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1 
     annotation (extent=[-60,12; -40,32]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP SourceP1 
                                             annotation (extent=[-100,6; -80,26]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP PuitsP1 

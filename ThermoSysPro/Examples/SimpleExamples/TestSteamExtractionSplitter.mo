@@ -6,7 +6,7 @@ model TestSteamExtractionSplitter
                             annotation (extent=[-20,20; 0,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceQ sourceQ(h0=2600000) 
     annotation (extent=[-100,20; -80,40]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 
     singularPressureLoss2 annotation (extent=[-60,20; -40,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP(P0=100e5) 

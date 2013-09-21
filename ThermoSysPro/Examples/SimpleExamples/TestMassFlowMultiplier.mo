@@ -1,6 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestMassFlowMultiplier 
-  
+  annotation(experiment(stopTime=1000));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourcePQ sourcePQ 
     annotation (extent=[-100,0; -80,20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.Sink sink 

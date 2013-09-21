@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestDynamicCentrifugalPump 
   
-  annotation (
+  annotation (experiment(stopTime=1000),
     Coordsys(
       extent=[-100, -100; 100, 100],
       grid=[2, 2],

@@ -1,6 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStaticDrum2 
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.Junctions.StaticDrum StaticDrumTh1 
     annotation (extent=[-54,0; -34,20]);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 

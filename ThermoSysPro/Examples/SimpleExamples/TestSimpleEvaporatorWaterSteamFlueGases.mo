@@ -4,7 +4,7 @@ model TestSimpleEvaporatorWaterSteamFlueGases
   ThermoSysPro.WaterSteam.BoundaryConditions.Sink puits_Eau 
                                           annotation (extent=[64,-17; 84,3]);
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.MultiFluids.HeatExchangers.SimpleEvaporatorWaterSteamFlueGases 
     EchangeurEfficacite(Kdpf=1, Kdpe=1) 
                 annotation (extent=[-44,-35; 44,21]);

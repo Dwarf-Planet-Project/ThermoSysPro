@@ -1,7 +1,8 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestPipePressureLoss 
   
-  annotation (Coordsys(
+  annotation (experiment(stopTime=1000), 
+    Coordsys(
       extent=[-100, -100; 100, 100],
       grid=[2, 2],
       component=[20, 20]), Window(

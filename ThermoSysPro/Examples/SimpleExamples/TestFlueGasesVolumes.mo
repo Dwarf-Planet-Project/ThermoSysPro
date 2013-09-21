@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestFlueGasesVolumes 
   
-  annotation (Diagram, Coordsys(extent=[-200,-150; 200,150], scale=0.1));
+  annotation (experiment(stopTime=200),Diagram, Coordsys(extent=[-200,-150; 200,150], scale=0.1));
   ThermoSysPro.FlueGases.BoundaryConditions.SourcePQ Source_Fumees(
     Xso2=0,
     Xco2=0.0,

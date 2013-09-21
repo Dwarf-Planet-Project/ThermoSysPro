@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestDynamicDrum 
   
-  annotation (
+  annotation (experiment(stopTime=1000),
     Coordsys(
       extent=[-200, -100; 140, 200],
       grid=[2, 2],

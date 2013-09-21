@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestSteamDryer 
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.Junctions.SteamDryer steamDryer(
     eta=1,
     P(start=100e5),

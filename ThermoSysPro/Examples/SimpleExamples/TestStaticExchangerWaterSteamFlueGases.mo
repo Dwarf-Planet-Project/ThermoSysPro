@@ -4,7 +4,7 @@ model TestStaticExchangerWaterSteamFlueGases
   ThermoSysPro.WaterSteam.BoundaryConditions.Sink puits_Eau 
                                           annotation (extent=[60,-10; 80,10]);
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.MultiFluids.HeatExchangers.StaticExchangerWaterSteamFlueGases 
     EchangeurEfficacite(                                                                   EffEch=0.9,
     Kdpf=10,

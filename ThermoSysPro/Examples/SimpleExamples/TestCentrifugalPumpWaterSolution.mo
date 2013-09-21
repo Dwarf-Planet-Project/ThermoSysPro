@@ -1,6 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestCentrifugalPumpWaterSolution 
-  
+  annotation(experiment(stopTime=1000));
   ThermoSysPro.WaterSolution.BoundaryConditions.RefP refP 
     annotation (extent=[-100,0; -80,20]);
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante(

@@ -1,6 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestInvSingularPressureLoss 
-  
+  annotation(experiment(stopTime=1000));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourcePQ sourcePQ 
     annotation (extent=[-80,0; -60,20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkQ 

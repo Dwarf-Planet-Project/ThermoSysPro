@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestFlueGasesVolumes1 
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=200),Diagram);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLossFlueGases1 annotation (extent=[-60,-60; -40,-40]);
   ThermoSysPro.FlueGases.BoundaryConditions.SourceP sourceFlueGasesP 

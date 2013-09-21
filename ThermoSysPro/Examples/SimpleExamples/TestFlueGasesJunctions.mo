@@ -7,7 +7,7 @@ model TestFlueGasesJunctions
     annotation (extent=[-100,40; -80,60]);
   ThermoSysPro.FlueGases.PressureLosses.SingularPressureLoss 
     singularPressureLoss annotation (extent=[-60,40; -40,60]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=200),Diagram);
   ThermoSysPro.FlueGases.BoundaryConditions.Sink sinkP 
     annotation (extent=[80,80; 100,100]);
   ThermoSysPro.FlueGases.BoundaryConditions.SinkP sinkP1 

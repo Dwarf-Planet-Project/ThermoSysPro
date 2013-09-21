@@ -11,7 +11,7 @@ model TestVolumes2
     annotation (extent=[-70,-100; -50,-80]);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve 
     annotation (extent=[-56,-20; -36,0], rotation=90);
-  annotation (Diagram);
+  annotation (experiment(stopTime=10), Diagram);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve1 
     annotation (extent=[-56,-80; -36,-60], rotation=90);
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve2 

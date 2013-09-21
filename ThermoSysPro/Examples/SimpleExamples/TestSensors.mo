@@ -15,7 +15,7 @@ model TestSensors
                                          annotation (extent=[60,-40; 80,-20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
                                            annotation (extent=[-100,0; -80,20]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe perteDP 
     annotation (extent=[20,-40; 40,-20]);
 equation 

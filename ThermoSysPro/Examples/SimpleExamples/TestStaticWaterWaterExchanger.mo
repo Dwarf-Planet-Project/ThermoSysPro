@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStaticWaterWaterExchanger 
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.HeatExchangers.StaticWaterWaterExchanger 
     plateHeatExchanger(modec=1, modef=1) 
                annotation (extent=[-20,44; 0,64]);

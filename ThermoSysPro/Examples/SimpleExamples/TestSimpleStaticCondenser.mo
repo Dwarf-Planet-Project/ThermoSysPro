@@ -5,7 +5,7 @@ model TestSimpleStaticCondenser
     simpleStaticCondenser annotation (extent=[-20,20; 0,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
     annotation (extent=[-60,20; -40,40]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(T0=400) 
     annotation (extent=[-60,-20; -40,0]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP 

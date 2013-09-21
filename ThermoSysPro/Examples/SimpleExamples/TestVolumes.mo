@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestVolumes 
   
-  annotation (Diagram);
+  annotation (experiment(stopTime=10), Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 
                                            annotation (extent=[-104,0; -84,20]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(

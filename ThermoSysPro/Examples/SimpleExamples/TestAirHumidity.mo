@@ -9,7 +9,7 @@ model TestAirHumidity
     singularPressureLoss(K=1.e-5) annotation (extent=[0,0; 20,20]);
   ThermoSysPro.FlueGases.BoundaryConditions.Sink sinkFlueGases 
     annotation (extent=[40,0; 60,20]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
 equation 
   connect(sourceFlueGasesPQ.C, airHumidity.C1) annotation (points=[-60,10; -40,
         10], style(

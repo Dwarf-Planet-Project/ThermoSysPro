@@ -9,7 +9,7 @@ model TestDynamicWaterWaterExchanger
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
                                            T0=340) 
     annotation (extent=[-80,40; -60,60]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000),Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1 
                                             annotation (extent=[-60,20; -40,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP 

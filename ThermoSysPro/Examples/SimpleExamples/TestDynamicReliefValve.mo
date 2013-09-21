@@ -8,7 +8,7 @@ model TestDynamicReliefValve
     Cvmax=1000,
     D=1,
     m=1) annotation(extent=[0, 20; 20, 40]);
-  annotation (
+  annotation (experiment(stopTime=1000),
     Coordsys(
       extent=[-100, -100; 100, 100],
       grid=[2, 2],

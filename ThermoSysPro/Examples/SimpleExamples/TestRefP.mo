@@ -6,7 +6,7 @@ model TestRefP
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante constante(
                                                  k=2.e5) 
     annotation (extent=[-100,60; -80,80]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=1000), Diagram);
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump pump 
     annotation (extent=[-30,0; -10,20]);
   ThermoSysPro.WaterSteam.LoopBreakers.LoopBreakerQ loopBreakerQ 

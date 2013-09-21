@@ -7,7 +7,7 @@ model TestJunctions
     annotation (extent=[-100,40; -80,60]);
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss 
     singularPressureLoss annotation (extent=[-60,40; -40,60]);
-  annotation (Diagram);
+  annotation (experiment(stopTime=10), Diagram);
   ThermoSysPro.WaterSteam.BoundaryConditions.Sink sinkP 
     annotation (extent=[80,80; 100,100]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP1 

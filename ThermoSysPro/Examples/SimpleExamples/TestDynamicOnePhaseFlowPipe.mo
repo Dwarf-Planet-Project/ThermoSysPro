@@ -1,6 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestDynamicOnePhaseFlowPipe 
-  
+  annotation(experiment(stopTime=1000));
   ThermoSysPro.WaterSteam.HeatExchangers.DynamicOnePhaseFlowPipe 
     dynamicOnePhaseFlowPipe annotation (extent=[-20,20; 0,40]);
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP 

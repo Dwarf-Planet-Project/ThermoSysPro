@@ -1,7 +1,7 @@
 within ThermoSysPro.Examples.CombinedCyclePowerPlant;
 model CombinedCycle_TripTAC "CCPP model to simulate a combustion turbine trip" 
   
-  annotation (Diagram, Coordsys(extent=[-550,-460; 950,150], scale=0.1));
+  annotation (experiment(StopTime=1), Diagram, Coordsys(extent=[-550,-460; 950,150], scale=0.1));
   ThermoSysPro.WaterSteam.Volumes.DynamicDrum BallonHP(
     L=16.27,
     Vertical=false,
