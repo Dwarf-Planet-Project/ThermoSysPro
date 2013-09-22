@@ -1,70 +1,70 @@
 within ThermoSysPro.Properties.WaterSteam;
-package BaseIF97 
-  "Modelica Physical Property Model: the new industrial formulation IAPWS-IF97" 
+package BaseIF97
+  "Modelica Physical Property Model: the new industrial formulation IAPWS-IF97"
   extends Modelica.Icons.Library;
   import SI = Modelica.SIunits;
-  record IterationData "constants for iterations internal to some functions" 
-    
+  record IterationData "constants for iterations internal to some functions"
+
     extends Modelica.Icons.Record;
-    constant Integer IMAX=50 
+    constant Integer IMAX=50
       "maximum number of iterations for inverse functions";
     constant Real DELP=1.0e-6 "maximum iteration error in pressure, Pa";
-    constant Real DELS=1.0e-8 
+    constant Real DELS=1.0e-8
       "maximum iteration error in specific entropy, J/{kg.K}";
-    constant Real DELH=1.0e-8 
+    constant Real DELH=1.0e-8
       "maximum iteration error in specific entthalpy, J/kg";
     constant Real DELD=1.0e-8 "maximum iteration error in density, kg/m^3";
   end IterationData;
-  
+
   //===================================================================
   //                      Constant declarations
-  
+
   //===================================================================
-  record data "constant IF97 data and region limits" 
+  record data "constant IF97 data and region limits"
     extends Modelica.Icons.Record;
-    constant Modelica.SIunits.SpecificHeatCapacity RH2O=461.526 
+    constant Modelica.SIunits.SpecificHeatCapacity RH2O=461.526
       "specific gas constant of water vapour";
     constant Modelica.SIunits.MolarMass MH2O=0.01801528 "molar weight of water";
-    constant Modelica.SIunits.Temperature TSTAR1=1386.0 
+    constant Modelica.SIunits.Temperature TSTAR1=1386.0
       "normalization temperature for region 1 IF97";
-    constant Modelica.SIunits.Pressure PSTAR1=16.53e6 
+    constant Modelica.SIunits.Pressure PSTAR1=16.53e6
       "normalization pressure for region 1 IF97";
-    constant Modelica.SIunits.Temperature TSTAR2=540.0 
+    constant Modelica.SIunits.Temperature TSTAR2=540.0
       "normalization temperature for region 2 IF97";
-    constant Modelica.SIunits.Pressure PSTAR2=1.0e6 
+    constant Modelica.SIunits.Pressure PSTAR2=1.0e6
       "normalization pressure for region 2 IF97";
-    constant Modelica.SIunits.Temperature TSTAR5=1000.0 
+    constant Modelica.SIunits.Temperature TSTAR5=1000.0
       "normalization temperature for region 5 IF97";
-    constant Modelica.SIunits.Pressure PSTAR5=1.0e6 
+    constant Modelica.SIunits.Pressure PSTAR5=1.0e6
       "normalization pressure for region 5 IF97";
-    constant Modelica.SIunits.SpecificEnthalpy HSTAR1=2.5e6 
+    constant Modelica.SIunits.SpecificEnthalpy HSTAR1=2.5e6
       "normalization specific enthalpy for region 1 IF97";
-    constant Real IPSTAR=1.0e-6 
+    constant Real IPSTAR=1.0e-6
       "normalization pressure for inverse function in region 2 IF97";
-    constant Real IHSTAR=5.0e-7 
+    constant Real IHSTAR=5.0e-7
       "normalization specific enthalpy for inverse function in region 2 IF97";
-    constant Modelica.SIunits.Temperature TLIMIT1=623.15 
+    constant Modelica.SIunits.Temperature TLIMIT1=623.15
       "temperature limit between regions 1 and 3";
-    constant Modelica.SIunits.Temperature TLIMIT2=1073.15 
+    constant Modelica.SIunits.Temperature TLIMIT2=1073.15
       "temperature limit between regions 2 and 5";
-    constant Modelica.SIunits.Temperature TLIMIT5=2273.15 
+    constant Modelica.SIunits.Temperature TLIMIT5=2273.15
       "upper temperature limit of 5";
-    constant Modelica.SIunits.Pressure PLIMIT1=100.0e6 
+    constant Modelica.SIunits.Pressure PLIMIT1=100.0e6
       "upper pressure limit for regions 1, 2 and 3";
-    constant Modelica.SIunits.Pressure PLIMIT4A=16.5292e6 
+    constant Modelica.SIunits.Pressure PLIMIT4A=16.5292e6
       "pressure limit between regions 1 and 2, important for for two-phase (region 4)";
-    constant Modelica.SIunits.Pressure PLIMIT5=10.0e6 
+    constant Modelica.SIunits.Pressure PLIMIT5=10.0e6
       "upper limit of valid pressure in region 5";
     constant Modelica.SIunits.Pressure PCRIT=22064000.0 "the critical pressure";
-    constant Modelica.SIunits.Temperature TCRIT=647.096 
+    constant Modelica.SIunits.Temperature TCRIT=647.096
       "the critical temperature";
     constant Modelica.SIunits.Density DCRIT=322.0 "the critical density";
-    constant Modelica.SIunits.SpecificEntropy SCRIT=4412.02148223476 
+    constant Modelica.SIunits.SpecificEntropy SCRIT=4412.02148223476
       "the calculated specific entropy at the critical point";
-    constant Modelica.SIunits.SpecificEnthalpy HCRIT=2087546.84511715 
+    constant Modelica.SIunits.SpecificEnthalpy HCRIT=2087546.84511715
       "the calculated specific enthalpy at the critical point";
     constant Real[5] n=array(0.34805185628969e3, -0.11671859879975e1,
-        0.10192970039326e-2, 0.57254459862746e3, 0.13918839778870e2) 
+        0.10192970039326e-2, 0.57254459862746e3, 0.13918839778870e2)
       "polynomial coefficients for boundary between regions 2 and 3";
     annotation (Documentation(info="<HTML>
  <h4>Record description</h4>
@@ -90,16 +90,16 @@ package BaseIF97
 </HTML>
 "));
   end data;
-  
-  record critical "critical point data" 
+
+  record critical "critical point data"
     extends Modelica.Icons.Record;
     constant Modelica.SIunits.Pressure PCRIT=22064000.0 "the critical pressure";
-    constant Modelica.SIunits.Temperature TCRIT=647.096 
+    constant Modelica.SIunits.Temperature TCRIT=647.096
       "the critical temperature";
     constant Modelica.SIunits.Density DCRIT=322.0 "the critical density";
-    constant Modelica.SIunits.SpecificEnthalpy HCRIT=2087546.84511715 
+    constant Modelica.SIunits.SpecificEnthalpy HCRIT=2087546.84511715
       "the calculated specific enthalpy at the critical point";
-    constant Modelica.SIunits.SpecificEntropy SCRIT=4412.02148223476 
+    constant Modelica.SIunits.SpecificEntropy SCRIT=4412.02148223476
       "the calculated specific entropy at the critical point";
     annotation (Documentation(info="<HTML>
  <h4>Record description</h4>
@@ -124,16 +124,16 @@ package BaseIF97
 </HTML>
 "));
   end critical;
-  
-  record triple "triple point data" 
+
+  record triple "triple point data"
     extends Modelica.Icons.Record;
-    constant Modelica.SIunits.Temperature Ttriple=273.16 
+    constant Modelica.SIunits.Temperature Ttriple=273.16
       "the triple point temperature";
-    constant Modelica.SIunits.Pressure ptriple=611.657 
+    constant Modelica.SIunits.Pressure ptriple=611.657
       "the triple point temperature";
-    constant Modelica.SIunits.Density dltriple=999.792520031617642 
+    constant Modelica.SIunits.Density dltriple=999.792520031617642
       "the triple point liquid density";
-    constant Modelica.SIunits.Density dvtriple=0.485457572477861372e-2 
+    constant Modelica.SIunits.Density dvtriple=0.485457572477861372e-2
       "the triple point vapour density";
     annotation (Documentation(info="<HTML>
  <h4>Record description</h4>
@@ -158,53 +158,53 @@ package BaseIF97
 </HTML>
 "));
   end triple;
-  
-  package Regions 
-    "functions to find the current region for given pairs of input variables" 
-    
+
+  package Regions
+    "functions to find the current region for given pairs of input variables"
+
     extends Modelica.Icons.Library;
-    
+
     //===================================================================
     //                      "Public" functions
-    
+
     //===================================================================
-    
-    function boundary23ofT 
-      "boundary function for region boundary between regions 2 and 3 (input temperature)" 
-      
+
+    function boundary23ofT
+      "boundary function for region boundary between regions 2 and 3 (input temperature)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature t "temperature (K)";
       output Modelica.SIunits.Pressure p "pressure";
-    protected 
+    protected
       constant Real[5] n=data.n;
-    algorithm 
+    algorithm
       p := 1.0e6*(n[1] + t*(n[2] + t*n[3]));
     end boundary23ofT;
-    
-    function boundary23ofp 
-      "boundary function for region boundary between regions 2 and 3 (input pressure)" 
+
+    function boundary23ofp
+      "boundary function for region boundary between regions 2 and 3 (input pressure)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Temperature t "temperature (K)";
-    protected 
+    protected
       constant Real[5] n=data.n;
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       pi := p/1.0e6;
       assert(p > triple.ptriple,
         "IF97 medium function boundary23ofp called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
       t := n[4] + ((pi - n[5])/n[3])^0.5;
     end boundary23ofp;
-    
-    function hlowerofp5 
-      "explicit lower specific enthalpy limit of region 5 as function of pressure" 
+
+    function hlowerofp5
+      "explicit lower specific enthalpy limit of region 5 as function of pressure"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR5;
       assert(p > triple.ptriple,
         "IF97 medium function hlowerofp5 called with too low pressure\n" +
@@ -212,15 +212,15 @@ package BaseIF97
       h := 461526.*(9.01505286876203 + pi*(-0.00979043490246092 + (-0.0000203245575263501
          + 3.36540214679088e-7*pi)*pi));
     end hlowerofp5;
-    
-    function hupperofp5 
-      "explicit upper specific enthalpy limit of region 5 as function of pressure" 
+
+    function hupperofp5
+      "explicit upper specific enthalpy limit of region 5 as function of pressure"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR5;
       assert(p > triple.ptriple,
         "IF97 medium function hupperofp5 called with too low pressure\n" +
@@ -228,16 +228,16 @@ package BaseIF97
       h := 461526.*(15.9838891400332 + pi*(-0.000489898813722568 + (-5.01510211858761e-8
          + 7.5006972718273e-8*pi)*pi));
     end hupperofp5;
-    
-    function slowerofp5 
-      "explicit lower specific entropy limit of region 5 as function of pressure" 
-      
+
+    function slowerofp5
+      "explicit lower specific entropy limit of region 5 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR5;
       assert(p > triple.ptriple,
         "IF97 medium function slowerofp5 called with too low pressure\n" +
@@ -245,16 +245,16 @@ package BaseIF97
       s := 461.526*(18.4296209980112 + pi*(-0.00730911805860036 + (-0.0000168348072093888
          + 2.09066899426354e-7*pi)*pi) - Modelica.Math.log(pi));
     end slowerofp5;
-    
-    function supperofp5 
-      "explicit upper specific entropy limit of region 5 as function of pressure" 
-      
+
+    function supperofp5
+      "explicit upper specific entropy limit of region 5 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR5;
       assert(p > triple.ptriple,
         "IF97 medium function supperofp5 called with too low pressure\n" +
@@ -262,17 +262,17 @@ package BaseIF97
       s := 461.526*(22.7281531474243 + pi*(-0.000656650220627603 + (-1.96109739782049e-8
          + 2.19979537113031e-8*pi)*pi) - Modelica.Math.log(pi));
     end supperofp5;
-    
-    function hlowerofp1 
-      "explicit lower specific enthalpy limit of region 1 as function of pressure" 
-      
+
+    function hlowerofp1
+      "explicit lower specific enthalpy limit of region 1 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi1 := 7.1 - p/data.PSTAR1;
       assert(p > triple.ptriple,
         "IF97 medium function hlowerofp1 called with too low pressure\n" +
@@ -280,7 +280,7 @@ package BaseIF97
       o[1] := pi1*pi1;
       o[2] := o[1]*o[1];
       o[3] := o[2]*o[2];
-      
+
       h := 639675.036*(0.173379420894777 + pi1*(-0.022914084306349 + pi1*(-0.00017146768241932
          + pi1*(-4.18695814670391e-6 + pi1*(-2.41630417490008e-7 + pi1*(
         1.73545618580828e-11 + o[1]*pi1*(8.43755552264362e-14 + o[2]*o[3]*pi1
@@ -288,16 +288,16 @@ package BaseIF97
          + pi1*(1.73894459122923e-45 + (-7.06381628462585e-47 +
         9.64504638626269e-49*pi1)*pi1)))))))))));
     end hlowerofp1;
-    
-    function hupperofp1 
-      "explicit upper specific enthalpy limit of region 1 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)" 
+
+    function hupperofp1
+      "explicit upper specific enthalpy limit of region 1 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi1 := 7.1 - p/data.PSTAR1;
       assert(p > triple.ptriple,
         "IF97 medium function hupperofp1 called with too low pressure\n" +
@@ -312,17 +312,17 @@ package BaseIF97
          + o[1]*o[2]*(-9.19148577641497e-22 + pi1*(4.27026404402408e-22 + (-6.66749357417962e-23
          + 3.49930466305574e-24*pi1)*pi1)))))))))));
     end hupperofp1;
-    
-    function slowerofp1 
-      "explicit lower specific entropy limit of region 1 as function of pressure" 
-      
+
+    function slowerofp1
+      "explicit lower specific entropy limit of region 1 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi1 := 7.1 - p/data.PSTAR1;
       assert(p > triple.ptriple,
         "IF97 medium function slowerofp1 called with too low pressure\n" +
@@ -337,17 +337,17 @@ package BaseIF97
          + pi1*(8.99540001407168e-45 + (-3.65230274480299e-46 +
         4.98464639687285e-48*pi1)*pi1)))))))))));
     end slowerofp1;
-    
-    function supperofp1 
-      "explicit upper specific entropy limit of region 1 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)" 
-      
+
+    function supperofp1
+      "explicit upper specific entropy limit of region 1 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi1 := 7.1 - p/data.PSTAR1;
       assert(p > triple.ptriple,
         "IF97 medium function supperofp1 called with too low pressure\n" +
@@ -362,19 +362,19 @@ package BaseIF97
          + o[1]*o[2]*(-2.06859611434475e-21 + pi1*(9.60758422254987e-22 + (-1.49967810652241e-22
          + 7.86863124555783e-24*pi1)*pi1)))))))))));
     end supperofp1;
-    
-    function hlowerofp2 
-      "explicit lower specific enthalpy limit of region 2 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)" 
-      
+
+    function hlowerofp2
+      "explicit lower specific enthalpy limit of region 2 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real q1 "auxiliary variable";
       Real q2 "auxiliary variable";
       Real[18] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       assert(p > triple.ptriple,
         "IF97 medium function hlowerofp2 called with too low pressure\n" +
@@ -425,17 +425,17 @@ package BaseIF97
         4.44545133805865e-18*o[12]*o[6]*q2 - 50.2465185106411*o[10]*o[13]*o[6]
         *o[7]*q2)))/o[1];
     end hlowerofp2;
-    
-    function hupperofp2 
-      "explicit upper specific enthalpy limit of region 2 as function of pressure" 
-      
+
+    function hupperofp2
+      "explicit upper specific enthalpy limit of region 2 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real[2] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       assert(p > triple.ptriple,
         "IF97 medium function hupperofp2 called with too low pressure\n" +
@@ -451,19 +451,19 @@ package BaseIF97
         8.06630589170884e-129 + (-1.76117969553159e-103 +
         1.88543121025106e-84*pi)*pi)))*o[1]))*o[2]))))))))));
     end hupperofp2;
-    
-    function slowerofp2 
-      "explicit lower specific entropy limit of region 2 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)" 
-      
+
+    function slowerofp2
+      "explicit lower specific entropy limit of region 2 as function of pressure (meets region 4 saturation pressure curve at 623.15 K)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real q1 "auxiliary variable";
       Real q2 "auxiliary variable";
       Real[40] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       assert(p > triple.ptriple,
         "IF97 medium function slowerofp2 called with too low pressure\n" +
@@ -510,7 +510,7 @@ package BaseIF97
       o[38] := o[20]*o[24]*o[31]*q2;
       o[39] := o[14]*q2;
       o[40] := o[11]*o[31];
-      
+
       s := 461.526*(9.692768600217 + 1.22151969114703e-16*o[10] +
         0.00018948987516315*o[1]*o[11] + 1.6714766451061e-11*o[12]*o[13] +
         0.0039392777243355*o[1]*o[14] - 1.0406965210174e-19*o[14]*o[16] +
@@ -565,17 +565,17 @@ package BaseIF97
         25]*o[31]*q2 - 0.000201611844951398*o[11]*o[14]*o[20]*o[26]*o[31]*q2)
          - Modelica.Math.log(pi));
     end slowerofp2;
-    
-    function supperofp2 
-      "explicit upper specific entropy limit of region 2 as function of pressure" 
-      
+
+    function supperofp2
+      "explicit upper specific entropy limit of region 2 as function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real[2] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       assert(p > triple.ptriple,
         "IF97 medium function supperofp2 called with too low pressure\n" +
@@ -591,20 +591,20 @@ package BaseIF97
          + pi*(7.51557618628583e-132 + (-1.64086406733212e-106 +
         1.75648443097063e-87*pi)*pi)))*o[1]))*o[2]*o[2]))))))))));
     end supperofp2;
-    
-    function d1n "density in region 1 as function of p and T" 
+
+    function d1n "density in region 1 as function of p and T"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real pi1 "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau1 "dimensionless temperature";
       Real gpi "dimensionless Gibbs-derivative w.r.t. pi";
       Real[11] o "auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR1;
       tau := data.TSTAR1/T;
       pi1 := 7.1 - pi;
@@ -636,19 +636,19 @@ package BaseIF97
          + 0.00005283835796993*o[1])*tau1))))/(o[3]*tau1);
       d := p/(data.RH2O*T*pi*gpi);
     end d1n;
-    
-    function d2n "density in region 2  as function of p and T" 
+
+    function d2n "density in region 2  as function of p and T"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau2 "dimensionless temperature";
       Real gpi "dimensionless Gibbs-derivative w.r.t. pi";
       Real[12] o "auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       tau := data.TSTAR2/T;
       tau2 := tau - 0.5;
@@ -688,16 +688,16 @@ package BaseIF97
         *o[12]*o[3]*tau2)))))))))))))))))/pi;
       d := p/(data.RH2O*T*pi*gpi);
     end d2n;
-    
-    function dhot1ofp "density at upper temperature limit of region 1" 
+
+    function dhot1ofp "density at upper temperature limit of region 1"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real pi1 "dimensionless pressure";
       Real[4] o "auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR1;
       pi1 := 7.1 - pi;
       o[1] := pi1*pi1;
@@ -712,15 +712,15 @@ package BaseIF97
         *pi1 + 3.29199117056433e-22*o[2]*o[3]*o[4]*pi1 + 2.73712834080283e-24
         *o[1]*o[2]*o[3]*o[4]*pi1);
     end dhot1ofp;
-    
-    function dupper1ofT "density at upper pressure limit of region 1" 
+
+    function dupper1ofT "density at upper pressure limit of region 1"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Real tau "dimensionless temperature";
       Real[4] o "auxiliary variables";
-    algorithm 
+    algorithm
       tau := 1386.0/T;
       o[1] := tau*tau;
       o[2] := o[1]*o[1];
@@ -744,15 +744,15 @@ package BaseIF97
         5.34588682252967e-20*o[2]*o[3]*o[4]*tau - 2.73712834080283e-24*o[1]*o[
         2]*o[3]*o[4]*tau);
     end dupper1ofT;
-    
-    function hl_p_R4b 
-      "explicit approximation of liquid specific enthalpy on the boundary between regions 4 and 3" 
+
+    function hl_p_R4b
+      "explicit approximation of liquid specific enthalpy on the boundary between regions 4 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
         // documentation of accuray in notebook ~hubertus/props/IAPWS/R3Approx.nb
       // boundary between region IVa and III
       x := Modelica.Math.acos(p/data.PCRIT);
@@ -762,15 +762,15 @@ package BaseIF97
         HCRIT;
       annotation(smoothOrder=5);
     end hl_p_R4b;
-    
-    function hv_p_R4b 
-      "explicit approximation of vapour specific enthalpy on the boundary between regions 4 and 3" 
+
+    function hv_p_R4b
+      "explicit approximation of vapour specific enthalpy on the boundary between regions 4 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
       // boundary between region IVa and III
       x := Modelica.Math.acos(p/data.PCRIT);
       h := (1 + x*(0.4880153718655694 + x*(0.2079670746250689 + x*(-6.084122698421623
@@ -779,15 +779,15 @@ package BaseIF97
         *data.HCRIT;
       annotation(smoothOrder=5);
     end hv_p_R4b;
-    
-    function sl_p_R4b 
-      "explicit approximation of liquid specific entropy on the boundary between regions 4 and 3" 
+
+    function sl_p_R4b
+      "explicit approximation of liquid specific entropy on the boundary between regions 4 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
       // boundary between region IVa and III
       x := Modelica.Math.acos(p/data.PCRIT);
       s := (1 + x*(-0.36160692245648063 + x*(0.9962778630486647 + x*(-2.8595548144171103
@@ -796,16 +796,16 @@ package BaseIF97
         *x)))))))*data.SCRIT;
       annotation(smoothOrder=5);
     end sl_p_R4b;
-    
-    function sv_p_R4b 
-      "explicit approximation of vapour specific entropy on the boundary between regions 4 and 3" 
-      
+
+    function sv_p_R4b
+      "explicit approximation of vapour specific entropy on the boundary between regions 4 and 3"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s;
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
         // documentation of accuray in notebook ~hubertus/props/IAPWS/R3Approx.nb
       // boundary between region IVa and III
       x := Modelica.Math.acos(p/data.PCRIT);
@@ -815,15 +815,15 @@ package BaseIF97
         *data.SCRIT;
       annotation(smoothOrder=5);
     end sv_p_R4b;
-    
-    function rhol_p_R4b 
-      "explicit approximation of liquid density on the boundary between regions 4 and 3" 
+
+    function rhol_p_R4b
+      "explicit approximation of liquid density on the boundary between regions 4 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Density dl "liquid density";
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
       if (p < data.PCRIT) then
         x := Modelica.Math.acos(p/data.PCRIT);
         dl := (1 + x*(1.903224079094824 + x*(-2.5314861802401123 + x*(-8.191449323843552
@@ -835,15 +835,15 @@ package BaseIF97
       end if;
       annotation(smoothOrder=5);
     end rhol_p_R4b;
-    
-    function rhov_p_R4b 
-      "explicit approximation of vapour density on the boundary between regions 4 and 2" 
+
+    function rhov_p_R4b
+      "explicit approximation of vapour density on the boundary between regions 4 and 2"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Density dv "vapour density";
-    protected 
+    protected
       Real x "auxiliary variable";
-    algorithm 
+    algorithm
       if (p < data.PCRIT) then
         x := Modelica.Math.acos(p/data.PCRIT);
         dv := (1 + x*(-1.8463850803362596 + x*(-1.1447872718878493 + x*(
@@ -856,24 +856,24 @@ package BaseIF97
       end if;
       annotation(smoothOrder=5);
     end rhov_p_R4b;
-    
-    function boilingcurve_p "properties on the boiling curve" 
+
+    function boilingcurve_p "properties on the boiling curve"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
-      output 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      output
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                 bpro "property record";
-    protected 
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs 
+    protected
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
                          g "dimensionless Gibbs funcion and dervatives";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs 
-                             f 
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs
+                             f
         "dimensionless Helmholtz function and dervatives";
-      Modelica.SIunits.Pressure plim=min(p, data.PCRIT - 1e-7) 
+      Modelica.SIunits.Pressure plim=min(p, data.PCRIT - 1e-7)
         "pressure limited to critical pressure - epsilon";
       Boolean region3boundary "true if boundary between 2-phase and region 3";
       Real pv "partial derivative of p w.r.t v";
-    algorithm 
+    algorithm
       bpro.R := data.RH2O;
       bpro.T := Basic.tsat(plim);
       bpro.dpT := Basic.dptofT(bpro.T);
@@ -902,24 +902,24 @@ package BaseIF97
         bpro.vt := -bpro.pt/pv;
       end if;
     end boilingcurve_p;
-    
-    function dewcurve_p "properties on the dew curve" 
+
+    function dewcurve_p "properties on the dew curve"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
-      output 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      output
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                 bpro "property record";
-    protected 
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs 
+    protected
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
                          g "dimensionless Gibbs funcion and dervatives";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs 
-                             f 
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs
+                             f
         "dimensionless Helmholtz function and dervatives";
-      Modelica.SIunits.Pressure plim=min(p, data.PCRIT - 1e-7) 
+      Modelica.SIunits.Pressure plim=min(p, data.PCRIT - 1e-7)
         "pressure limited to critical pressure - epsilon";
       Boolean region3boundary "true if boundary between 2-phase and region 3";
       Real pv "partial derivative of p w.r.t v";
-    algorithm 
+    algorithm
       bpro.R := data.RH2O;
       bpro.T := Basic.tsat(plim);
       bpro.dpT := Basic.dptofT(bpro.T);
@@ -948,112 +948,112 @@ package BaseIF97
         bpro.vt := -bpro.pt/pv;
       end if;
     end dewcurve_p;
-    
-    function hvl_p 
+
+    function hvl_p
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
-      input 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      input
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                bpro "property record";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    algorithm 
+    algorithm
       h := bpro.h;
       annotation (
         derivative(noDerivative=bpro) = hvl_p_der,
         Inline=false,
         LateInline=true);
     end hvl_p;
-    
-    function hl_p 
-      "liquid specific enthalpy on the boundary between regions 4 and 3 or 1" 
-      
+
+    function hl_p
+      "liquid specific enthalpy on the boundary between regions 4 and 3 or 1"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    algorithm 
+    algorithm
       h := hvl_p(p, boilingcurve_p(p));
     end hl_p;
-    
-    function hv_p 
-      "vapour specific enthalpy on the boundary between regions 4 and 3 or 2" 
-      
+
+    function hv_p
+      "vapour specific enthalpy on the boundary between regions 4 and 3 or 2"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    algorithm 
+    algorithm
       h := hvl_p(p, dewcurve_p(p));
     end hv_p;
-    
-    function hvl_p_der 
-      "derivative function for the specific enthalpy along the phase boundary" 
-      
+
+    function hvl_p_der
+      "derivative function for the specific enthalpy along the phase boundary"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
-      input 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      input
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                bpro "property record";
       input Real p_der "derivative of pressure";
-      output Real h_der 
+      output Real h_der
         "time derivative of specific enthalpy along the phase boundary";
-    algorithm 
+    algorithm
       h_der := (1/bpro.d - bpro.T*bpro.vt)*p_der + bpro.cp/bpro.dpT*p_der;
     end hvl_p_der;
-    
-    function rhovl_p 
+
+    function rhovl_p
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
-      input 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      input
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                bpro "property record";
       output Modelica.SIunits.Density rho "density";
-    algorithm 
+    algorithm
       rho := bpro.d;
       annotation (
         derivative(noDerivative=bpro) = rhovl_p_der,
         Inline=false,
         LateInline=true);
     end rhovl_p;
-    
-    function rhol_p "density of saturated water" 
+
+    function rhol_p "density of saturated water"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "saturation pressure";
-      output Modelica.SIunits.Density rho 
+      output Modelica.SIunits.Density rho
         "density of steam at the condensation point";
-    algorithm 
+    algorithm
       rho := rhovl_p(p, boilingcurve_p(p));
     end rhol_p;
-    
-    function rhov_p "density of saturated vapour" 
+
+    function rhov_p "density of saturated vapour"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "saturation pressure";
-      output Modelica.SIunits.Density rho 
+      output Modelica.SIunits.Density rho
         "density of steam at the condensation point";
-    algorithm 
+    algorithm
       rho := rhovl_p(p, dewcurve_p(p));
     end rhov_p;
-    
-    function rhovl_p_der 
+
+    function rhovl_p_der
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "saturation pressure";
-      input 
-        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties 
+      input
+        ThermoSysPro.Properties.WaterSteam.Common.IF97PhaseBoundaryProperties
                                                bpro "property record";
       input Real p_der "derivative of pressure";
       output Real d_der "time derivative of density along the phase boundary";
-    algorithm 
+    algorithm
       d_der := -bpro.d*bpro.d*(bpro.vp + bpro.vt/bpro.dpT)*p_der;
     end rhovl_p_der;
-    
-    function sl_p 
-      "liquid specific entropy on the boundary between regions 4 and 3 or 1" 
-      
+
+    function sl_p
+      "liquid specific entropy on the boundary between regions 4 and 3 or 1"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Modelica.SIunits.Temperature Tsat "saturation temperature";
       Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    algorithm 
+    algorithm
       if (p < data.PLIMIT4A) then
         Tsat := Basic.tsat(p);
         (h,s) := Isentropic.handsofpT1(p, Tsat);
@@ -1063,17 +1063,17 @@ package BaseIF97
         s := data.SCRIT;
       end if;
     end sl_p;
-    
-    function sv_p 
-      "vapour specific entropy on the boundary between regions 4 and 3 or 2" 
-      
+
+    function sv_p
+      "vapour specific entropy on the boundary between regions 4 and 3 or 2"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Modelica.SIunits.Temperature Tsat "saturation temperature";
       Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    algorithm 
+    algorithm
       if (p < data.PLIMIT4A) then
         Tsat := Basic.tsat(p);
         (h,s) := Isentropic.handsofpT2(p, Tsat);
@@ -1083,14 +1083,14 @@ package BaseIF97
         s := data.SCRIT;
       end if;
     end sv_p;
-    
-    function rhol_T "density of saturated water" 
+
+    function rhol_T "density of saturated water"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature";
       output Modelica.SIunits.Density d "density of water at the boiling point";
-    protected 
+    protected
       Modelica.SIunits.Pressure p "saturation pressure";
-    algorithm 
+    algorithm
       p := Basic.psat(T);
       if T < data.TLIMIT1 then
         d := d1n(p, T);
@@ -1100,16 +1100,16 @@ package BaseIF97
         d := data.DCRIT;
       end if;
     end rhol_T;
-    
-    function rhov_T "density of saturated vapour" 
+
+    function rhov_T "density of saturated vapour"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature";
-      output Modelica.SIunits.Density d 
+      output Modelica.SIunits.Density d
         "density of steam at the condensation point";
-    protected 
+    protected
       Modelica.SIunits.Pressure p "saturation pressure";
-    algorithm 
-      
+    algorithm
+
         // assert(T <= data.TCRIT,"input temperature has to be below the critical temperature");
       p := Basic.psat(T);
       if T < data.TLIMIT1 then
@@ -1120,26 +1120,26 @@ package BaseIF97
         d := data.DCRIT;
       end if;
     end rhov_T;
-    
-    function region_ph 
-      "return the current region (valid values: 1,2,3,4,5) in IF97 for given pressure and specific enthalpy" 
+
+    function region_ph
+      "return the current region (valid values: 1,2,3,4,5) in IF97 for given pressure and specific enthalpy"
       extends Modelica.Icons.Function;
      input Modelica.SIunits.Pressure p "pressure";
      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-     input Integer phase=0 
+     input Integer phase=0
         "phase: 2 for two-phase, 1 for one phase, 0 if not known";
      input Integer mode=0 "mode: 0 means check, otherwise assume region=mode";
       output Integer region "region (valid values: 1,2,3,4,5) in IF97";
       // If mode is different from 0, no checking for the region is done and
       // the mode is assumed to be the correct region. This can be used to
       // implement e.g. water-only steamtables when mode == 1
-    protected 
+    protected
       Boolean hsubcrit;
       Modelica.SIunits.Temperature Ttest;
       constant Real[5] n=data.n;
       Modelica.SIunits.SpecificEnthalpy hl "bubble enthalpy";
       Modelica.SIunits.SpecificEnthalpy hv "dew enthalpy";
-    algorithm 
+    algorithm
       if (mode <> 0) then
         region := mode;
       else
@@ -1150,8 +1150,8 @@ package BaseIF97
           region := 4;
         else
           // phase == 1 or 0, now check if we are in the legal area
-          if 
-            (p < triple.ptriple) or (p > data.PLIMIT1) or (h < hlowerofp1(p)) or 
+          if
+            (p < triple.ptriple) or (p > data.PLIMIT1) or (h < hlowerofp1(p)) or
             ((p < 10.0e6) and (h > hupperofp5(p)))
             or ((p >= 10.0e6) and (h > hupperofp2(p))) then
             // outside of valid range
@@ -1235,9 +1235,9 @@ package BaseIF97
       // mode was == 0
       // assert(region > 0,"IF97 function called outside the valid range!");
     end region_ph;
-    
-    function region_ps 
-      "return the current region (valid values: 1,2,3,4,5) in IF97 for given pressure and specific entropy" 
+
+    function region_ps
+      "return the current region (valid values: 1,2,3,4,5) in IF97 for given pressure and specific entropy"
       extends Modelica.Icons.Function;
      input Modelica.SIunits.Pressure p "pressure";
      input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -1249,13 +1249,13 @@ package BaseIF97
       //  If mode is different from 0, no checking for the region is done and
       //    the mode is assumed to be the correct region. This can be used to
       //    implement e.g. water-only steamtables when mode == 1
-    protected 
+    protected
       Boolean ssubcrit;
       Modelica.SIunits.Temperature Ttest;
       constant Real[5] n=data.n;
       Modelica.SIunits.SpecificEntropy sl "bubble entropy";
       Modelica.SIunits.SpecificEntropy sv "dew entropy";
-    algorithm 
+    algorithm
       if (mode <> 0) then
         region := mode;
       else
@@ -1341,17 +1341,17 @@ package BaseIF97
       end if;
       // mode was == 0
     end region_ps;
-    
-    function region_pT 
-      "return the current region (valid values: 1,2,3,5) in IF97, given pressure and temperature" 
-      
+
+    function region_pT
+      "return the current region (valid values: 1,2,3,5) in IF97, given pressure and temperature"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       input Integer mode=0 "mode: 0 means check, otherwise assume region=mode";
-      output Integer region 
+      output Integer region
         "region (valid values: 1,2,3,5) in IF97, region 4 is impossible!";
-    algorithm 
+    algorithm
       if (mode <> 0) then
         region := mode;
       else
@@ -1377,20 +1377,20 @@ package BaseIF97
       end if;
       // mode was == 0
     end region_pT;
-    
-    function region_dT 
-      "return the current region (valid values: 1,2,3,4,5) in IF97, given density and temperature" 
+
+    function region_dT
+      "return the current region (valid values: 1,2,3,4,5) in IF97, given density and temperature"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      input Integer phase= 0 
+      input Integer phase= 0
         "phase: 2 for two-phase, 1 for one phase, 0 if not known";
       input Integer mode= 0 "mode: 0 means check, otherwise assume region=mode";
       output Integer region "(valid values: 1,2,3,4,5) in IF97";
-    protected 
+    protected
       Boolean Tovercrit "flag if overcritical temperature";
       Modelica.SIunits.Pressure p23 "pressure needed to know if region 2 or 3";
-    algorithm 
+    algorithm
       Tovercrit := T > data.TCRIT;
       if (mode <> 0) then
         region := mode;
@@ -1432,7 +1432,7 @@ package BaseIF97
         end if;
       end if;
     end region_dT;
-    
+
     annotation (Documentation(info="<HTML><h4>Package description</h4>
  <p>Package <b>Regions</b> contains a large number of auxiliary functions which are neede to compute the current region
  of the IAPWS/IF97 for a given pair of input variables as quickly as possible. The focus of this implementation was on
@@ -1517,28 +1517,28 @@ package BaseIF97
 </HTML>
 "));
   end Regions;
-  
+
   //===================================================================
   //                      Base functions
-  
+
   //===================================================================
-  
-  package Basic "Base functions as described in IAWPS/IF97" 
-    
+
+  package Basic "Base functions as described in IAWPS/IF97"
+
     extends Modelica.Icons.Library;
-    
-    function g1 "Gibbs function for region 1: g(p,T)" 
+
+    function g1 "Gibbs function for region 1: g(p,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs 
-                                g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
+                                g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real tau1 "dimensionless temperature";
       Real[45] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
     //   assert(p > triple.ptriple,
     //     "IF97 medium function g1 called with too low pressure\n" +
     //     "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -1614,7 +1614,7 @@ package BaseIF97
          + tau1*(3.3855169168385 + tau1*(-0.95791963387872 + tau1*(
         0.157720385132280 + (-0.0166164171995010 + 0.00081214629983568*tau1)*
         tau1))))))/o[1];
-      
+
       g.gpi := pi1*(pi1*(o[10]*(0.000095038934535162 + o[2]*(
         8.4812393955936e-6 + 2.55615384360309e-9*o[6])) + pi1*(o[12]*(
         8.9701127632000e-6 + (2.60684891582404e-6 + 5.7366919751696e-13*o[13])
@@ -1628,7 +1628,7 @@ package BaseIF97
         5]*(-0.000283190801238040 + o[1]*(0.00060706301565874 + o[6]*(
         0.0189900682184190 + tau1*(0.032529748770505 + (0.0218417171754140 +
         0.000052838357969930*o[1])*tau1))));
-      
+
       g.gpipi := pi1*(o[10]*(-0.000190077869070324 + o[2]*(-0.0000169624787911872
          - 5.1123076872062e-9*o[6])) + pi1*(o[12]*(-0.0000269103382896000 + (
         -7.8205467474721e-6 - 1.72100759255088e-12*o[13])*o[7]) + pi1*(-8.1033993720234e-6
@@ -1639,7 +1639,7 @@ package BaseIF97
         pi1))))))))) + o[8]*(-0.00094368642146534 + o[7]*(-0.00060003561586052
          + (0.000095322787813974 + o[1]*(-8.8283690661692e-6 -
         1.45389992595188e-15*o[9]))*tau1));
-      
+
       g.gtau := pi1*(o[38]*(-0.00254871721114236 + o[1]*(0.0042494411096112
          + (0.0189900682184190 + (-0.0218417171754140 - 0.000158515073909790*
         o[1])*o[1])*o[6])) + pi1*(o[10]*(0.00141552963219801 + o[2]*(
@@ -1655,7 +1655,7 @@ package BaseIF97
          + tau1*(0.84548187169114 + o[1]*(3.3855169168385 + tau1*(-1.91583926775744
          + tau1*(0.47316115539684 + (-0.066465668798004 + 0.0040607314991784*
         tau1)*tau1)))));
-      
+
       g.gtautau := pi1*(o[36]*(0.0254871721114236 + o[1]*(-0.033995528876889
          + (-0.037980136436838 - 0.00031703014781958*o[2])*o[6])) + pi1*(o[12]
         *(-0.0056621185287920 + o[6]*(-0.0000264851071985076 -
@@ -1670,7 +1670,7 @@ package BaseIF97
         *tau1))))) + o[10]*(0.87797827279002 + tau1*(-1.69096374338228 + o[7]
         *(-1.91583926775744 + tau1*(0.94632231079368 + (-0.199397006394012 +
         0.0162429259967136*tau1)*tau1))));
-      
+
       g.gtaupi := o[38]*(0.00254871721114236 + o[1]*(-0.0042494411096112 + (-0.0189900682184190
          + (0.0218417171754140 + 0.000158515073909790*o[1])*o[1])*o[6])) +
         pi1*(o[10]*(-0.00283105926439602 + o[2]*(-0.000095322787813974 + o[1]
@@ -1683,18 +1683,18 @@ package BaseIF97
         o[26] + pi1*(2.26028372809410e-21*o[24] - 1.22720658527705e-22*o[41]*
         pi1))))))))));
     end g1;
-    
-    function g2 "Gibbs function for region 2: g(p,T)" 
+
+    function g2 "Gibbs function for region 2: g(p,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs 
-                                g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
+                                g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    protected 
+    protected
       Real tau2 "dimensionless temperature";
       Real[55] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       g.p := p;
       g.T := T;
       g.R := data.RH2O;
@@ -1765,7 +1765,7 @@ package BaseIF97
       o[53] := o[10]*o[12]*o[25];
       o[54] := o[1]*o[10]*o[25];
       o[55] := o[11]*o[12]*tau2;
-      
+
       g.g := g.pi*(-0.00177317424732130 + o[9] + g.pi*(tau2*(-0.000033032641670203
          + (-0.000189489875163150 + o[1]*(-0.0039392777243355 + (-0.043797295650573
          - 0.0000266745479140870*o[13])*o[2]))*tau2) + g.pi*(
@@ -1788,7 +1788,7 @@ package BaseIF97
         1.42408197144400 + g.tau*(-4.3839511194500 + g.tau*(-9.6927686002170
          + g.tau*(10.0866556801800 + (-0.284086326077200 + 0.0212684635330700
         *g.tau)*g.tau) + Modelica.Math.log(g.pi)))))))/(o[34]*g.tau);
-      
+
       g.gpi := (1.00000000000000 + g.pi*(-0.00177317424732130 + o[9] + g.pi*(
         o[43] + g.pi*(6.1445213076927e-8 + (1.31612001853305e-6 + o[1]*(-0.000096833031715710
          + (-0.0045101773626444 - 0.122004760687947*o[13])*o[2]))*tau2 + g.pi
@@ -1805,7 +1805,7 @@ package BaseIF97
         30] + o[31]*(1.75410265428146e-27 + o[18]*(1.32995316841867e-15 -
         0.0000226487297378904*o[32]))*g.pi)))))))))))) + tau2*(-3.15389238237468e-9
          + (5.1162871409140e-8 + 1.92901490874028e-6*tau2)*tau2))))))/g.pi;
-      
+
       g.gpipi := (-1.00000000000000 + o[21]*(o[43] + g.pi*(
         1.22890426153854e-7 + (2.63224003706610e-6 + o[1]*(-0.000193666063431420
          + (-0.0090203547252888 - 0.244009521375894*o[13])*o[2]))*tau2 + g.pi
@@ -1822,7 +1822,7 @@ package BaseIF97
          + o[31]*(4.0344361048474e-26 + o[18]*(3.05889228736295e-14 -
         0.00052092078397148*o[32]))*g.pi)))))))))))) + tau2*(-9.4616771471240e-9
          + (1.53488614227420e-7 + o[44])*tau2)))))/o[21];
-      
+
       g.gtau := (0.0280439559151000 + g.tau*(-0.285810955258200 + g.tau*(
         1.22131494717840 + g.tau*(-2.84816394288800 + g.tau*(4.3839511194500
          + o[33]*(10.0866556801800 + (-0.56817265215440 + 0.063805390599210*g.
@@ -1844,7 +1844,7 @@ package BaseIF97
          + (1.90027787547159e-27 + o[18]*(2.21658861403112e-15 -
         0.000054734430199902*o[32]))*o[55]*g.pi)))))))))))) + (
         2.55814357045700e-8 + 1.44676118155521e-6*tau2)*tau2))));
-      
+
       g.gtautau := (-0.168263735490600 + g.tau*(1.42905477629100 + g.tau*(-4.8852597887136
          + g.tau*(8.5444918286640 + g.tau*(-8.7679022389000 + o[33]*(-0.56817265215440
          + 0.127610781198420*g.tau)*g.tau)))))/(o[33]*o[34]*g.tau) + g.pi*(-0.091992027392730
@@ -1866,7 +1866,7 @@ package BaseIF97
         25]*tau2 + g.pi*(o[11]*o[12]*(4.7506946886790e-26 + o[18]*(
         8.6446955947214e-14 - 0.00311986252139440*o[32]))*g.pi -
         1.89230784411972e-12*o[10]*o[25]*tau2))))))))))))))));
-      
+
       g.gtaupi := -0.0178348622923580 + o[49] + g.pi*(-0.000066065283340406
          + (-0.00075795950065260 + o[1]*(-0.0315142217946840 + (-0.61316213910802
          - 0.00192056744981426*o[13])*o[2]))*tau2 + g.pi*(1.31612001853305e-6
@@ -1886,21 +1886,21 @@ package BaseIF97
         0.00131362632479764*o[32]))*o[55]*g.pi)))))))))))) + (
         1.02325742818280e-7 + o[44])*tau2)));
     end g2;
-    
-    function g2metastable 
-      "Gibbs function for metastable part of region 2: g(p,T)" 
+
+    function g2metastable
+      "Gibbs function for metastable part of region 2: g(p,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs 
-                                g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
+                                g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau2 "dimensionless temperature";
       Real[27] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function g2metastable called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -1943,7 +1943,7 @@ package BaseIF97
       o[25] := -0.176447663886292 + o[24];
       o[26] := o[25]*tau2;
       o[27] := o[3]*tau2;
-      
+
       g.g := g.pi*(-0.0073362260186506 + o[9] + g.pi*(g.pi*((-0.0063498037657313
          - 0.086043093028588*o[12])*o[3] + g.pi*(o[13]*(0.007532158152277 -
         0.0079238375446139*o[2]) + o[11]*g.pi*(-0.00022888160778447 -
@@ -1953,17 +1953,17 @@ package BaseIF97
          + g.tau*(-4.38395111945 + g.tau*(-9.6937268393049 + g.tau*(
         10.087275970006 + (-0.2840863260772 + 0.02126846353307*g.tau)*g.tau)
          + Modelica.Math.log(g.pi)))))))/(o[15]*g.tau);
-      
+
       g.gpi := (1.0 + g.pi*(-0.0073362260186506 + o[9] + g.pi*(o[20] + g.pi*(
         (-0.0190494112971939 - 0.258129279085764*o[12])*o[3] + g.pi*(o[13]*(
         0.030128632609108 - 0.0316953501784556*o[2]) + o[11]*g.pi*(-0.00114440803892235
          - 0.013228250741405*tau2))))))/g.pi;
-      
+
       g.gpipi := (-1. + o[21]*(o[20] + g.pi*((-0.0380988225943878 -
         0.516258558171528*o[12])*o[3] + g.pi*(o[13]*(0.090385897827324 -
         0.0950860505353668*o[2]) + o[11]*g.pi*(-0.0045776321556894 -
         0.05291300296562*tau2)))))/o[21];
-      
+
       g.gtau := (0.0280439559151 + g.tau*(-0.2858109552582 + g.tau*(
         1.2213149471784 + g.tau*(-2.848163942888 + g.tau*(4.38395111945 + o[
         14]*(10.087275970006 + (-0.5681726521544 + 0.06380539059921*g.tau)*g.
@@ -1972,7 +1972,7 @@ package BaseIF97
         1.37668948845741*o[12])*o[2] + g.pi*((0.052725107065939 -
         0.079238375446139*o[2])*o[4] + o[10]*g.pi*(-0.00205993447006023 -
         0.02645650148281*tau2)))));
-      
+
       g.gtautau := (-0.1682637354906 + g.tau*(1.429054776291 + g.tau*(-4.8852597887136
          + g.tau*(8.544491828664 + g.tau*(-8.7679022389 + o[14]*(-0.5681726521544
          + 0.12761078119842*g.tau)*g.tau)))))/(o[14]*o[15]*g.tau) + g.pi*(-0.176447663886292
@@ -1981,24 +1981,24 @@ package BaseIF97
         20.6503423268611*o[12]) + g.pi*((0.316350642395634 -
         0.713145379015251*o[2])*o[27] + o[13]*g.pi*(-0.0164794757604818 -
         0.23810851334529*tau2)))));
-      
+
       g.gtaupi := o[26] + g.pi*(0.0040195606760414 + (-0.742642906580988 -
         0.243809309078304*o[11])*o[4] + g.pi*((-0.0761976451887756 -
         4.13006846537222*o[12])*o[2] + g.pi*((0.210900428263756 -
         0.316953501784556*o[2])*o[4] + o[10]*g.pi*(-0.0102996723503012 -
         0.13228250741405*tau2))));
     end g2metastable;
-    
-    function f3 "Helmholtz function for region 3: f(d,T)" 
+
+    function f3 "Helmholtz function for region 3: f(d,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs 
-                                    f 
+      output ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs
+                                    f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-    protected 
+    protected
       Real[40] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       f.T := T;
       f.d := d;
       f.R := data.RH2O;
@@ -2045,7 +2045,7 @@ package BaseIF97
       o[38] := -2.53086309554280 + o[37];
       o[39] := o[38]*f.tau;
       o[40] := o[18]*o[5]*f.tau;
-      
+
       f.f := -15.7328452902390 + f.tau*(20.9443969743070 + (-7.6867707878716
          + o[3]*(2.61859477879540 + o[4]*(-2.80807811486200 + o[1]*(
         1.20533696965170 - 0.0084566812812502*o[6]))))*f.tau) + f.delta*(o[14]
@@ -2062,7 +2062,7 @@ package BaseIF97
         0.000044923899061815*f.delta*o[22] - 0.000165576797950370*f.tau)))))
          + (0.107705126263320 + o[1]*(-0.32913623258954 - 0.50871062041158*o[
         20]))*f.tau))))) + 1.06580700285130*Modelica.Math.log(f.delta);
-      
+
       f.fdelta := (1.06580700285130 + f.delta*(o[14] + f.delta*(
         0.76986920373342 + o[31] + f.delta*(-0.83997989096130 + o[1]*(
         4.1699398708380 + o[1]*(-6.0569745070710 + o[16]*(-0.0246442911521889
@@ -2074,7 +2074,7 @@ package BaseIF97
          + f.delta*(0.00080964802996215 - 0.00049416288967996*f.delta*o[22]
          - 0.00165576797950370*f.tau))))) + (0.53852563131660 + o[1]*(-1.64568116294770
          - 2.54355310205790*o[20]))*f.tau))))))/f.delta;
-      
+
       f.fdeltadelta := (-1.06580700285130 + o[32]*(0.76986920373342 + o[31]
          + f.delta*(-1.67995978192260 + o[1]*(8.3398797416760 + o[1]*(-12.1139490141420
          + o[16]*(-0.049288582304378 - 2.85576214409538*o[17]))) + f.delta*(
@@ -2086,7 +2086,7 @@ package BaseIF97
         0.0072868322696594 - 0.0049416288967996*f.delta*o[22] -
         0.0149019118155333*f.tau))))) + (2.15410252526640 + o[1]*(-6.5827246517908
          - 10.1742124082316*o[20]))*f.tau)))))/o[32];
-      
+
       f.ftau := 20.9443969743070 + (-15.3735415757432 + o[3]*(
         18.3301634515678 + o[4]*(-28.0807811486200 + o[1]*(14.4640436358204
          - 0.194503669468755*o[6]))))*f.tau + f.delta*(o[39] + f.delta*(f.tau
@@ -2100,7 +2100,7 @@ package BaseIF97
         delta*(-0.0270067444826960*f.tau + f.delta*(-0.38569297916427*o[40]
          + f.delta*(f.delta*(-0.000165576797950370 - 0.00116802137560719*f.
         delta*o[40]) + (0.00115845907256168 + 0.084003152229649*o[21])*f.tau)))))))));
-      
+
       f.ftautau := -15.3735415757432 + o[3]*(109.980980709407 + o[4]*(-252.727030337580
          + o[1]*(159.104479994024 - 4.2790807283126*o[6]))) + f.delta*(-2.53086309554280
          + o[2]*(-34.573223420043 + (185.894192367068 - 174.645121293971*o[1])
@@ -2113,7 +2113,7 @@ package BaseIF97
          + f.delta*(-9.6423244791068*o[21] + f.delta*(0.00115845907256168 +
         2.10007880574121*o[21] - 0.0292005343901797*o[21]*o[32])))) + (-1.97481739553724
          - 330.66190326753*o[20])*f.tau)))));
-      
+
       f.fdeltatau := o[39] + f.delta*(f.tau*(-3.4085883529682 + o[2]*(
         58.766737850252 + (-42.703664159751 + o[15]*(1.73450362268278 +
         6.5303723806402*o[2]))*f.tau)) + f.delta*((8.3398797416760 + o[1]*(-24.2278980282840
@@ -2126,16 +2126,16 @@ package BaseIF97
          - 0.0128482351316791*f.delta*o[40]) + (0.0104261316530551 +
         0.75602837006684*o[21])*f.tau))))))));
     end f3;
-    
-    function g5 "base function for region 5: g(p,T)" 
+
+    function g5 "base function for region 5: g(p,T)"
             extends Modelica.Icons.Function;
             input Modelica.SIunits.Pressure p "pressure";
             input Modelica.SIunits.Temperature T "temperature (K)";
-            output Modelica.Media.Common.GibbsDerivs g 
+            output Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    protected 
+    protected
             Real[11] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
     //         assert(p > triple.ptriple,
     //           "IF97 medium function g5 called with too low pressure\n" +
     //           "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2159,43 +2159,43 @@ package BaseIF97
             o[9] := -7.9449656719138e-6*o[8];
             o[10] := g.pi*g.pi;
             o[11] := -0.0137828462699730*o[1];
-      
+
             g.g := g.pi*(-0.000125631835895920 + o[4] + g.pi*(-3.9724828359569e-6*o[
               8] + 1.29192282897840e-7*o[5]*g.pi)) + (-0.0248051489334660 + g.tau*(
               0.36901534980333 + g.tau*(-3.11613182139250 + g.tau*(-13.1799836742010
                + (6.8540841634434 - 0.32961626538917*g.tau)*g.tau +
               Modelica.Math.log(g.pi)))))/o[5];
-      
+
             g.gpi := (1.0 + g.pi*(-0.000125631835895920 + o[4] + g.pi*(o[9] +
               3.8757684869352e-7*o[5]*g.pi)))/g.pi;
-      
+
             g.gpipi := (-1.00000000000000 + o[10]*(o[9] + 7.7515369738704e-7*o[5]*g.
                pi))/o[10];
-      
+
             g.gtau := g.pi*(0.00217746787145710 + o[11] + g.pi*(-0.000035752345523612
               *o[7] + 3.8757684869352e-7*o[1]*g.pi)) + (0.074415446800398 + g.tau*(
               -0.73803069960666 + (3.11613182139250 + o[1]*(6.8540841634434 -
               0.65923253077834*g.tau))*g.tau))/o[6];
-      
+
             g.gtautau := (-0.297661787201592 + g.tau*(2.21409209881998 + (-6.2322636427850
                - 0.65923253077834*o[5])*g.tau))/(o[6]*g.tau) + g.pi*(-0.0275656925399460
               *g.tau + g.pi*(-0.000286018764188897*o[1]*o[6]*g.tau +
               7.7515369738704e-7*g.pi*g.tau));
-      
+
             g.gtaupi := 0.00217746787145710 + o[11] + g.pi*(-0.000071504691047224*o[
               7] + 1.16273054608056e-6*o[1]*g.pi);
     end g5;
-    
-    function gibbs "Gibbs function for region 1, 2 or 5: g(p,T,region)" 
+
+    function gibbs "Gibbs function for region 1, 2 or 5: g(p,T,region)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
      input Integer region "IF97 region, 1, 2 or 5";
       output Real g "dimensionless Gibbs funcion";
-    protected 
-      Modelica.Media.Common.GibbsDerivs gibbs 
+    protected
+      Modelica.Media.Common.GibbsDerivs gibbs
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    algorithm 
+    algorithm
       assert(region == 1 or region == 2 or region == 5,
         "IF97 medium function gibbs called with wrong region (= " + String(region) + ").\n" +
         "Only regions 1, 2 or 5 are possible");
@@ -2203,7 +2203,7 @@ package BaseIF97
          == 1 then
         gibbs
        := g1(p,T);
-      elseif 
+      elseif
       region == 2 then
         gibbs
        := g2(p,T);
@@ -2214,8 +2214,8 @@ package BaseIF97
       g :=
     gibbs.g;
     end gibbs;
-    
-    function g1pitau "derivative of g wrt pi and tau" 
+
+    function g1pitau "derivative of g wrt pi and tau"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
@@ -2223,11 +2223,11 @@ package BaseIF97
       output Real tau "dimensionless temperature";
       output Real gpi "dimensionless dervative of Gibbs function wrt pi";
       output Real gtau "dimensionless dervative of Gibbs function wrt tau";
-    protected 
+    protected
       Real pi1 "dimensionless pressure";
       Real tau1 "dimensionless temperature";
       Real[28] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function g1pitau called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2297,8 +2297,8 @@ package BaseIF97
         0.032529748770505 + (0.021841717175414 + 0.00005283835796993*o[1])*
         tau1))));
     end g1pitau;
-    
-    function g2pitau "derivative of g wrt pi and tau" 
+
+    function g2pitau "derivative of g wrt pi and tau"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
@@ -2306,10 +2306,10 @@ package BaseIF97
       output Real tau "dimensionless temperature";
       output Real gpi "dimensionless dervative of Gibbs function wrt pi";
       output Real gtau "dimensionless dervative of Gibbs function wrt tau";
-    protected 
+    protected
       Real tau2 "dimensionless temperature";
       Real[22] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function g2pitau called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2388,8 +2388,8 @@ package BaseIF97
         0.0000226487297378904*o[22]))*o[3]*o[6]*o[7]*pi -
         2.93678005497663e-14*o[19]*o[3]*o[5]*tau2)))))))))))))))))/pi;
     end g2pitau;
-    
-    function g5pitau "derivative of g wrt pi and tau" 
+
+    function g5pitau "derivative of g wrt pi and tau"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
@@ -2397,9 +2397,9 @@ package BaseIF97
       output Real tau "dimensionless temperature";
       output Real gpi "dimensionless dervative of Gibbs function wrt pi";
       output Real gtau "dimensionless dervative of Gibbs function wrt tau";
-    protected 
+    protected
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function g5pitau called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2420,19 +2420,19 @@ package BaseIF97
         0.004594282089991*o[1])*tau + pi*(-7.9449656719138e-6*o[3]*tau +
         3.8757684869352e-7*o[1]*pi*tau)))/pi;
     end g5pitau;
-    
-    function f3deltatau "1st derivatives of f wrt delta and tau" 
+
+    function f3deltatau "1st derivatives of f wrt delta and tau"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Real delta "dimensionless density";
       output Real tau "dimensionless temperature";
-      output Real fdelta 
+      output Real fdelta
         "dimensionless dervative of Helmholtz function wrt delta";
       output Real ftau "dimensionless dervative of Helmholtz function wrt tau";
-    protected 
+    protected
       Real[13] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       tau := data.TCRIT/T;
       delta := if (d == data.DCRIT and T == data.TCRIT) then 1 + Modelica.
         Constants.eps else d/data.DCRIT;
@@ -2478,17 +2478,17 @@ package BaseIF97
          - 0.00116802137560719*delta*o[13]) + (0.00115845907256168 +
         0.0840031522296486*o[11])*tau)))))))));
     end f3deltatau;
-    
-    function tph1 "inverse function for region 1: T(p,h)" 
+
+    function tph1 "inverse function for region 1: T(p,h)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real eta1 "dimensionless specific enthalpy";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function tph1 called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2506,24 +2506,24 @@ package BaseIF97
          + pi*(8.0670734103027e-11 + pi*(-9.3477771213947e-13 + (
         5.8265442020601e-15 - 1.50201859535030e-17*pi)*pi))))))))))));
     end tph1;
-    
-    function tps1 "inverse function for region 1: T(p,s)" 
+
+    function tps1 "inverse function for region 1: T(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       constant Modelica.SIunits.Pressure pstar=1.0e6;
       constant Modelica.SIunits.SpecificEntropy sstar=1.0e3;
       Real pi "dimensionless pressure";
       Real sigma1 "dimensionless specific entropy";
       Real[6] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p/pstar;
       assert(p > triple.ptriple,
         "IF97 medium function tps1 called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
-      
+
       sigma1 := s/sstar + 2.0;
       o[1] := sigma1*sigma1;
       o[2] := o[1]*o[1];
@@ -2531,7 +2531,7 @@ package BaseIF97
       o[4] := o[3]*o[3];
       o[5] := o[4]*o[4];
       o[6] := o[1]*o[2]*o[4];
-      
+
       T := 174.782680583070 + sigma1*(34.806930892873 + sigma1*(
         6.5292584978455 + (0.33039981775489 + o[3]*(-1.92813829231960e-7 -
         2.49091972445730e-23*o[2]*o[4]))*sigma1)) + pi*(-0.261076364893320 +
@@ -2542,13 +2542,13 @@ package BaseIF97
         sigma1*(-0.064256463395226 + sigma1*(0.0078876289270526 + o[3]*sigma1
         *(3.5672110607366e-10 + 1.73324969948950e-24*o[1]*o[4]*sigma1)))));
     end tps1;
-    
-    function tph2 "reverse function for region 2: T(p,h)" 
+
+    function tph2 "reverse function for region 2: T(p,h)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real pi2b "dimensionless pressure";
       Real pi2c "dimensionless pressure";
@@ -2558,7 +2558,7 @@ package BaseIF97
       Real eta2b "dimensionless specific enthalpy";
       Real eta2c "dimensionless specific enthalpy";
       Real[8] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p*data.IPSTAR;
       eta := h*data.IHSTAR;
       etabc := h*1.0e-3;
@@ -2635,19 +2635,19 @@ package BaseIF97
            + 1.45591156586980e-13*o[5])*pi2c)))));
       end if;
     end tph2;
-    
-    function tps2a "reverse function for region 2a: T(p,s)" 
+
+    function tps2a "reverse function for region 2a: T(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       Real[12] o "vector of auxiliary variables";
       constant Real IPSTAR=1.0e-6 "scaling variable";
       constant Real ISSTAR2A=1/2000.0 "scaling variable";
       Real pi "dimensionless pressure";
       Real sigma2a "dimensionless specific entropy";
-    algorithm 
+    algorithm
       pi := p*IPSTAR;
       sigma2a := s*ISSTAR2A - 2.0;
       o[1] := pi^0.5;
@@ -2684,19 +2684,19 @@ package BaseIF97
         8.2198102652018e-6*o[11])*o[6]*o[9]) + o[10]*(-0.0183406579113790 +
         2.90362723486960e-7*o[2]*o[4]*sigma2a)))))))))))/(o[1]*pi);
     end tps2a;
-    
-    function tps2b "reverse function for region 2b: T(p,s)" 
+
+    function tps2b "reverse function for region 2b: T(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       Real[8] o "vector of auxiliary variables";
       constant Real IPSTAR=1.0e-6 "scaling variable";
       constant Real ISSTAR2B=1/785.3 "scaling variable";
       Real pi "dimensionless pressure";
       Real sigma2b "dimensionless specific entropy";
-    algorithm 
+    algorithm
       pi := p*IPSTAR;
       sigma2b := 10.0 - s*ISSTAR2B;
       o[1] := pi*pi;
@@ -2727,19 +2727,19 @@ package BaseIF97
          + pi*(4.1286150074605e-8 + (-2.06846711188240e-8 +
         1.64093936747250e-9*sigma2b)*sigma2b))))))))))))/(o[1]*o[2]);
     end tps2b;
-    
-    function tps2c "reverse function for region 2c: T(p,s)" 
+
+    function tps2c "reverse function for region 2c: T(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       constant Real IPSTAR=1.0e-6 "scaling variable";
       constant Real ISSTAR2C=1/2925.1 "scaling variable";
       Real pi "dimensionless pressure";
       Real sigma2c "dimensionless specific entropy";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p*IPSTAR;
       sigma2c := 2.0 - s*ISSTAR2C;
       o[1] := pi*pi;
@@ -2759,17 +2759,17 @@ package BaseIF97
          + o[2]*(-2.08742781818860e-11 + (1.01621668250890e-10 -
         1.64298282813470e-10*sigma2c)*sigma2c))))))))))))/o[1];
     end tps2c;
-    
-    function tps2 "reverse function for region 2: T(p,s)" 
+
+    function tps2 "reverse function for region 2: T(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.Temperature T "temperature (K)";
-    protected 
+    protected
       Real pi "dimensionless pressure";
-      constant Modelica.SIunits.SpecificEntropy SLIMIT=5.85e3 
+      constant Modelica.SIunits.SpecificEntropy SLIMIT=5.85e3
         "subregion boundary specific entropy between regions 2a and 2b";
-    algorithm 
+    algorithm
       if p < 4.0e6 then
         T := tps2a(p, s);
       elseif s > SLIMIT then
@@ -2778,16 +2778,16 @@ package BaseIF97
         T := tps2c(p, s);
       end if;
     end tps2;
-    
-    function tsat "region 4 saturation temperature as a function of pressure" 
-      
+
+    function tsat "region 4 saturation temperature as a function of pressure"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Temperature t_sat "temperature";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real[20] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
     //   assert(p > triple.ptriple,
     //     "IF97 medium function tsat called with too low pressure\n" +
     //     "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -2814,20 +2814,20 @@ package BaseIF97
       o[18] := 4823.2657361591 + o[15] + o[16] + o[17];
       o[19] := 1/o[18];
       o[20] := 2.0*o[19]*o[5];
-      
+
       t_sat := 0.5*(650.17534844798 + o[20] - (-4.0*(-0.238555575678490 +
         1300.35069689596*o[19]*o[5]) + (650.17534844798 + o[20])^2.0)^0.5);
       annotation (derivative=tsat_der);
     end tsat;
-    
-    function dtsatofp "derivative of saturation temperature w.r.t. pressure" 
+
+    function dtsatofp "derivative of saturation temperature w.r.t. pressure"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Real dtsat(unit="K/Pa") "derivative of T w.r.t. p";
-    protected 
+    protected
       Real pi "dimensionless pressure";
       Real[49] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       pi := p*data.IPSTAR;
       o[1] := pi^0.75;
       o[2] := 1/o[1];
@@ -2887,31 +2887,31 @@ package BaseIF97
          - 2325.01894614276/o[8] + 0.5*o[26]*o[31]*o[8]) - 2.0*(o[19] + o[20]
          + 0.5*o[26]*o[31])*o[48]*o[37]^(-3)))/sqrt(o[39]*o[48]));
     end dtsatofp;
-    
-    function tsat_der "derivative function for tsat" 
+
+    function tsat_der "derivative function for tsat"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Real der_p(unit="Pa/s") "pressure derivatrive";
       output Real der_tsat(unit="K/s") "temperature derivative";
-    protected 
+    protected
       Real dtp;
-    algorithm 
+    algorithm
       dtp := dtsatofp(p);
       der_tsat := dtp*der_p;
     end tsat_der;
-    
-    function psat "region 4 saturation pressure as a functionx of temperature" 
-      
+
+    function psat "region 4 saturation pressure as a functionx of temperature"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.Pressure p_sat "pressure";
-    protected 
+    protected
       Real[7] o "vector of auxiliary variables";
       Real C "auxiliary variable";
       Real B "auxiliary variable";
       Real A "auxiliary variable";
       Real Tlim=min(T, data.TCRIT);
-    algorithm 
+    algorithm
       assert(T >= 273.16,
         "IF97 medium function psat: input temperature (= " + String(triple.ptriple) + " K).\n" +
         "lower than the triple point temperature 273.16 K");
@@ -2928,16 +2928,16 @@ package BaseIF97
       p_sat := 16.0e6*C*C*C*C*1/(-B + (-4.0*A*C + B*B)^0.5)^4.0;
       annotation (derivative=psat_der);
     end psat;
-    
-    function dptofT 
-      "derivative of pressure wrt temperature along the saturation pressure curve" 
+
+    function dptofT
+      "derivative of pressure wrt temperature along the saturation pressure curve"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Real dpt(unit = "Pa/K") "temperature derivative of pressure";
-    protected 
+    protected
       Real[31] o "vector of auxiliary variables";
       Real Tlim "temperature limited to TCRIT";
-    algorithm 
+    algorithm
       Tlim := min(T, data.TCRIT);
       o[1] := -650.17534844798 + Tlim;
       o[2] := 1/o[1];
@@ -2976,15 +2976,15 @@ package BaseIF97
         1167.05214527670*o[14] + 2.0*o[14]*o[4])*o[8]))/o[26]))/(o[29]*o[31])
          + (64.*o[20]*o[8]*o[9])/o[31]);
     end dptofT;
-    
-    function d2ptofT 
-      "Second derivative of pressure wrt temperature along the saturation pressure curve" 
+
+    function d2ptofT
+      "Second derivative of pressure wrt temperature along the saturation pressure curve"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Real dpT(unit = "Pa/K") "Temperature derivative of pressure";
-      output Real dpTT(unit = "Pa/(K.K)") 
+      output Real dpTT(unit = "Pa/(K.K)")
         "Second temperature derivative of pressure";
-    protected 
+    protected
       Real A "Auxiliary variable";
       Real Ad "Auxiliary variable";
       Real A1 "Auxiliary variable";
@@ -3018,7 +3018,7 @@ package BaseIF97
                               -0.32325550322333e7, 0.14915108613530e2,
                               -0.48232657361591e4, 0.40511340542057e6,
                               -0.23855557567849,   0.65017534844798e3};
-    algorithm 
+    algorithm
       Tlim := min(T, data.TCRIT);
       o[1] := Tlim - n[10];
       th := Tlim + n[9]/o[1];
@@ -3067,21 +3067,21 @@ package BaseIF97
       dpTT := ((192.0*o[8]*o[14] + 64.0*o[9]*C2)*v4 + (-512.0*C1*o[9]*o[12] - 64.0*o[10]*(-B2-0.25*D1*D1/o[16] + 0.5*D2*o[11]))*v5
          +(320.0*o[10]*o[13])*v6)*1.0e6;
     end d2ptofT;
-    
-    function psat_der "derivative function for psat" 
+
+    function psat_der "derivative function for psat"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
       input Real der_T(unit = "K/s") "temperature derivative";
       output Real der_psat(unit = "Pa/s") "pressure";
-    protected 
+    protected
       Real dpt;
-    algorithm 
+    algorithm
       dpt := dptofT(T);
       der_psat := dpt*der_T;
     end psat_der;
-    
+
     // Inverses p_hs from the 2001 assition to IAPWS97
-    function p1_hs "pressure as a function of ehtnalpy and entropy in region 1" 
+    function p1_hs "pressure as a function of ehtnalpy and entropy in region 1"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -3093,15 +3093,15 @@ package BaseIF97
          -0.430991316516130e4,-0.747512324096068e3,0.730000345529245e3,0.114284032569021e4,-0.436407041874559e3};
       constant Real[:] I = {0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,3,4,4,5};
       constant Real[:] J = {0,1,2,4,5,6,8,14,0,1,4,6,0,1,10,4,1,4,0};
-      constant Modelica.SIunits.SpecificEnthalpy hstar=3400e3 
+      constant Modelica.SIunits.SpecificEnthalpy hstar=3400e3
         "normalization enthalpy";
       constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-      constant Modelica.SIunits.SpecificEntropy sstar=7.6e3 
+      constant Modelica.SIunits.SpecificEntropy sstar=7.6e3
         "normalization entropy";
-    protected 
+    protected
       Real eta = h/hstar "normalized specific enthalpy";
       Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
       p := sum(n[i]*(eta + 0.05)^I[i]*(sigma + 0.05)^J[i] for i in 1:19)*pstar;
       annotation (
           Documentation(                                                                                                    info="<html>
@@ -3117,19 +3117,19 @@ package BaseIF97
   </html>
   "));
     end p1_hs;
-    
-    function h2ab_s "boundary between regions 2a and 2b" 
+
+    function h2ab_s "boundary between regions 2a and 2b"
       extends Modelica.Icons.Function;
       output Modelica.SIunits.SpecificEnthalpy h "Enthalpy";
       input Modelica.SIunits.SpecificEntropy s "Entropy";
-    protected 
+    protected
       constant Real[:] n = {-0.349898083432139e4,0.257560716905876e4,-0.421073558227969e3,0.276349063799944e2};
-      constant Modelica.SIunits.SpecificEnthalpy hstar=1e3 
+      constant Modelica.SIunits.SpecificEnthalpy hstar=1e3
         "normalization enthalpy";
-      constant Modelica.SIunits.SpecificEntropy sstar=1e3 
+      constant Modelica.SIunits.SpecificEntropy sstar=1e3
         "normalization entropy";
       Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
       h := (n[1] + n[2]*sigma + n[3]*sigma^2 + n[4]*sigma^3)*hstar;
       annotation (
           Documentation(                                                                                                    info="<html>
@@ -3145,9 +3145,9 @@ package BaseIF97
   </html>
   "));
     end h2ab_s;
-    
-    function p2a_hs 
-      "pressure as a function of enthalpy and entropy in subregion 2a" 
+
+    function p2a_hs
+      "pressure as a function of enthalpy and entropy in subregion 2a"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -3161,15 +3161,15 @@ package BaseIF97
          0.965986235133332e4,0.681500934948134e1,-0.633207286824489e4,-0.558919224465760e1,0.400645798472063e-1};
       constant Real[:] I = {0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,2,2,2,3,3,3,3,3,4,5,5,6,7};
       constant Real[:] J = {1,3,6,16,20,22,0,1,2,3,5,6,10,16,20,22,3,16,20,0,2,3,6,16,16,3,16,3,1};
-      constant Modelica.SIunits.SpecificEnthalpy hstar=4200e3 
+      constant Modelica.SIunits.SpecificEnthalpy hstar=4200e3
         "normalization enthalpy";
       constant Modelica.SIunits.Pressure pstar=4e6 "normalization pressure";
-      constant Modelica.SIunits.SpecificEntropy sstar=12e3 
+      constant Modelica.SIunits.SpecificEntropy sstar=12e3
         "normalization entropy";
-    protected 
+    protected
       Real eta = h/hstar "normalized specific enthalpy";
       Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
       p := sum(n[i]*(eta - 0.5)^I[i]*(sigma - 1.2)^J[i] for i in 1:29)^4*pstar;
       annotation (
           Documentation(                                                                                                    info="<html>
@@ -3185,9 +3185,9 @@ package BaseIF97
   </html>
   "));
     end p2a_hs;
-    
-  function p2b_hs 
-      "pressure as a function of enthalpy and entropy in subregion 2a" 
+
+  function p2b_hs
+      "pressure as a function of enthalpy and entropy in subregion 2a"
     extends Modelica.Icons.Function;
     input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
     input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -3202,16 +3202,16 @@ package BaseIF97
        0.109077066873024e12,-0.247964654258893e14,0.188801906865134e10,-0.123651009018773e15};
     constant Real[:] I = {0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,3,3,4,4,5,5,6,6,6,7,7,8,8,8,8,12,14};
     constant Real[:] J = {0,1,2,4,8,0,1,2,3,5,12,1,6,18,0,1,7,12,1,16,1,12,1,8,18,1,16,1,3,14,18,10,16};
-    constant Modelica.SIunits.SpecificEnthalpy hstar=4100e3 
+    constant Modelica.SIunits.SpecificEnthalpy hstar=4100e3
         "normalization enthalpy";
     constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-    constant Modelica.SIunits.SpecificEntropy sstar=7.9e3 
+    constant Modelica.SIunits.SpecificEntropy sstar=7.9e3
         "normalization entropy";
-    protected 
+    protected
     Real eta = h/hstar "normalized specific enthalpy";
     Real sigma = s/sstar "normalized specific entropy";
-      
-  algorithm 
+
+  algorithm
     p := sum(n[i]*(eta - 0.6)^I[i]*(sigma - 1.01)^J[i] for i in 1:33)^4*pstar;
     annotation (
           Documentation(                                                                                                    info="<html>
@@ -3227,9 +3227,9 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       </html>
 "));
   end p2b_hs;
-    
-    function p2c_hs 
-      "pressure as a function of enthalpy and entropy in subregion 2c" 
+
+    function p2c_hs
+      "pressure as a function of enthalpy and entropy in subregion 2c"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
         input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -3244,15 +3244,15 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            -0.296492620980124e11,-0.111754907323424e16};
         constant Real[:] I = {0,0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,5,5,5,5,6,6,10,12,16};
         constant Real[:] J = {0,1,2,3,4,8,0,2,5,8,14,2,3,7,10,18,0,5,8,16,18,18,1,4,6,14,8,18,7,7,10};
-        constant Modelica.SIunits.SpecificEnthalpy hstar=3500e3 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=3500e3
         "normalization enthalpy";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEntropy sstar=5.9e3 
+        constant Modelica.SIunits.SpecificEntropy sstar=5.9e3
         "normalization entropy";
-    protected 
+    protected
         Real eta = h/hstar "normalized specific enthalpy";
         Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
         p := sum(n[i]*(eta - 0.7)^I[i]*(sigma - 1.1)^J[i] for i in 1:31)^4*pstar;
         annotation (
           Documentation(                                                                                                    info="<html>
@@ -3268,20 +3268,20 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       </html>
       "));
     end p2c_hs;
-    
+
     // Inverses from the 2003 additions to IF97
-    function h3ab_p "ergion 3 a b boundary for pressure/enthalpy" 
+    function h3ab_p "ergion 3 a b boundary for pressure/enthalpy"
         extends Modelica.Icons.Function;
         output Modelica.SIunits.SpecificEnthalpy h "Enthalpy";
         input Modelica.SIunits.Pressure p "Pressure";
-    protected 
+    protected
         constant Real[:] n = {0.201464004206875e4,0.374696550136983e1,-0.219921901054187e-1,0.875131686009950e-4};
-        constant Modelica.SIunits.SpecificEnthalpy hstar=1000 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=1000
         "normalization enthalpy";
         constant Modelica.SIunits.Pressure pstar=1e6 "normalization pressure";
         Real pi = p/pstar "normalized specific pressure";
-      
-    algorithm 
+
+    algorithm
         h := (n[1] + n[2]*pi + n[3]*pi^2 + n[4]*pi^3)*hstar;
         annotation (
     Documentation(info="<html>
@@ -3299,13 +3299,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       </p>
       </html>"));
     end h3ab_p;
-    
-    function T3a_ph "Region 3 a: inverse function T(p,h)" 
+
+    function T3a_ph "Region 3 a: inverse function T(p,h)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
         output Modelica.SIunits.Temp_K T "Temperature";
-    protected 
+    protected
         constant Real[:] n=
           {-0.133645667811215e-6,0.455912656802978e-5,-0.146294640700979e-4, 0.639341312970080e-2,0.372783927268847e3,
            -0.718654377460447e4,0.573494752103400e6,-0.267569329111439e7,-0.334066283302614e-4,-0.245479214069597e-1,
@@ -3317,13 +3317,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] I = {-12,-12,-12,-12,-12,-12,-12,-12,-10,-10,
                               -10,-8,-8,-8,-8,-5,-3,-2,-2,-2,-1,-1,0,0,1,3,3,4,4,10,12};
         constant Real[:] J = { 0,1,2,6,14,16,20,22,1,5,12,0,2,4,10,2,0,1,3,4,0,2,0,1,1,0,1,0,3,4,5};
-        constant Modelica.SIunits.SpecificEnthalpy hstar=2300e3 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=2300e3
         "normalization enthalpy";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
         constant Modelica.SIunits.Temp_K Tstar=760 "normalization temperature";
         Real pi = p/pstar "normalized specific pressure";
         Real eta = h/hstar "normalized specific enthalpy";
-    algorithm 
+    algorithm
         T := sum(n[i]*(pi + 0.240)^I[i]*(eta - 0.615)^J[i] for i in 1:31)*Tstar;
         annotation (
           Documentation(
@@ -3342,13 +3342,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end T3a_ph;
-    
-    function T3b_ph "Region 3 b: inverse function T(p,h)" 
+
+    function T3b_ph "Region 3 b: inverse function T(p,h)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
         output Modelica.SIunits.Temp_K T "Temperature";
-    protected 
+    protected
         constant Real[:] n=
           {0.323254573644920e-4,-0.127575556587181e-3,-0.475851877356068e-3,0.156183014181602e-2,
            0.105724860113781,-0.858514221132534e2,0.724140095480911e3,0.296475810273257e-2,-0.592721983365988e-2,
@@ -3362,11 +3362,11 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] J = {0,1,0,1,5,10,12,0,1,2,4,10,0,1,2,0,1,5,0,4,2,4,6,10,14,16,0,2,1,1,1,1,1};
         constant Modelica.SIunits.Temp_K Tstar=860 "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEnthalpy hstar=2800e3 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=2800e3
         "normalization enthalpy";
         Real pi = p/pstar "normalized specific pressure";
         Real eta = h/hstar "normalized specific enthalpy";
-    algorithm 
+    algorithm
         T := sum(n[i]*(pi + 0.298)^I[i]*(eta - 0.720)^J[i] for i in 1:33)*Tstar;
         annotation (
           Documentation(
@@ -3385,13 +3385,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end T3b_ph;
-    
-    function v3a_ph "Region 3 a: inverse function v(p,h)" 
+
+    function v3a_ph "Region 3 a: inverse function v(p,h)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
         output Modelica.SIunits.SpecificVolume v "specific volume";
-    protected 
+    protected
         constant Real[:] n=
           { 0.529944062966028e-2,-0.170099690234461,0.111323814312927e2,-0.217898123145125e4,
            -0.506061827980875e-3,0.556495239685324,-0.943672726094016e1,-0.297856807561527,0.939353943717186e2,
@@ -3403,14 +3403,14 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] I = {-12,-12,-12,-12,-10,-10,-10,-8,-8,-6,
                               -6,-6,-4,-4,-3,-2,-2,-1,-1,-1,-1,0,0,1,1,1,2,2,3,4,5,8};
         constant Real[:] J = {6,8,12,18,4,7,10,5,12,3,4,22,2,3,7,3,16,0,1,2,3,0,1,0,1,2,0,2,0,2,2,2};
-        constant Modelica.SIunits.Volume vstar=0.0028 
+        constant Modelica.SIunits.Volume vstar=0.0028
         "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEnthalpy hstar=2100e3 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=2100e3
         "normalization enthalpy";
         Real pi = p/pstar "normalized specific pressure";
         Real eta = h/hstar "normalized specific enthalpy";
-    algorithm 
+    algorithm
         v := sum(n[i]*(pi + 0.128)^I[i]*(eta - 0.727)^J[i] for i in 1:32)*vstar;
         annotation (
           Documentation(
@@ -3429,13 +3429,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end v3a_ph;
-    
-    function v3b_ph "Region 3 b: inverse function v(p,h)" 
+
+    function v3b_ph "Region 3 b: inverse function v(p,h)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
         output Modelica.SIunits.SpecificVolume v "specific volume";
-    protected 
+    protected
         constant Real[:] n=
           { -0.225196934336318e-8,0.140674363313486e-7,0.233784085280560e-5,-0.331833715229001e-4,
            0.107956778514318e-2,-0.271382067378863,0.107202262490333e1,-0.853821329075382,-0.215214194340526e-4,
@@ -3447,14 +3447,14 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] I = {-12,-12,-8,-8,-8,-8,-8,-8,-6,-6,
                               -6,-6,-6,-6,-4,-4,-4,-3,-3,-2,-2,-1,-1,-1,-1,0,1,1,2,2};
         constant Real[:] J = {0,1,0,1,3,6,7,8,0,1,2,5,6,10,3,6,10,0,2,1,2,0,1,4,5,0,0,1,2,6};
-        constant Modelica.SIunits.Volume vstar=0.0088 
+        constant Modelica.SIunits.Volume vstar=0.0088
         "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEnthalpy hstar=2800e3 
+        constant Modelica.SIunits.SpecificEnthalpy hstar=2800e3
         "normalization enthalpy";
         Real pi = p/pstar "normalized specific pressure";
         Real eta = h/hstar "normalized specific enthalpy";
-    algorithm 
+    algorithm
         v := sum(n[i]*(pi + 0.0661)^I[i]*(eta - 0.720)^J[i] for i in 1:30)*vstar;
         annotation (
           Documentation(
@@ -3473,13 +3473,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end v3b_ph;
-    
-    function T3a_ps "Region 3 a: inverse function T(p,s)" 
+
+    function T3a_ps "Region 3 a: inverse function T(p,s)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEntropy s "specific entropy";
         output Modelica.SIunits.Temp_K T "Temperature";
-    protected 
+    protected
         constant Real[:] n=
           {0.150042008263875e10,-0.159397258480424e12,0.502181140217975e-3,-0.672057767855466e2,
            0.145058545404456e4,-0.823889534888890e4,-0.154852214233853,0.112305046746695e2,-0.297000213482822e2,
@@ -3493,11 +3493,11 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] J = {28,32,4,10,12,14,5,7,8,28,2,6,32,0,14,32,6,10,36,1,4,1,6,0,1,4,0,0,3,2,0,1,2};
         constant Modelica.SIunits.Temp_K Tstar=760 "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEntropy sstar=4.4e3 
+        constant Modelica.SIunits.SpecificEntropy sstar=4.4e3
         "normalization entropy";
         Real pi = p/pstar "normalized specific pressure";
         Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
         T := sum(n[i]*(pi + 0.240)^I[i]*(sigma - 0.703)^J[i] for i in 1:33)*Tstar;
         annotation (
           Documentation(
@@ -3516,13 +3516,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end T3a_ps;
-    
-    function T3b_ps "Region 3 b: inverse function T(p,s)" 
+
+    function T3b_ps "Region 3 b: inverse function T(p,s)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEntropy s "specific entropy";
         output Modelica.SIunits.Temp_K T "Temperature";
-    protected 
+    protected
         constant Real[:] n=
           {0.527111701601660,-0.401317830052742e2,0.153020073134484e3,-0.224799398218827e4,
            -0.193993484669048,-0.140467557893768e1,0.426799878114024e2,0.752810643416743,0.226657238616417e2,
@@ -3534,11 +3534,11 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] J = {1,3,4,7,0,1,3,0,2,4,0,1,2,4,6,12,1,6,2,0,1,1,0,24,0,3,1,2};
         constant Modelica.SIunits.Temp_K Tstar=860 "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEntropy sstar=5.3e3 
+        constant Modelica.SIunits.SpecificEntropy sstar=5.3e3
         "normalization entropy";
         Real pi = p/pstar "normalized specific pressure";
         Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
         T := sum(n[i]*(pi + 0.760)^I[i]*(sigma - 0.818)^J[i] for i in 1:28)*Tstar;
         annotation (
           Documentation(
@@ -3557,13 +3557,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end T3b_ps;
-    
-    function v3a_ps "Region 3 a: inverse function v(p,s)" 
+
+    function v3a_ps "Region 3 a: inverse function v(p,s)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEntropy s "specific entropy";
         output Modelica.SIunits.SpecificVolume v "specific volume";
-    protected 
+    protected
         constant Real[:] n=
           {0.795544074093975e2,-0.238261242984590e4,0.176813100617787e5,-0.110524727080379e-2,
            -0.153213833655326e2,0.297544599376982e3,-0.350315206871242e8,0.277513761062119,-0.523964271036888,
@@ -3573,14 +3573,14 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            0.164094443541384e-1,-0.680468275301065e-1,0.257988576101640e-1,-0.145749861944416e-3};
         constant Real[:] I = {-12,-12,-12,-10,-10,-10,-10,-8,-8,-8,-8,-6,-5,-4,-3,-3,-2,-2,-1,-1,0,0,0,1,2,4,5,6};
         constant Real[:] J = {10,12,14,4,8,10,20,5,6,14,16,28,1,5,2,4,3,8,1,2,0,1,3,0,0,2,2,0};
-        constant Modelica.SIunits.Volume vstar=0.0028 
+        constant Modelica.SIunits.Volume vstar=0.0028
         "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEntropy sstar=4.4e3 
+        constant Modelica.SIunits.SpecificEntropy sstar=4.4e3
         "normalization entropy";
         Real pi = p/pstar "normalized specific pressure";
         Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
         v := sum(n[i]*(pi + 0.187)^I[i]*(sigma - 0.755)^J[i] for i in 1:28)*vstar;
         annotation (
           Documentation(
@@ -3599,13 +3599,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end v3a_ps;
-    
-    function v3b_ps "Region 3 b: inverse function v(p,s)" 
+
+    function v3b_ps "Region 3 b: inverse function v(p,s)"
         extends Modelica.Icons.Function;
         input Modelica.SIunits.Pressure p "Pressure";
         input Modelica.SIunits.SpecificEntropy s "specific entropy";
         output Modelica.SIunits.SpecificVolume v "specific volume";
-    protected 
+    protected
         constant Real[:] n=
           {0.591599780322238e-4,-0.185465997137856e-2,0.104190510480013e-1,0.598647302038590e-2,
            -0.771391189901699,0.172549765557036e1,-0.467076079846526e-3,0.134533823384439e-1,-0.808094336805495e-1,
@@ -3617,14 +3617,14 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         constant Real[:] I = {-12,-12,-12,-12,-12,-12,-10,-10,
                               -10,-10,-8,-5,-5,-5,-4,-4,-4,-4,-3,-2,-2,-2,-2,-2,-2,0,0,0,1,1,2};
         constant Real[:] J = {0,1,2,3,5,6,0,1,2,4,0,1,2,3,0,1,2,3,1,0,1,2,3,4,12,0,1,2,0,2,2};
-        constant Modelica.SIunits.Volume vstar=0.0088 
+        constant Modelica.SIunits.Volume vstar=0.0088
         "normalization temperature";
         constant Modelica.SIunits.Pressure pstar=100e6 "normalization pressure";
-        constant Modelica.SIunits.SpecificEntropy sstar=5.3e3 
+        constant Modelica.SIunits.SpecificEntropy sstar=5.3e3
         "normalization entropy";
         Real pi = p/pstar "normalized specific pressure";
         Real sigma = s/sstar "normalized specific entropy";
-    algorithm 
+    algorithm
         v := sum(n[i]*(pi + 0.298)^I[i]*(sigma - 0.816)^J[i] for i in 1:31)*vstar;
         annotation (
           Documentation(
@@ -3643,89 +3643,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
  </p>
  </html>"));
     end v3b_ps;
-    
-    annotation (Documentation(info="<HTML><h4>Package description</h4>
-          <p>Package BaseIF97/Basic computes the the fundamental functions for the 5 regions of the steam tables
-          as described in the standards document <a href=\"Documentation/IF97documentation/IF97.pdf\">IF97.pdf</a>. The code of these
-          functions has been generated using <b><i>Mathematica</i></b> and the add-on packages \"Format\" and \"Optimize\"
-          to generate highly efficient, expression-optimized C-code from a symbolic representation of the thermodynamic
-          functions. The C-code has than been transformed into Modelica code. An important feature of this optimization was to
-          simultaneously optimize the functions and the directional derivatives because they share many common subexpressions.</p>
-          <h4>Package contents</h4>
-          <p>
-          <ul>
-          <li>Function <b>g1</b> computes the dimensionless Gibbs function for region 1 and all derivatives up
-          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
-          <li>Function <b>g2</b> computes the dimensionless Gibbs function  for region 2 and all derivatives up
-          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
-          <li>Function <b>g2metastable</b> computes the dimensionless Gibbs function for metastable vapour
-          (adjacent to region 2 but 2-phase at equilibrium) and all derivatives up
-          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
-          <li>Function <b>f3</b> computes the dimensionless Helmholtz function  for region 3 and all derivatives up
-          to order 2 w.r.t delta and tau. Inputs: d and T.</li>
-          <li>Function <b>g5</b>computes the dimensionless Gibbs function for region 5 and all derivatives up
-          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
-          <li>Function <b>tph1</b> computes the inverse function T(p,h) in region 1.</li>
-          <li>Function <b>tph2</b> computes the inverse function T(p,h) in region 2.</li>
-          <li>Function <b>tps2a</b> computes the inverse function T(p,s) in region 2a.</li>
-          <li>Function <b>tps2b</b> computes the inverse function T(p,s) in region 2b.</li>
-          <li>Function <b>tps2c</b> computes the inverse function T(p,s) in region 2c.</li>
-          <li>Function <b>tps2</b> computes the inverse function T(p,s) in region 2.</li>
-          <li>Function <b>tsat</b> computes the saturation temperature as a function of pressure.</li>
-          <li>Function <b>dtsatofp</b> computes the derivative of the saturation temperature w.r.t. pressure as
-          a function of pressure.</li>
-          <li>Function <b>tsat_der</b> computes the Modelica derivative function of tsat.</li>
-          <li>Function <b>psat</b> computes the saturation pressure as a function of temperature.</li>
-          <li>Function <b>dptofT</b>  computes the derivative of the saturation pressure w.r.t. temperature as
-          a function of temperature.</li>
-          <li>Function <b>psat_der</b> computes the Modelica derivative function of psat.</li>
-          </ul>
-          </p>
-          <h4>Version Info and Revision history
-          </h4>
-          <ul>
-          <li>First implemented: <i>July, 2000</i>
-          by <a href=\"http://www.control.lth.se/~hubertus/\">Hubertus Tummescheit</a>
-          </li>
-          </ul>
-          <address>Author: Hubertus Tummescheit, <br>
-      Modelon AB<br>
-      Ideon Science Park<br>
-      SE-22370 Lund, Sweden<br>
-      email: hubertus@modelon.se
-          </address>
-          <ul>
-          <li>Initial version: July 2000</li>
-          <li>Documentation added: December 2002</li>
-          </ul>
-          </HTML>
-          "),   Documentation(
-     info="<html>
-       <p>
-       &nbsp;Equation from:<br>
-       <div style=\"text-align: center;\">&nbsp;[1] The international Association
-       for the Properties of Water and Steam<br>
-       &nbsp;Vejle, Denmark<br>
-       &nbsp;August 2003<br>
-       &nbsp;Supplementary Release on Backward Equations for the Fucnctions
-       T(p,h), v(p,h) and T(p,s), <br>
-       &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
-       the Thermodynamic Properties of<br>
-       &nbsp;Water and Steam</div>
-       </p>
-       </html>"));
-    function g1L3 
-      "base function for region 1 with 3rd derivatives for sensitivities: g(p,T)" 
+
+    function g1L3
+      "base function for region 1 with 3rd derivatives for sensitivities: g(p,T)"
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd 
-                                                      g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
+                                                      g
         "dimensionless Gibbs function and derivatives up to 3rd derivatives";
-    protected 
+    protected
       Real pi1;
       Real tau1;
       Real[55] o;
-    algorithm 
+    algorithm
       assert(p > ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple,
         "IF97 medium function g1 called with too low pressure\n" + "p = " +
         String(p) + " Pa <= " + String(ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)
@@ -3796,7 +3726,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[53] := 1/o[52];
       o[54] := o[2]*o[3]*tau1;
       o[55] := 1/o[54];
-      
+
       g.g := pi1*
           (pi1*(pi1*(o[10]*(-0.000031679644845054 +
        o[2]*(-2.8270797985312e-6-8.5205128120103e-10*o[6])) +
@@ -3816,7 +3746,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        + tau1*(3.3855169168385 + tau1*(-0.95791963387872 +
        tau1*(0.15772038513228 + (-0.016616417199501 +
        0.00081214629983568*tau1)*tau1))))))/o[1];
-      
+
        g.gpi :=  pi1*(pi1*(o[10]*(0.000095038934535162 + o[2]*(8.4812393955936e-6 +
        2.55615384360309e-9*o[6])) + pi1*(o[12]*(8.9701127632e-6 +
        (2.60684891582404e-6 + 5.7366919751696e-13*o[13])*o[7]) +
@@ -3831,7 +3761,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[5]*(-0.00028319080123804 + o[1]*(0.00060706301565874 +
        o[6]*(0.018990068218419 + tau1*(0.032529748770505 +
        (0.021841717175414 + 0.00005283835796993*o[1])*tau1))));
-      
+
        g.gpipi :=  pi1*(o[10]*(-0.000190077869070324 +
        o[2]*(-0.0000169624787911872-5.11230768720618e-9*o[6])) +
        pi1*(o[12]*(-0.0000269103382896 +
@@ -3845,7 +3775,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        + o[8]*(-0.00094368642146534 + o[7]*(-0.00060003561586052 +
        (0.000095322787813974 +
        o[1]*(-8.8283690661692e-6-1.45389992595188e-15*o[9]))*tau1));
-      
+
        g.gpipipi := o[10]*(0.000190077869070324 + o[2]*(0.0000169624787911872 +
        5.11230768720618e-9*o[6])) + pi1*(o[12]*(0.0000538206765792 +
        (0.0000156410934949442 + 3.44201518510176e-12*o[13])*o[7]) +
@@ -3855,7 +3785,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[20]*(-5.77385677175118e-19*o[30] + pi1*(2.9104408751213e-19*o[28]
        + pi1*(-4.91611710860466e-20*o[26] +
        2.78366371782355e-21*o[24]*pi1))))))));
-      
+
        g.gtau :=
        pi1*(o[39]*(-0.00254871721114236 + o[1]*(0.00424944110961118 +
        (0.018990068218419 +
@@ -3874,7 +3804,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        + tau1*(0.84548187169114 + o[1]*(3.3855169168385 +
        tau1*(-1.91583926775744 + tau1*(0.47316115539684 +
        (-0.066465668798004 + 0.0040607314991784*tau1)*tau1)))));
-      
+
        g.gtautau :=
        pi1*(o[36]*(0.0254871721114236 + o[1]*(-0.0339955288768894 +
        (-0.037980136436838 + o[47])*o[6])) +
@@ -3893,7 +3823,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        + o[10]*(0.87797827279002 + tau1*(-1.69096374338228 +
        o[7]*(-1.91583926775744 + tau1*(0.94632231079368 +
        (-0.199397006394012 + 0.0162429259967136*tau1)*tau1))));
-      
+
        g.gtautautau :=
        pi1*(o[46]*(-0.28035889322566 + o[1]*(0.305959759892005 +
        (0.113940409310514 + o[47])*o[6])) + pi1*(o[40]*(0.0283105926439602
@@ -3910,7 +3840,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[12]*(-3.51191309116008 + tau1*(5.07289123014684 +
        o[2]*(0.94632231079368 + (-0.398794012788024 +
        0.0487287779901408*tau1)*tau1)));
-      
+
        g.gpitau := o[39]*(0.00254871721114236
        + o[1]*(-0.00424944110961118 + (-0.018990068218419 +
        (0.021841717175414 + 0.00015851507390979*o[1])*o[1])*o[6])) +
@@ -3925,7 +3855,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[20]*(2.90220313924001e-20*o[28] + pi1*(-1.39787184888831e-20*o[26]
        +
        pi1*(2.2602837280941e-21*o[24]-1.22720658527705e-22*o[42]*pi1))))))))));
-      
+
        g.gpipitau := o[10]*(0.00283105926439602 + o[2]*(0.000095322787813974 +
        o[1]*(-0.0000264851071985076-2.4716298741182e-14*o[9]))) +
        pi1*(o[12]*(0.000760311476281296-3.06738461232371e-8*o[38]) +
@@ -3937,7 +3867,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[20]*(-8.12616878987203e-19*o[28] + pi1*(4.05382836177609e-19*o[26]
        + pi1*(-6.78085118428229e-20*o[24] +
        3.80434041435885e-21*o[42]*pi1)))))))));
-      
+
        g.gpitautau :=  o[36]*(-0.0254871721114236 + o[1]*(0.0339955288768894 +
        (0.037980136436838 + 0.00031703014781958*o[2])*o[6])) +
        pi1*(o[12]*(0.0113242370575841 + o[6]*(0.0000529702143970152 +
@@ -3950,19 +3880,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         o[20]*(-1.1318592243036e-18*o[26] + pi1*(5.59148739555323e-19*o[24]
         + pi1*(-9.26716328518579e-20*o[42] +5.1542676581636e-21*o[51]*pi1))))))))));
     end g1L3;
-    
-    function g2L3 
-      "base function for region 2 with 3rd derivatives for sensitivities: g(p,T)" 
+
+    function g2L3
+      "base function for region 2 with 3rd derivatives for sensitivities: g(p,T)"
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd 
-                                                      g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
+                                                      g
         "dimensionless Gibbs function and derivatives up to 3rd derivatives";
-    protected 
+    protected
       Real pi2;
       Real tau2;
       Real[82] o;
-    algorithm 
+    algorithm
       assert(p > ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple,
         "IF97 medium function g2 called with too low pressure\n" + "p = " +
         String(p) + " Pa <= " + String(ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)
@@ -4061,7 +3991,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
        o[80] := o[1]*o[79];
        o[81] := -0.0007579595006526 + o[80];
        o[82] := o[81]*tau2;
-      
+
       g.g := g.pi*(-0.0017731742473213 + o[9] + g.pi*(tau2*(-0.000033032641670203
          + (-0.00018948987516315 + o[1]*(-0.0039392777243355 + (-0.043797295650573
          - 0.000026674547914087*o[13])*o[2]))*tau2) + g.pi*(2.0481737692309e-8
@@ -4083,7 +4013,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         1.424081971444 + g.tau*(-4.38395111945 + g.tau*(-9.692768600217 + g.tau
         *(10.08665568018 + (-0.2840863260772 + 0.02126846353307*g.tau)*g.tau)
          + Modelica.Math.log(g.pi)))))))/(o[34]*g.tau);
-      
+
       g.gpi :=
         (1.0 + g.pi*(-0.0017731742473213 + o[9] + g.pi*(o[43] +
            g.pi*(6.1445213076927e-8 + (1.31612001853305e-6 +
@@ -4104,7 +4034,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            o[18]*(1.32995316841867e-15-0.0000226487297378904*o[32]))*g.pi))))))))))))
            + tau2*(-3.15389238237468e-9 + (5.116287140914e-8 +
            1.92901490874028e-6*tau2)*tau2))))))/g.pi;
-      
+
       g.gpipi :=
           (-1.0 + o[21]*(o[43] + g.pi*(1.22890426153854e-7 + o[50] +
            g.pi*(g.pi*(0.000045844152675322*o[14] + g.pi*((-5.0144299353183e-10 +
@@ -4122,7 +4052,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            o[18]*(3.05889228736295e-14-0.000520920783971479*o[32]))*g.pi))))))))))))
            + tau2*(-9.46167714712404e-9 + (1.5348861422742e-7 +
            o[51])*tau2)))))/o[21];
-      
+
       g.gpipipi :=
             (2.0 + o[52]*(1.22890426153854e-7 + o[50] +
            g.pi*(g.pi*(0.000137532458025966*o[14] + g.pi*((-2.00577197412732e-9 +
@@ -4140,7 +4070,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            o[18]*(6.72956303219848e-13-0.0114602572473725*o[32]))*g.pi))))))))))))
            + tau2*(-1.89233542942481e-8 + (3.0697722845484e-7 +
            o[53])*tau2))))/o[52];
-      
+
       g.gtau :=
          (0.0280439559151 + g.tau*(-0.2858109552582 +
            g.tau*(1.2213149471784 + g.tau*(-2.848163942888 + g.tau*(4.38395111945 +
@@ -4165,7 +4095,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            g.pi*(-4.97975748452559e-14*o[63] + (1.90027787547159e-27 +
            o[18]*(2.21658861403112e-15-0.0000547344301999018*o[32]))*o[64]*g.pi))))))))))))
            + (2.558143570457e-8 + 1.44676118155521e-6*tau2)*tau2))));
-      
+
       g.gtautau :=
             (-0.1682637354906 + g.tau*(1.429054776291 +
            g.tau*(-4.8852597887136 + g.tau*(8.544491828664 + g.tau*(-8.7679022389 +
@@ -4190,7 +4120,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
     o[18]*(8.64469559472137e-14-0.0031198625213944*o[32]))*o[74]*g.pi))))))))))
     + (-1.00288598706366e-10 +
     o[15]*(-0.50811533571252-28435.9329015838*o[16]))*tau2))))));
-      
+
       g.gtautautau :=
                (1.1778461484342 + g.tau*(-8.574328657746 + g.tau*(24.426298943568
            + g.tau*(-34.177967314656 + (26.3037067167 +
@@ -4215,7 +4145,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
     g.pi*(-7.00153902324298e-11*o[10]*o[25] +
     o[1]*o[10]*o[12]*(1.14016672528295e-24 +
     o[18]*(3.28498432599412e-12-0.174712301198087*o[32]))*g.pi*tau2))))))))))))))));
-      
+
       g.gpitau := -0.017834862292358 + o[58] + g.pi*
                                              (-0.000066065283340406 + o[82]
            + g.pi*(1.31612001853305e-6 + o[1]*(-0.00029049909514713 +
@@ -4234,7 +4164,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            g.pi*(-1.14534422144089e-12*o[63] + (4.56066690113181e-26 +
            o[18]*(5.31981267367469e-14-0.00131362632479764*o[32]))*o[64]*g.pi))))))))))))
            + (1.0232574281828e-7 + o[51])*tau2)));
-      
+
       g.gpipitau := -0.000066065283340406 + o[82] + g.pi*
                                                   (2.6322400370661e-6 +
            o[1]*(-0.00058099819029426 +
@@ -4253,7 +4183,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
            g.pi*(-2.51975728716995e-11*o[63] + (1.04895338726032e-24 +
            o[18]*(1.22355691494518e-12-0.0302134054703458*o[32]))*o[64]*g.pi))))))))))))
            + (3.0697722845484e-7 + 0.0000173611341786625*tau2)*tau2));
-      
+
       g.gpitautau := -0.09199202739273 + o[67] + g.pi*
                                                (-0.0007579595006526 +
     o[1]*(-0.094542665384052 +
@@ -4274,25 +4204,25 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
      (-6.01731592238196e-10 + o[15]*(-3.04869201427512 - 170615.597409503*o[16]))
                                                  *tau2)))));
     end g2L3;
-    
-    function f3L3 
-      "Helmholtz function for region 3: f(d,T), including 3rd derivatives" 
+
+    function f3L3
+      "Helmholtz function for region 3: f(d,T), including 3rd derivatives"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd 
-                                                          f 
+      output ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
+                                                          f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-    protected 
+    protected
       Real tau "dimensionless temperature";
       Real del "dimensionless density";
       Real[62] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       f.T := T;
       f.d := d;
       f.R := ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O;
       tau := ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT/T;
-      del := if (d == ThermoSysPro.Properties.WaterSteam.BaseIF97.data.DCRIT and 
+      del := if (d == ThermoSysPro.Properties.WaterSteam.BaseIF97.data.DCRIT and
         T == ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT) then 1 -
         Modelica.Constants.eps else abs(d/ThermoSysPro.Properties.WaterSteam.BaseIF97.data.DCRIT);
       f.tau := tau;
@@ -4359,7 +4289,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[60] := o[2]*o[59];
       o[61] := -3.40858835296824 + o[60];
       o[62] := o[61]*tau;
-      
+
       f.f := -15.732845290239 + tau*(20.944396974307 + (-7.6867707878716 + o[3]
         *(2.6185947787954 + o[4]*(-2.808078114862 + o[1]*(1.2053369696517 -
         0.0084566812812502*o[6]))))*tau) + del*(o[14] + del*(0.38493460186671
@@ -4374,7 +4304,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         0.000044923899061815*del*o[22] - 0.00016557679795037*tau))))) + (
         0.10770512626332 + o[1]*(-0.32913623258954 - 0.50871062041158*o[20]))*
         tau))))) + 1.0658070028513*Modelica.Math.log(del);
-      
+
       f.fdelta := (1.0658070028513 + del*
                     (o[14] + del*(0.76986920373342 + o[31] + del*(-0.8399798909613+ o[1]*(
         4.169939870838 + o[1]*(-6.056974507071 + o[16]*(-0.0246442911521889
@@ -4384,7 +4314,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         (-0.118674762819776*o[22] + del*(o[1]*(0.00521306582652756 + 0.0290780142333399*o[21])
          + del*(0.00080964802996215 - 0.000494162889679965*del*o[22] -
         0.0016557679795037*tau)))))+(0.5385256313166+o[1]*(-1.6456811629477-2.5435531020579*o[20]))*tau))))))/del;
-      
+
       f.fdeltadelta := (-1.0658070028513 + o[32]*
                        (0.76986920373342 + o[31] + del*
                                                    (-1.6799597819226 + o[39]
@@ -4399,7 +4329,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         0.00494162889679965*del*o[22] - 0.0149019118155333*tau)))))          +(
         2.1541025252664 + o[1]*(-6.5827246517908 - 10.1742124082316*o[20]))*
         tau)))))                                                        /o[32];
-      
+
       f.fdeltadeltadelta :=
                      (2.1316140057026 + o[40]*
                                             (-1.6799597819226 + o[39] + del*
@@ -4410,7 +4340,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
      +del*(-2.83570817068308*o[1]+del*(-4.98434003843059*o[22]+del*(o[1]*(0.291931686285543+1.62836879706703*o[21])
      +del*(0.0582946581572748-0.0444746600711968*del*o[22]-0.119215294524266*tau)))))+(6.4623075757992+o[1]*(-19.7481739553724
          - 30.5226372246948*o[20]))       *tau))))/o[40];
-      
+
       f.ftau := 20.944396974307 +
                          (-15.3735415757432 + o[3]*
                                                  (18.3301634515678 + o[4]*
@@ -4427,7 +4357,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
                       *tau+del*(-0.027006744482696*tau+del*(-0.385692979164272*o[48]+del*(del*(-0.00016557679795037
          - 0.00116802137560719*del*o[48]) + (0.00115845907256168 +
         0.0840031522296486*o[21])*tau)))))))));
-      
+
       f.ftautau := -15.3735415757432 + o[3]*
                                    (109.980980709407 + o[4]*
                                                           (-252.72703033758
@@ -4443,7 +4373,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         del*                                                                  (
         0.00115845907256168 + 2.10007880574121*o[21] - 0.0292005343901797*o[
         21]*o[32]))))                                   +(-1.97481739553724-330.661903267527*o[20])*tau)))));
-      
+
       f.ftautautau := o[2]*(549.904903547034 + o[4]*(-2021.81624270064 + o[1]*(1591.04479994024 -
         89.8606952945646*o[6]))) + del*
     (o[4]*(-138.292893680172 + (2416.62450077188 - 2619.67681940957*o[1])*o[7])
@@ -4457,7 +4387,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
                                                                   +(21.7372969727359+
         11001.5022137229*o[19])
                       *tau))));
-      
+
       f.fdeltatau := o[47] + del*
                         (o[62] + del*
                                    ((8.339879741676 + o[1]*
@@ -4471,7 +4401,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
      *tau+del*(-0.189047211378872*tau+del*(-3.08554383331418*o[48]+del*(del*(-0.0016557679795037
          - 0.0128482351316791*del*o[48]) + (0.0104261316530551 +
         0.756028370066837*o[21])*tau))))))));
-      
+
       f.fdeltatautau := -2.5308630955428 + o[53] + del*
                                            (-3.40858835296824 + o[2]*
                                                                    (
@@ -4486,7 +4416,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
                                                          (0.0104261316530551
          + 18.9007092516709*o[21] - 0.321205878291977*o[21]*o[32]))))
                                       +(-9.8740869776862-1653.30951633764*o[20])*tau))));
-      
+
       f.fdeltadeltatau := o[62] + del*
                             ((16.679759483352 + o[1]*
                                                    (-48.455796056568 + o[16]*
@@ -4499,20 +4429,20 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *o[48] + del*       (del*(-0.0149019118155333 - 0.128482351316791*del
         *o[48]) + (0.0834090532244409 + 6.0482269605347*o[21])*tau)))))));
     end f3L3;
-    
-    function g5L3 
-      "base function for region 5: g(p,T), including 3rd derivatives" 
+
+    function g5L3
+      "base function for region 5: g(p,T), including 3rd derivatives"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd 
-                                                      g 
+      output ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
+                                                      g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-    protected 
+    protected
       Real tau "dimensionless temperature";
       Real pi "dimensionless pressure";
       Real[16] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       assert(p > ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple,
         "IF97 medium function g5 called with too low pressure\n" + "p = " +
         String(p) + " Pa <= " + String(ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)
@@ -4570,18 +4500,88 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       g.gpitautau := o[13] + pi*(-0.000572037528377794*o[14] + 2.32546109216112e-6*
         pi*tau);
     end g5L3;
+    annotation (Documentation(info="<HTML><h4>Package description</h4>
+          <p>Package BaseIF97/Basic computes the the fundamental functions for the 5 regions of the steam tables
+          as described in the standards document <a href=\"Documentation/IF97documentation/IF97.pdf\">IF97.pdf</a>. The code of these
+          functions has been generated using <b><i>Mathematica</i></b> and the add-on packages \"Format\" and \"Optimize\"
+          to generate highly efficient, expression-optimized C-code from a symbolic representation of the thermodynamic
+          functions. The C-code has than been transformed into Modelica code. An important feature of this optimization was to
+          simultaneously optimize the functions and the directional derivatives because they share many common subexpressions.</p>
+          <h4>Package contents</h4>
+          <p>
+          <ul>
+          <li>Function <b>g1</b> computes the dimensionless Gibbs function for region 1 and all derivatives up
+          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
+          <li>Function <b>g2</b> computes the dimensionless Gibbs function  for region 2 and all derivatives up
+          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
+          <li>Function <b>g2metastable</b> computes the dimensionless Gibbs function for metastable vapour
+          (adjacent to region 2 but 2-phase at equilibrium) and all derivatives up
+          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
+          <li>Function <b>f3</b> computes the dimensionless Helmholtz function  for region 3 and all derivatives up
+          to order 2 w.r.t delta and tau. Inputs: d and T.</li>
+          <li>Function <b>g5</b>computes the dimensionless Gibbs function for region 5 and all derivatives up
+          to order 2 w.r.t pi and tau. Inputs: p and T.</li>
+          <li>Function <b>tph1</b> computes the inverse function T(p,h) in region 1.</li>
+          <li>Function <b>tph2</b> computes the inverse function T(p,h) in region 2.</li>
+          <li>Function <b>tps2a</b> computes the inverse function T(p,s) in region 2a.</li>
+          <li>Function <b>tps2b</b> computes the inverse function T(p,s) in region 2b.</li>
+          <li>Function <b>tps2c</b> computes the inverse function T(p,s) in region 2c.</li>
+          <li>Function <b>tps2</b> computes the inverse function T(p,s) in region 2.</li>
+          <li>Function <b>tsat</b> computes the saturation temperature as a function of pressure.</li>
+          <li>Function <b>dtsatofp</b> computes the derivative of the saturation temperature w.r.t. pressure as
+          a function of pressure.</li>
+          <li>Function <b>tsat_der</b> computes the Modelica derivative function of tsat.</li>
+          <li>Function <b>psat</b> computes the saturation pressure as a function of temperature.</li>
+          <li>Function <b>dptofT</b>  computes the derivative of the saturation pressure w.r.t. temperature as
+          a function of temperature.</li>
+          <li>Function <b>psat_der</b> computes the Modelica derivative function of psat.</li>
+          </ul>
+          </p>
+          <h4>Version Info and Revision history
+          </h4>
+          <ul>
+          <li>First implemented: <i>July, 2000</i>
+          by <a href=\"http://www.control.lth.se/~hubertus/\">Hubertus Tummescheit</a>
+          </li>
+          </ul>
+          <address>Author: Hubertus Tummescheit, <br>
+      Modelon AB<br>
+      Ideon Science Park<br>
+      SE-22370 Lund, Sweden<br>
+      email: hubertus@modelon.se
+          </address>
+          <ul>
+          <li>Initial version: July 2000</li>
+          <li>Documentation added: December 2002</li>
+          </ul>
+          </HTML>
+          "),   Documentation(
+     info="<html>
+       <p>
+       &nbsp;Equation from:<br>
+       <div style=\"text-align: center;\">&nbsp;[1] The international Association
+       for the Properties of Water and Steam<br>
+       &nbsp;Vejle, Denmark<br>
+       &nbsp;August 2003<br>
+       &nbsp;Supplementary Release on Backward Equations for the Fucnctions
+       T(p,h), v(p,h) and T(p,s), <br>
+       &nbsp;v(p,s) for Region 3 of the IAPWS Industrial Formulation 1997 for
+       the Thermodynamic Properties of<br>
+       &nbsp;Water and Steam</div>
+       </p>
+       </html>"));
   end Basic;
-  
-  package Transport "transport properties for water according to IAPWS/IF97" 
-    
+
+  package Transport "transport properties for water according to IAPWS/IF97"
+
     extends Modelica.Icons.Library;
-    
-    function visc_dT "dynamic viscosity eta(d,T), industrial formulation" 
+
+    function visc_dT "dynamic viscosity eta(d,T), industrial formulation"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.DynamicViscosity eta "dynamic viscosity";
-    protected 
+    protected
       constant Real n0=1.0 "viscosity coefficient";
       constant Real n1=0.978197 "viscosity coefficient";
       constant Real n2=0.579829 "viscosity coefficient";
@@ -4593,7 +4593,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           0.0, 0.0, 0.0, -0.01578386, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.003629481,
            0.0, 0.0) "viscosity coefficients";
       constant Modelica.SIunits.Density rhostar=317.763 "scaling density";
-      constant Modelica.SIunits.DynamicViscosity etastar=55.071e-6 
+      constant Modelica.SIunits.DynamicViscosity etastar=55.071e-6
         "scaling viscosity";
       constant Modelica.SIunits.Temperature tstar=647.226 "scaling temperature";
       Integer i "auxiliary variable";
@@ -4608,7 +4608,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real rhofun "auxiliary variable";
       Real Tc=T - 273.15 "Celsius temperature for region check";
       //      Integer region "region of IF97";
-    algorithm 
+    algorithm
       delta := max(d,triple.dvtriple)/rhostar;
     //   assert(d > triple.dvtriple,
     //     "IF97 medium function visc_dTp for viscosity called with too low density\n" +
@@ -4634,18 +4634,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       eta := etastar*Psi0*Modelica.Math.exp(delta*Psi1);
       annotation(smoothOrder=5);
     end visc_dT;
-    
-    function cond_dTp 
-      "Thermal conductivity lam(d,T,p) (industrial use version) only in one-phase region" 
+
+    function cond_dTp
+      "Thermal conductivity lam(d,T,p) (industrial use version) only in one-phase region"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
       input Modelica.SIunits.Pressure p "pressure";
       input Integer phase=0 "2 for two-phase, 1 for one-phase, 0 if not known";
-      input Boolean industrialMethod=true 
+      input Boolean industrialMethod=true
         "if true, the industrial method is used, otherwise the scientific one";
       output Modelica.SIunits.ThermalConductivity lambda "thermal conductivity";
-    protected 
+    protected
       Integer region(min=1, max=5) "IF97 region, valid values:1,2,3, and 5";
       constant Real n0=1.0 "conductivity coefficient";
       constant Real n1=6.978267 "conductivity coefficient";
@@ -4657,12 +4657,12 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           0.018660751, -0.76736002, -0.27297694, -0.91783782, 0.0, -0.12961068,
            0.37283344, -0.43083393, 0.0, 0.0, 0.044809953, -0.1120316,
           0.13333849, 0.0, 0.0) "conductivity coefficient";
-      constant Modelica.SIunits.ThermalConductivity lamstar=0.4945 
+      constant Modelica.SIunits.ThermalConductivity lamstar=0.4945
         "scaling conductivity";
       constant Modelica.SIunits.Density rhostar=317.763 "scaling density";
       constant Modelica.SIunits.Temperature tstar=647.226 "scaling temperature";
       constant Modelica.SIunits.Pressure pstar=22.115e6 "scaling pressure";
-      constant Modelica.SIunits.DynamicViscosity etastar=55.071e-6 
+      constant Modelica.SIunits.DynamicViscosity etastar=55.071e-6
         "scaling viscosity";
       Integer i "auxiliary variable";
       Integer j "auxiliary variable";
@@ -4678,17 +4678,17 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real dpitau "auxiliary variable";
       Real ddelpi "auxiliary variable";
       Real d2 "auxiliary variable";
-      Modelica.Media.Common.GibbsDerivs g 
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Real Tc=T - 273.15 "Celsius temperature for region check";
       Real Chi "symmetrized compressibility";
       // slightly different variables for industrial use
       constant Modelica.SIunits.Density rhostar2=317.7 "Reference density";
-      constant Modelica.SIunits.Temperature Tstar2=647.25 
+      constant Modelica.SIunits.Temperature Tstar2=647.25
         "Reference temperature";
-      constant Modelica.SIunits.ThermalConductivity lambdastar=1 
+      constant Modelica.SIunits.ThermalConductivity lambdastar=1
         "Reference thermal conductivity";
       parameter Real TREL=T/Tstar2 "Relative temperature";
       parameter Real rhoREL=d/rhostar2 "Relative density";
@@ -4702,13 +4702,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       constant Real[:] a={0.0102811,0.0299621,0.0156146,-0.00422464};
       Real Q;
       Real S;
-      Real lambdaREL2 
+      Real lambdaREL2
         "function, part of the interpolating equation of the thermal conductivity";
-      Real lambdaREL1 
+      Real lambdaREL1
         "function, part of the interpolating equation of the thermal conductivity";
-      Real lambdaREL0 
+      Real lambdaREL0
         "function, part of the interpolating equation of the thermal conductivity";
-    algorithm 
+    algorithm
       // region := BaseIF97.Regions.region_dT(d,T,phase);
       // simplified region check, assuming that calling arguments are legal
       //  assert(phase <> 2,
@@ -4716,8 +4716,8 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(d > triple.dvtriple,
         "IF97 medium function cond_dTp called with too low density\n" +
         "d = " + String(d) + " <= " + String(triple.dvtriple) + " (triple point density)");
-      assert((p <= 100e6 and (Tc >= 0.0 and Tc <= 500)) or 
-      (p <= 70e6 and (Tc > 500.0 and Tc <= 650)) or 
+      assert((p <= 100e6 and (Tc >= 0.0 and Tc <= 500)) or
+      (p <= 70e6 and (Tc > 500.0 and Tc <= 650)) or
       (p <= 40e6 and (Tc > 650.0 and Tc <= 800)),
       "IF97 medium function cond_dTp: thermal conductivity computed outside the range\n" +
       "of validity of the IF97 formulation: p = " + String(p) + " Pa, Tc = " + String(Tc) + " K");
@@ -4758,13 +4758,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         Lam0 := 1/(n0 + (n1 + (n2 + n3*tau)*tau)*tau)/(tau^0.5);
         Lam1 := 0.0;
         tfun := 1.0;
-        for 
+        for
      i in 1:5 loop
           if (i <> 1) then
      tfun := tfun*taum1;
           end if;
           rhofun := 1.0;
-          for 
+          for
        j in 0:5 loop
      if (j <> 0) then
               rhofun := rhofun*deltam1;
@@ -4806,32 +4806,32 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       end if;
       annotation(smoothOrder=5);
     end cond_dTp;
-    
-    function surfaceTension 
-      "surface tension in region 4 between steam and water" 
+
+    function surfaceTension
+      "surface tension in region 4 between steam and water"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Temperature T "temperature (K)";
-      output Modelica.SIunits.SurfaceTension sigma 
+      output Modelica.SIunits.SurfaceTension sigma
         "surface tension in SI units";
-    protected 
+    protected
       Real Theta "dimensionless temperature";
-    algorithm 
+    algorithm
       Theta := min(1.0,T/data.TCRIT);
       sigma := 235.8e-3*(1 - Theta)^1.256*(1 - 0.625*(1 - Theta));
       annotation(smoothOrder=5);
     end surfaceTension;
-    
-    function cond_industrial_dT 
-      "Thermal conductivity lam(d,T) (industrial use version) only in one-phase region" 
+
+    function cond_industrial_dT
+      "Thermal conductivity lam(d,T) (industrial use version) only in one-phase region"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.ThermalConductivity lambda "thermal conductivity";
-    protected 
+    protected
       constant Modelica.SIunits.Density rhostar2=317.7 "Reference density";
-      constant Modelica.SIunits.Temperature Tstar2=647.25 
+      constant Modelica.SIunits.Temperature Tstar2=647.25
         "Reference temperature";
-      constant Modelica.SIunits.ThermalConductivity lambdastar=1 
+      constant Modelica.SIunits.ThermalConductivity lambdastar=1
         "Reference thermal conductivity";
       constant Real[:] C={0.642857,-4.11717,-6.17937,0.00308976,0.0822994,
           10.0932};
@@ -4846,13 +4846,13 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real deltaTREL "Relative temperature increment";
       Real Q;
       Real S;
-      Real lambdaREL2 
+      Real lambdaREL2
         "function, part of the interpolating equation of the thermal conductivity";
-      Real lambdaREL1 
+      Real lambdaREL1
         "function, part of the interpolating equation of the thermal conductivity";
-      Real lambdaREL0 
+      Real lambdaREL0
         "function, part of the interpolating equation of the thermal conductivity";
-    algorithm 
+    algorithm
       assert(d > triple.dvtriple,
         "IF97 medium function cond_dTp called with too low density\n" +
         "d = " + String(d) + " <= " + String(triple.dvtriple) + " (triple point density)");
@@ -4909,25 +4909,25 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           </HTML>
           "));
   end Transport;
-  
-  package Isentropic 
-    "functions for calculating the isentropic enthalpy from pressure p and specific entropy s" 
-    
+
+  package Isentropic
+    "functions for calculating the isentropic enthalpy from pressure p and specific entropy s"
+
     extends Modelica.Icons.Library;
-    
-    function hofpT1 
-      "intermediate function for isentropic specific enthalpy in region 1" 
-      
+
+    function hofpT1
+      "intermediate function for isentropic specific enthalpy in region 1"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real[13] o "vector of auxiliary variables";
       Real pi1 "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau1 "dimensionless temperature";
-    algorithm 
+    algorithm
       tau := data.TSTAR1/T;
       pi1 := 7.1 - p/data.PSTAR1;
       assert(p > triple.ptriple,
@@ -4947,7 +4947,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[11] := o[10]*o[10];
       o[12] := o[4]*o[4];
       o[13] := o[12]*o[12];
-      
+
       h := data.RH2O*T*tau*(pi1*((-0.00254871721114236 + o[1]*(
         0.00424944110961118 + (0.018990068218419 + (-0.021841717175414 -
         0.00015851507390979*o[1])*o[1])*o[6]))/o[5] + pi1*((
@@ -4965,23 +4965,23 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *(3.3855169168385 + tau1*(-1.91583926775744 + tau1*(0.47316115539684
          + (-0.066465668798004 + 0.0040607314991784*tau1)*tau1)))))/o[2]);
     end hofpT1;
-    
-    function handsofpT1 
-      "special function for specific enthalpy and specific entropy in region 1" 
-      
+
+    function handsofpT1
+      "special function for specific enthalpy and specific entropy in region 1"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real[28] o "vector of auxiliary variables";
       Real pi1 "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau1 "dimensionless temperature";
       Real g "dimensionless Gibbs energy";
       Real gtau "derivative of  dimensionless Gibbs energy w.r.t. tau";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function handsofpT1 called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -5016,7 +5016,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[26] := o[1]*o[2]*o[21]*tau1;
       o[27] := 1/o[26];
       o[28] := o[1]*o[3];
-      
+
       g := pi1*(pi1*(pi1*(o[10]*(-0.000031679644845054 + o[2]*(-2.8270797985312e-6
          - 8.5205128120103e-10*o[6])) + pi1*(o[12]*(-2.2425281908e-6 + (-6.5171222895601e-7
          - 1.4341729937924e-13*o[13])*o[7]) + pi1*(-4.0516996860117e-7/o[3]
@@ -5033,7 +5033,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         tau1*(3.3855169168385 + tau1*(-0.95791963387872 + tau1*(
         0.15772038513228 + (-0.016616417199501 + 0.00081214629983568*tau1)*
         tau1))))))/o[1];
-      
+
       gtau := pi1*((-0.00254871721114236 + o[1]*(0.00424944110961118 + (
         0.018990068218419 + (-0.021841717175414 - 0.00015851507390979*o[1])*o[
         1])*o[6]))/o[28] + pi1*(o[10]*(0.00141552963219801 + o[2]*(
@@ -5049,38 +5049,38 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *(-0.29265942426334 + tau1*(0.84548187169114 + o[1]*(3.3855169168385
          + tau1*(-1.91583926775744 + tau1*(0.47316115539684 + (-0.066465668798004
          + 0.0040607314991784*tau1)*tau1)))));
-      
+
       h := data.RH2O*T*tau*gtau;
       s := data.RH2O*(tau*gtau - g);
     end handsofpT1;
-    
-    function hofps1 "function for isentropic specific enthalpy in region 1" 
-      
+
+    function hofps1 "function for isentropic specific enthalpy in region 1"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Modelica.SIunits.Temperature T "temperature (K)";
-    algorithm 
+    algorithm
       T := Basic.tps1(p, s);
       h := hofpT1(p, T);
     end hofps1;
-    
+
     // for isentropic specific enthalpy get T(p,s), then use this
-    function hofpT2 
-      "intermediate function for isentropic specific enthalpy in region 2" 
-      
+    function hofpT2
+      "intermediate function for isentropic specific enthalpy in region 2"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real[16] o "vector of auxiliary variables";
       Real pi "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau2 "dimensionless temperature";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function hofpT2 called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -5103,7 +5103,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[14] := pi*pi;
       o[15] := o[14]*o[14];
       o[16] := o[7]*o[7];
-      
+
       h := data.RH2O*T*tau*((0.0280439559151 + tau*(-0.2858109552582 + tau*(
         1.2213149471784 + tau*(-2.848163942888 + tau*(4.38395111945 + o[1]*(
         10.08665568018 + (-0.5681726521544 + 0.06380539059921*tau)*tau))))))/
@@ -5126,23 +5126,23 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *o[16]*o[3]*o[5] + o[6]*o[7]*(1.90027787547159e-27 + o[12]*(
         2.21658861403112e-15 - 0.0000547344301999018*o[3]*o[7]))*pi*tau2)))))))))))))))));
     end hofpT2;
-    
-    function handsofpT2 
-      "function for isentropic specific enthalpy and specific entropy in region 2" 
-      
+
+    function handsofpT2
+      "function for isentropic specific enthalpy and specific entropy in region 2"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       output Modelica.SIunits.SpecificEntropy s "specific entropy";
-    protected 
+    protected
       Real[22] o "vector of auxiliary variables";
       Real pi "dimensionless pressure";
       Real tau "dimensionless temperature";
       Real tau2 "dimensionless temperature";
       Real g "dimensionless Gibbs energy";
       Real gtau "derivative of  dimensionless Gibbs energy w.r.t. tau";
-    algorithm 
+    algorithm
       assert(p > triple.ptriple,
         "IF97 medium function handsofpT2 called with too low pressure\n" +
         "p = " + String(p) + " Pa <= " + String(triple.ptriple) + " Pa (triple point pressure)");
@@ -5171,7 +5171,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[20] := o[1]*o[5];
       o[21] := tau*tau;
       o[22] := o[21]*o[21];
-      
+
       g := pi*(-0.0017731742473213 + tau2*(-0.017834862292358 + tau2*(-0.045996013696365
          + (-0.057581259083432 - 0.05032527872793*o[2])*tau2)) + pi*(tau2*(-0.000033032641670203
          + (-0.00018948987516315 + o[1]*(-0.0039392777243355 + o[2]*(-0.043797295650573
@@ -5195,7 +5195,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
          + tau*(1.424081971444 + tau*(-4.38395111945 + tau*(-9.692768600217
          + tau*(10.08665568018 + (-0.2840863260772 + 0.02126846353307*tau)*
         tau) + Modelica.Math.log(pi)))))))/(o[22]*tau);
-      
+
       gtau := (0.0280439559151 + tau*(-0.2858109552582 + tau*(1.2213149471784
          + tau*(-2.848163942888 + tau*(4.38395111945 + o[21]*(10.08665568018
          + (-0.5681726521544 + 0.06380539059921*tau)*tau))))))/(o[21]*o[22])
@@ -5217,42 +5217,42 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         pi*(0.000200482822351322*o[17]*o[3]*o[5] + pi*(-4.97975748452559e-14*
         o[1]*o[17]*o[3] + (1.90027787547159e-27 + o[10]*(2.21658861403112e-15
          - 0.0000547344301999018*o[20]))*o[4]*o[5]*pi*tau2))))))))))))))));
-      
+
       h := data.RH2O*T*tau*gtau;
       s := data.RH2O*(tau*gtau - g);
     end handsofpT2;
-    
-    function hofps2 "function for isentropic specific enthalpy in region 2" 
-      
+
+    function hofps2 "function for isentropic specific enthalpy in region 2"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Modelica.SIunits.Temperature T "temperature (K)";
-    algorithm 
+    algorithm
       T := Basic.tps2(p, s);
       h := hofpT2(p, T);
     end hofps2;
     // region 3 extra functions
-    
+
     // for isentropic specific enthalpy get (d,T) = f(p,s), then use this
     // which needs a bloody iteration, ...
     // this is one thing that needs to be done somehow, ...
-    
-    function hofdT3 "function for isentropic specific enthalpy in region 3" 
-      
+
+    function hofdT3 "function for isentropic specific enthalpy in region 3"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real delta;
       Real tau "dimensionless temperature";
       Real[13] o "vector of auxiliary variables";
       Real ftau "derivative of  dimensionless Helmholtz energy w.r.t. tau";
       Real fdelta "derivative of  dimensionless Helmholtz energy w.r.t. delta";
-    algorithm 
+    algorithm
       tau := data.TCRIT/T;
       delta := d/data.DCRIT;
       o[1] := tau*tau;
@@ -5268,7 +5268,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[11] := o[3]*o[8];
       o[12] := o[3]*o[8]*tau;
       o[13] := o[1]*o[3]*o[8];
-      
+
       ftau := 20.944396974307 + tau*(-15.3735415757432 + o[2]*tau*(
         18.3301634515678 + o[1]*tau*(-28.08078114862 + o[1]*(14.4640436358204
          - 0.194503669468755*o[1]*o[3]*tau)))) + delta*((-2.5308630955428 + o[
@@ -5283,7 +5283,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *tau + delta*(-0.385692979164272*o[12] + delta*(delta*(-0.00016557679795037
          - 0.00116802137560719*delta*o[12]) + (0.00115845907256168 +
         0.0840031522296486*o[11])*tau)))))))));
-      
+
       fdelta := (1.0658070028513 + delta*(o[1]*(-1.2654315477714 + o[2]*(-1.1524407806681
          + (0.88521043984318 - 0.64207765181607*o[1])*o[4])) + delta*(
         0.76986920373342 + o[1]*(-1.70429417648412 + o[2]*(9.7944563083754 +
@@ -5298,65 +5298,65 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         0.00080964802996215 - 0.000494162889679965*delta*o[13] -
         0.0016557679795037*tau))))) + (0.5385256313166 + o[1]*(-1.6456811629477
          - 2.5435531020579*o[10]))*tau))))))/delta;
-      
+
       h := data.RH2O*T*(tau*ftau + delta*fdelta);
     end hofdT3;
-    
-    function hofps3 "isentropic specific enthalpy in region 3 h(p,s)" 
+
+    function hofps3 "isentropic specific enthalpy in region 3 h(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Modelica.SIunits.Density d "density";
       Modelica.SIunits.Temperature T "temperature (K)";
       Modelica.SIunits.Pressure delp=IterationData.DELP "iteration accuracy";
-      Modelica.SIunits.SpecificEntropy dels=IterationData.DELS 
+      Modelica.SIunits.SpecificEntropy dels=IterationData.DELS
         "iteration accuracy";
       Integer error "error if not 0";
-    algorithm 
+    algorithm
       (d,T,error) := Inverses.dtofps3(p=p,s= s,delp= delp,dels= dels);
       h := hofdT3(d, T);
     end hofps3;
-    
-    function hofpsdt3 
-      "isentropic specific enthalpy in region 3 h(p,s) with given good guess in d and T" 
-      
+
+    function hofpsdt3
+      "isentropic specific enthalpy in region 3 h(p,s) with given good guess in d and T"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Density dguess 
+      input Modelica.SIunits.Density dguess
         "good guess density, e.g. from adjacent volume";
-      input Modelica.SIunits.Temperature Tguess 
+      input Modelica.SIunits.Temperature Tguess
         "good guess temperature, e.g. from adjacent volume";
-      input Modelica.SIunits.Pressure delp=IterationData.DELP 
+      input Modelica.SIunits.Pressure delp=IterationData.DELP
         "relative error in p";
-      input Modelica.SIunits.SpecificEntropy dels=IterationData.DELS 
+      input Modelica.SIunits.SpecificEntropy dels=IterationData.DELS
         "relative error in s";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Modelica.SIunits.Density d "density";
       Modelica.SIunits.Temperature T "temperature (K)";
       Integer error "error flag";
-    algorithm 
+    algorithm
       (d,T,error) := Inverses.dtofpsdt3(p=p,s= s,dguess= dguess,Tguess=
         Tguess,delp= delp,dels= dels);
       h := hofdT3(d, T);
     end hofpsdt3;
-    
-    function hofps4 "isentropic specific enthalpy in region 4 h(p,s)" 
+
+    function hofps4 "isentropic specific enthalpy in region 4 h(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Modelica.SIunits.Temp_K Tsat "saturation temperature";
       Modelica.SIunits.MassFraction x "dryness fraction";
       Modelica.SIunits.SpecificEntropy sl "saturated liquid specific entropy";
       Modelica.SIunits.SpecificEntropy sv "saturated vapour specific entropy";
       Modelica.SIunits.SpecificEnthalpy hl "saturated liquid specific enthalpy";
       Modelica.SIunits.SpecificEnthalpy hv "saturated vapour specific enthalpy";
-    algorithm 
+    algorithm
       if (p <= data.PLIMIT4A) then
         Tsat := Basic.tsat(p);
         (hl,sl) := handsofpT1(p, Tsat);
@@ -5370,17 +5370,17 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       x := max(min(if sl <> sv then (s - sl)/(sv - sl) else 1.0, 1.0),0.0);
       h := hl + x*(hv - hl);
     end hofps4;
-    
-    function hofpT5 "specific enthalpy in region 5 h(p,T)" 
+
+    function hofpT5 "specific enthalpy in region 5 h(p,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
+    protected
       Real[4] o "vector of auxiliary variables";
       Real tau "dimensionless temperature";
       Real pi "dimensionless pressure";
-    algorithm 
+    algorithm
       tau := data.TSTAR5/T;
       pi := p/data.PSTAR5;
       assert(p > triple.ptriple,
@@ -5396,26 +5396,26 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         3.8757684869352e-7*o[1]*o[3]*pi - 0.73803069960666/(o[1]*tau) -
         0.65923253077834*tau);
     end hofpT5;
-    
-    function water_hisentropic 
-      "isentropic specific enthalpy from p,s (preferably use water_hisentropic_dyn in dynamic simulation!)" 
-      
+
+    function water_hisentropic
+      "isentropic specific enthalpy from p,s (preferably use water_hisentropic_dyn in dynamic simulation!)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
      input Integer phase=
                     0 "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
-      Modelica.Media.Common.GibbsDerivs g 
+    protected
+      Modelica.Media.Common.GibbsDerivs g
         "derivatives of dimensionless Gibbs-function w.r.t dimensionless pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "derivatives of dimensionless Helmholtz-function w.r.t dimensionless delta and tau";
       Integer region(min=1, max=5) "IF97 region";
       Integer error "error if not 0";
       Modelica.SIunits.Temperature T "temperature";
       Modelica.SIunits.Density d "density";
-    algorithm 
+    algorithm
       region := Regions.region_ps(p=p,s= s,phase=phase);
       if (region == 1) then
         h := hofps1(p, s);
@@ -5432,28 +5432,28 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         h := hofpT5(p, T);
       end if;
     end water_hisentropic;
-    
-    function water_hisentropic_dyn 
-      "isentropic specific enthalpy from p,s and good guesses of d and T" 
+
+    function water_hisentropic_dyn
+      "isentropic specific enthalpy from p,s and good guesses of d and T"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Density dguess 
+      input Modelica.SIunits.Density dguess
         "good guess density, e.g. from adjacent volume";
-      input Modelica.SIunits.Temperature Tguess 
+      input Modelica.SIunits.Temperature Tguess
         "good guess temperature, e.g. from adjacent volume";
       input Integer phase "1 for one phase, 2 for two phase";
       output Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-    protected 
-      Modelica.Media.Common.GibbsDerivs g 
+    protected
+      Modelica.Media.Common.GibbsDerivs g
         "derivatives of dimensionless Gibbs-function w.r.t dimensionless pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "derivatives of dimensionless Helmholtz-function w.r.t dimensionless delta and tau";
       Integer region(min=1, max=5) "IF97 region";
       Integer error "error if not 0";
       Modelica.SIunits.Temperature T "temperature";
       Modelica.SIunits.Density d "density";
-    algorithm 
+    algorithm
       region := Regions.region_ps(p=p,s= s,phase= phase);
       if (region == 1) then
         h := hofps1(p, s);
@@ -5470,7 +5470,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         h := hofpT5(p, T);
       end if;
     end water_hisentropic_dyn;
-    
+
     annotation (Documentation(info="<HTML><h4>Package description</h4>
           <p></p>
           <h4>Package contents</h4>
@@ -5516,25 +5516,25 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           "));
   end Isentropic;
   //work needed: (Pr,lam,eta) = f(d,T,p, region?)
-  package Inverses "efficient inverses for selected pairs of variables" 
-    
+  package Inverses "efficient inverses for selected pairs of variables"
+
     extends Modelica.Icons.Library;
-    
+
     //===================================================================
     //            Iterative version for some pairs/regions
-    
+
     //===================================================================
-    function fixdT "region limits for inverse iteration in region 3" 
-      
+    function fixdT "region limits for inverse iteration in region 3"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density din "density";
       input Modelica.SIunits.Temperature Tin "temperature";
       output Modelica.SIunits.Density dout "density";
       output Modelica.SIunits.Temperature Tout "temperature";
-    protected 
+    protected
       Modelica.SIunits.Temperature Tmin "approximation of minimum temperature";
       Modelica.SIunits.Temperature Tmax "approximation of maximum temperature";
-    algorithm 
+    algorithm
       if (din > 765.0) then
         dout := 765.0;
       elseif (din < 110.0) then
@@ -5562,15 +5562,15 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         Tout := Tin;
       end if;
     end fixdT;
-    
-    function dofp13 "density at the boundary between regions 1 and 3" 
+
+    function dofp13 "density at the boundary between regions 1 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Real p2 "auxiliary variable";
       Real[3] o "vector of auxiliary variables";
-    algorithm 
+    algorithm
       p2 := 7.1 - 6.04960677555959e-8*p;
       o[1] := p2*p2;
       o[2] := o[1]*o[1];
@@ -5581,21 +5581,21 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         1.35549330686006e-17 + o[1]*(-3.11228834832975e-19 + o[1]*o[2]*(-7.02987180039442e-22
          + p2*(3.29199117056433e-22 + (-5.17859076694812e-23 +
         2.73712834080283e-24*p2)*p2))))))))));
-      
+
     end dofp13;
-    
-    function dofp23 "density at the boundary between regions 2 and 3" 
+
+    function dofp23 "density at the boundary between regions 2 and 3"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       output Modelica.SIunits.Density d "density";
-    protected 
+    protected
       Modelica.SIunits.Temperature T;
       Real[13] o "vector of auxiliary variables";
       Real taug "auxiliary variable";
       Real pi "dimensionless pressure";
-      Real gpi23 
+      Real gpi23
         "derivative of g w.r.t. pi on the boundary between regions 2 and 3";
-    algorithm 
+    algorithm
       pi := p/data.PSTAR2;
       T := 572.54459862746 + 31.3220101646784*(-13.91883977887 + pi)^0.5;
       o[1] := (-13.91883977887 + pi)^0.5;
@@ -5612,7 +5612,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       o[11] := o[10]*o[10];
       o[12] := o[4]*o[6]*taug;
       o[13] := o[6]*o[6];
-      
+
       gpi23 := (1.0 + pi*(-0.0017731742473213 + taug*(-0.017834862292358 +
         taug*(-0.045996013696365 + (-0.057581259083432 - 0.05032527872793*o[3])
         *taug)) + pi*(taug*(-0.000066065283340406 + (-0.0003789797503263 + o[
@@ -5637,24 +5637,24 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         *o[2]*o[4]*taug)))))))))))))))))/pi;
       d := p/(data.RH2O*T*pi*gpi23);
     end dofp23;
-    
-    function dofpt3 "inverse iteration in region 3: (d) = f(p,T)" 
-      
+
+    function dofpt3 "inverse iteration in region 3: (d) = f(p,T)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      input Modelica.SIunits.Pressure delp 
+      input Modelica.SIunits.Pressure delp
         "iteration converged if (p-pre(p) < delp)";
       output Modelica.SIunits.Density d "density";
       output Integer error=0 "error flag: iteration failed if different from 0";
-    protected 
+    protected
       Modelica.SIunits.Density dguess "guess density";
       Integer i=0 "loop counter";
       Real dp "pressure difference";
       Modelica.SIunits.Density deld "density step";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.NewtonDerivatives_pT nDerivs 
+      Modelica.Media.Common.NewtonDerivatives_pT nDerivs
         "derivatives needed in Newton iteration";
       Boolean found=false "flag for iteration success";
       Boolean supercritical "flag, true for supercritical states";
@@ -5662,7 +5662,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Modelica.SIunits.Density dmin "lower density limit";
       Modelica.SIunits.Density dmax "upper density limit";
       Modelica.SIunits.Temperature Tmax "maximum temperature";
-    algorithm 
+    algorithm
       assert(p >= data.PLIMIT4A,
         "BaseIF97.dofpt3: function called outside of region 3! p too low\n" +
         "p = " + String(p) + " Pa < " + String(data.PLIMIT4A) + " Pa");
@@ -5715,12 +5715,12 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       end if;
       assert(error <> 1, "error in inverse function dofpt3: iteration failed");
     end dofpt3;
-    
+
     // for all iteration functions: project to bounadries possible
     // if p is input. Step 1 get dofpt_efficient(p,T) at boundary
     // for T, use boundary itself if off limits, for d a bit inside
-    
-    function dtofph3 "inverse iteration in region 3: (d,T) = f(p,h)" 
+
+    function dtofph3 "inverse iteration in region 3: (d,T) = f(p,h)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
@@ -5729,7 +5729,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       output Modelica.SIunits.Density d "density";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-    protected 
+    protected
       Modelica.SIunits.Temperature Tguess "initial temperature";
       Modelica.SIunits.Density dguess "initial density";
       Integer i "iteration counter";
@@ -5738,16 +5738,16 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real det "determinant of directional derivatives";
       Real deld "Newton-step in d-direction";
       Real delt "Newton-step in T-direction";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.NewtonDerivatives_ph nDerivs 
+      Modelica.Media.Common.NewtonDerivatives_ph nDerivs
         "derivatives needed in Newton iteration";
-      Boolean found:=false "flag for iteration success";
+      Boolean found "flag for iteration success";
       Integer subregion "1 for subregion 3a, 2 for subregion 3b";
-    algorithm 
+    algorithm
       if p < data.PCRIT then
         // allow a 10 J margin inside the (well approximated) phase boundary
-        subregion := if h < (Regions.hl_p(p) + 10.0) then 1 else 
+        subregion := if h < (Regions.hl_p(p) + 10.0) then 1 else
           if h > (Regions.hv_p(p) - 10.0) then 2 else 0;
         assert(subregion <> 0,"inverse iteration of dt from ph called in 2 phase region: this can not work");
       else
@@ -5782,8 +5782,8 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(error <> 1,
         "error in inverse function dtofph3: iteration failed");
     end dtofph3;
-    
-    function dtofps3 "inverse iteration in region 3: (d,T) = f(p,s)" 
+
+    function dtofps3 "inverse iteration in region 3: (d,T) = f(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
@@ -5792,7 +5792,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       output Modelica.SIunits.Density d "density";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-    protected 
+    protected
       Modelica.SIunits.Temperature Tguess "initial temperature";
       Modelica.SIunits.Density dguess "initial density";
       Integer i "iteration counter";
@@ -5801,19 +5801,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real det "determinant of directional derivatives";
       Real deld "Newton-step in d-direction";
       Real delt "Newton-step in T-direction";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.NewtonDerivatives_ps nDerivs 
+      Modelica.Media.Common.NewtonDerivatives_ps nDerivs
         "derivatives needed in Newton iteration";
       Boolean found "flag for iteration success";
       Integer subregion "1 for subregion 3a, 2 for subregion 3b";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       found := false;
       if p < data.PCRIT then
         // allow a 1 J/K margin inside the (well approximated) phase boundary
-        subregion := if s < (Regions.sl_p(p) + 10.0) then 1 else 
+        subregion := if s < (Regions.sl_p(p) + 10.0) then 1 else
           if s > (Regions.sv_p(p) - 10.0) then 2 else 0;
         assert(subregion <> 0,"inverse iteration of dt from ps called in 2 phase region: this is illegal!");
       else
@@ -5845,35 +5845,35 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(error <> 1,
         "error in inverse function dtofps3: iteration failed");
     end dtofps3;
-    
-    function dtofpsdt3 "inverse iteration in region 3: (d,T) = f(p,s)" 
+
+    function dtofpsdt3 "inverse iteration in region 3: (d,T) = f(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Density dguess 
+      input Modelica.SIunits.Density dguess
         "guess density, e.g. from adjacent volume";
-      input Modelica.SIunits.Temperature Tguess 
+      input Modelica.SIunits.Temperature Tguess
         "guess temperature, e.g. from adjacent volume";
       input Modelica.SIunits.Pressure delp "iteration accuracy";
       input Modelica.SIunits.SpecificEntropy dels "iteration accuracy";
       output Modelica.SIunits.Density d "density";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-    protected 
+    protected
       Integer i "iteration counter";
       Real ds "Newton-error in s-direction";
       Real dp "Newton-error in p-direction";
       Real det "determinant of directional derivatives";
       Real deld "Newton-step in d-direction";
       Real delt "Newton-step in T-direction";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.NewtonDerivatives_ps nDerivs 
+      Modelica.Media.Common.NewtonDerivatives_ps nDerivs
         "derivatives needed in Newton iteration";
       Boolean found "flag for iteration success";
       Modelica.SIunits.Density diter "density";
       Modelica.SIunits.Temperature Titer "temperature (K)";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       found := false;
@@ -5902,32 +5902,32 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(error <> 1,
         "error in inverse function dtofpsdt3: iteration failed");
     end dtofpsdt3;
-    
-    function pofdt125 "inverse iteration in region 1,2 and 5: p = g(d,T)" 
+
+    function pofdt125 "inverse iteration in region 1,2 and 5: p = g(d,T)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Density d "density";
       input Modelica.SIunits.Temperature T "temperature (K)";
-      input Modelica.SIunits.Pressure reldd 
+      input Modelica.SIunits.Pressure reldd
         "relative iteration accuracy of density";
-      input Integer region 
+      input Integer region
         "region in IAPWS/IF97 in which inverse should be calculated";
       output Modelica.SIunits.Pressure p "pressure";
       output Integer error "error flag: iteration failed if different from 0";
-    protected 
+    protected
       Integer i "counter for while-loop";
-      Modelica.Media.Common.GibbsDerivs g 
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
       Boolean found "flag if iteration has been successful";
-      Real dd 
+      Real dd
         "difference between density for  guessed p and the current density";
       Real delp "step in p in Newton-iteration";
       Real relerr "relative error in d";
-      Modelica.SIunits.Pressure pguess1=1.0e6 
+      Modelica.SIunits.Pressure pguess1=1.0e6
         "initial pressure guess in region 1";
       Modelica.SIunits.Pressure pguess2 "initial pressure guess in region 2";
-      constant Modelica.SIunits.Pressure pguess5=0.5e6 
+      constant Modelica.SIunits.Pressure pguess5=0.5e6
         "initial pressure guess in region 5";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       pguess2 := 42800*d;
@@ -5964,7 +5964,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           end if;
         end if;
       end while;
-      
+
         // print("i = " + i2s(i) + ", p = " + r2s(p/1.0e5) + ", delp = " + r2s(delp*1.0e-5) + "\n");
       if not found then
         error := 1;
@@ -5972,18 +5972,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(error <> 1,
         "error in inverse function pofdt125: iteration failed");
     end pofdt125;
-    
-    function tofph5 "inverse iteration in region 5: (p,T) = f(p,h)" 
-      
+
+    function tofph5 "inverse iteration in region 5: (p,T) = f(p,h)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
       input Modelica.SIunits.SpecificEnthalpy reldh "iteration accuracy";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-      
-    protected 
-      Modelica.Media.Common.GibbsDerivs g 
+
+    protected
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
       Modelica.SIunits.SpecificEnthalpy proh "h for current guess in T";
       constant Modelica.SIunits.Temperature Tguess=1500 "initial temperature";
@@ -5992,7 +5992,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real dh "Newton-error in h-direction";
       Real dT "Newton-step in T-direction";
       Boolean found "flag for iteration success";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       T := Tguess;
@@ -6014,18 +6014,18 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       end if;
       assert(error <> 1, "error in inverse function tofph5: iteration failed");
     end tofph5;
-    
-    function tofps5 "inverse iteration in region 5: (p,T) = f(p,s)" 
-      
+
+    function tofps5 "inverse iteration in region 5: (p,T) = f(p,s)"
+
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
       input Modelica.SIunits.SpecificEnthalpy relds "iteration accuracy";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-      
-    protected 
-      Modelica.Media.Common.GibbsDerivs g 
+
+    protected
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
       Modelica.SIunits.SpecificEntropy pros "s for current guess in T";
       parameter Modelica.SIunits.Temperature Tguess=1500 "initial temperature";
@@ -6034,7 +6034,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real ds "Newton-error in s-direction";
       Real dT "Newton-step in T-direction";
       Boolean found "flag for iteration success";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       T := Tguess;
@@ -6056,19 +6056,19 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       end if;
       assert(error <> 1, "error in inverse function tofps5: iteration failed");
     end tofps5;
-    
-    function tofpst5 "inverse iteration in region 5: (p,T) = f(p,s)" 
+
+    function tofpst5 "inverse iteration in region 5: (p,T) = f(p,s)"
       extends Modelica.Icons.Function;
       input Modelica.SIunits.Pressure p "pressure";
       input Modelica.SIunits.SpecificEntropy s "specific entropy";
-      input Modelica.SIunits.Temperature Tguess 
+      input Modelica.SIunits.Temperature Tguess
         "guess temperature, e.g. from adjacent volume";
       input Modelica.SIunits.SpecificEntropy relds "iteration accuracy";
       output Modelica.SIunits.Temperature T "temperature (K)";
       output Integer error "error flag: iteration failed if different from 0";
-      
-    protected 
-      Modelica.Media.Common.GibbsDerivs g 
+
+    protected
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
       Modelica.SIunits.SpecificEntropy pros "s for current guess in T";
       Integer i "iteration counter";
@@ -6076,7 +6076,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       Real ds "Newton-error in s-direction";
       Real dT "Newton-step in T-direction";
       Boolean found "flag for iteration success";
-    algorithm 
+    algorithm
       i := 0;
       error := 0;
       T := Tguess;
@@ -6099,7 +6099,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       assert(error <> 1,
         "error in inverse function tofpst5: iteration failed");
     end tofpst5;
-    
+
     annotation (Documentation(info="<HTML><h4>Package description</h4>
           <p></p>
           <h4>Package contents</h4>
@@ -6140,25 +6140,25 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           </HTML>
           "));
   end Inverses;
-  
-  package TwoPhase 
-    "steam properties in the two-phase rgion and on the phase boundaries" 
-    
-    function waterLiq_p "properties on the liquid phase boundary of region 4" 
-      
+
+  package TwoPhase
+    "steam properties in the two-phase rgion and on the phase boundaries"
+
+    function waterLiq_p "properties on the liquid phase boundary of region 4"
+
       extends Modelica.Icons.Function;
       input SI.Pressure p "pressure";
-      output Modelica.Media.Common.PhaseBoundaryProperties liq 
+      output Modelica.Media.Common.PhaseBoundaryProperties liq
         "liquid thermodynamic property collection";
-    protected 
+    protected
       SI.Temperature Tsat "saturation temperature";
       Real dpT "derivative of saturation pressure wrt temperature";
       SI.Density dl "liquid density";
-      Modelica.Media.Common.GibbsDerivs g 
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-    algorithm 
+    algorithm
       Tsat := Basic.tsat(p);
       dpT := Basic.dptofT(Tsat);
       if p < data.PLIMIT4A then
@@ -6170,22 +6170,22 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         liq := Modelica.Media.Common.helmholtzToBoundaryProps(f);
       end if;
     end waterLiq_p;
-    
-    function waterVap_p "properties on the vapour phase boundary of region 4" 
-      
+
+    function waterVap_p "properties on the vapour phase boundary of region 4"
+
       extends Modelica.Icons.Function;
       input SI.Pressure p "pressure";
-      output Modelica.Media.Common.PhaseBoundaryProperties vap 
+      output Modelica.Media.Common.PhaseBoundaryProperties vap
         "vapour thermodynamic property collection";
-    protected 
+    protected
       SI.Temperature Tsat "saturation temperature";
       Real dpT "derivative of saturation pressure wrt temperature";
       SI.Density dv "vapour density";
-      Modelica.Media.Common.GibbsDerivs g 
+      Modelica.Media.Common.GibbsDerivs g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f 
+      Modelica.Media.Common.HelmholtzDerivs f
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-    algorithm 
+    algorithm
       Tsat := Basic.tsat(p);
       dpT := Basic.dptofT(Tsat);
       if p < data.PLIMIT4A then
@@ -6197,27 +6197,27 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         vap := Modelica.Media.Common.helmholtzToBoundaryProps(f);
       end if;
     end waterVap_p;
-    
-    function waterSat_ph 
-      "Water saturation properties in the 2-phase region (4) as f(p,h)" 
-      
+
+    function waterSat_ph
+      "Water saturation properties in the 2-phase region (4) as f(p,h)"
+
       extends Modelica.Icons.Function;
       input SI.Pressure p "pressure";
       input SI.SpecificEnthalpy h "specific enthalpy";
-      output Modelica.Media.Common.SaturationProperties pro 
+      output Modelica.Media.Common.SaturationProperties pro
         "thermodynamic property collection";
-    protected 
+    protected
       SI.Density dl "liquid density";
       SI.Density dv "vapour density";
-      Modelica.Media.Common.GibbsDerivs gl 
+      Modelica.Media.Common.GibbsDerivs gl
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.GibbsDerivs gv 
+      Modelica.Media.Common.GibbsDerivs gv
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs fl 
+      Modelica.Media.Common.HelmholtzDerivs fl
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.HelmholtzDerivs fv 
+      Modelica.Media.Common.HelmholtzDerivs fv
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-    algorithm 
+    algorithm
       pro.h := h;
       pro.p := p;
       pro.T := Basic.tsat(p);
@@ -6235,7 +6235,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         pro.liq := Modelica.Media.Common.helmholtzToBoundaryProps(fl);
         pro.vap := Modelica.Media.Common.helmholtzToBoundaryProps(fv);
       end if;
-      pro.x := if (h < pro.liq.h) then 0.0 else if (pro.vap.h <> pro.liq.h) then 
+      pro.x := if (h < pro.liq.h) then 0.0 else if (pro.vap.h <> pro.liq.h) then
               (h - pro.liq.h)/(pro.vap.h - pro.liq.h) else 1.0;
       pro.d := pro.liq.d*pro.vap.d/(pro.vap.d + pro.x*(pro.liq.d - pro.vap.d));
       pro.u := pro.x*pro.vap.u + (1 - pro.x)*pro.liq.u;
@@ -6246,33 +6246,33 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       pro.kappa := 1/(pro.d*p)*pro.dpT*pro.dpT*pro.T/pro.cv;
       pro.R := data.RH2O;
     end waterSat_ph;
-    
-    function waterR4_ph 
-      "Water/Steam properties in region 4 of IAPWS/IF97 (two-phase)" 
-      
+
+    function waterR4_ph
+      "Water/Steam properties in region 4 of IAPWS/IF97 (two-phase)"
+
       extends Modelica.Icons.Function;
       input SI.Pressure p "pressure";
       input SI.SpecificEnthalpy h "specific enthalpy";
-      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
+      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
         "thermodynamic property collection";
-    protected 
+    protected
       SI.Density dl "liquid density";
       SI.Density dv "vapour density";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties liq 
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties liq
         "phase boundary property record";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties vap 
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties vap
         "phase boundary property record";
-      Modelica.Media.Common.GibbsDerivs gl 
+      Modelica.Media.Common.GibbsDerivs gl
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.GibbsDerivs gv 
+      Modelica.Media.Common.GibbsDerivs gv
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs fl 
+      Modelica.Media.Common.HelmholtzDerivs fl
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.HelmholtzDerivs fv 
+      Modelica.Media.Common.HelmholtzDerivs fv
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Modelica.SIunits.SpecificHeatCapacity cv;
       Real dpT "derivative of saturation curve";
-    algorithm 
+    algorithm
       pro.T := Basic.tsat(p);
       dpT := Basic.dptofT(pro.T);
       dl := Regions.rhol_p_R4b(p);
@@ -6297,32 +6297,32 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
       pro.ddph := pro.d*(pro.d*cv/dpT + 1.0)/(dpT*pro.T);
       pro.ddhp := -pro.d*pro.d/(dpT*pro.T);
     end waterR4_ph;
-    
-    function waterR4_dT "Water properties in region 4 as function of d and T" 
-      
+
+    function waterR4_dT "Water properties in region 4 as function of d and T"
+
       extends Modelica.Icons.Function;
       input SI.Density d "Density";
       input SI.Temperature T "temperature";
-      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT 
+      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT
                                         pro "thermodynamic property collection";
-    protected 
+    protected
       SI.Density dl "liquid density";
       SI.Density dv "vapour density";
-      Modelica.Media.Common.PhaseBoundaryProperties liq 
+      Modelica.Media.Common.PhaseBoundaryProperties liq
         "phase boundary property record";
-      Modelica.Media.Common.PhaseBoundaryProperties vap 
+      Modelica.Media.Common.PhaseBoundaryProperties vap
         "phase boundary property record";
-      Modelica.Media.Common.GibbsDerivs gl 
+      Modelica.Media.Common.GibbsDerivs gl
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.GibbsDerivs gv 
+      Modelica.Media.Common.GibbsDerivs gv
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs fl 
+      Modelica.Media.Common.HelmholtzDerivs fl
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      Modelica.Media.Common.HelmholtzDerivs fv 
+      Modelica.Media.Common.HelmholtzDerivs fv
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Real x "dryness fraction";
       Real dpT "derivative of saturation curve";
-    algorithm 
+    algorithm
       pro.p := Basic.psat(T);
       dpT := Basic.dptofT(T);
       dl := Regions.rhol_p_R4b(pro.p);
@@ -6342,7 +6342,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
         vap := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps(
                                                fv);
       end if;
-      x := if (vap.d <> liq.d) then (1/d - 1/liq.d)/(1/vap.d - 1/liq.d) else 
+      x := if (vap.d <> liq.d) then (1/d - 1/liq.d)/(1/vap.d - 1/liq.d) else
         1.0;
       pro.u := x*vap.u + (1 - x)*liq.u;
       pro.h := x*vap.h + (1 - x)*liq.h;
@@ -6387,7 +6387,7 @@ Formulation 1997 for the Thermodynamic Properties of Water and Steam<br>
           </HTML>
 "));
   end TwoPhase;
-  
+
   annotation (Documentation(info="<HTML>
     <h4>Version Info and Revision history
         </h4>

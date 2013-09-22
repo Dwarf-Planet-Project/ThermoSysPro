@@ -1,44 +1,79 @@
 within ThermoSysPro.FlueGases.BoundaryConditions;
-model Source "Flue gas source" 
+model Source "Flue gas source"
   parameter ThermoSysPro.Units.AbsoluteTemperature T0=400 "Source temperature";
   parameter Real Xco2=0.10 "CO2 mass fraction";
   parameter Real Xh2o=0.05 "H2O mass fraction";
   parameter Real Xo2=0.22 "O2 mass fraction";
   parameter Real Xso2=0.00 "SO2 mass fraction";
-  
-public 
+
+public
   ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow";
   ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
   Real Xn2 "N2 mas fraction";
-  
+
+public
+  ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet C
+    annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
+  InstrumentationAndControl.Connectors.InputReal ITemperature
+    annotation (Placement(transformation(
+        origin={0,-50},
+        extent={{10,-10},{-10,10}},
+        rotation=270)));
+equation
+
+  C.P = P;
+  C.Q = Q;
+  C.T = T;
+
+  /* Flue gas composition */
+  C.Xco2 = Xco2;
+  C.Xh2o = Xh2o;
+  C.Xo2 = Xo2;
+  C.Xso2 = Xso2;
+
+  Xn2 = 1 - Xco2 - Xh2o - Xo2 - Xso2;
+
+  /* Temperature */
+  if (cardinality(ITemperature) == 0) then
+    ITemperature.signal = T0;
+  end if;
+
+  T = ITemperature.signal;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
-      Line(points=[40, 0; 90, 0; 72, 10]),
-      Line(points=[90, 0; 72, -10]),
-      Text(
-        extent=[-40,-40; -2,-60],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
-    Icon(
-      Rectangle(extent=[-40, 40; 40, -40], style(
-          fillColor=6,
-          rgbfillColor={255,255,0},
-          fillPattern=8)),
-      Line(points=[40, 0; 90, 0; 72, 10]),
-      Line(points=[90, 0; 72, -10]),
-      Text(
-        extent=[-40,-40; -2,-60],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,255,0},
+          fillPattern=FillPattern.Backward),
+        Line(points={{40,0},{90,0},{72,10}}),
+        Line(points={{90,0},{72,-10}}),
+        Text(
+          extent={{-40,-40},{-2,-60}},
+          lineColor={0,0,255},
+          textString=
+               "T")}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,255,0},
+          fillPattern=FillPattern.Backward),
+        Line(points={{40,0},{90,0},{72,10}}),
+        Line(points={{90,0},{72,-10}}),
+        Text(
+          extent={{-40,-40},{-2,-60}},
+          lineColor={0,0,255},
+          textString=
+               "T")}),
     Window(
       x=0.09,
       y=0.2,
@@ -58,30 +93,4 @@ public
 </ul>
 </html>
 "));
-public 
-  ThermoSysPro.FlueGases.Connectors.FlueGasesOutlet C 
-    annotation (extent=[90, -10; 110, 10]);
-  InstrumentationAndControl.Connectors.InputReal ITemperature 
-    annotation (extent=[-10,-40; 10,-60],   rotation=-90);
-equation 
-  
-  C.P = P;
-  C.Q = Q;
-  C.T = T;
-  
-  /* Flue gas composition */
-  C.Xco2 = Xco2;
-  C.Xh2o = Xh2o;
-  C.Xo2 = Xo2;
-  C.Xso2 = Xso2;
-  
-  Xn2 = 1 - Xco2 - Xh2o - Xo2 - Xso2;
-  
-  /* Temperature */
-  if (cardinality(ITemperature) == 0) then
-    ITemperature.signal = T0;
-  end if;
-  
-  T = ITemperature.signal;
-  
 end Source;

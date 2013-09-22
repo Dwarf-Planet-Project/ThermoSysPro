@@ -1,34 +1,29 @@
 within ThermoSysPro.WaterSolution;
-package Connectors "Connectors" 
-  connector WaterSolutionInlet "Water solution inlet" 
-    ThermoSysPro.Units.AbsolutePressure P 
+package Connectors "Connectors"
+  connector WaterSolutionInlet "Water solution inlet"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
     Real Xh2o "H20 mass fraction of the solution in the control volume";
-    
-    input Boolean a=true 
+
+    input Boolean a=true
       "Pseudo-variable for the verification of the connection orientation";
-    output Boolean b 
+    output Boolean b
       "Pseudo-variable for the verification of the connection orientation";
-    
+
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            fillColor=3,
-            rgbfillColor={0,0,255})),     Line(points=[-100,100; 100,-100], style(
-            color=7,
-            rgbcolor={255,255,255},
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=1))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{100,100}},
+            lineColor={0,0,0},
+            fillColor={0,0,255},
+            fillPattern=FillPattern.Solid), Line(points={{-100,100},{100,-100}},
+              color={255,255,255})}),
       Window(
         x=0.31,
         y=0.13,
@@ -48,37 +43,31 @@ package Connectors "Connectors"
 </html>
 "));
   end WaterSolutionInlet;
-  
-  connector WaterSolutionOutlet "Water solution outlet" 
-    ThermoSysPro.Units.AbsolutePressure P 
+
+  connector WaterSolutionOutlet "Water solution outlet"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
     Real Xh2o "H20 mass fraction of the solution in the control volume";
-    
-    output Boolean a 
+
+    output Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    input Boolean b=true 
+    input Boolean b=true
       "Pseudo-variable for the verification of the connection orientation";
-    
+
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, -100; 102, 100], style(
-            color=0,
-            rgbcolor={0,0,0},
-            fillColor=43,
-            rgbfillColor={255,85,85})),
-                                      Line(points=[-100,100; 102,-100], style(
-            color=7,
-            rgbcolor={255,255,255},
-            fillColor=0,
-            rgbfillColor={0,0,0},
-            fillPattern=1))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{102,100}},
+            lineColor={0,0,0},
+            fillColor={255,85,85},
+            fillPattern=FillPattern.Solid), Line(points={{-100,100},{102,-100}},
+              color={255,255,255})}),
       Window(
         x=0.31,
         y=0.13,

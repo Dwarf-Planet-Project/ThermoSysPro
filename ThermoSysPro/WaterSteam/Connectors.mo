@@ -1,25 +1,28 @@
 within ThermoSysPro.WaterSteam;
-package Connectors "Connectors" 
-  connector FluidInlet "Water/steam inlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P(start=1.e5) 
+package Connectors "Connectors"
+  connector FluidInlet "Water/steam inlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P(start=1.e5)
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5)
       "Fluid specific enthalpy in the control volume";
-    Modelica.SIunits.MassFlowRate Q(start=500) 
+    Modelica.SIunits.MassFlowRate Q(start=500)
       "Mass flow rate of the fluid crossing the boundary of the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5)
       "Specific enthalpy of the fluid crossing the boundary of the control volume";
-    
-    input Boolean a=true 
+
+    input Boolean a=true
       "Pseudo-variable for the verification of the connection orientation";
-    output Boolean b 
+    output Boolean b
       "Pseudo-variable for the verification of the connection orientation";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, 100; 100, -100], style(fillColor=73))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={0,0,255},
+            fillPattern=FillPattern.Solid)}),
       Window(
         x=0.27,
         y=0.33,
@@ -40,28 +43,30 @@ package Connectors "Connectors"
 </html>
 "));
   end FluidInlet;
-  
-  connector FluidInletI "Internal water/steam inlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P(start=1.e5) 
+
+  connector FluidInletI "Internal water/steam inlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P(start=1.e5)
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5)
       "Fluid specific enthalpy in the control volume";
-    Modelica.SIunits.MassFlowRate Q(start=500) 
+    Modelica.SIunits.MassFlowRate Q(start=500)
       "Mass flow rate of the fluid crossing the boundary of the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5)
       "Specific enthalpy of the fluid crossing the boundary of the control volume";
-    
-    input Boolean a 
+
+    input Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    output Boolean b 
+    output Boolean b
       "Pseudo-variable for the verification of the connection orientation";
       annotation (
-        Coordsys(
-          extent=[-100, -100; 100, 100],
-          grid=[2, 2],
-          component=[20, 20]),
-        Icon(Rectangle(extent=[-100, 100; 100, -100], style(fillColor=7,
-                fillPattern=10))),
+        Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.CrossDiag)}),
         Window(
           x=0.27,
           y=0.17,
@@ -82,28 +87,30 @@ package Connectors "Connectors"
 </html>
 "));
   end FluidInletI;
-  
-  connector FluidOutlet "Water/steam outlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P(start=1.e5) 
+
+  connector FluidOutlet "Water/steam outlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P(start=1.e5)
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5)
       "Fluid specific enthalpy in the control volume";
-    Modelica.SIunits.MassFlowRate Q(start=500) 
+    Modelica.SIunits.MassFlowRate Q(start=500)
       "Mass flow rate of the fluid crossing the boundary of the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5)
       "Specific enthalpy of the fluid crossing the boundary of the control volume";
-    
-    output Boolean a 
+
+    output Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    input Boolean b=true 
+    input Boolean b=true
       "Pseudo-variable for the verification of the connection orientation";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, 100; 100, -100], style(color=73, fillColor=
-                41))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,0,0},
+            fillPattern=FillPattern.Solid)}),
       Window(
         x=0.26,
         y=0.39,
@@ -124,30 +131,30 @@ package Connectors "Connectors"
 </html>
 "));
   end FluidOutlet;
-  
-  connector FluidOutletI "Internal water/steam outlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P(start=1.e5) 
+
+  connector FluidOutletI "Internal water/steam outlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P(start=1.e5)
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h_vol(start=1.e5)
       "Fluid specific enthalpy in the control volume";
-    Modelica.SIunits.MassFlowRate Q(start=500) 
+    Modelica.SIunits.MassFlowRate Q(start=500)
       "Mass flow rate of the fluid crossing the boundary of the control volume";
-    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5) 
+    ThermoSysPro.Units.SpecificEnthalpy h(start=1.e5)
       "Specific enthalpy of the fluid crossing the boundary of the control volume";
-    
-    output Boolean a 
+
+    output Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    input Boolean b 
+    input Boolean b
       "Pseudo-variable for the verification of the connection orientation";
       annotation (
-        Coordsys(
-          extent=[-100, -100; 100, 100],
-          grid=[2, 2],
-          component=[20, 20]),
-        Icon(Rectangle(extent=[-100, 100; 100, -100], style(
-              color=41,
-              fillColor=7,
-              fillPattern=10))),
+        Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={255,0,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.CrossDiag)}),
         Window(
           x=0.45,
           y=0.01,

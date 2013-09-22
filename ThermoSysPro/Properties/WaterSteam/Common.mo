@@ -1,28 +1,31 @@
 within ThermoSysPro.Properties.WaterSteam;
-package Common 
+package Common
   import SI = Modelica.SIunits;
-  
-  record HelmholtzData 
+
+  record HelmholtzData
     Modelica.SIunits.Density d;
     ThermoSysPro.Units.AbsoluteTemperature T;
     Modelica.SIunits.SpecificHeatCapacity R;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.16,
         y=0.26,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -31,28 +34,31 @@ package Common
 </HTML>
 "));
   end HelmholtzData;
-  
-  record GibbsData 
+
+  record GibbsData
     ThermoSysPro.Units.AbsolutePressure p;
     ThermoSysPro.Units.AbsoluteTemperature T;
     Modelica.SIunits.SpecificHeatCapacity R;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.16,
         y=0.26,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -61,9 +67,9 @@ package Common
 </HTML>
 "));
   end GibbsData;
-  
-  record GibbsDerivs 
-    "derivatives of dimensionless Gibbs-function w.r.t dimensionless pressure and temperature" 
+
+  record GibbsDerivs
+    "derivatives of dimensionless Gibbs-function w.r.t dimensionless pressure and temperature"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Pressure p "pressure";
     Modelica.SIunits.Temperature T "temperature";
@@ -77,9 +83,9 @@ package Common
     Real gtautau(unit="1") "2nd derivative of g w.r.t tau";
     Real gtaupi(unit="1") "mixed derivative of g w.r.t. pi and tau";
   end GibbsDerivs;
-  
-  record HelmholtzDerivs 
-    "derivatives of dimensionless Helmholtz-function w.r.t dimensionless pressuredensity and temperature" 
+
+  record HelmholtzDerivs
+    "derivatives of dimensionless Helmholtz-function w.r.t dimensionless pressuredensity and temperature"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Density d "density";
     Modelica.SIunits.Temperature T "temperature";
@@ -93,8 +99,8 @@ package Common
     Real ftautau(unit="1") "2nd derivative of f w.r.t. tau";
     Real fdeltatau(unit="1") "mixed derivative of f w.r.t. delta and tau";
   end HelmholtzDerivs;
-  
-  record ThermoProperties_ph 
+
+  record ThermoProperties_ph
     ThermoSysPro.Units.AbsoluteTemperature T(
       min=InitLimits.TMIN,
       max=InitLimits.TMAX,
@@ -115,32 +121,35 @@ package Common
       min=InitLimits.CPMIN,
       max=InitLimits.CPMAX,
       nominal=InitLimits.CPNOM) "Specific heat capacity at constant presure";
-    Modelica.SIunits.DerDensityByEnthalpy ddhp 
+    Modelica.SIunits.DerDensityByEnthalpy ddhp
       "Derivative of density wrt. specific enthalpy at constant pressure";
-    Modelica.SIunits.DerDensityByPressure ddph 
+    Modelica.SIunits.DerDensityByPressure ddph
       "Derivative of density wrt. pressure at constant specific enthalpy";
-    Real duph(unit="m3/kg") 
+    Real duph(unit="m3/kg")
       "Derivative of specific inner energy wrt. pressure at constant specific enthalpy";
-    Real duhp(unit = "1") 
+    Real duhp(unit = "1")
       "Derivative of specific inner energy wrt. specific enthalpy at constant pressure";
     ThermoSysPro.Units.MassFraction x "Vapor mass fraction";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.21,
         y=0.32,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -149,14 +158,14 @@ package Common
 </HTML>
 "));
   end ThermoProperties_ph;
-  
-  function gibbsToProps_ph 
+
+  function gibbsToProps_ph
     input GibbsDerivs g "dimensionless derivatives of the Gibbs function";
     output ThermoProperties_ph pro;
-  protected 
+  protected
     Real vt;
     Real vp;
-  algorithm 
+  algorithm
     pro.T := min(max(g.T, InitLimits.TMIN), InitLimits.TMAX);
     pro.d := max(g.p,ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)/(g.R*pro.T*g.pi*g.gpi);
     pro.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
@@ -170,22 +179,27 @@ package Common
     pro.duph := -1/pro.d + g.p/(pro.d*pro.d)*pro.ddph;
     pro.duhp := 1 + g.p/(pro.d*pro.d)*pro.ddhp;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.05,
         y=0.05,
         width=0.54,
         height=0.72),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-132, 102; 144, 42], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-132,102},{144,42}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -193,10 +207,13 @@ package Common
 <p><b>Version 1.0</b></p>
 </HTML>
 "),   DymolaStoredErrors,
-      Diagram);
+      Diagram(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics));
   end gibbsToProps_ph;
-  
-  record NewtonDerivatives_ph 
+
+  record NewtonDerivatives_ph
     ThermoSysPro.Units.AbsolutePressure p;
     ThermoSysPro.Units.SpecificEnthalpy h;
     Real pd;
@@ -204,22 +221,25 @@ package Common
     Real hd;
     Real ht;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.25,
         y=0.33,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -228,17 +248,17 @@ package Common
 </HTML>
 "));
   end NewtonDerivatives_ph;
-  
-  function helmholtzToProps_ph 
-    input HelmholtzDerivs f 
+
+  function helmholtzToProps_ph
+    input HelmholtzDerivs f
       "dimensionless derivatives of the Helmholtz function";
     output ThermoProperties_ph pro;
-  protected 
+  protected
     Real pd;
     Real pt;
-  protected 
+  protected
    Real cv "Heat capacity at constant volume";
-  algorithm 
+  algorithm
     pro.d := f.d;
     pro.T := f.T;
     pro.s := f.R*(f.tau*f.ftau - f.f);
@@ -252,48 +272,54 @@ package Common
     pro.ddph := (f.d*(cv*f.d + pt))/(f.d*f.d*pd*cv + f.T*pt*pt);
     pro.ddhp := -f.d*f.d*pt/(f.d*f.d*pd*cv + f.T*pt*pt);
     annotation (
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
 <html>
 <p><b>Version 1.0</b></p>
 </HTML>
-"),   Diagram);
+"),   Diagram(graphics));
   end helmholtzToProps_ph;
-  
-  record PhaseBoundaryProperties 
-    "thermodynamic base properties on the phase boundary" 
+
+  record PhaseBoundaryProperties
+    "thermodynamic base properties on the phase boundary"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Density d "density";
     Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
     Modelica.SIunits.SpecificEnergy u "inner energy";
     Modelica.SIunits.SpecificEntropy s "specific entropy";
-    Modelica.SIunits.SpecificHeatCapacity cp 
+    Modelica.SIunits.SpecificHeatCapacity cp
       "heat capacity at constant pressure";
     Modelica.SIunits.SpecificHeatCapacity cv "heat capacity at constant volume";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt density";
   end PhaseBoundaryProperties;
-  
-  function gibbsToBoundaryProps 
-    "calulate phase boundary property record from dimensionless Gibbs function" 
-    
+
+  function gibbsToBoundaryProps
+    "calulate phase boundary property record from dimensionless Gibbs function"
+
     extends Modelica.Icons.Function;
     input GibbsDerivs g "dimensionless derivatives of Gibbs function";
     output PhaseBoundaryProperties sat "phase boundary properties";
-  protected 
+  protected
     Real vt "derivative of specific volume w.r.t. temperature";
     Real vp "derivative of specific volume w.r.t. pressure";
-  algorithm 
+  algorithm
     sat.d := g.p/(g.R*g.T*g.pi*g.gpi);
     sat.h := g.R*g.T*g.tau*g.gtau;
     sat.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
@@ -307,16 +333,16 @@ package Common
     sat.pt := -g.p/g.T*(g.gpi - g.tau*g.gtaupi)/(g.gpipi*g.pi);
     sat.pd := -g.R*g.T*g.gpi*g.gpi/(g.gpipi);
   end gibbsToBoundaryProps;
-  
-  function helmholtzToBoundaryProps 
-    "calulate phase boundary property record from dimensionless Helmholtz function" 
-    
+
+  function helmholtzToBoundaryProps
+    "calulate phase boundary property record from dimensionless Helmholtz function"
+
     extends Modelica.Icons.Function;
     input HelmholtzDerivs f "dimensionless derivatives of Helmholtz function";
     output PhaseBoundaryProperties sat "phase boundary property record";
-  protected 
+  protected
     SI.Pressure p "pressure";
-  algorithm 
+  algorithm
     p := f.R*f.d*f.T*f.delta*f.fdelta;
     sat.d := f.d;
     sat.h := f.R*f.T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -328,18 +354,21 @@ package Common
     sat.pt := f.R*f.d*f.delta*(f.fdelta - f.tau*f.fdeltatau);
     sat.pd := f.R*f.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta);
   end helmholtzToBoundaryProps;
-  
-  function HelmholtzOfph 
-    
-  protected 
+
+  function HelmholtzOfph
+
+  protected
     Modelica.SIunits.SpecificHeatCapacity cv;
-  public 
-    input HelmholtzDerivs f 
-      "Dérivées adimensionnelles de la fonction de Helmholtz" 
-      annotation (extent=[-85, 15; -15, 85]);
-    input HelmholtzData dTR annotation (extent=[15, 15; 85, 85]);
-    output NewtonDerivatives_ph nderivs annotation (extent=[-85, -85; -15, -15]);
-  algorithm 
+  public
+    input HelmholtzDerivs f
+      "Dérivées adimensionnelles de la fonction de Helmholtz"
+      annotation (Placement(transformation(extent={{-85,15},{-15,85}}, rotation
+            =0)));
+    input HelmholtzData dTR annotation (Placement(transformation(extent={{15,15},
+              {85,85}}, rotation=0)));
+    output NewtonDerivatives_ph nderivs annotation (Placement(transformation(
+            extent={{-85,-85},{-15,-15}}, rotation=0)));
+  algorithm
     cv := -dTR.R*(f.tau*f.tau*f.ftautau);
     nderivs.p := dTR.d*dTR.R*dTR.T*f.delta*f.fdelta;
     nderivs.h := dTR.R*dTR.T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -348,22 +377,27 @@ package Common
     nderivs.ht := cv + nderivs.pt/dTR.d;
     nderivs.hd := (nderivs.pd - dTR.T*nderivs.pt/dTR.d)/dTR.d;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.09,
         y=0.21,
         width=0.6,
         height=0.6),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -372,16 +406,16 @@ package Common
 </HTML>
 "));
   end HelmholtzOfph;
-  
-  function cv2Phase 
+
+  function cv2Phase
     input PhaseBoundaryProperties liq;
     input PhaseBoundaryProperties vap;
     input Real x "Vapor mass fraction";
     input ThermoSysPro.Units.AbsoluteTemperature T;
     input ThermoSysPro.Units.AbsolutePressure p;
     output Modelica.SIunits.SpecificHeatCapacity cv;
-    
-  protected 
+
+  protected
     Real dpT;
     Real dxv;
     Real dvT;
@@ -390,7 +424,7 @@ package Common
     Real duTl;
     Real duTv;
     Real dxt;
-  algorithm 
+  algorithm
     dxv := if (liq.d <> vap.d) then liq.d*vap.d/(liq.d - vap.d) else 0.0;
     dpT := (vap.s - liq.s)*dxv;
     // wrong at critical point
@@ -401,22 +435,27 @@ package Common
     duTv := vap.cv + (T*vap.pt - p)*dvTv;
     cv := duTl + x*(duTv - duTl) + dxt*(vap.u - liq.u);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.08,
         y=0.14,
         width=0.6,
         height=0.61),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -425,8 +464,8 @@ package Common
 </HTML>
 "));
   end cv2Phase;
-  
-  record NewtonDerivatives_ps 
+
+  record NewtonDerivatives_ps
     ThermoSysPro.Units.AbsolutePressure p;
     Modelica.SIunits.SpecificEntropy s;
     Real pd;
@@ -434,22 +473,27 @@ package Common
     Real sd;
     Real st;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.15,
         y=0.3,
         width=0.6,
         height=0.6),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -458,19 +502,22 @@ package Common
 </HTML>
 "));
   end NewtonDerivatives_ps;
-  
-  function HelmholtzOfps 
-    
-  protected 
+
+  function HelmholtzOfps
+
+  protected
     Modelica.SIunits.SpecificHeatCapacity cv;
-  public 
-    input HelmholtzDerivs f 
-      "Dérivées adimensionnelles de la fonction de Helmholtz" 
-      annotation (extent=[-85, 15; -15, 85]);
-    input HelmholtzData dTR annotation (extent=[15, 15; 85, 85]);
-    output NewtonDerivatives_ps nderivs annotation (extent=[-85, -85; -15, -15]);
-  algorithm 
-    
+  public
+    input HelmholtzDerivs f
+      "Dérivées adimensionnelles de la fonction de Helmholtz"
+      annotation (Placement(transformation(extent={{-85,15},{-15,85}}, rotation
+            =0)));
+    input HelmholtzData dTR annotation (Placement(transformation(extent={{15,15},
+              {85,85}}, rotation=0)));
+    output NewtonDerivatives_ps nderivs annotation (Placement(transformation(
+            extent={{-85,-85},{-15,-15}}, rotation=0)));
+  algorithm
+
     cv := -dTR.R*(f.tau*f.tau*f.ftautau);
     nderivs.p := dTR.d*dTR.R*dTR.T*f.delta*f.fdelta;
     nderivs.s := dTR.R*(f.tau*f.ftau - f.f);
@@ -479,22 +526,27 @@ package Common
     nderivs.st := cv/dTR.T;
     nderivs.sd := -nderivs.pt/(dTR.d*dTR.d);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.03,
         y=0.14,
         width=0.6,
         height=0.6),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -503,16 +555,16 @@ package Common
 </HTML>
 "));
   end HelmholtzOfps;
-  
-  record PropThermoSat 
+
+  record PropThermoSat
     ThermoSysPro.Units.AbsolutePressure P "Pressure";
     ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
     Modelica.SIunits.Density rho "Density";
     ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
-    Modelica.SIunits.SpecificHeatCapacity cp 
+    Modelica.SIunits.SpecificHeatCapacity cp
       "Specific heat capacity at constant pressure";
     Real pt "Derivative of pressure wrt. temperature";
-    Modelica.SIunits.SpecificHeatCapacity cv 
+    Modelica.SIunits.SpecificHeatCapacity cv
       "Specific heat capacity at constant volume";
     /*
   Modelica.SIunits.SpecificEnergy u "Specific inner energy";
@@ -520,22 +572,25 @@ package Common
   Real pd "Derivative of pressure wrt. density";
   */
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.15,
         y=0.32,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -544,35 +599,41 @@ package Common
 </HTML>
 "));
   end PropThermoSat;
-  
-  function gibbsRho 
+
+  function gibbsRho
     input ThermoSysPro.Units.AbsolutePressure P "Pressure";
     input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
-    
+
     output Modelica.SIunits.Density rho "density";
-    input GibbsDerivs g "Dérivées de la fonction de Gibbs" 
-      annotation (extent=[-70, -70; 70, 70]);
-  algorithm 
-    
+    input GibbsDerivs g "Dérivées de la fonction de Gibbs"
+      annotation (Placement(transformation(extent={{-70,-70},{70,70}}, rotation
+            =0)));
+  algorithm
+
     rho := max(P, ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)/(ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O
            *max(T, ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.Ttriple)*g.pi*g.gpi);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.2,
         y=0.26,
         width=0.6,
         height=0.6),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -581,16 +642,18 @@ package Common
 </HTML>
 "));
   end gibbsRho;
-  
-  function gibbsPropsSat 
+
+  function gibbsPropsSat
     input ThermoSysPro.Units.AbsolutePressure P "Pressure";
     input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
-    
-    input GibbsDerivs g "Dérivées de la fonction de Gibbs" 
-      annotation (extent=[-85, 15; -15, 85]);
-    output PropThermoSat sat annotation (extent=[15, 15; 85, 85]);
-  algorithm 
-    
+
+    input GibbsDerivs g "Dérivées de la fonction de Gibbs"
+      annotation (Placement(transformation(extent={{-85,15},{-15,85}}, rotation
+            =0)));
+    output PropThermoSat sat annotation (Placement(transformation(extent={{15,
+              15},{85,85}}, rotation=0)));
+  algorithm
+
     sat.P := max(P,ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple);
     sat.T := max(T,ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.Ttriple);
     sat.rho := sat.P/(ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O*sat.T*g.pi*g.gpi);
@@ -607,22 +670,27 @@ package Common
   sat.pd := -ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O*sat.T*g.gpi*g.gpi/(g.gpipi);
   */
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.25,
         y=0.27,
         width=0.6,
         height=0.6),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -631,15 +699,15 @@ package Common
 </HTML>
 "));
   end gibbsPropsSat;
-  
-  function gibbsToProps_pT 
+
+  function gibbsToProps_pT
     input GibbsDerivs g "dimensionless derivatives of the Gibbs funciton";
     output ThermoProperties_pT pro;
-  protected 
+  protected
     Real vt;
     Real vp;
-    
-  algorithm 
+
+  algorithm
     pro.d := max(g.p,ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple)
              /(g.R*g.T*g.pi*g.gpi);
     pro.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
@@ -655,22 +723,27 @@ package Common
     pro.duTp := pro.cp - g.p*vt;
     pro.dupT := -g.T*vt - g.p*vp;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.06,
         y=0.13,
         width=0.73,
         height=0.76),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -679,8 +752,8 @@ package Common
 </HTML>
 "));
   end gibbsToProps_pT;
-  
-  record ThermoProperties_pT 
+
+  record ThermoProperties_pT
     Modelica.SIunits.Density d(
       min=InitLimits.DMIN,
       max=InitLimits.DMAX,
@@ -701,32 +774,35 @@ package Common
       min=InitLimits.CPMIN,
       max=InitLimits.CPMAX,
       nominal=InitLimits.CPNOM) "Specific heat capacity at constant presure";
-    Modelica.SIunits.DerDensityByTemperature ddTp 
+    Modelica.SIunits.DerDensityByTemperature ddTp
       "Derivative of the density wrt. temperature at constant pressure";
-    Modelica.SIunits.DerDensityByPressure ddpT 
+    Modelica.SIunits.DerDensityByPressure ddpT
       "Derivative of the density wrt. presure at constant temperature";
-    Modelica.SIunits.DerEnergyByPressure dupT 
+    Modelica.SIunits.DerEnergyByPressure dupT
       "Derivative of the inner energy wrt. pressure at constant temperature";
-    Modelica.SIunits.SpecificHeatCapacity duTp 
+    Modelica.SIunits.SpecificHeatCapacity duTp
       "Derivative of the inner energy wrt. temperature at constant pressure";
     ThermoSysPro.Units.MassFraction x "Vapor mass fraction";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.23,
         y=0.19,
         width=0.68,
         height=0.71),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -735,15 +811,15 @@ package Common
 </HTML>
 "));
   end ThermoProperties_pT;
-  
-  function gibbsToProps_ps 
+
+  function gibbsToProps_ps
     input GibbsDerivs g "dimensionless derivatives of the Gibbs function";
     output ThermoProperties_ps pro;
-  protected 
+  protected
     Real vt;
     Real vp;
-  algorithm 
-    
+  algorithm
+
     pro.T := g.T;
     pro.d := g.p/(g.R*pro.T*g.pi*g.gpi);
     pro.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
@@ -754,17 +830,22 @@ package Common
     pro.ddsp := -pro.d*pro.d*vt*g.T/(pro.cp);
     pro.ddps := -pro.d*pro.d*(vp + g.T*vt*vt/pro.cp);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.13,
         y=0.26,
@@ -778,8 +859,8 @@ package Common
 </HTML>
 "));
   end gibbsToProps_ps;
-  
-  record ThermoProperties_ps 
+
+  record ThermoProperties_ps
     ThermoSysPro.Units.AbsoluteTemperature T(
       min=InitLimits.TMIN,
       max=InitLimits.TMAX,
@@ -800,28 +881,31 @@ package Common
       min=InitLimits.CPMIN,
       max=InitLimits.CPMAX,
       nominal=InitLimits.CPNOM) "Specific heat capacity at constant pressure";
-    ThermoSysPro.Units.DerDensityByEntropy ddsp 
+    ThermoSysPro.Units.DerDensityByEntropy ddsp
       "Derivative of the density wrt. specific entropy at constant pressure";
-    Modelica.SIunits.DerDensityByPressure ddps 
+    Modelica.SIunits.DerDensityByPressure ddps
       "Derivative of the density wrt. pressure at constant specific entropy";
     ThermoSysPro.Units.MassFraction x "Vapor mass fraction";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
       Window(
         x=0.31,
         y=0.2,
         width=0.6,
         height=0.6),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Text(extent=[-127, 115; 127, 55], string="%name"),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name"),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0})}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -830,23 +914,23 @@ package Common
 </HTML>
 "));
   end ThermoProperties_ps;
-  
-  function helmholtzToProps_ps 
-    input HelmholtzDerivs f 
+
+  function helmholtzToProps_ps
+    input HelmholtzDerivs f
       "dimensionless derivatives of the Helmholtz function";
     output ThermoProperties_ps pro;
-  protected 
+  protected
     Real pd;
     Real pt;
-  protected 
+  protected
     Real cv "Heat capacity at constant volume";
-  algorithm 
-    
+  algorithm
+
     pro.d := f.d;
     pro.T := f.T;
     pro.u := f.R*f.T*f.tau*f.ftau;
     pro.h := f.R*f.T*(f.tau*f.ftau + f.delta*f.fdelta);
-    
+
     // calculating cp near the critical point may be troublesome (cp -> inf).
     pro.cp := f.R*(-f.tau*f.tau*f.ftautau + (f.delta*f.fdelta - f.delta*f.tau
       *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
@@ -856,17 +940,22 @@ package Common
     pro.ddps := f.d*f.d*cv/(pd*f.d*f.d*cv + pt*pt*f.T);
     pro.ddsp := -f.d*f.d*pt*f.T/(f.d*f.d*pd*cv + f.T*pt*pt);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.13,
         y=0.25,
@@ -880,14 +969,14 @@ package Common
 </HTML>
 "));
   end helmholtzToProps_ps;
-  
-  function gibbsToProps_dT 
+
+  function gibbsToProps_dT
     input GibbsDerivs g;
     output ThermoProperties_dT pro;
-  protected 
+  protected
     Real vt "derivative of specific volume w.r.t. temperature";
     Real vp "derivative of specific volume w.r.t. pressure";
-  algorithm 
+  algorithm
     pro.p := g.p;
     pro.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
     pro.h := g.R*g.T*g.tau*g.gtau;
@@ -897,17 +986,22 @@ package Common
     vp := g.R*g.T/(g.p*g.p)*g.pi*g.pi*g.gpipi;
     pro.dudT := pro.cp + g.T*vt*vt/vp;
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.08,
         y=0.23,
@@ -921,8 +1015,8 @@ package Common
 </HTML>
 "));
   end gibbsToProps_dT;
-  
-  record ThermoProperties_dT 
+
+  record ThermoProperties_dT
     ThermoSysPro.Units.AbsolutePressure p(
       min=InitLimits.PMIN,
       max=InitLimits.PMAX,
@@ -943,21 +1037,24 @@ package Common
       min=InitLimits.CPMIN,
       max=InitLimits.CPMAX,
       nominal=InitLimits.CPNOM) "Specific heat capacity at constant pressure";
-    Real dudT 
+    Real dudT
       "Derivative of the inner energy wrt. density at constant temperature";
     ThermoSysPro.Units.MassFraction x "Vapor mas fraction";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0)),
-        Text(extent=[-127, 115; 127, 55], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0}),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -966,15 +1063,15 @@ package Common
 </HTML>
 "));
   end ThermoProperties_dT;
-  
-  function helmholtzToProps_dT 
+
+  function helmholtzToProps_dT
     input HelmholtzDerivs f;
     output ThermoProperties_dT pro;
-  protected 
+  protected
     Real pt "derivative of presure w.r.t. temperature";
     Real pv "derivative of pressure w.r.t. specific volume";
-    
-  algorithm 
+
+  algorithm
     pro.p := f.R*f.d*f.T*f.delta*f.fdelta;
     pro.s := f.R*(f.tau*f.ftau - f.f);
     pro.h := f.R*f.T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -987,17 +1084,22 @@ package Common
       *f.fdeltatau)^2/(2*f.delta*f.fdelta + f.delta*f.delta*f.fdeltadelta));
     pro.dudT := (pro.p - f.T*pt)/(f.d*f.d);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.09,
         y=0.22,
@@ -1011,23 +1113,26 @@ package Common
 </HTML>
 "));
   end helmholtzToProps_dT;
-  
-  record NewtonDerivatives_pT 
+
+  record NewtonDerivatives_pT
     ThermoSysPro.Units.AbsolutePressure p "Pressure";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt. density";
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Rectangle(extent=[-100, 50; 100, -100], style(fillColor=51, fillPattern=
-               1)),
-        Line(points=[-100, -50; 100, -50], style(color=0)),
-        Line(points=[-100, 0; 100, 0], style(color=0)),
-        Line(points=[0, 50; 0, -100], style(color=0)),
-        Text(extent=[-127, 115; 127, 55], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Rectangle(
+            extent={{-100,50},{100,-100}},
+            lineColor={0,0,255},
+            fillColor={255,255,127},
+            fillPattern=FillPattern.Solid),
+          Line(points={{-100,-50},{100,-50}}, color={0,0,0}),
+          Line(points={{-100,0},{100,0}}, color={0,0,0}),
+          Line(points={{0,50},{0,-100}}, color={0,0,0}),
+          Text(extent={{-127,115},{127,55}}, textString=
+                                                 "%name")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -1036,27 +1141,33 @@ package Common
 </HTML>
 "));
   end NewtonDerivatives_pT;
-  
-  function HelmholtzOfpT 
-    
+
+  function HelmholtzOfpT
+
     input HelmholtzDerivs f;
-    output NewtonDerivatives_pT nderivs annotation (extent=[-85, -85; -15, -15]);
-  algorithm 
-    
+    output NewtonDerivatives_pT nderivs annotation (Placement(transformation(
+            extent={{-85,-85},{-15,-15}}, rotation=0)));
+  algorithm
+
     nderivs.p := f.d*f.R*f.T*f.delta*f.fdelta;
     nderivs.pd := f.R*f.T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.11,
         y=0.25,
@@ -1070,18 +1181,18 @@ package Common
 </HTML>
 "));
   end HelmholtzOfpT;
-  
-  function helmholtzToProps_pT 
+
+  function helmholtzToProps_pT
     input HelmholtzDerivs f;
     output ThermoProperties_pT pro;
-  protected 
+  protected
     Real pd "derivative of pressure wrt. density";
     Real pt "derivative of pressure wrt. temperature";
     Real pv "derivative of pressure wrt. specific volume";
-  protected 
+  protected
    Real cv "Heat capacity at constant volume";
-  algorithm 
-    
+  algorithm
+
     pro.d := f.d;
     pro.s := f.R*(f.tau*f.ftau - f.f);
     pro.h := f.R*f.T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -1099,17 +1210,22 @@ package Common
     pro.duTp := (-cv*f.d*f.d*pd + pt*f.d - f.T*pt*pt)/(f.d*f.d*
       pd);
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45)),
-        Text(extent=[-134, 104; 142, 44], string="%name")),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction"),
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name")}),
       Window(
         x=0.32,
         y=0.14,
@@ -1123,44 +1239,44 @@ package Common
 </HTML>
 "));
   end helmholtzToProps_pT;
-  
-  record miniProp "Test record for derivatives" 
+
+  record miniProp "Test record for derivatives"
     ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
     Modelica.SIunits.Density d "Density";
   end miniProp;
-  
-  record IF97PhaseBoundaryProperties 
-    "thermodynamic base properties on the phase boundary for IF97 steam tables" 
+
+  record IF97PhaseBoundaryProperties
+    "thermodynamic base properties on the phase boundary for IF97 steam tables"
     extends Modelica.Icons.Record;
     Modelica.SIunits.SpecificHeatCapacity R "specific heat capacity";
     Modelica.SIunits.Temperature T "temperature";
     Modelica.SIunits.Density d "density";
     Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
     Modelica.SIunits.SpecificEntropy s "specific entropy";
-    Modelica.SIunits.SpecificHeatCapacity cp 
+    Modelica.SIunits.SpecificHeatCapacity cp
       "heat capacity at constant pressure";
     Modelica.SIunits.SpecificHeatCapacity cv "heat capacity at constant volume";
-    ThermoSysPro.Units.DerPressureByTemperature dpT 
+    ThermoSysPro.Units.DerPressureByTemperature dpT
       "dp/dT derivative of saturation curve";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt density";
-    Real vt(unit="m3/(kg.K)") 
+    Real vt(unit="m3/(kg.K)")
       "derivative of specific volume w.r.t. temperature";
     Real vp(unit="m3/(kg.Pa)") "derivative of specific volume w.r.t. pressure";
   end IF97PhaseBoundaryProperties;
-  
-  function water_ph_r4 
+
+  function water_ph_r4
     input ThermoSysPro.Units.AbsolutePressure p;
     input ThermoSysPro.Units.SpecificEnthalpy h;
-    
-  protected 
+
+  protected
     Real x;
     Real dpT;
-  public 
+  public
     output ThermoProperties_ph pro;
-  protected 
+  protected
     PhaseBoundaryProperties liq;
     PhaseBoundaryProperties vap;
     GibbsDerivs gl;
@@ -1170,7 +1286,7 @@ package Common
     Modelica.SIunits.Density dl;
     Modelica.SIunits.Density dv;
     Real cv "Heat capacity at constant volume";
-  algorithm 
+  algorithm
     pro.T := BaseIF97.Basic.tsat(p);
     dpT := BaseIF97.Basic.dptofT(pro.T);
     dl := BaseIF97.Regions.rhol_p_R4b(p);
@@ -1188,10 +1304,10 @@ package Common
     end if;
     x := if (vap.h <> liq.h) then (h - liq.h)/(vap.h - liq.h) else 1.0;
     cv := cv2Phase(
-        liq=liq, 
-        vap=vap, 
-        x=x, 
-        p=p, 
+        liq=liq,
+        vap=vap,
+        x=x,
+        p=p,
         T=pro.T);
     pro.d := liq.d*vap.d/(vap.d + x*(liq.d - vap.d));
     pro.x := x;
@@ -1201,13 +1317,19 @@ package Common
     pro.ddph := pro.d*(pro.d*cv/dpT + 1.0)/(dpT*pro.T);
     pro.ddhp := -pro.d*pro.d/(dpT*pro.T);
     annotation (
-      Icon(
-        Text(extent=[-134, 104; 142, 44], string="%name"),
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45))),
+      Icon(graphics={
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name"),
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -1216,35 +1338,35 @@ package Common
 </HTML>
 "));
   end water_ph_r4;
-  
-  function water_ps_r4 
+
+  function water_ps_r4
     input ThermoSysPro.Units.AbsolutePressure p "pressure";
     input Modelica.SIunits.SpecificEntropy s "specific entropy";
-    
-  protected 
+
+  protected
     Real x;
     Real dpT;
-  public 
+  public
     output ThermoProperties_ps pro;
-  protected 
+  protected
     PhaseBoundaryProperties liq;
     PhaseBoundaryProperties vap;
-    GibbsDerivs gl 
+    GibbsDerivs gl
       "dimensionless Gibbs function and derivatives wrt dimensionless presure and temperature";
-    GibbsDerivs gv 
+    GibbsDerivs gv
       "dimensionless Gibbs function and derivatives wrt dimensionless presure and temperature";
-    HelmholtzDerivs fl 
+    HelmholtzDerivs fl
       "dimensionless Helmholtz function and derivatives wrt dimensionless presure and temperature";
-    HelmholtzDerivs fv 
+    HelmholtzDerivs fv
       "dimensionless Helmholtz function and derivatives wrt dimensionless presure and temperature";
     Real cv "Heat capacity at constant volume";
     Modelica.SIunits.Density dl;
     Modelica.SIunits.Density dv;
-  algorithm 
-    
+  algorithm
+
     pro.T := BaseIF97.Basic.tsat(p);
     dpT := BaseIF97.Basic.dptofT(pro.T);
-    
+
     dl := BaseIF97.Regions.rhol_p_R4b(p);
     dv := BaseIF97.Regions.rhov_p_R4b(p);
     if p < BaseIF97.data.PLIMIT4A then
@@ -1265,21 +1387,27 @@ package Common
     pro.h := x*vap.h + (1 - x)*liq.h;
     pro.cp := Modelica.Constants.inf;
     cv := cv2Phase(
-        liq, 
-        vap, 
-        x, 
-        pro.T, 
+        liq,
+        vap,
+        x,
+        pro.T,
         p);
     pro.ddps := cv*pro.d*pro.d/(dpT*dpT*pro.T);
     pro.ddsp := -pro.d*pro.d/dpT;
     annotation (
-      Icon(
-        Text(extent=[-134, 104; 142, 44], string="%name"),
-        Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-        Text(
-          extent=[-84, -4; 84, -52],
-          string="fonction",
-          style(color=45))),
+      Icon(graphics={
+          Text(extent={{-134,104},{142,44}}, textString=
+                                                 "%name"),
+          Ellipse(
+            extent={{-100,40},{100,-100}},
+            lineColor={255,127,0},
+            fillColor={255,255,255},
+            fillPattern=FillPattern.Solid),
+          Text(
+            extent={{-84,-4},{84,-52}},
+            lineColor={255,127,0},
+            textString=
+                 "fonction")}),
       Documentation(info="<html>
 <p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
 </HTML>
@@ -1288,9 +1416,9 @@ package Common
 </HTML>
 "));
   end water_ps_r4;
-  
-  record IF97TwoPhaseAnalytic 
-    "Intermediate property data record for IF97, analytic Jacobian version" 
+
+  record IF97TwoPhaseAnalytic
+    "Intermediate property data record for IF97, analytic Jacobian version"
     extends Modelica.Icons.Record;
     Integer phase "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
     Integer region(min=1, max=5) "IF 97 region";
@@ -1304,9 +1432,9 @@ package Common
     Real cvt "derivative of cv w.r.t. temperature";
     SI.Density rho "density";
     SI.SpecificEntropy s "specific entropy";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt density";
     Real ptt "2nd derivative of pressure wrt temperature";
     Real pdd "2nd derivative of pressure wrt density";
@@ -1315,13 +1443,13 @@ package Common
     Real vp "derivative of specific volume w.r.t. pressure";
     Real vtt "2nd derivative of specific volume w.r.t. temperature";
     Real vpp "2nd derivative of specific volume w.r.t. pressure";
-    Real vtp 
+    Real vtp
       "mixed derivative of specific volume w.r.t. pressure and temperature";
     Real x "dryness fraction";
     Real dpT "dp/dT derivative of saturation curve";
   end IF97TwoPhaseAnalytic;
-  
-  record IF97BaseTwoPhase "Intermediate property data record for IF 97" 
+
+  record IF97BaseTwoPhase "Intermediate property data record for IF 97"
     extends Modelica.Icons.Record;
     Integer phase "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
     Integer region(min=1, max=5) "IF 97 region";
@@ -1333,58 +1461,18 @@ package Common
     SI.SpecificHeatCapacity cv "specific heat capacity";
     SI.Density rho "density";
     SI.SpecificEntropy s "specific entropy";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt density";
     Real vt "derivative of specific volume w.r.t. temperature";
     Real vp "derivative of specific volume w.r.t. pressure";
     Real x "dryness fraction";
     Real dpT "dp/dT derivative of saturation curve";
   end IF97BaseTwoPhase;
-  
-  annotation (
-    Coordsys(
-      extent=[0, 0; 442, 394],
-      grid=[2, 2],
-      component=[20, 20]),
-    Icon(
-      Rectangle(extent=[-100, -100; 80, 50], style(fillColor=30, fillPattern=1)),
-      Polygon(points=[-100, 50; -80, 70; 100, 70; 80, 50; -100, 50], style(
-            fillColor=30, fillPattern=1)),
-      Polygon(points=[100, 70; 100, -80; 80, -100; 80, 50; 100, 70], style(
-            fillColor=30, fillPattern=1)),
-      Text(
-        extent=[-90, 40; 70, 10],
-        string="Library",
-        style(
-          color=9,
-          fillColor=0,
-          fillPattern=1)),
-      Rectangle(extent=[-32, -6; 16, -35], style(color=0)),
-      Rectangle(extent=[-32, -56; 16, -85], style(color=0)),
-      Line(points=[16, -20; 49, -20; 49, -71; 16, -71], style(color=0)),
-      Line(points=[-32, -72; -64, -72; -64, -21; -32, -21], style(color=0)),
-      Text(
-        extent=[-120, 135; 120, 70],
-        string="%name",
-        style(color=1))),
-    Window(
-      x=0.45,
-      y=0.01,
-      width=0.35,
-      height=0.49,
-      library=1,
-      autolayout=1),
-    Documentation(info="<html>
-<p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
-</HTML>
-<html>
-<p><b>Version 1.0</b></p>
-</HTML>
-"));
-  record GibbsDerivs3rd 
-    "derivatives of dimensionless Gibbs-function w.r.t dimensionless pressure and temperature, including 3rd derivatives" 
+
+  record GibbsDerivs3rd
+    "derivatives of dimensionless Gibbs-function w.r.t dimensionless pressure and temperature, including 3rd derivatives"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Pressure p "pressure";
     Modelica.SIunits.Temperature T "temperature";
@@ -1402,19 +1490,19 @@ package Common
     Real gpitautau(unit="1") "mixed derivative of g w.r.t. pi and tau (2nd)";
     Real gpipitau(unit="1") "mixed derivative of g w.r.t. pi (2nd) and tau";
   end GibbsDerivs3rd;
-  
-  function gibbsToBoundaryProps3rd 
-    "calulate phase boundary property record from dimensionless Gibbs function" 
+
+  function gibbsToBoundaryProps3rd
+    "calulate phase boundary property record from dimensionless Gibbs function"
     extends Modelica.Icons.Function;
-    input ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd g 
+    input ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd g
       "dimensionless derivatives of Gibbs function";
     output ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
       sat "phase boundary properties";
-  protected 
+  protected
     Real v "specific volume";
     Real vp3 "Third power of vp";
     Real ivp3 "Inverse of third power of vp";
-  algorithm 
+  algorithm
     sat.d := g.p/(g.R*g.T*g.pi*g.gpi);
     sat.h := g.R*g.T*g.tau*g.gtau;
     sat.u := g.T*g.R*(g.tau*g.gtau - g.pi*g.gpi);
@@ -1438,9 +1526,9 @@ package Common
     sat.ptd := (sat.vtp*sat.vp-sat.vt*sat.vpp)*ivp3/(sat.d*sat.d) "= -ptv/d^2";
     sat.cvt := (vp3*sat.cpt + sat.vp*sat.vp*sat.vt*sat.vt + 3.0*sat.vp*sat.vp*g.T*sat.vt*sat.vtt - 3.0*sat.vtp*sat.vp*g.T*sat.vt*sat.vt + g.T*sat.vt*sat.vt*sat.vt*sat.vpp)*ivp3;
   end gibbsToBoundaryProps3rd;
-  
-  record HelmholtzDerivs3rd 
-    "derivatives of dimensionless Helmholtz-function w.r.t dimensionless pressuredensity and temperature, including 3rd derivatives" 
+
+  record HelmholtzDerivs3rd
+    "derivatives of dimensionless Helmholtz-function w.r.t dimensionless pressuredensity and temperature, including 3rd derivatives"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Density d "density";
     Modelica.SIunits.Temperature T "temperature";
@@ -1455,23 +1543,23 @@ package Common
     Real ftautau(unit="1") "2nd derivative of f w.r.t. tau";
     Real ftautautau(unit="1") "3rd derivative of f w.r.t. tau";
     Real fdeltatau(unit="1") "mixed derivative of f w.r.t. delta and tau";
-    Real fdeltadeltatau(unit="1") 
+    Real fdeltadeltatau(unit="1")
       "mixed derivative of f w.r.t. delta (2nd) and tau";
-    Real fdeltatautau(unit="1") 
+    Real fdeltatautau(unit="1")
       "mixed derivative of f w.r.t. delta and tau (2nd) ";
   end HelmholtzDerivs3rd;
-  
-  function helmholtzToBoundaryProps3rd 
-    "calulate phase boundary property record from dimensionless Helmholtz function" 
-    
+
+  function helmholtzToBoundaryProps3rd
+    "calulate phase boundary property record from dimensionless Helmholtz function"
+
     extends Modelica.Icons.Function;
-    input ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd f 
+    input ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd f
       "dimensionless derivatives of Helmholtz function";
     output ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
       sat "phase boundary property record";
-  protected 
+  protected
     Modelica.SIunits.Pressure p "pressure";
-  algorithm 
+  algorithm
     p := f.R*f.d*f.T*f.delta*f.fdelta;
     sat.d := f.d;
     sat.h := f.R*f.T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -1488,62 +1576,59 @@ package Common
     sat.ptd := f.R*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta - 2.0*f.tau*f.fdeltatau
                -f.delta*f.tau*f.fdeltadeltatau);
     sat.cvt := f.R*f.tau*f.tau/f.T*(2.0*f.ftautau + f.tau*f.ftautautau);
-    
-    annotation (Icon(graphics={Rectangle(
-            extent={{-100,100},{100,-100}},
-            lineColor={255,0,0},
-            lineThickness=0.5)}));
+
+    annotation (Icon(graphics));
   end helmholtzToBoundaryProps3rd;
-  
-  record IF97PhaseBoundaryProperties3rd 
-    "Thermodynamic base properties on the phase boundary, Analytic Jacobian verModelica.SIunitson" 
+
+  record IF97PhaseBoundaryProperties3rd
+    "Thermodynamic base properties on the phase boundary, Analytic Jacobian verModelica.SIunitson"
     extends Modelica.Icons.Record;
     Modelica.SIunits.SpecificHeatCapacity R "specific heat capacity";
     Modelica.SIunits.Temperature T "temperature";
     Modelica.SIunits.Density d "denModelica.SIunitsty";
     Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
     Modelica.SIunits.SpecificEntropy s "specific entropy";
-    Modelica.SIunits.SpecificHeatCapacity cp 
+    Modelica.SIunits.SpecificHeatCapacity cp
       "heat capacity at constant pressure";
     Modelica.SIunits.SpecificHeatCapacity cv "heat capacity at constant volume";
-    ThermoSysPro.Units.DerPressureByTemperature dpT 
+    ThermoSysPro.Units.DerPressureByTemperature dpT
       "dp/dT derivative of saturation curve";
     Real dpTT(unit = "Pa/(K.K)") "Second derivative of saturation curve";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt denModelica.SIunitsty";
-    Real vt(unit="m3/(kg.K)") 
+    Real vt(unit="m3/(kg.K)")
       "derivative of specific volume w.r.t. temperature";
     Real vp(unit="m3/(kg.Pa)") "derivative of specific volume w.r.t. pressure";
     Real cvt "Derivative of cv w.r.t. temperature";
     Real cpt "Derivative of cp w.r.t. temperature";
     Real ptt "2nd derivative of pressure wrt temperature";
     Real pdd "2nd derivative of pressure wrt denModelica.SIunitsty";
-    Real ptd 
+    Real ptd
       "Mixed derivative of pressure w.r.t. denModelica.SIunitsty and temperature";
     Real vtt "2nd derivative of specific volume w.r.t. temperature";
     Real vpp "2nd derivative of specific volume w.r.t. pressure";
-    Real vtp 
+    Real vtp
       "Mixed derivative of specific volume w.r.t. pressure and temperature";
   end IF97PhaseBoundaryProperties3rd;
-  
-  record PhaseBoundaryProperties3rd 
-    "thermodynamic base properties on the phase boundary" 
+
+  record PhaseBoundaryProperties3rd
+    "thermodynamic base properties on the phase boundary"
     extends Modelica.Icons.Record;
     Modelica.SIunits.Temperature T "Temperature";
-    ThermoSysPro.Units.DerPressureByTemperature dpT 
+    ThermoSysPro.Units.DerPressureByTemperature dpT
       "dp/dT derivative of saturation curve";
     Modelica.SIunits.Density d "Density";
     Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
     Modelica.SIunits.SpecificEnergy u "Inner energy";
     Modelica.SIunits.SpecificEntropy s "Specific entropy";
-    Modelica.SIunits.SpecificHeatCapacity cp 
+    Modelica.SIunits.SpecificHeatCapacity cp
       "Heat capacity at constant pressure";
     Modelica.SIunits.SpecificHeatCapacity cv "Heat capacity at constant volume";
-    ThermoSysPro.Units.DerPressureByTemperature pt 
+    ThermoSysPro.Units.DerPressureByTemperature pt
       "Derivative of pressure wrt temperature";
-    ThermoSysPro.Units.DerPressureByDensity pd 
+    ThermoSysPro.Units.DerPressureByDensity pd
       "Derivative of pressure wrt density";
     Real cvt "Derivative of cv w.r.t. temperature";
     Real cpt "Derivative of cp w.r.t. temperature";
@@ -1554,7 +1639,57 @@ package Common
     Real vp "Derivative of specific volume w.r.t. pressure";
     Real vtt "2nd derivative of specific volume w.r.t. temperature";
     Real vpp "2nd derivative of specific volume w.r.t. pressure";
-    Real vtp 
+    Real vtp
       "Mixed derivative of specific volume w.r.t. pressure and temperature";
   end PhaseBoundaryProperties3rd;
+  annotation (
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{0,0},{442,394}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-100,-100},{80,50}},
+          lineColor={0,0,255},
+          fillColor={235,235,235},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-100,50},{-80,70},{100,70},{80,50},{-100,50}},
+          lineColor={0,0,255},
+          fillColor={235,235,235},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{100,70},{100,-80},{80,-100},{80,50},{100,70}},
+          lineColor={0,0,255},
+          fillColor={235,235,235},
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{-90,40},{70,10}},
+          lineColor={160,160,164},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.Solid,
+          textString=
+               "Library"),
+        Rectangle(extent={{-32,-6},{16,-35}}, lineColor={0,0,0}),
+        Rectangle(extent={{-32,-56},{16,-85}}, lineColor={0,0,0}),
+        Line(points={{16,-20},{49,-20},{49,-71},{16,-71}}, color={0,0,0}),
+        Line(points={{-32,-72},{-64,-72},{-64,-21},{-32,-21}}, color={0,0,0}),
+        Text(
+          extent={{-120,135},{120,70}},
+          lineColor={255,0,0},
+          textString=
+               "%name")}),
+    Window(
+      x=0.45,
+      y=0.01,
+      width=0.35,
+      height=0.49,
+      library=1,
+      autolayout=1),
+    Documentation(info="<html>
+<p><b>Adapted from the ThermoFlow library (H. Tummescheit)</b></p>
+</HTML>
+<html>
+<p><b>Version 1.0</b></p>
+</HTML>
+"));
 end Common;

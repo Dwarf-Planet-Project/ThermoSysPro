@@ -1,15 +1,15 @@
 within ThermoSysPro.Correlations.Misc;
-function PropWaterSteam "Computation of the water/steam properties" 
+function PropWaterSteam "Computation of the water/steam properties"
   input ThermoSysPro.Units.AbsolutePressure Pmc "Water/steam average pressure";
-  input ThermoSysPro.Units.SpecificEnthalpy Hmc 
+  input ThermoSysPro.Units.SpecificEnthalpy Hmc
     "Water/steam average specific enthalpy";
   input Real Xmc "Steam average mass fraction";
-  
-protected 
+
+protected
   constant ThermoSysPro.Units.AbsolutePressure Pc=221.2e5 "Critical pressure";
   ThermoSysPro.Units.AbsoluteTemperature Tsat1 "Saturation temperature at Pmc";
   ThermoSysPro.Units.AbsoluteTemperature T "Water/steam mixture temperature";
-  ThermoSysPro.Units.SpecificEnthalpy hlv 
+  ThermoSysPro.Units.SpecificEnthalpy hlv
     "Water/steam mixture specific enthalpy";
   Modelica.SIunits.Density rholv "Water/steam mixture density";
   Modelica.SIunits.Density rhol "Water density";
@@ -24,24 +24,27 @@ protected
   Modelica.SIunits.ThermalConductivity kl "Water thermal conductivity";
   Modelica.SIunits.ThermalConductivity kv "Steam thermal conductivity";
   Modelica.SIunits.SurfaceTension tsl "Water surface tensiton";
-  
-protected 
-  ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsatm 
-                                   annotation (extent=[-40,40; -20,60]);
-  ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsatm 
-                                   annotation (extent=[0,40; 20,60]);
-  ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prol 
-    annotation (extent=[-40,0; -20,20]);
-public 
-  output ThermoSysPro.Correlations.Misc.Pro_TwoPhaseWaterSteam hy 
-                                           annotation (extent=[0,0; 20,20]);
-algorithm 
-  
+
+protected
+  ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat vsatm
+                                   annotation (Placement(transformation(extent=
+            {{-40,40},{-20,60}}, rotation=0)));
+  ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat lsatm
+                                   annotation (Placement(transformation(extent=
+            {{0,40},{20,60}}, rotation=0)));
+  ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prol
+    annotation (Placement(transformation(extent={{-40,0},{-20,20}}, rotation=0)));
+public
+  output ThermoSysPro.Correlations.Misc.Pro_TwoPhaseWaterSteam hy
+                                           annotation (Placement(transformation(
+          extent={{0,0},{20,20}}, rotation=0)));
+algorithm
+
   /* Saturation temperature at Pmc */
   Tsat1 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(Pmc);
   (lsatm, vsatm) := ThermoSysPro.Properties.WaterSteam.IF97.Water_sat_P(Pmc);
   prol := ThermoSysPro.Properties.WaterSteam.IF97.Water_Ph(Pmc, Hmc, 0);
-  
+
   if ((0 < Xmc) and (Xmc < 1) and (Pmc < Pc)) then
     T := Tsat1;
     hlv := Hmc;
@@ -61,14 +64,14 @@ algorithm
     cpl := prol.cp;
     cpv := cpl;
   end if;
-  
+
   /* Water/steam properties */
   lv := hv - hl;
   mul := ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhol, T);
   muv := ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhov, T);
   kl := ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rhol, T, Pmc, 0);
   kv := ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rhov, T, Pmc, 0);
-  
+
   if (Pmc > 220e5) then
     tsl := 6e-6;
   elseif (abs(Pmc) < 1e-6) then
@@ -76,7 +79,7 @@ algorithm
   else
     tsl := ThermoSysPro.Properties.WaterSteam.IF97.SurfaceTension_T(Tsat1);
   end if;
-  
+
   hy.rhol := rhol;
   hy.rhov := rhov;
   hy.hl := hl;
@@ -91,7 +94,7 @@ algorithm
   hy.tsl := tsl;
   hy.rholv := rholv;
   hy.hlv := hlv;
-  
+
   annotation (
     smoothOrder=2,
     Documentation(revisions="<html>

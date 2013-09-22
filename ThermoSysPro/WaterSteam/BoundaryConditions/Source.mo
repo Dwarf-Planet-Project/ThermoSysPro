@@ -1,30 +1,61 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
-model Source "Water/steam source" 
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=100000 
+model Source "Water/steam source"
+  parameter ThermoSysPro.Units.SpecificEnthalpy h0=100000
     "Fluid specific enthalpy (active if IEnthalpy connector is not connected)";
-  
-protected 
+
+protected
   ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
   ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
-  
+
+public
+  ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ISpecificEnthalpy
+    annotation (Placement(transformation(
+        origin={0,-50},
+        extent={{10,-10},{-10,10}},
+        rotation=270)));
+  Connectors.FluidOutlet C                annotation (Placement(transformation(
+          extent={{90,-10},{110,10}}, rotation=0)));
+equation
+
+  C.P = P;
+  C.Q = Q;
+  C.h_vol = h;
+
+  /* Specific enthalpy */
+  if (cardinality(ISpecificEnthalpy) == 0) then
+    ISpecificEnthalpy.signal = h0;
+  end if;
+
+  h = ISpecificEnthalpy.signal;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Line(points=[40,0; 90,0; 72,10]),
-      Line(points=[90,0; 72,-10]),
-      Text(extent=[-30,-40; -12,-60], string="h"),
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0}))),
-    Icon(
-      Line(points=[40,0; 90,0; 72,10]),
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=6, rgbfillColor={255,
-              255,0})),
-      Line(points=[90,0; 72,-10]),
-      Text(extent=[-32,-40; -12,-60], string="h")),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{40,0},{90,0},{72,10}}),
+        Line(points={{90,0},{72,-10}}),
+        Text(extent={{-30,-40},{-12,-60}}, textString=
+                                             "h"),
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,255,0},
+          fillPattern=FillPattern.Solid)}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{40,0},{90,0},{72,10}}),
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,255,0},
+          fillPattern=FillPattern.Solid),
+        Line(points={{90,0},{72,-10}}),
+        Text(extent={{-32,-40},{-12,-60}}, textString=
+                                             "h")}),
     Window(
       x=0.23,
       y=0.15,
@@ -46,21 +77,4 @@ protected
 </ul>
 </html>
 "));
-public 
-  ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ISpecificEnthalpy 
-    annotation (extent=[-10, -40; 10, -60], rotation=-90);
-  Connectors.FluidOutlet C                annotation (extent=[90,-10; 110,10]);
-equation 
-  
-  C.P = P;
-  C.Q = Q;
-  C.h_vol = h;
-  
-  /* Specific enthalpy */
-  if (cardinality(ISpecificEnthalpy) == 0) then
-    ISpecificEnthalpy.signal = h0;
-  end if;
-  
-  h = ISpecificEnthalpy.signal;
-  
 end Source;

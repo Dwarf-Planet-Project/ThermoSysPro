@@ -1,35 +1,59 @@
 within ThermoSysPro.WaterSolution.BoundaryConditions;
-model Sink 
-  
-public 
+model Sink
+
+public
   ThermoSysPro.Units.AbsolutePressure P "Sink pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
   ThermoSysPro.Units.AbsoluteTemperature T "Sink Temperature";
   Real Xh2o "h2o mas fraction";
-  
+
+  ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ce
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
+          =0)));
+equation
+
+  Ce.Xh2o = Xh2o;
+  Ce.T = T;
+  Ce.Q = Q;
+  Ce.P = P;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=9)),
-      Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170})),
-      Line(points=[-90, 0; -40, 0; -58, 10]),
-      Line(points=[-40, 0; -58, -10])),
-    Icon(
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=9)),
-      Line(points=[-90, 0; -40, 0; -58, 10]),
-      Line(points=[-40, 0; -58, -10]),
-      Polygon(points=[-40,40; -40,-40; 40,-40; -40,40], style(
-          pattern=0,
-          thickness=4,
-          fillColor=44,
-          rgbfillColor={255,170,170}))),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-40,40},{-40,-40},{40,-40},{-40,40}},
+          lineColor={0,0,255},
+          pattern=LinePattern.None,
+          lineThickness=1,
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{-40,0},{-58,10}}),
+        Line(points={{-40,0},{-58,-10}})}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={160,160,164},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,0},{-40,0},{-58,10}}),
+        Line(points={{-40,0},{-58,-10}}),
+        Polygon(
+          points={{-40,40},{-40,-40},{40,-40},{-40,40}},
+          lineColor={0,0,255},
+          pattern=LinePattern.None,
+          lineThickness=1,
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid)}),
     Window(
       x=0.09,
       y=0.2,
@@ -50,13 +74,4 @@ public
     Daniel Bouskela</li>
 </html>
 "));
-  ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ce 
-    annotation (extent=[-110,-10; -90,10]);
-equation 
-  
-  Ce.Xh2o = Xh2o;
-  Ce.T = T;
-  Ce.Q = Q;
-  Ce.P = P;
-  
 end Sink;

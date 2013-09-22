@@ -1,32 +1,43 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
-model PlugB "Plug" 
-  
-public 
+model PlugB "Plug"
+
+public
   ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
   ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
-  
+
+  Connectors.FluidInlet C
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
+          =0)));
+equation
+
+  C.P = P;
+  C.Q = Q;
+  C.h_vol = h;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Line(points=[-90,0; -40,0; -54,10]),
-      Line(points=[-54, -10; -40, 0]), 
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3, 
-          rgbcolor={0,0,255}, 
-          fillColor=53, 
-          rgbfillColor={128,255,0}))),
-    Icon(
-      Line(points=[-92,0; -40,0; -54,10]),
-      Line(points=[-54, -10; -40, 0]), 
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3, 
-          rgbcolor={0,0,255}, 
-          fillColor=53, 
-          rgbfillColor={128,255,0}))),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{-90,0},{-40,0},{-54,10}}),
+        Line(points={{-54,-10},{-40,0}}),
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={128,255,0},
+          fillPattern=FillPattern.Solid)}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{-92,0},{-40,0},{-54,10}}),
+        Line(points={{-54,-10},{-40,0}}),
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={128,255,0},
+          fillPattern=FillPattern.Solid)}),
     Window(
       x=0.23,
       y=0.15,
@@ -48,12 +59,4 @@ public
 </ul>
 </html>
 "));
-  Connectors.FluidInlet C 
-    annotation (extent=[-110,-10; -90,10]);
-equation 
-  
-  C.P = P;
-  C.Q = Q;
-  C.h_vol = h;
-  
 end PlugB;

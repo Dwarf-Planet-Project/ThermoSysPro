@@ -1,23 +1,23 @@
 within ThermoSysPro.Properties.WaterSolution;
-function DTcristal_TX 
-  "Temperature difference with the cristallisation of the H2O/LiBr solution as a function of T et Xh2o" 
+function DTcristal_TX
+  "Temperature difference with the cristallisation of the H2O/LiBr solution as a function of T et Xh2o"
   input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
   input Real X "Water mass fraction in the solution";
-  
-  output ThermoSysPro.Units.DifferentialTemperature DTc 
+
+  output ThermoSysPro.Units.DifferentialTemperature DTc
     "Temperature difference with cristallisation : > 0 = no cristallisation ; < 0 = cristallisation";
-  
-protected 
+
+protected
   Real Xi "LiBr mass fraction in the solution";
   ThermoSysPro.Units.AbsoluteTemperature Tc "Temperature in Celsius";
-  ThermoSysPro.Units.AbsoluteTemperature Tcrist 
+  ThermoSysPro.Units.AbsoluteTemperature Tcrist
     "Cristallisation temperature in Celsius";
-  
-algorithm 
+
+algorithm
   /* Units conversions */
   Tc := T - 273.15;
   Xi := 100*(1 - X);
-  
+
   /* Cristallisation temperature */
   if (Xi < 0) then
     Tcrist := 0;
@@ -36,10 +36,10 @@ algorithm
   else
     Tcrist := 1000;
   end if;
-  
+
   /* Temperature difference with cristallisation */
   DTc := Tc - Tcrist;
-  
+
   annotation (
     smoothOrder=2,
     Documentation(info="<html>

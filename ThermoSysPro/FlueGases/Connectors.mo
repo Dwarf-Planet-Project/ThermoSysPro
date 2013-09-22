@@ -1,36 +1,36 @@
 within ThermoSysPro.FlueGases;
-package Connectors "Connectors" 
-  connector FlueGasesOutlet "Flue gases outlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P 
+package Connectors "Connectors"
+  connector FlueGasesOutlet "Flue gases outlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
-    Real Xco2 
+    Real Xco2
       "CO2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xh2o 
+    Real Xh2o
       "H2O mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xo2 
+    Real Xo2
       "O2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xso2 
+    Real Xso2
       "SO2 mass fraction of the fluid crossing the boundary of the control volume";
-    
-    output Boolean a 
+
+    output Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    input Boolean b=true 
+    input Boolean b=true
       "Pseudo-variable for the verification of the connection orientation";
-    
+
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, -100; 102, 100], style(
-            color=0,
-            thickness=4,
-            gradient=3,
-            fillColor=42))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{102,100}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            fillPattern=FillPattern.Sphere,
+            fillColor={191,0,0})}),
       Window(
         x=0.31,
         y=0.13,
@@ -51,38 +51,38 @@ package Connectors "Connectors"
 </html>
 "));
   end FlueGasesOutlet;
-  
-  connector FlueGasesInlet "Flue gases inlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P 
+
+  connector FlueGasesInlet "Flue gases inlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
-    Real Xco2 
+    Real Xco2
       "CO2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xh2o 
+    Real Xh2o
       "H2O mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xo2 
+    Real Xo2
       "O2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xso2 
+    Real Xso2
       "SO2 mass fraction of the fluid crossing the boundary of the control volume";
-    
-    input Boolean a=true 
+
+    input Boolean a=true
       "Pseudo-variable for the verification of the connection orientation";
-    output Boolean b 
+    output Boolean b
       "Pseudo-variable for the verification of the connection orientation";
-    
+
     annotation (
-      Coordsys(
-        extent=[-100, -100; 100, 100],
-        grid=[2, 2],
-        component=[20, 20]),
-      Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-            color=0,
-            gradient=3,
-            thickness=4,
-            fillColor=75))),
+      Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{100,100}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            fillPattern=FillPattern.Sphere,
+            fillColor={127,127,255})}),
       Window(
         x=0.31,
         y=0.13,
@@ -103,40 +103,38 @@ package Connectors "Connectors"
 </html>
 "));
   end FlueGasesInlet;
-  
-  connector FlueGasesInletI "Internal flue gases inlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P 
+
+  connector FlueGasesInletI "Internal flue gases inlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
-    Real Xco2 
+    Real Xco2
       "CO2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xh2o 
+    Real Xh2o
       "H2O mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xo2 
+    Real Xo2
       "O2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xso2 
+    Real Xso2
       "SO2 mass fraction of the fluid crossing the boundary of the control volume";
-    
-    input Boolean a 
+
+    input Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    output Boolean b 
+    output Boolean b
       "Pseudo-variable for the verification of the connection orientation";
-    
+
       annotation (
-        Coordsys(
-          extent=[-100, -100; 100, 100],
-          grid=[2, 2],
-          component=[20, 20]),
-        Icon(Rectangle(extent=[-100, -100; 100, 100], style(
-              color=0,
-              rgbcolor={0,0,0},
-              thickness=4,
-              fillColor=75,
-              rgbfillColor={127,127,255},
-              fillPattern=7))),
+        Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{100,100}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            fillColor={127,127,255},
+            fillPattern=FillPattern.Forward)}),
         Window(
           x=0.31,
           y=0.13,
@@ -157,40 +155,38 @@ package Connectors "Connectors"
 </html>
 "));
   end FlueGasesInletI;
-  
-  connector FlueGasesOutletI "Internal flue gases outlet fluid connector" 
-    ThermoSysPro.Units.AbsolutePressure P 
+
+  connector FlueGasesOutletI "Internal flue gases outlet fluid connector"
+    ThermoSysPro.Units.AbsolutePressure P
       "Fluid pressure in the control volume";
-    ThermoSysPro.Units.AbsoluteTemperature T 
+    ThermoSysPro.Units.AbsoluteTemperature T
       "Fluid temperature in the control volume";
-    Modelica.SIunits.MassFlowRate Q 
+    Modelica.SIunits.MassFlowRate Q
       "Mass flow of the fluid crossing the boundary of the control volume";
-    Real Xco2 
+    Real Xco2
       "CO2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xh2o 
+    Real Xh2o
       "H2O mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xo2 
+    Real Xo2
       "O2 mass fraction of the fluid crossing the boundary of the control volume";
-    Real Xso2 
+    Real Xso2
       "SO2 mass fraction of the fluid crossing the boundary of the control volume";
-    
-    output Boolean a 
+
+    output Boolean a
       "Pseudo-variable for the verification of the connection orientation";
-    input Boolean b 
+    input Boolean b
       "Pseudo-variable for the verification of the connection orientation";
-    
+
       annotation (
-        Coordsys(
-          extent=[-100, -100; 100, 100],
-          grid=[2, 2],
-          component=[20, 20]),
-        Icon(Rectangle(extent=[-100,-100; 100,100], style(
-              color=0,
-              rgbcolor={0,0,0},
-              thickness=4,
-              fillColor=1,
-              rgbfillColor={255,0,0},
-              fillPattern=7))),
+        Icon(coordinateSystem(
+          preserveAspectRatio=false,
+          extent={{-100,-100},{100,100}},
+          grid={2,2}), graphics={Rectangle(
+            extent={{-100,-100},{100,100}},
+            lineColor={0,0,0},
+            lineThickness=1,
+            fillColor={255,0,0},
+            fillPattern=FillPattern.Forward)}),
         Window(
           x=0.31,
           y=0.13,
@@ -211,5 +207,5 @@ package Connectors "Connectors"
 </html>
 "));
   end FlueGasesOutletI;
-  
+
 end Connectors;

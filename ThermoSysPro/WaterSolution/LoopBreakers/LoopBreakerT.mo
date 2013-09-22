@@ -1,33 +1,49 @@
 within ThermoSysPro.WaterSolution.LoopBreakers;
-model LoopBreakerT "Temperature loop breaker for the water solution connector" 
-  
+model LoopBreakerT "Temperature loop breaker for the water solution connector"
+
+
+  ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ce
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
+          =0)));
+  ThermoSysPro.WaterSolution.Connectors.WaterSolutionOutlet Cs
+    annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
+equation
+
+  Cs.P = Ce.P;
+  Cs.Q = Ce.Q;
+  Cs.Xh2o = Ce.Xh2o;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-          color=77,
-          rgbcolor={127,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
-                                      Line(points=[0,100; 0,-100], style(color=
-              3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-42,38; 38,-42],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
-    Icon(
-      Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-          color=77,
-          rgbcolor={127,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
-      Line(points=[0,100; 0,-100], style(color=3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-40,38; 40,-42],
-        style(color=3, rgbcolor={0,0,255}),
-        string="T")),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Polygon(
+          points={{0,100},{100,0},{0,-100},{-100,0},{0,100}},
+          lineColor={127,0,255},
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,100},{0,-100}}, color={0,0,255}),
+        Text(
+          extent={{-42,38},{38,-42}},
+          lineColor={0,0,255},
+          textString=
+               "T")}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Polygon(
+          points={{0,100},{100,0},{0,-100},{-100,0},{0,100}},
+          lineColor={127,0,255},
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,100},{0,-100}}, color={0,0,255}),
+        Text(
+          extent={{-40,38},{40,-42}},
+          lineColor={0,0,255},
+          textString=
+               "T")}),
     Window(
       x=0.33,
       y=0.09,
@@ -48,15 +64,4 @@ model LoopBreakerT "Temperature loop breaker for the water solution connector"
     Daniel Bouskela</li>
 </html>
 "));
-  
-  ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ce 
-    annotation (extent=[-110,-10; -90,10]);
-  ThermoSysPro.WaterSolution.Connectors.WaterSolutionOutlet Cs 
-    annotation (extent=[90,-10; 110,10]);
-equation 
-  
-  Cs.P = Ce.P;
-  Cs.Q = Ce.Q;
-  Cs.Xh2o = Ce.Xh2o;
-  
 end LoopBreakerT;

@@ -1,34 +1,52 @@
 within ThermoSysPro.WaterSteam.LoopBreakers;
-model LoopBreakerP "Pressure loop breaker for the water/steam connector" 
-  
+model LoopBreakerP "Pressure loop breaker for the water/steam connector"
+
+
+public
+  Connectors.FluidInlet C1
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
+          =0)));
+  Connectors.FluidOutlet C2
+    annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
+equation
+
+  C1.Q = C2.Q;
+  C1.h = C2.h;
+
+  /* Flow reversal */
+  0 = if (C1.Q > 0) then C1.h - C1.h_vol else C2.h - C2.h_vol;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-          color=77,
-          rgbcolor={127,0,255},
-          gradient=3,
-          fillColor=6,
-          rgbfillColor={255,255,0})),
-      Line(points=[0,100; 0,-100], style(color=3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-40,38; 40,-42],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P")),
-    Icon(
-      Polygon(points=[0, 100; 100, 0; 0, -100; -100, 0; 0, 100], style(
-          color=77,
-          rgbcolor={127,0,255},
-          gradient=3,
-          fillColor=6,
-          rgbfillColor={255,255,0})),
-      Line(points=[0,100; 0,-100], style(color=3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-38,38; 42,-42],
-        style(color=3, rgbcolor={0,0,255}),
-        string="P")),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Polygon(
+          points={{0,100},{100,0},{0,-100},{-100,0},{0,100}},
+          lineColor={0,0,0},
+          fillPattern=FillPattern.Sphere,
+          fillColor={255,255,0}),
+        Line(points={{0,100},{0,-100}}, color={0,0,255}),
+        Text(
+          extent={{-40,38},{40,-42}},
+          lineColor={0,0,255},
+          textString=
+               "P")}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Polygon(
+          points={{0,100},{100,0},{0,-100},{-100,0},{0,100}},
+          lineColor={0,0,0},
+          fillPattern=FillPattern.Sphere,
+          fillColor={255,255,0}),
+        Line(points={{0,100},{0,-100}}, color={0,0,255}),
+        Text(
+          extent={{-38,38},{42,-42}},
+          lineColor={0,0,255},
+          textString=
+               "P")}),
     Window(
       x=0.33,
       y=0.09,
@@ -50,18 +68,4 @@ model LoopBreakerP "Pressure loop breaker for the water/steam connector"
 </ul>
 </html>
 "));
-  
-public 
-  Connectors.FluidInlet C1 
-    annotation (extent=[-110, -10; -90, 10]);
-  Connectors.FluidOutlet C2 
-    annotation (extent=[90, -10; 110, 10]);
-equation 
-  
-  C1.Q = C2.Q;
-  C1.h = C2.h;
-  
-  /* Flow reversal */
-  0 = if (C1.Q > 0) then C1.h - C1.h_vol else C2.h - C2.h_vol;
-  
 end LoopBreakerP;

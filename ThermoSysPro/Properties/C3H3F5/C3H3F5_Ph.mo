@@ -1,14 +1,14 @@
 within ThermoSysPro.Properties.C3H3F5;
-function C3H3F5_Ph "11133-C3H3F5 physical properties as a function of P and h" 
+function C3H3F5_Ph "11133-C3H3F5 physical properties as a function of P and h"
   input ThermoSysPro.Units.AbsolutePressure P "Pressure";
   input ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
-  
-protected 
+
+protected
   ThermoSysPro.Units.AbsoluteTemperature Tsat "Saturation temperature";
   ThermoSysPro.Units.AbsolutePressure Psc "Critical pressure";
-  ThermoSysPro.Units.AbsolutePressure Pcalc 
+  ThermoSysPro.Units.AbsolutePressure Pcalc
     "Variable for the computation of the pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hcalc 
+  ThermoSysPro.Units.SpecificEnthalpy hcalc
     "Variable for the computation of the specific  enthalpy";
   ThermoSysPro.Units.SpecificEnthalpy hsatL "Boiling specific enthalpy";
   ThermoSysPro.Units.SpecificEnthalpy hsatV "Condensation specific enthalpy";
@@ -26,15 +26,16 @@ protected
   Real A3;
   Real B3;
   Real C3;
-  
-public 
-  output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
-                     annotation (extent=[-100,80; -80,100]);
-algorithm 
-  
+
+public
+  output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
+                     annotation (Placement(transformation(extent={{-100,80},{
+            -80,100}}, rotation=0)));
+algorithm
+
   /* Critical pressure */
   Psc := 3640000;
-  
+
   /* Tests : the function is only valid for P > 0, P < Pcritique, h > 100 kJ/kg and h < 640 kJ/kg */
   if (P > Psc) then
     Pcalc := Psc/100000;
@@ -43,7 +44,7 @@ algorithm
   else
     Pcalc := P/100000;
   end if;
-  
+
   if (h > 640000) then
     hcalc := 640;
   elseif (h < 100000) then
@@ -51,7 +52,7 @@ algorithm
   else
     hcalc := h/1000;
   end if;
-  
+
   /* Properties on the saturation line */
   hsatV := -0.00000274*Pcalc^6 + 0.00032217*Pcalc^5 - 0.01489673*Pcalc^4 + 0.34258030*Pcalc^3
             - 4.15381744*Pcalc^2 + 27.64876596*Pcalc + 385.22149853;
@@ -65,10 +66,10 @@ algorithm
             + 11.9184348938*Pcalc^2 - 89.9582798898*Pcalc + 1467.5902188299;
   rhoSatV := 0.00000207*Pcalc^6 - 0.00019163*Pcalc^5 + 0.00675913*Pcalc^4 - 0.10924667*Pcalc^3
             + 0.84661954*Pcalc^2 + 2.83415571*Pcalc + 2.12959146;
-  
+
   Tsat := -0.0000033655*Pcalc^6 + 0.0004044854*Pcalc^5 - 0.0190328128*Pcalc^4 + 0.4443722095*Pcalc^3
           - 5.4337547883*Pcalc^2 + 36.7572359309*Pcalc + 246.4280421048;
-  
+
   /* Determination of the property zone (liquid, two-phase or steam) and compuation of the properties */
   if ((hcalc >= hsatL) and (hcalc <= hsatV)) then
       /* Two-phase zone */
@@ -76,7 +77,7 @@ algorithm
       pro.x := (hcalc - hsatL) / (hsatV - hsatL);
       pro.d := rhoSatL*(1-pro.x) + rhoSatV * pro.x;
       pro.s := ssatL*(1-pro.x) + ssatV * pro.x;
-    
+
   elseif (hcalc < hsatL) then
       /* Liquid zone */
       pro.T := -0.0005311*hcalc^2 + 0.9990391*hcalc + 93.9602333;

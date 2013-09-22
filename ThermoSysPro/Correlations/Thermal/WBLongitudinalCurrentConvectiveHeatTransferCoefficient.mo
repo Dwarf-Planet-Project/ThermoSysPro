@@ -1,24 +1,24 @@
 within ThermoSysPro.Correlations.Thermal;
-function WBLongitudinalCurrentConvectiveHeatTransferCoefficient 
-  "Convective heat transfer coefficient for co- or counter-current heat exchangers" 
+function WBLongitudinalCurrentConvectiveHeatTransferCoefficient
+  "Convective heat transfer coefficient for co- or counter-current heat exchangers"
   input ThermoSysPro.Units.AbsoluteTemperature TFilm "Film temperature";
-  input ThermoSysPro.Units.AbsoluteTemperature Tmf 
+  input ThermoSysPro.Units.AbsoluteTemperature Tmf
     "Flue gases average temperature";
   input Modelica.SIunits.MassFlowRate Qf "Flue gases mass flow rate";
   input Real Xh2o "H2O mass fraction";
   input Modelica.SIunits.Area Sgaz "Geometrical parameter";
   input Modelica.SIunits.Diameter Dext "Pipes external diameter";
-  
-  output Modelica.SIunits.CoefficientOfHeatTransfer Kcfl 
+
+  output Modelica.SIunits.CoefficientOfHeatTransfer Kcfl
     "Convective heat transfer coefficient for longitudinal flows";
-  
-protected 
+
+protected
   Real Dextb "Pipes external diameter in feet";
   Real Qfb "Flue gases mass flow rate in pound/hour";
   Real Sgazb "Geometrical parameter Sgaz in feet^2";
   Real TFilmb "Film temperature in Farenheit";
   Real Tmfb "Température moyenne des fumées en °F";
-  
+
   //**********************************************************************************
   //   Values of "Physical properties factor" for transverse flow combustion flue gases
   //   taken from "The Babcock & Wilcox Company - STEAM/its generation and use"
@@ -33,42 +33,42 @@ protected
       0.183, 0.194, 0.205, 0.214, 0.222, 0.229, 0.237, 0.240, 0.250, 0.260,
       0.268; 0.178, 0.189, 0.200, 0.211, 0.220, 0.228, 0.234, 0.241, 0.247,
       0.256, 0.266, 0.275];
-  
+
   Real CondConv "Base convective conductance";
   Real MassFlow "Mass flow rate";
   Real Fpp "Physical properties factor";
   Real FT "Temperature factor";
   Real Kcb "Heat transfer coefficient in English units";
-algorithm 
-  
+algorithm
+
   /* Conversion from SI units to English units */
   Dextb := 3.28084*Dext;
   Qfb := 2.20462*3600*Qf;
   Sgazb := 10.7369*Sgaz;
   Tmfb := 9./5.*Tmf - 459.69;
   TFilmb := 9./5.*TFilm - 459.69;
-  
+
   /* Mass flow rate */
   MassFlow := abs(Qfb)/Sgazb;
-  
+
   /* Base convective conductance */
   CondConv := 0.023*MassFlow^0.6/Dextb^0.2;
-  
+
   /* Physical properties factor */
   Fpp := ThermoSysPro.Functions.TableLinearInterpolation(TabUm, TabTFilm, TabFpp, Xh2o, TFilmb);
-  
+
   /* Temperature coefficient */
   FT := (Tmfb/TFilmb)^0.8;
-  
+
   /* Heat transfer coefficient for longitudinal flow flue gases */
   Kcb := CondConv*Fpp*FT;
-  
+
   /* Conversion from English units to SI units */
   Kcfl := 5.67826*Kcb;
-  
+
   annotation (
     smoothOrder=2,
-    Icon,                  Documentation(info="<html>
+    Icon(graphics),        Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

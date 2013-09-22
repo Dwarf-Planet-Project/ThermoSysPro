@@ -1,20 +1,20 @@
 within ThermoSysPro.Properties.WaterSolution;
-function Pressure_eq_TX 
-  "Equilibrium pressure of the H2O/LiBr solution as a funciton of T and Xh2o" 
+function Pressure_eq_TX
+  "Equilibrium pressure of the H2O/LiBr solution as a funciton of T and Xh2o"
   input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
   input Real X "Water mass fraction in the solution";
-  
-  output ThermoSysPro.Units.AbsolutePressure Pe 
+
+  output ThermoSysPro.Units.AbsolutePressure Pe
     "Equilibrium pressure of the solution";
-  
-protected 
+
+protected
   Real a "Coefficient directeur de la loi ln P = a (-1/T) + b";
   Real b "Ordonnée à l'origine de la loi ln P = a (-1/T) + b";
   Real A1 "Coefficient directeur borne inférieure";
   Real B1 "Ordonnée à l'origine borne inférieure";
   Real A2 "Coefficient directeur borne supérieure";
   Real B2 "Ordonnée à l'origine borne supérieure";
-  
+
 // Table utilisée extraite d'un diagramme de Oldham
 // Xh2o     a               b
 // 1        5467.383523        26.36790788
@@ -25,8 +25,8 @@ protected
 // 0.4        5862.125101        25.2166991
 // 0.35        6036.317803        25.22194134
 // 0.3        5904.887091        24.38414762
-  
-algorithm 
+
+algorithm
   /* Cristallisaiton temperature */
   if (X>0.6) then
     A1 := 5467.383523;
@@ -78,10 +78,10 @@ algorithm
     a := A1 + (A2 - A1)/(0.3 - 0.35) * (X - 0.35);
     b := B1 + (B2 - B1)/(0.3 - 0.35) * (X - 0.35);
   end if;
-  
+
   /* Equilibrium pressure of the solution */
   Pe := exp(a * (-1 / T) + b);
-  
+
   annotation (
     smoothOrder=2,
     Documentation(info="<html>

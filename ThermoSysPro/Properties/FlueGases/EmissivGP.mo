@@ -1,8 +1,8 @@
 within ThermoSysPro.Properties.FlueGases;
-function EmissivGP "Flue gases - particles emissivity" 
+function EmissivGP "Flue gases - particles emissivity"
   extends ThermoSysPro.Properties.FlueGases.unSafeForJacobian;
   input Modelica.SIunits.Length AL "Equivalent length (radiation)";
-  input ThermoSysPro.Units.AbsoluteTemperature TMF 
+  input ThermoSysPro.Units.AbsoluteTemperature TMF
     "Flue gases average temperature";
   input ThermoSysPro.Units.AbsoluteTemperature TPE "Wall temperature";
   input ThermoSysPro.Units.AbsolutePressure PMEL "Mixture pressure";
@@ -12,12 +12,9 @@ function EmissivGP "Flue gases - particles emissivity"
   input Modelica.SIunits.Length DP "Particles average diameter";
   input Real EPSPAR "Wall emissivity";
   output Real EPSFP "Particles/flue gases emissivity";
-  
+
 external "FORTRAN" emg(AL, TMF, TPE, PMEL, PH2O, PCO2, FV, DP, EPSPAR, EPSFP);
-  annotation (Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]), Window(
+  annotation (             Window(
       x=0.22,
       y=0.22,
       width=0.44,

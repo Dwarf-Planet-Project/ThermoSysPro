@@ -1,31 +1,54 @@
-within ThermoSysPro.Thermal.BoundaryConditions ;
-model HeatSink "Heat sink" 
-  
+within ThermoSysPro.Thermal.BoundaryConditions;
+model HeatSink "Heat sink"
+
   parameter Integer N=1;
-  
-public 
+
+public
   ThermoSysPro.Units.AbsoluteTemperature T[N] "Sink temperature";
   Modelica.SIunits.Power W[N] "Heat power received by the sink";
-  
+
+public
+  input ThermoSysPro.Thermal.Connectors.ThermalPort C[N]
+                                                       annotation (Placement(
+        transformation(extent={{-10,-108},{10,-88}}, rotation=0)));
+equation
+
+  T = C.T;
+  W = C.W;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Icon(
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=45)),
-      Text(extent=[-40,40; 40,-38],   string="C", 
-        style(color=3, rgbcolor={0,0,255})),
-      Line(points=[0, -40; 0, -88]),
-      Line(points=[-12,-60; 0,-40]),
-      Line(points=[12,-60; 0,-40])),
-    Diagram(
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=45)),
-      Line(points=[0, -40; 0, -88]),
-      Line(points=[-12,-60; 0,-40]),
-      Text(extent=[-40,40; 40,-38],   string="C", 
-        style(color=3, rgbcolor={0,0,255})),
-      Line(points=[12,-60; 0,-40])),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,127,0},
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{-40,40},{40,-38}},
+          lineColor={0,0,255},
+          textString =                       "C"),
+        Line(points={{0,-40},{0,-88}}),
+        Line(points={{-12,-60},{0,-40}}),
+        Line(points={{12,-60},{0,-40}})}),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,127,0},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,-40},{0,-88}}),
+        Line(points={{-12,-60},{0,-40}}),
+        Text(
+          extent={{-40,40},{40,-38}},
+          lineColor={0,0,255},
+          textString =                       "C"),
+        Line(points={{12,-60},{0,-40}})}),
     Window(
       x=0.33,
       y=0.21,
@@ -38,12 +61,4 @@ public
 <p><b>ThermoSysPro Version 3.0</b></p>
 </HTML>
 "));
-public 
-  input ThermoSysPro.Thermal.Connectors.ThermalPort C[N] 
-                                                       annotation (extent=[-10, -108; 10, -88]);
-equation 
-  
-  T = C.T;
-  W = C.W;
-  
 end HeatSink;

@@ -1,15 +1,15 @@
 within ThermoSysPro.Properties.Fluid;
-function Ps 
+function Ps
   input ThermoSysPro.Units.AbsolutePressure P "Pressure";
   input Modelica.SIunits.SpecificEntropy s "Specific entropy";
   input Integer mode = 0 "IF97 region - 0:automatic computation";
   input Integer fluid = 1 "Fluid number - 1: IF97 - 2: C3H3F5";
-  
-public 
-  output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ps pro 
-    annotation (extent=[-80,40; -40,80]);
-algorithm 
-  
+
+public
+  output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ps pro
+    annotation (Placement(transformation(extent={{-80,40},{-40,80}}, rotation=0)));
+algorithm
+
   if (fluid == 1) then
     pro := ThermoSysPro.Properties.WaterSteam.IF97.Water_Ps(P, s, mode);
   elseif (fluid == 2) then
@@ -17,20 +17,25 @@ algorithm
   else
     assert(false, "Prop.Ps : incorrect fluid number");
   end if;
-  
+
   annotation (
     smoothOrder=2,
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Icon(
-      Text(extent=[-134, 104; 142, 44], string="%name"),
-      Ellipse(extent=[-100, 40; 100, -100], style(color=45, fillColor=7)),
-      Text(
-        extent=[-84, -4; 84, -52],
-        string="fonction",
-        style(color=45))),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Text(extent={{-134,104},{142,44}}, textString=
+                                               "%name"),
+        Ellipse(
+          extent={{-100,40},{100,-100}},
+          lineColor={255,127,0},
+          fillColor={255,255,255},
+          fillPattern=FillPattern.Solid),
+        Text(
+          extent={{-84,-4},{84,-52}},
+          lineColor={255,127,0},
+          textString=
+               "fonction")}),
     Window(
       x=0.06,
       y=0.1,

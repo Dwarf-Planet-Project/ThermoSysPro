@@ -1,28 +1,11 @@
 within ThermoSysPro;
-package AAAUsersGuide "ThermoSysPro Licence and Users Guide" 
-  
-  annotation (DocumentationClass=true, Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Users Guide of the ThermoSysPro Library</font></h3>
-<p>
-ThermoSysPro is a library for the modelling and simulation of power plants and energy systems.
-It is developed with the Modelica language from the Modelica Association, see
-<a href=\"http://www.Modelica.org\">http://www.Modelica.org</a>.
-It provides components in various disciplines related to the modelling of power plants and energy systems.
-</p>
-<p>
-</html>"));
-  
-  class ReleaseNotes "Release notes" 
-    
-    annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Release notes</font></h3>
-<p>
-This section summarizes the changes that have been performed
-on the ThermoSysPro library.
-</html>
-"));
-    
-  class Version_2_0 "Version 2.0" 
+package AAAUsersGuide "ThermoSysPro Licence and Users Guide"
+
+
+  class ReleaseNotes "Release notes"
+
+
+  class Version_2_0 "Version 2.0"
       annotation (Documentation(info="<html>
 <h3><font color=\"#008000\">Version 2.0 (January 24, 2011)</font></h3>
 <p> This is the first open source release of the library.
@@ -30,18 +13,25 @@ on the ThermoSysPro library.
 </html>
 "));
   end Version_2_0;
-    
-  class Version_3_0 "Version 3.0" 
+
+  class Version_3_0 "Version 3.0"
       annotation (Documentation(info="<html>
 <p><b><font style=\"font-size: 10pt; color: #008000; \">Version 3.0 (December 20, 2011)</font></b></p>
 <p>Analytic jacobian is added to the library. </p>
 <p>The examples package is added to the library.</p>
 </html>"));
   end Version_3_0;
+    annotation (Documentation(info="<html>
+<h3><font color=\"#008000\" size=5>Release notes</font></h3>
+<p>
+This section summarizes the changes that have been performed
+on the ThermoSysPro library.
+</html>
+"));
   end ReleaseNotes;
-  
-  class Contact "Contact" 
-    
+
+  class Contact "Contact"
+
     annotation (Documentation(info="<html>
 <h3><font color=\"#008000\" size=5>Contact 
 </font></h3>
@@ -54,11 +44,11 @@ on the ThermoSysPro library.
 <dd>email: <a href=\"mailto:daniel.bouskela@edf.fr\">daniel.bouskela@edf.fr</a></dd>
 <dd>email: <a href=\"mailto:baligh.el-hefni@edf.fr\">baligh.el-hefni@edf.fr</a><br/></dd>
 </dl></html>"));
-    
+
   end Contact;
-  
-  class ThermoSysProLicense "License" 
-    
+
+  class ThermoSysProLicense "License"
+
     annotation (Documentation(info="<html>
 <h3><font color=\"#008000\" size=5>The ThermoSysPro License 
 </font></h3>
@@ -354,11 +344,11 @@ action. This section shall survive the termination of this License.</p>
 
 </html>
 "));
-    
+
   end ThermoSysProLicense;
 
-  class ThermoSysProDocumentation "Documentation" 
-    
+  class ThermoSysProDocumentation "Documentation"
+
     annotation (Documentation(info="<html>
 <h3><font color=\"#008000\" size=5>Documentation 
 </font></h3>
@@ -367,6 +357,16 @@ action. This section shall survive the termination of this License.</p>
 <a href=\"https://www.modelica.org/events/modelica2011/Proceedings/pages/papers/15_2_ID_115_a_fv.pdf\">https://www.modelica.org/events/modelica2011/Proceedings/pages/papers/15_2_ID_115_a_fv.pdf</a>.
 </p>
 </html>"));
-    
+
   end ThermoSysProDocumentation;
+  annotation (DocumentationClass=true, Documentation(info="<html>
+<h3><font color=\"#008000\" size=5>Users Guide of the ThermoSysPro Library</font></h3>
+<p>
+ThermoSysPro is a library for the modelling and simulation of power plants and energy systems.
+It is developed with the Modelica language from the Modelica Association, see
+<a href=\"http://www.Modelica.org\">http://www.Modelica.org</a>.
+It provides components in various disciplines related to the modelling of power plants and energy systems.
+</p>
+<p>
+</html>"));
 end AAAUsersGuide;

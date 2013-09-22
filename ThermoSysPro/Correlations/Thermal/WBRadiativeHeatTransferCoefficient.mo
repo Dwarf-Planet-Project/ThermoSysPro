@@ -1,23 +1,23 @@
 within ThermoSysPro.Correlations.Thermal;
-function WBRadiativeHeatTransferCoefficient 
-  "Radiative heat transfer coefficient for the wall heat exchanger" 
-  input ThermoSysPro.Units.DifferentialTemperature DeltaT 
+function WBRadiativeHeatTransferCoefficient
+  "Radiative heat transfer coefficient for the wall heat exchanger"
+  input ThermoSysPro.Units.DifferentialTemperature DeltaT
     "Temperature difference between the flue gases and the walls";
   input ThermoSysPro.Units.AbsoluteTemperature Tp "Surface temperature";
   input Real Pph2o "H20 fraction";
   input Real Ppco2 "CO2 fraction";
   input Real Beaml "Geometrical parameter";
-  
-  output Modelica.SIunits.CoefficientOfHeatTransfer Kr 
+
+  output Modelica.SIunits.CoefficientOfHeatTransfer Kr
     "Radiative heat transgfer coefficient";
-  
-protected 
+
+protected
   ThermoSysPro.Units.AbsolutePressure Pgaz "CO2+H2O partial pressure";
   Real Rap "H20/C02 partial pressure";
   Real Kprim "Interpolation result over TabKr";
   Real Ak "Interpolation result over TabK2";
   Real Pperl "Intermediate variable";
-  
+
   /****************************************************************************
         Valeurs du coefficient de rayonnement de base tirées de :
                 D. Annaratone - GENERATORI DI VAPORE - fig. 9.8.6
@@ -42,7 +42,7 @@ protected
       54.08, 65.128, 76.76, 88.39, 110.48, 116.3; 1.E-04, 1.84, 2.52, 8.23,
       12.1, 16.64, 36.13, 41.96, 47.76, 53.55, 59.33, 88.01, 93.29, 98.57,
       109.14, 119.7, 130.26, 140.82, 161.94, 167.23];
-  
+
   /******************************************************************************
         Modification to take into account the influence of different fuels
   ********************************************************************************/
@@ -51,24 +51,24 @@ protected
   constant Real TabK2[4, 6]=[0.13, 0.372, 0.517, 0.626, 0.725, 0.815; 0.13,
       0.38, 0.545, 0.675, 0.792, 0.882; 0.13, 0.392, 0.592, 0.75, 0.875, 0.985;
        0.13, 0.429, 0.67, 0.862, 1.027, 1.1647];
-  
-algorithm 
+
+algorithm
   Pgaz := Ppco2 + Pph2o;
   Rap := Pph2o/Ppco2;
-  
+
   if Beaml <= 0 then
     Kr := 0;
   else
     Kprim := ThermoSysPro.Functions.TableLinearInterpolation(TabTp, TabDeltaT, TabKr, Tp, DeltaT);
     Pperl := Pgaz*Beaml;
-    
+
     Ak := ThermoSysPro.Functions.TableLinearInterpolation(TabRap, TabPl, TabK2, Rap, Pperl);
     Kr := Kprim*Ak;
   end if;
-  
+
   annotation (
       smoothOrder=2,
-      Icon,                Documentation(info="<html>
+      Icon(graphics),      Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2010</b></p>
 </HTML>
 <html>

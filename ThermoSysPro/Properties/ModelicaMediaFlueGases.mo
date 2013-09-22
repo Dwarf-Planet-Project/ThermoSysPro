@@ -1,6 +1,6 @@
 within ThermoSysPro.Properties;
-package ModelicaMediaFlueGases 
-  "Flue gases library inherited from Modelica.Media" 
+package ModelicaMediaFlueGases
+  "Flue gases library inherited from Modelica.Media"
   extends Modelica.Media.IdealGases.Common.MixtureGasNasa(
     mediumName="MediaMonomeld",
     data={Modelica.Media.IdealGases.Common.SingleGasesData.N2,Modelica.Media.IdealGases.Common.SingleGasesData.O2,
@@ -11,7 +11,7 @@ package ModelicaMediaFlueGases
                     Modelica.Media.IdealGases.Common.FluidData.SO2},
     substanceNames={"Nitrogen","Oxygen","Water","Carbondioxide","Sulfurdioxide"},
     reference_X={0.768,0.232,0.0,0.0,0.0});
-  
+
   annotation (Documentation(info="<html>
   
 </html>"));

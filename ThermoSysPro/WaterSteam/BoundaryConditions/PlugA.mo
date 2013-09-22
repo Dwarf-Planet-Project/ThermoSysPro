@@ -1,32 +1,42 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
-model PlugA "Plug" 
-  
-public 
+model PlugA "Plug"
+
+public
   ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
   ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
-  
+
+  Connectors.FluidOutlet C                annotation (Placement(transformation(
+          extent={{90,-10},{110,10}}, rotation=0)));
+equation
+
+  C.P = P;
+  C.Q = Q;
+  C.h_vol = h;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Line(points=[40,0; 90,0; 72,10]),
-      Line(points=[90,0; 72,-10]), 
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3, 
-          rgbcolor={0,0,255}, 
-          fillColor=53, 
-          rgbfillColor={128,255,0}))),
-    Icon(
-      Line(points=[40,0; 90,0; 72,10]),
-      Line(points=[90,0; 72,-10]), 
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3, 
-          rgbcolor={0,0,255}, 
-          fillColor=53, 
-          rgbfillColor={128,255,0}))),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{40,0},{90,0},{72,10}}),
+        Line(points={{90,0},{72,-10}}),
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={128,255,0},
+          fillPattern=FillPattern.Solid)}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{40,0},{90,0},{72,10}}),
+        Line(points={{90,0},{72,-10}}),
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={128,255,0},
+          fillPattern=FillPattern.Solid)}),
     Window(
       x=0.23,
       y=0.15,
@@ -48,11 +58,4 @@ public
 </ul>
 </html>
 "));
-  Connectors.FluidOutlet C                annotation (extent=[90,-10; 110,10]);
-equation 
-  
-  C.P = P;
-  C.Q = Q;
-  C.h_vol = h;
-  
 end PlugA;

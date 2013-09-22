@@ -1,50 +1,72 @@
 within ThermoSysPro.WaterSolution.BoundaryConditions;
-model RefT "Fixed temperature reference" 
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=320 
+model RefT "Fixed temperature reference"
+  parameter ThermoSysPro.Units.AbsoluteTemperature T0=320
     "Fixed fluid temperature";
-  
+
+  Connectors.WaterSolutionInlet C1
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
+          =0)));
+  Connectors.WaterSolutionOutlet C2
+    annotation (Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
+  ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ITemperature
+    annotation (Placement(transformation(
+        origin={0,110},
+        extent={{-10,-10},{10,10}},
+        rotation=270)));
+
+equation
+  if (cardinality(ITemperature) == 0) then
+    ITemperature.signal = T0;
+  end if;
+
+  C1.P = C2.P;
+  C1.T = C2.T;
+  C1.Q = C2.Q;
+  C1.Xh2o = C2.Xh2o;
+
+  C1.T = ITemperature.signal;
+
   annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
-      Line(points=[0,100; 0,40], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[20,60; 0,40; -20,60], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[-90,0; -40,0], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[40,0; 90,0], style(color=3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-28,30; 28,-26],
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=53,
-          rgbfillColor={128,255,0},
-          fillPattern=1),
-        string="T")),
-    Icon(
-      Ellipse(extent=[-40,40; 40,-40], style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170})),
-      Line(points=[0,100; 0,40], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[20,60; 0,40; -20,60], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[-90,0; -40,0], style(color=3, rgbcolor={0,0,255})),
-      Line(points=[40,0; 90,0], style(color=3, rgbcolor={0,0,255})),
-      Text(
-        extent=[-28,30; 28,-26],
-        string="T",
-        style(
-          color=3,
-          rgbcolor={0,0,255},
-          fillColor=44,
-          rgbfillColor={255,170,170}))),
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,100},{0,40}}, color={0,0,255}),
+        Line(points={{20,60},{0,40},{-20,60}}, color={0,0,255}),
+        Line(points={{-90,0},{-40,0}}, color={0,0,255}),
+        Line(points={{40,0},{90,0}}, color={0,0,255}),
+        Text(
+          extent={{-28,30},{28,-26}},
+          lineColor={0,0,255},
+          fillColor={128,255,0},
+          fillPattern=FillPattern.Solid,
+          textString=
+               "T")}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Ellipse(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid),
+        Line(points={{0,100},{0,40}}, color={0,0,255}),
+        Line(points={{20,60},{0,40},{-20,60}}, color={0,0,255}),
+        Line(points={{-90,0},{-40,0}}, color={0,0,255}),
+        Line(points={{40,0},{90,0}}, color={0,0,255}),
+        Text(
+          extent={{-28,30},{28,-26}},
+          lineColor={0,0,255},
+          fillColor={255,170,170},
+          fillPattern=FillPattern.Solid,
+          textString=
+               "T")}),
     Window(
       x=0.06,
       y=0.08,
@@ -65,23 +87,4 @@ model RefT "Fixed temperature reference"
     Daniel Bouskela</li>
 </html>
 "), DymolaStoredErrors);
-  Connectors.WaterSolutionInlet C1 
-    annotation (extent=[-110, -10; -90, 10]);
-  Connectors.WaterSolutionOutlet C2 
-    annotation (extent=[90, -10; 110, 10]);
-  ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ITemperature 
-    annotation (extent=[-10,100; 10,120],rotation=270);
-  
-equation 
-  if (cardinality(ITemperature) == 0) then
-    ITemperature.signal = T0;
-  end if;
-  
-  C1.P = C2.P;
-  C1.T = C2.T;
-  C1.Q = C2.Q;
-  C1.Xh2o = C2.Xh2o;
-  
-  C1.T = ITemperature.signal;
-  
 end RefT;

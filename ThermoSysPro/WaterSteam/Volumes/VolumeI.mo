@@ -1,112 +1,73 @@
 within ThermoSysPro.WaterSteam.Volumes;
-model VolumeI "Mixing volume with 4 inlets and 4 outlets" 
+model VolumeI "Mixing volume with 4 inlets and 4 outlets"
   parameter Modelica.SIunits.Volume V=1 "Volume";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5 
+  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5
     "Initial fluid pressure (active if dynamic_mass_balance=true and steady_state=false)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1e5 
+  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1e5
     "Initial fluid specific enthalpy (active if steady_state=false)";
-  parameter Boolean dynamic_mass_balance=false 
+  parameter Boolean dynamic_mass_balance=false
     "true: dynamic mass balance equation - false: static mass balance equation";
-  parameter Boolean steady_state=true 
+  parameter Boolean steady_state=true
     "true: start from steady state - false: start from (P0, h0)";
   parameter Integer fluid=1 "1: water/steam - 2: C3H3F5";
   parameter Modelica.SIunits.Density p_rho=0 "If > 0, fixed fluid density";
-  parameter Integer mode=0 
+  parameter Integer mode=0
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
-  
-public 
+
+public
   ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
   ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid pressure";
   ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
-  Modelica.SIunits.MassFlowRate BQ 
+  Modelica.SIunits.MassFlowRate BQ
     "Right hand side of the mass balance equation";
   Modelica.SIunits.Power BH "Right hand side of the energybalance equation";
-  ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro 
-    "Propriétés de l'eau" 
-    annotation (extent=[-100, 80; -80, 100]);
-  annotation (
-    Coordsys(
-      extent=[-100, -100; 100, 100],
-      grid=[2, 2],
-      component=[20, 20]),
-    Diagram(
-      Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
-      Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
-      Line(points=[-90, 80; -60, 80; -40, 46]),
-      Line(points=[92, 80; 60, 80; 40, 46]),
-      Line(points=[-90, -80; -60, -80; -40, -46]),
-      Line(points=[92, -80; 60, -80; 40, -46])),
-    Icon(
-      Line(points=[-90, 0; 92, 0]),
-      Line(points=[0, 92; 0, -100]),
-      Ellipse(extent=[-40, 80; 40, 0], style(fillColor=71, rgbfillColor={85,170,
-              255})),
-      Ellipse(extent=[-40, 0; 40, -80], style(fillColor=71, rgbfillColor={85,
-              170,255})),
-      Rectangle(extent=[-40, 40; 40, -40], style(fillColor=71, rgbfillColor={85,
-              170,255})),
-      Line(points=[-90, 80; -60, 80; -40, 46]),
-      Line(points=[92, 80; 60, 80; 40, 46]),
-      Line(points=[-90, -80; -60, -80; -40, -46]),
-      Line(points=[92, -80; 60, -80; 40, -46])),
-    Window(
-      x=0.05,
-      y=0.07,
-      width=0.74,
-      height=0.85),
-    Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
-<u><p><b>Authors</u> : </p></b>
-<ul style='margin-top:0cm' type=disc>
-<li>
-    Daniel Bouskela</li>
-</ul>
-</html>
-"));
-  Connectors.FluidInlet Ce2 
-    annotation (extent=[-110, -10; -90, 10], layer="icon");
-  Connectors.FluidInlet Ce3 
-    annotation (extent=[-110, -90; -90, -70], layer="icon");
-  Connectors.FluidInlet Ce4 
-    annotation (extent=[-10, -110; 10, -90], layer="icon");
-  Connectors.FluidInlet Ce1 
-                           annotation (extent=[-110, 70; -90, 90], layer="icon");
-  Connectors.FluidOutlet Cs4 
-                           annotation (extent=[-10, 90; 10, 110], layer="icon");
-  Connectors.FluidOutlet Cs1 
-                           annotation (extent=[90, 70; 110, 90], layer="icon");
-  Connectors.FluidOutlet Cs2 
-                           annotation (extent=[90, -10; 110, 10], layer="icon");
-  Connectors.FluidOutlet Cs3 
-                           annotation (extent=[90, -90; 110, -70], layer="icon");
-initial equation 
+  ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
+    "Propriétés de l'eau"
+    annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation
+          =0)));
+  Connectors.FluidInlet Ce2
+    annotation (                             layer="icon", Placement(
+        transformation(extent={{-110,-10},{-90,10}}, rotation=0)));
+  Connectors.FluidInlet Ce3
+    annotation (                              layer="icon", Placement(
+        transformation(extent={{-110,-90},{-90,-70}}, rotation=0)));
+  Connectors.FluidInlet Ce4
+    annotation (                             layer="icon", Placement(
+        transformation(extent={{-10,-110},{10,-90}}, rotation=0)));
+  Connectors.FluidInlet Ce1
+                           annotation (                            layer="icon",
+      Placement(transformation(extent={{-110,70},{-90,90}}, rotation=0)));
+  Connectors.FluidOutlet Cs4
+                           annotation (                           layer="icon",
+      Placement(transformation(extent={{-10,90},{10,110}}, rotation=0)));
+  Connectors.FluidOutlet Cs1
+                           annotation (                          layer="icon",
+      Placement(transformation(extent={{90,70},{110,90}}, rotation=0)));
+  Connectors.FluidOutlet Cs2
+                           annotation (                           layer="icon",
+      Placement(transformation(extent={{90,-10},{110,10}}, rotation=0)));
+  Connectors.FluidOutlet Cs3
+                           annotation (                            layer="icon",
+      Placement(transformation(extent={{90,-90},{110,-70}}, rotation=0)));
+initial equation
   if steady_state then
     if dynamic_mass_balance then
       der(P) = 0;
     end if;
-    
+
     der(h) = 0;
   else
     if dynamic_mass_balance then
       P = P0;
     end if;
-    
+
     h = h0;
   end if;
-  
-equation 
+
+equation
   assert(V > 0, "Volume non-positive");
-  
+
   /* Unconnected connectors */
   if (cardinality(Ce1) == 0) then
     Ce1.Q = 0;
@@ -128,19 +89,19 @@ equation
     Ce4.h = 1.e5;
     Ce4.b = true;
   end if;
-  
+
   if (cardinality(Cs1) == 0) then
     Cs1.Q = 0;
     Cs1.h = 1.e5;
     Cs1.a = true;
   end if;
-  
+
   if (cardinality(Cs2) == 0) then
     Cs2.Q = 0;
     Cs2.h = 1.e5;
     Cs2.a = true;
   end if;
-  
+
   if (cardinality(Cs3) == 0) then
     Cs3.Q = 0;
     Cs3.h = 1.e5;
@@ -151,7 +112,7 @@ equation
     Cs4.h = 1.e5;
     Cs4.a = true;
   end if;
-  
+
   /* Mass balance equation */
   BQ = Ce1.Q + Ce2.Q + Ce3.Q + Ce4.Q - Cs1.Q - Cs2.Q - Cs3.Q - Cs4.Q;
   if dynamic_mass_balance then
@@ -159,7 +120,7 @@ equation
   else
     0 = BQ;
   end if;
-  
+
   P = Ce1.P;
   P = Ce2.P;
   P = Ce3.P;
@@ -168,7 +129,7 @@ equation
   P = Cs2.P;
   P = Cs3.P;
   P = Cs4.P;
-  
+
   /* Energy balance equation */
   BH = Ce1.Q*Ce1.h + Ce2.Q*Ce2.h + Ce3.Q*Ce3.h + Ce4.Q*Ce4.h - Cs1.Q*Cs1.h -
        Cs2.Q*Cs2.h - Cs3.Q*Cs3.h - Cs4.Q*Cs4.h;
@@ -177,7 +138,7 @@ equation
   else
     V*rho*der(h) = BH;
   end if;
-  
+
   Ce1.h_vol = h;
   Ce2.h_vol = h;
   Ce3.h_vol = h;
@@ -186,16 +147,84 @@ equation
   Cs2.h_vol = h;
   Cs3.h_vol = h;
   Cs4.h_vol = h;
-  
+
   /* Fluid thermodynamic properties */
   pro = ThermoSysPro.Properties.Fluid.Ph(P, h, mode, fluid);
-  
+
   T = pro.T;
-  
+
   if (p_rho > 0) then
     rho = p_rho;
   else
     rho = pro.d;
   end if;
-  
+
+  annotation (
+    Diagram(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Ellipse(
+          extent={{-40,80},{40,0}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-40,0},{40,-80}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,80},{-60,80},{-40,46}}),
+        Line(points={{92,80},{60,80},{40,46}}),
+        Line(points={{-90,-80},{-60,-80},{-40,-46}}),
+        Line(points={{92,-80},{60,-80},{40,-46}})}),
+    Icon(coordinateSystem(
+        preserveAspectRatio=false,
+        extent={{-100,-100},{100,100}},
+        grid={2,2}), graphics={
+        Line(points={{-90,0},{92,0}}),
+        Line(points={{0,92},{0,-100}}),
+        Ellipse(
+          extent={{-40,80},{40,0}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Ellipse(
+          extent={{-40,0},{40,-80}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-40,40},{40,-40}},
+          lineColor={0,0,255},
+          fillColor={85,170,255},
+          fillPattern=FillPattern.Solid),
+        Line(points={{-90,80},{-60,80},{-40,46}}),
+        Line(points={{92,80},{60,80},{40,46}}),
+        Line(points={{-90,-80},{-60,-80},{-40,-46}}),
+        Line(points={{92,-80},{60,-80},{40,-46}})}),
+    Window(
+      x=0.05,
+      y=0.07,
+      width=0.74,
+      height=0.85),
+    Documentation(info="<html>
+<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
+</HTML>
+<html>
+<p><b>ThermoSysPro Version 2.0</b></p>
+</HTML>
+", revisions="<html>
+<u><p><b>Authors</u> : </p></b>
+<ul style='margin-top:0cm' type=disc>
+<li>
+    Daniel Bouskela</li>
+</ul>
+</html>
+"));
 end VolumeI;
