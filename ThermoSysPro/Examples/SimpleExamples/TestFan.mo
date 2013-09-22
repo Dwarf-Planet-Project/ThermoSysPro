@@ -168,7 +168,7 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  annotation (experiment(stopTime=1000), Diagram(coordinateSystem(
+  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-200,-150},{200,150}},
         initialScale=0.1), graphics));

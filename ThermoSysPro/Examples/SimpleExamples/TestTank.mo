@@ -27,5 +27,5 @@ equation
     annotation (Line(points={{-79,50},{-50,50},{-50,33}}));
   connect(VanneReglante1.C2, Tank1.Ce1) annotation (Line(points={{-40,16},{-30,
           16},{-30,16},{-20,16}}, color={0,0,255}));
-  annotation (experiment(stopTime=1000), Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestTank;

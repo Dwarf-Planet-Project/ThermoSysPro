@@ -99,5 +99,5 @@ equation
     annotation (Line(points={{39.8,-20},{50,-20}}, color={0,0,255}));
   connect(valve1.C2, puitsP.C)        annotation (Line(points={{10,70},{20,70}},
         color={0,0,255}));
-  annotation (experiment(stopTime=10), Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestVolumes;

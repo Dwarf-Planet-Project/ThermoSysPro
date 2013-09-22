@@ -16,7 +16,7 @@ equation
   connect(SourceP1.C, pipePressureLoss.C1)
     annotation (Line(points={{-80,30},{-20,30}}, color={0,0,255}));
   annotation (
-    experiment(stopTime=1000), 
+    experiment(StopTime=1000), 
     Window(
       x=0.45,
       y=0.01,

@@ -46,5 +46,5 @@ equation
       points={{20.2,-50},{-0.2,-50},{-0.2,-18}},
       color={0,0,0},
       thickness=1));
-  annotation (experiment(stopTime=1000), Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestStaticExchangerWaterSteamFlueGases;

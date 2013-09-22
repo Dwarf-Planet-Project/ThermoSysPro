@@ -42,5 +42,5 @@ equation
           -7},{54,-7},{54,-7},{64,-7}}, color={0,0,255}));
   connect(EchangeurEfficacite.Cws1, source_Eau.C)
     annotation (Line(points={{-44,-7},{-54,-7},{-54,-7},{-64,-7}}));
-  annotation (experiment(stopTime=1000), Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestSimpleEvaporatorWaterSteamFlueGases;

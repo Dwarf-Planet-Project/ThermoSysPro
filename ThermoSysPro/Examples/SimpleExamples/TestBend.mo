@@ -19,7 +19,7 @@ equation
       y=0.01,
       width=0.35,
       height=0.49),
-    Diagram(experiment(stopTime=1000),coordinateSystem(
+    Diagram(experiment(StopTime=1000),coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
         grid={2,2}), graphics));

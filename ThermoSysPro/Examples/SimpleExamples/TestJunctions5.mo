@@ -99,5 +99,5 @@ equation
           -36},{-20,-36},{-20,-50},{-10,-50}}, color={0,0,255}));
   connect(splitter2_2.Cs2, valve4.C1) annotation (Line(points={{-36,-60},{-36,
           -90},{-10,-90}}, color={0,0,255}));
-  annotation (experiment(stopTime=10), Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestJunctions5;

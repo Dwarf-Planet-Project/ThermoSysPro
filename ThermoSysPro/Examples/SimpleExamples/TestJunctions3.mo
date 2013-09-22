@@ -72,5 +72,5 @@ equation
           -50},{-50,-46},{-40.2,-46}}, color={0,0,255}));
   connect(staticVolume2.Cs, valve2.C1) annotation (Line(points={{-20,-50},{-10,
           -50}}, color={0,0,255}));
-  annotation (experiment(stopTime=10), Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestJunctions3;

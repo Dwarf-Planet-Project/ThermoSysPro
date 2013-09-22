@@ -50,5 +50,5 @@ equation
     annotation (Line(points={{0,60},{20,60}}, color={0,0,255}));
   connect(sensorT1.C2, sinkP2.C)
     annotation (Line(points={{40.2,60},{60,60}}, color={0,0,255}));
-  annotation (experiment(stopTime=1000), Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestStaticDrum2;

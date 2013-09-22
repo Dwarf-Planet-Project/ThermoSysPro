@@ -31,7 +31,7 @@ equation
     annotation (Line(points={{-60,40},{0,40}}, color={0,0,0}));
   connect(singularPressureLossWaterLiBr.C2, sinkSolution.Ce)
     annotation (Line(points={{59,40},{80,40}}, color={0,0,0}));
-  annotation (experiment(stopTime=1000), 
+  annotation (experiment(StopTime=1000), 
     Window(
       x=0.32,
       y=0.02,

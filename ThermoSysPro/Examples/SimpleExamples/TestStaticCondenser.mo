@@ -92,6 +92,6 @@ equation
     annotation (Line(points={{60,-90},{100,-90}}, color={0,0,255}));
   connect(singularPressureLoss5.C1, condenseur.Cex)
     annotation (Line(points={{40,-90},{26.46,-90},{26.46,-16.98}}));
-  annotation (experiment(stopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics));
 end TestStaticCondenser;

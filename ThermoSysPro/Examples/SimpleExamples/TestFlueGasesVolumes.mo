@@ -79,7 +79,7 @@ equation
           70},{-70,57}}));
   connect(heatSource.C[1], dynamicExchanger.Cth) annotation (Line(points={{-70,
           42.2},{-30,10}}, color={191,95,0}));
-  annotation (experiment(stopTime=200), Diagram(coordinateSystem(
+  annotation (experiment(StopTime=200), Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-200,-150},{200,150}},
         initialScale=0.1), graphics));
