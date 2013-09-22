@@ -14,12 +14,13 @@ equation
     annotation (Line(points={{-10,26},{-10,10},{60,10}}, color={0,0,255}));
   connect(SourceP1.C, Bend.C1)
     annotation (Line(points={{-80,36},{-20,36}}, color={0,0,255}));
-  annotation (             Window(
+  annotation (experiment(StopTime=1000),
+    Window(
       x=0.45,
       y=0.01,
       width=0.35,
       height=0.49),
-    Diagram(experiment(StopTime=1000),coordinateSystem(
+    Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
         grid={2,2}), graphics));

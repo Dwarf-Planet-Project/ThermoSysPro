@@ -25,13 +25,13 @@ equation
     annotation (Line(points={{0,70},{20,70}}, color={0,0,255}));
   connect(lumpedStraightPipe1.C2, puitsP.C)
     annotation (Line(points={{40,70},{60,70}}, color={0,0,255}));
-  annotation (
+  annotation (experiment(StopTime=1000), 
     Window(
       x=0.32,
       y=0.02,
       width=0.39,
       height=0.47),
-    Diagram(experiment(StopTime=1000), coordinateSystem(
+    Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},
         grid={2,2}), graphics));
