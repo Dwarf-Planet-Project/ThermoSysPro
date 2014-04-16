@@ -1,5 +1,5 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks;
-package Logique 
+package Logique
 annotation (
   Window(
     x=0.05,

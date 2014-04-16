@@ -23,7 +23,7 @@ equation
           255}));
   connect(pulse.y, sourceP1.IPressure) annotation (Line(points={{-59,50},{-35,
           50}}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},

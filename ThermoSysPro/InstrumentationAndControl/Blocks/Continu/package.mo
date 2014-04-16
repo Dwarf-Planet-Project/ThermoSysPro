@@ -1,5 +1,5 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks;
-package Continu 
+package Continu
 annotation (
   Window(
     x=0.05,

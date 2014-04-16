@@ -66,7 +66,7 @@ equation
     annotation (Line(points={{1,-70},{20,-70}}, color={0,0,255}));
   connect(pulse.y, sourceP1.IPressure) annotation (Line(points={{-79,-70},{-55,
           -70}}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},

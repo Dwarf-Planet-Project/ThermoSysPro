@@ -1,5 +1,5 @@
 within ThermoSysPro.Examples;
-package CombinedCyclePowerPlant 
+package CombinedCyclePowerPlant
 
 
 annotation (

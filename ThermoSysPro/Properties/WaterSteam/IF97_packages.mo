@@ -3592,7 +3592,7 @@ end for;
             algorithm
               /*
   The NURBS Book: Global Interpolation (page 373)
-  
+
   */
               npoints := size(points,1);
 
@@ -4091,11 +4091,11 @@ Modelica in file \"Modelica/package.mo\".
         Lobatto rule.
         see Walter Gander: Adaptive Quadrature - Revisited, 1998
                         ftp.inf.ethz.ch in doc/tech-reports/1998/306.ps
-                        
+
         x[:] are the nodes
         y[:] = f(x[:]) are function values at the nodes
                 here (arc length computation): the integrand f is the
-                absolute value of the first derivative of the curve (Bspline) 
+                absolute value of the first derivative of the curve (Bspline)
         */
            tol := err;
             m := (a+b)/2;
@@ -4158,7 +4158,7 @@ Modelica in file \"Modelica/package.mo\".
               external "FORTRAN 77" dgbsv(n, kLower, kUpper, size(B, 2), Awork, size(
                   Awork, 1), ipiv, X, n, info) annotation (Library="Lapack");
                 annotation (
-                  Documentation(info="Lapack documentation:  
+                  Documentation(info="Lapack documentation:
 Purpose
 =======
 DGBSV computes the solution to a real system of linear equations
@@ -4244,47 +4244,47 @@ elements of U because of fill-in resulting from the row interchanges."),
                X, size(A, 1), info) annotation (Library="Lapack");
             annotation (
               Documentation(info="Lapack documentation:
-    Purpose   
-    =======   
-    DGESV computes the solution to a real system of linear equations   
-       A * X = B,   
-    where A is an N-by-N matrix and X and B are N-by-NRHS matrices.   
-    The LU decomposition with partial pivoting and row interchanges is   
-    used to factor A as   
-       A = P * L * U,   
-    where P is a permutation matrix, L is unit lower triangular, and U is 
-  
-    upper triangular.  The factored form of A is then used to solve the   
-    system of equations A * X = B.   
-    Arguments   
-    =========   
-    N       (input) INTEGER   
-            The number of linear equations, i.e., the order of the   
-            matrix A.  N >= 0.   
-    NRHS    (input) INTEGER   
-            The number of right hand sides, i.e., the number of columns   
-            of the matrix B.  NRHS >= 0.   
-    A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)   
-            On entry, the N-by-N coefficient matrix A.   
-            On exit, the factors L and U from the factorization   
-            A = P*L*U; the unit diagonal elements of L are not stored.   
-    LDA     (input) INTEGER   
-            The leading dimension of the array A.  LDA >= max(1,N).   
-    IPIV    (output) INTEGER array, dimension (N)   
-            The pivot indices that define the permutation matrix P;   
-            row i of the matrix was interchanged with row IPIV(i).   
-    B       (input/output) DOUBLE PRECISION array, dimension (LDB,NRHS)   
-            On entry, the N-by-NRHS matrix of right hand side matrix B.   
-            On exit, if INFO = 0, the N-by-NRHS solution matrix X.   
-    LDB     (input) INTEGER   
-            The leading dimension of the array B.  LDB >= max(1,N).   
-    INFO    (output) INTEGER   
-            = 0:  successful exit   
-            < 0:  if INFO = -i, the i-th argument had an illegal value   
-            > 0:  if INFO = i, U(i,i) is exactly zero.  The factorization 
-  
-                  has been completed, but the factor U is exactly   
-                  singular, so the solution could not be computed.   
+    Purpose
+    =======
+    DGESV computes the solution to a real system of linear equations
+       A * X = B,
+    where A is an N-by-N matrix and X and B are N-by-NRHS matrices.
+    The LU decomposition with partial pivoting and row interchanges is
+    used to factor A as
+       A = P * L * U,
+    where P is a permutation matrix, L is unit lower triangular, and U is
+
+    upper triangular.  The factored form of A is then used to solve the
+    system of equations A * X = B.
+    Arguments
+    =========
+    N       (input) INTEGER
+            The number of linear equations, i.e., the order of the
+            matrix A.  N >= 0.
+    NRHS    (input) INTEGER
+            The number of right hand sides, i.e., the number of columns
+            of the matrix B.  NRHS >= 0.
+    A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
+            On entry, the N-by-N coefficient matrix A.
+            On exit, the factors L and U from the factorization
+            A = P*L*U; the unit diagonal elements of L are not stored.
+    LDA     (input) INTEGER
+            The leading dimension of the array A.  LDA >= max(1,N).
+    IPIV    (output) INTEGER array, dimension (N)
+            The pivot indices that define the permutation matrix P;
+            row i of the matrix was interchanged with row IPIV(i).
+    B       (input/output) DOUBLE PRECISION array, dimension (LDB,NRHS)
+            On entry, the N-by-NRHS matrix of right hand side matrix B.
+            On exit, if INFO = 0, the N-by-NRHS solution matrix X.
+    LDB     (input) INTEGER
+            The leading dimension of the array B.  LDB >= max(1,N).
+    INFO    (output) INTEGER
+            = 0:  successful exit
+            < 0:  if INFO = -i, the i-th argument had an illegal value
+            > 0:  if INFO = i, U(i,i) is exactly zero.  The factorization
+
+                  has been completed, but the factor U is exactly
+                  singular, so the solution could not be computed.
 "),           Window(
                 x=0.4,
                 y=0.4,
@@ -4467,7 +4467,7 @@ elements of U because of fill-in resulting from the row interchanges."),
           algorithm
             (X,info) := dgbsv(size(A,2), kLower, kUpper, A, B);
             assert(info == 0, "Solving a linear system of equations with function
-\"Modelica_Interpolation.Utilities.solveBandedWithMatrix\" is not possible, since matrix A 
+\"Modelica_Interpolation.Utilities.solveBandedWithMatrix\" is not possible, since matrix A
 is singular, i.e., no unique solution exists.");
           end solveBandedWithMatrix;
 
@@ -4483,7 +4483,7 @@ is singular, i.e., no unique solution exists.");
           algorithm
             (X,info) := dgesv(A, B);
             assert(info == 0, "Solving a linear system of equations with function
-\"Modelica_Interpolation.Utilities.solveMatrix\" is not possible, since matrix A 
+\"Modelica_Interpolation.Utilities.solveMatrix\" is not possible, since matrix A
 is singular, i.e., no unique solution exists.");
           end solveMatrix;
 
@@ -4568,7 +4568,7 @@ The following functions are supported:
   curveLength                          Compute the length of a curve with adaptive quadrature
   dummy                                return a dummy Bspline with zero entries
   getNumberControlPoints        Compute the number of control points for the given data points
-  getNumberControlPoints2        Compute the number of control points for the given data points 
+  getNumberControlPoints2        Compute the number of control points for the given data points
                                                                                                   and transformation matrices
   quat2T                               Compute the transformation matrix of the given quaternions
   T2quat                               Compute the quaternions of the given transformation matrix
@@ -4582,7 +4582,7 @@ The following functions are supported:
 <li><i>Oct. 17, 2002</i>
        by Gerhard Schillhuber:<br>
        new functions: getNumberControlPoints, getNumberControlPoints2
-                               compute the number of control points for the given data points. It's needed 
+                               compute the number of control points for the given data points. It's needed
                                to initialize the curve.
 </li>
 </ul>

@@ -26,7 +26,7 @@ equation
           {-30,-36},{-30,-70},{-20,-70}}, color={0,0,255}));
   connect(lumpedStraightPipe1.C2, tank1.Ce2) annotation (Line(points={{0,-70},{
           10,-70},{10,-36},{20,-36}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.45,
       y=0.01,

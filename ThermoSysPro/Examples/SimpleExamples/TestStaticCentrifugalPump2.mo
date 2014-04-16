@@ -32,7 +32,7 @@ equation
     annotation (Line(points={{21,70},{50,70},{50,41}}, color={0,0,255}));
   connect(pulse.y, StaticCentrifugalPump1.rpm_or_mpower)
     annotation (Line(points={{-59,-60},{-10,-60},{-10,-41}}, smooth=Smooth.None));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

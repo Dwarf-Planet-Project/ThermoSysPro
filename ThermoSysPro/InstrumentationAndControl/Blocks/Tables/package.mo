@@ -1,5 +1,5 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks;
-package Tables 
+package Tables
 annotation (
   Window(
     x=0.05,

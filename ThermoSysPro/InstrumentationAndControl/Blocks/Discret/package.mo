@@ -1,5 +1,5 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks;
-package Discret 
+package Discret
 annotation (
   Window(
     x=0.05,

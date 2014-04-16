@@ -33,7 +33,7 @@ on the ThermoSysPro library.
   class Contact "Contact"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Contact 
+<h3><font color=\"#008000\" size=5>Contact
 </font></h3>
 <dl><dt>The development of the ThermoSysPro library is organized by<br/></dt>
 <dd>Daniel Bouskela and Baligh El Hefni<br/></dd>
@@ -50,7 +50,7 @@ on the ThermoSysPro library.
   class ThermoSysProLicense "License"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>The ThermoSysPro License 
+<h3><font color=\"#008000\" size=5>The ThermoSysPro License
 </font></h3>
 <p>The use of the ThermoSysPro Library is granted by EDF under the provisions of Modelica License 2.
 <ol>
@@ -350,7 +350,7 @@ action. This section shall survive the termination of this License.</p>
   class ThermoSysProDocumentation "Documentation"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Documentation 
+<h3><font color=\"#008000\" size=5>Documentation
 </font></h3>
 <p>The full documentation of the library is still under construction. </p>
 <p>A conference paper explaining the fundamentals of the library can be found here:
