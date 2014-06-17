@@ -1,4 +1,4 @@
 within ThermoSysPro.Functions;
-package Utilities 
+package Utilities
 
 end Utilities;

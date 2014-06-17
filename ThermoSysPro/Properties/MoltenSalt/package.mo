@@ -1,5 +1,5 @@
 within ThermoSysPro.Properties;
-package MoltenSalt 
+package MoltenSalt
 annotation (Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>

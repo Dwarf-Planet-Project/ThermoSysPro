@@ -568,7 +568,7 @@ package Common
       "Specific heat capacity at constant volume";
     /*
   Modelica.SIunits.SpecificEnergy u "Specific inner energy";
-  Modelica.SIunits.SpecificEntropy s "Specific entropy"; 
+  Modelica.SIunits.SpecificEntropy s "Specific entropy";
   Real pd "Derivative of pressure wrt. density";
   */
     annotation (

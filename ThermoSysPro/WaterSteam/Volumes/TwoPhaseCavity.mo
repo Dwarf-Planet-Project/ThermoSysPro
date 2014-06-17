@@ -360,9 +360,9 @@ equation
   mul = ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhol, Tl);
   kl = noEvent(ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rhol, Tl,P, 0));
 
-  /* Heat transfer coefficient of fluid 
+  /* Heat transfer coefficient of fluid
                    And
-     Power exchanged for each section 
+     Power exchanged for each section
     ----------------------------------*/
   /* Heat transfer coefficient of liquid*/
   //SACADOURA

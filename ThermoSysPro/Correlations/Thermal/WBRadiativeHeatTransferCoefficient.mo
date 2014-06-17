@@ -25,12 +25,12 @@ protected
                 D. Annaratone - GENERATORI DI VAPORE - fig. 9.8.6
                 The Babcock & Wilcox Company - STEAM - fig 26.
         Les valeurs correspondantes à une température de paroi de 1366.483
-        (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe 
+        (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe
         une droite et en actionnant une conversion d'unités de mesure
                                 7.75      9
           Kr = 5.67826*[15.5 + ------- * --- DeltaT(°K)]
                                 1500.     5
- 
+
   ******************************************************************************/
   constant Real TabDeltaT[20]={-1100,-1000,-900,-800,-700,-600,-500,-400,-300,-200,
       -100,0,100,200,400,600,800,1000,1400,1500};
