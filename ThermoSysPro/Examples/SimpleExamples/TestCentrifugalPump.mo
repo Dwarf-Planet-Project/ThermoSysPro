@@ -36,7 +36,7 @@ equation
     annotation (Line(points={{-79,-50},{-55,-50}}));
   connect(centrifugalPump1.M, sourceAngularVelocity.M)
     annotation (Line(points={{-10,-41},{-10,-50},{-39,-50}}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

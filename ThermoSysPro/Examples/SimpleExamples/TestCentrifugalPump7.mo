@@ -79,7 +79,7 @@ equation
     annotation (Line(points={{41,90},{80,90},{80,60},{-10,60},{-10,53}}));
   connect(centrifugalPump.C1, Tank.Cs2)
     annotation (Line(points={{40,-30},{80,-30},{80,24},{40,24}}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

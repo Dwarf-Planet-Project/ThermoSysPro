@@ -22,7 +22,7 @@ equation
     annotation (Line(points={{0,30},{40,30}}, color={0,0,255}));
   connect(sourceMechanicalPower.M, centrifugalPump.M)
     annotation (Line(points={{-59,-10},{-10,-10},{-10,19}}));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Diagram(graphics={
         Text(
           extent={{-100,100},{-60,80}},

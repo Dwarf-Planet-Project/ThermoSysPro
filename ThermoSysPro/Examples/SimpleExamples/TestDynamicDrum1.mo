@@ -110,7 +110,7 @@ equation
     annotation (Line(points={{6,-38},{6,-70},{-66,-70},{-66,-38}}));
   connect(ConsigneNiveauBallon1.y, SteamValve.Ouv)
     annotation (Line(points={{21,130},{50,130},{50,95}}, smooth=Smooth.None));
-  annotation (experiment(StopTime=1000), 
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.43,
       y=0,
