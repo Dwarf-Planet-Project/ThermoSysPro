@@ -110,5 +110,5 @@ equation
       points={{10,-50},{30,-50},{30,-30}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestVolumes1;

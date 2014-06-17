@@ -21,5 +21,5 @@ equation
           {10,29.9},{10,30},{20,30}}, color={0,0,255}));
   connect(simpleStaticCondenser.Sc, sinkP1.C) annotation (Line(points={{-4,20},
           {-4,-10},{20,-10}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestSimpleStaticCondenser;

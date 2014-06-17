@@ -32,5 +32,5 @@ equation
     annotation (Line(points={{20,10},{30,10}}, color={0,0,255}));
   connect(loopBreakerH.C2, lumpedStraightPipe.C1)
     annotation (Line(points={{50,10},{60,10}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestRefP;

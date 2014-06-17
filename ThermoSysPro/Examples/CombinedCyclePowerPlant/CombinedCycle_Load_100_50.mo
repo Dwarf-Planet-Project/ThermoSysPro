@@ -1304,7 +1304,7 @@ equation
       thickness=1));
   connect(GasTurbine.PuissanceMeca, Gain_2GasTurbine.u)
     annotation (Line(points={{-338.4,-76.6},{-326,-76.6},{-326,-438},{-19,-438}}));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-550,
+  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-550,
             -460},{950,150}},
         initialScale=0.1),     graphics));
 end CombinedCycle_Load_100_50;

@@ -16,7 +16,8 @@ equation
     annotation (Line(points={{0,30},{60,30}}, color={0,0,255}));
   connect(SourceP1.C, singularPressureLoss.C1)
     annotation (Line(points={{-80,30},{-20,30}}, color={0,0,255}));
-  annotation (             Window(
+  annotation (experiment(StopTime=1000),
+    Window(
       x=0.45,
       y=0.01,
       width=0.35,

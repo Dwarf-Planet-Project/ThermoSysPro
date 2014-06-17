@@ -41,5 +41,5 @@ equation
           {{90,10},{100,10},{100,-30},{-1,-30}}, color={0,0,0}));
   connect(lumpedStraightPipe.C2, refP.C1) annotation (Line(points={{-19,-30},{
           -100,-30},{-100,10}}, color={0,0,0}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestCentrifugalPumpWaterSolution;

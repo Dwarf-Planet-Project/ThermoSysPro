@@ -24,5 +24,5 @@ equation
           60.2},{-10,52}}, color={191,95,0}));
   connect(heatExchangerWall.WT1, dynamicOnePhaseFlowPipe.CTh)
     annotation (Line(points={{-10,48},{-10,33}}, color={191,95,0}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestDynamicOnePhaseFlowPipe;

@@ -45,7 +45,7 @@ equation
     annotation (Line(points={{60,-30},{80,-30},{80,24},{60,24}}));
   connect(Motor1.C, centrifugalPump1.M)
     annotation (Line(points={{-59.8,-70},{-10,-70},{-10,-41}}));
-  annotation (
+  annotation (experiment(StopTime=1000), 
     Window(
       x=0.32,
       y=0.02,

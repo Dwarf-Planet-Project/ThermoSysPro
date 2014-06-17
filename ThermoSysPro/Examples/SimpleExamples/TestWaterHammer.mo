@@ -42,7 +42,8 @@ equation
       points={{0,-10},{20,-10}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (             Window(
+  annotation (experiment(StopTime=10),
+    Window(
       x=0.17,
       y=0.16,
       width=0.6,

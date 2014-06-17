@@ -14,7 +14,8 @@ equation
     annotation (Line(points={{-10,26},{-10,10},{60,10}}, color={0,0,255}));
   connect(SourceP1.C, Bend.C1)
     annotation (Line(points={{-80,36},{-20,36}}, color={0,0,255}));
-  annotation (             Window(
+  annotation (experiment(StopTime=1000),
+    Window(
       x=0.45,
       y=0.01,
       width=0.35,

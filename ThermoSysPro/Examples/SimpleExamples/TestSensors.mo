@@ -35,5 +35,5 @@ equation
     annotation (Line(points={{0.2,-30},{20,-30}}, color={0,0,255}));
   connect(perteDP.C2, puitsP.C)
     annotation (Line(points={{40,-30},{60,-30}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestSensors;

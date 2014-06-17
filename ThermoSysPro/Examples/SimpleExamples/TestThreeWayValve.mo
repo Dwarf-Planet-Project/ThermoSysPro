@@ -24,7 +24,8 @@ equation
           -10},{60,-10}}, color={255,0,0}));
   connect(rampe.y, threeWayValve.Ouv)
     annotation (Line(points={{-39,70},{-10,70},{-10,45}}));
-  annotation (             Window(
+  annotation (experiment(StopTime=1000),
+    Window(
       x=0.45,
       y=0.01,
       width=0.35,

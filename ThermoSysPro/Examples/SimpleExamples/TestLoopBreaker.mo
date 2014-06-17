@@ -47,5 +47,5 @@ equation
       points={{30,-10},{46,-10},{46,0}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestLoopBreaker;

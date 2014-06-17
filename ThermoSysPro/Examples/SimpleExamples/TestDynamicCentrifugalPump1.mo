@@ -43,7 +43,7 @@ equation
     annotation (Line(points={{-19,-70},{-10,-70},{-10,-41}}));
   connect(sourceTorque.M, Shaft1.C1) annotation (Line(points={{-49,-70},{-41,
           -70}}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

@@ -191,7 +191,8 @@ equation
     annotation (Line(points={{-174,88},{-125,88},{-125,55}}));
   connect(Level.y, ControlValve_eau.Ouv)
     annotation (Line(points={{111.9,-141},{98,-141},{98,-165}}));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+  annotation (experiment(StopTime=1000), 
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics={
         Text(
           extent={{-124,222},{130,162}},

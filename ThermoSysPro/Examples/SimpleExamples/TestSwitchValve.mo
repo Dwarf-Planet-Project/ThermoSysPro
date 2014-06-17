@@ -21,7 +21,8 @@ equation
     annotation (Line(points={{-80,30},{-20,30}}, color={0,0,255}));
   connect(pulse.yL, SwitchValve.Ouv) annotation (Line(points={{-39,70},{-10,70},
           {-10,43.2}}));
-  annotation (             Window(
+  annotation (experiment(StopTime=1000),
+    Window(
       x=0.45,
       y=0.01,
       width=0.35,

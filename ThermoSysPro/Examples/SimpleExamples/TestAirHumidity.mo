@@ -24,5 +24,5 @@ equation
       points={{20,10},{40.2,10}},
       color={0,0,0},
       thickness=1));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestAirHumidity;

@@ -33,7 +33,8 @@ equation
     annotation (Line(points={{40,30},{60,30}}, color={0,0,255}));
   connect(centrifugalPump.C2, lumpedStraightPipe.C1)
     annotation (Line(points={{0,30},{20,30}}, color={0,0,255}));
-  annotation (Diagram(graphics={
+  annotation (experiment(StopTime=1000), 
+    Diagram(graphics={
         Text(
           extent={{-100,100},{-60,80}},
           lineColor={0,0,255},

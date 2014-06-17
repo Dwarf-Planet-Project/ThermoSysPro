@@ -40,7 +40,7 @@ equation
   connect(stodolaTurbine.M, DynamicCentrifugalPump1.M)
     annotation (Line(points={{-50,60},{-50,-60},{10,-60},{10,-41}}, smooth=
           Smooth.None));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,
