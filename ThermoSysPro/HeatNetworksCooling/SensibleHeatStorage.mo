@@ -17,9 +17,8 @@ model SensibleHeatStorage "Sensible heat storage"
     "Convective heat exchange coefficient with the water";
   parameter Modelica.SIunits.CoefficientOfHeatTransfer ha=20
     "Convective heat exchange coefficient with the ambient air";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tamb
-    "Ambient air temperature";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tss0
+  parameter Modelica.SIunits.Temperature Tamb "Ambient air temperature";
+  parameter Modelica.SIunits.Temperature Tss0
     "Initial storage temperature (active if steady_state=false)";
   parameter Real Fremp=0.5 "Volume fraction of the solid matrix in the storage";
   parameter Boolean steady_state=false
@@ -32,16 +31,15 @@ model SensibleHeatStorage "Sensible heat storage"
 public
   Modelica.SIunits.MassFlowRate Q "Water mass flow rate";
   Modelica.SIunits.Mass m "PCM mass";
-  ThermoSysPro.Units.AbsoluteTemperature Tss(start=293)
-    "Storage average temperature";
-  ThermoSysPro.Units.AbsoluteTemperature T1 "Water temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature T2 "Water temperature at the outlet";
+  Modelica.SIunits.Temperature Tss(start=293) "Storage average temperature";
+  Modelica.SIunits.Temperature T1 "Water temperature at the inlet";
+  Modelica.SIunits.Temperature T2 "Water temperature at the outlet";
   Modelica.SIunits.Power Ws "Stored power";
   Modelica.SIunits.Power We "Power exchanged with the water";
   Modelica.SIunits.Power Wa "Power exchanged with the ambient air";
-  ThermoSysPro.Units.AbsoluteTemperature Tm(start=293) "Average temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hm(start=100000)
+  Modelica.SIunits.Temperature Tm(start=293) "Average temperature";
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Average pressure";
+  Modelica.SIunits.SpecificEnthalpy hm(start=100000)
     "Average specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proe
     "Propriétés de l'eau"

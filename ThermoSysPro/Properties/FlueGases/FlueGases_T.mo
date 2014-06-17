@@ -1,14 +1,14 @@
 within ThermoSysPro.Properties.FlueGases;
 function FlueGases_T "Temperature"
   extends ThermoSysPro.Properties.FlueGases.unSafeForJacobian;
-  input ThermoSysPro.Units.AbsolutePressure PMF "Flue gases average pressure";
-  input ThermoSysPro.Units.SpecificEnthalpy HMF "Flue gases specific enthalpy";
+  input Modelica.SIunits.AbsolutePressure PMF "Flue gases average pressure";
+  input Modelica.SIunits.SpecificEnthalpy HMF "Flue gases specific enthalpy";
   input Real Xco2 "CO2 mass fraction";
   input Real Xh2o "H2O mass fraction";
   input Real Xo2 "O2 mass fraction";
   input Real Xso2 "SO2 mass fraction";
 
-  output ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+  output Modelica.SIunits.Temperature T "Temperature";
 
 protected
   ThermoSysPro.Properties.ModelicaMediaFlueGases.ThermodynamicState state;

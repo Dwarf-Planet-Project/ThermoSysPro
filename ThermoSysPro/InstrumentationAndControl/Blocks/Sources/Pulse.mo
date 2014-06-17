@@ -110,6 +110,7 @@ equation
           pattern=LinePattern.Dash),
         Line(
           points={{-80,0},{-10,0},{-10,50},{30,50},{30,0},{50,0},{50,50},{90,50}},
+
           color={0,0,0},
           thickness=0.5),
         Line(

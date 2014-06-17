@@ -7,7 +7,7 @@ model TestCentrifugalPumpWaterSolution
                                                  k=2.e5)
     annotation (Placement(transformation(extent={{-100,60},{-80,80}}, rotation=
             0)));
-  ThermoSysPro.WaterSolution.Machines.StaticCentrifugalPump pump
+  ThermoSysPro.WaterSolution.Machines.StaticCentrifugalPump pump(C2(T(start=290)))
     annotation (Placement(transformation(extent={{-20,0},{0,20}}, rotation=0)));
   ThermoSysPro.WaterSolution.LoopBreakers.LoopBreakerQ loopBreakerQ
     annotation (Placement(transformation(extent={{10,0},{30,20}}, rotation=0)));
@@ -41,5 +41,5 @@ equation
           {{90,10},{100,10},{100,-30},{-1,-30}}, color={0,0,0}));
   connect(lumpedStraightPipe.C2, refP.C1) annotation (Line(points={{-19,-30},{
           -100,-30},{-100,10}}, color={0,0,0}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestCentrifugalPumpWaterSolution;

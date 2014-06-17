@@ -7,8 +7,7 @@ model HeatNetworkPipe
   parameter Real rugosrel=0 "Pipe roughness";
   parameter Modelica.SIunits.Length z1=0 "Pipe altitude at the inlet";
   parameter Modelica.SIunits.Length z2=0 "Pipe altitude at the outlet";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tamb=293
-    "Ambient temperature";
+  parameter Modelica.SIunits.Temperature Tamb=293 "Ambient temperature";
   parameter Modelica.SIunits.CoefficientOfHeatTransfer K=0.1
     "Heat exchange coefficient with ambient";
   parameter ThermoSysPro.Units.PressureLossCoefficient Ks=
@@ -40,9 +39,9 @@ public
   Real lambda "Friction pressure loss coefficient";
   Modelica.SIunits.Density rho "Fluid density";
   Modelica.SIunits.DynamicViscosity mu "Fluid dynamic viscosity";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hm "Fluid average specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy hm "Fluid average specific enthalpy";
 public
   ThermoSysPro.WaterSteam.Connectors.FluidInlet C1
                           annotation (Placement(transformation(extent={{-90,80},

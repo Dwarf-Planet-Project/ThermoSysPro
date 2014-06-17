@@ -11,9 +11,14 @@ model GasTurbine "Combustion turbine for CICO and Barilla plants"
   parameter Real exp_tau_n=0.05 "Turbine nominal expansion rate";
   parameter Real exp_eff_n=0.9 "Turbine nominal efficiency";
   parameter Real TurbQred=0.01 "Turbine reduced mass flow rate";
-  parameter Real B0 = 0.3735955;
-  parameter Real B1 = 1.42460674;
-  parameter Real B2 = -0.80865168;
+////old
+  //parameter Real B0 = 0.3735955;
+  //parameter Real B1 = 1.42460674;
+  //parameter Real B2 = -0.80865168;
+  parameter Real B0 = 0.95223;
+  parameter Real B1 = 0.09555;
+  parameter Real B2 = -0.04778;
+
   parameter Real Kcham = 1 "Chamber pressure loss coefficient";
   parameter Modelica.SIunits.Power Wpth=1e5 "Combustion chamber thermal losses";
 

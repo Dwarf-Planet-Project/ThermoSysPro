@@ -59,10 +59,10 @@ public
   Modelica.SIunits.Density rho "Fluid density";
   ThermoSysPro.Units.DifferentialPressure deltaP
     "Pressure variation between the outlet and the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy deltaH
+  Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid average specific enthalpy";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid average specific enthalpy";
 
 public
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro

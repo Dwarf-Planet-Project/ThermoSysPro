@@ -23,9 +23,9 @@ public
   Modelica.SIunits.ReynoldsNumber Relim "Limit Reynolds number";
   Modelica.SIunits.Density rho "Fluid density";
   Modelica.SIunits.DynamicViscosity mu "Fluid dynamic viscosity";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
 public
   Connectors.FluidInlet C1
                           annotation (Placement(transformation(extent={{-110,

@@ -14,8 +14,8 @@ protected
 public
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
   Modelica.SIunits.VolumeFlowRate Qv(start=0.5) "Volume flow rate";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
 
 protected
   Modelica.SIunits.Time facteur=if (output_unit == 1) then 3600 else 1

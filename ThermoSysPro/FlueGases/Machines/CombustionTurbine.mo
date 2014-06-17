@@ -14,23 +14,23 @@ public
   Modelica.SIunits.Power Wcp(start=1e9) "Compressor power";
   Modelica.SIunits.Power Wturb(start=2e9) "Turbine power";
   Modelica.SIunits.Power Wmech(start=1e9) "Mechanical power";
-  ThermoSysPro.Units.AbsolutePressure Pe( start=1e5)
+  Modelica.SIunits.AbsolutePressure Pe( start=1e5)
     "Flue gases pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Ps(start=1e5)
+  Modelica.SIunits.AbsolutePressure Ps(start=1e5)
     "Flue gases pressure at the outlet";
   Real Xtau(start=1) "Ratio between the actual and nominal expansion rate";
   Modelica.SIunits.MassFlowRate Q(start=500) "Flue gases mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature Te(start=1.4e3)
+  Modelica.SIunits.Temperature Te(start=1.4e3)
     "Flue gases temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Ts(start=900)
+  Modelica.SIunits.Temperature Ts(start=900)
     "Flue gases temperature at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tis(start=750)
+  Modelica.SIunits.Temperature Tis(start=750)
     "Isentropic air temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy He(start=1.2e6)
+  Modelica.SIunits.SpecificEnthalpy He(start=1.2e6)
     "Flue gases specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hs(start=6e5)
+  Modelica.SIunits.SpecificEnthalpy Hs(start=6e5)
     "Flue gases specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy His(start=6e5)
+  Modelica.SIunits.SpecificEnthalpy His(start=6e5)
     "Flue gases specific enthalpy after the isentropic expansion";
   Modelica.SIunits.SpecificEntropy Se
     "Flue gases specific entropy at the inlet";

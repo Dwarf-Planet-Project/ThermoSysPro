@@ -1,9 +1,9 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
 model SourceP "Water/steam source with fixed pressure"
-  parameter ThermoSysPro.Units.AbsolutePressure P0=300000 "Source pressure";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=290
+  parameter Modelica.SIunits.AbsolutePressure P0=300000 "Source pressure";
+  parameter Modelica.SIunits.Temperature T0=290
     "Source temperature (active if option_temperature=1)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=100000
+  parameter Modelica.SIunits.SpecificEnthalpy h0=100000
     "Source specific enthalpy (active if option_temperature=2)";
   parameter Integer option_temperature=1
     "1:temperature fixed - 2:specific enthalpy fixed";
@@ -11,10 +11,10 @@ model SourceP "Water/steam source with fixed pressure"
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
+  Modelica.SIunits.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
     "Propriétés de l'eau"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation

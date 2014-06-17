@@ -2,7 +2,7 @@ within ThermoSysPro.FlueGases.Volumes;
 model VolumeCTh
   "Mixing flue gases volume with 3 inlets and 1 outlet and thermal input"
   parameter Modelica.SIunits.Volume V=1 "Volume";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=1e5
     "Initial fluid pressure (active if dynamic_mass_balance=true and steady_state=false)";
   parameter Modelica.SIunits.Temperature T0=400
     "Initial fluid temperature (active if steady_state=false)";
@@ -15,10 +15,9 @@ model VolumeCTh
   parameter Modelica.SIunits.Density p_rho=0 "If > 0, fixed fluid density";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature T( start=500, stateSelect = StateSelect.always)
-    "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=500) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
   Modelica.SIunits.Density rho(start=1) "Fluid density";
   Modelica.SIunits.SpecificHeatCapacity cp(start=1000)
     "Fluid spécific heat capacity";
@@ -38,13 +37,13 @@ public
     "Right hand side of the O2 balance equation";
   Modelica.SIunits.MassFlowRate BXso2
     "Right hand side of the SO2 balance equation";
-  ThermoSysPro.Units.SpecificEnthalpy he1(start=100000)
+  Modelica.SIunits.SpecificEnthalpy he1(start=100000)
     "Fluid specific enthalpy at inlet #1";
-  ThermoSysPro.Units.SpecificEnthalpy he2(start=100000)
+  Modelica.SIunits.SpecificEnthalpy he2(start=100000)
     "Fluid specific enthalpy at inlet #2";
-  ThermoSysPro.Units.SpecificEnthalpy he3(start=100000)
+  Modelica.SIunits.SpecificEnthalpy he3(start=100000)
     "Fluid specific enthalpy at inlet #3";
-  ThermoSysPro.Units.SpecificEnthalpy hs(start=100000)
+  Modelica.SIunits.SpecificEnthalpy hs(start=100000)
     "Fluid specific enthalpy at the outlet";
 
   Connectors.FlueGasesInlet Ce1
@@ -223,8 +222,8 @@ equation
       width=0.66,
       height=0.69),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

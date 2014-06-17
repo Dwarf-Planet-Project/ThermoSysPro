@@ -12,9 +12,9 @@ protected
 
 public
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
     "Propriétés de l'eau"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation

@@ -1240,7 +1240,7 @@ equation
   connect(PompeAlimBP.rpm_or_mpower, arretPomesBP.y) annotation (Line(points={{
           722,-449},{722,-460},{860,-460},{860,-444},{875.1,-444}}, smooth=
           Smooth.None));
-  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(
+  annotation (Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-550,-460},{950,150}},
         initialScale=0.1), graphics));

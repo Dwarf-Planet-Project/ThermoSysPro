@@ -3,11 +3,11 @@ model StaticDrum "Staic drum"
   parameter Real x=1 "Vapor separation efficiency at the outlet";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=10.e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hl(start=100000)
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=10.e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy hl(start=100000)
     "Liquid phase specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv(start=2800000)
+  Modelica.SIunits.SpecificEnthalpy hv(start=2800000)
     "Gas phase specific enthalpy";
 public
   Connectors.FluidInlet Ce_eva

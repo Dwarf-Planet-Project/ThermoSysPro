@@ -2,156 +2,8 @@ within ThermoSysPro.Properties.WaterSteam;
 package IF97_Utilities
   "Low level and utility computation for high accuracy water properties according to the IAPWS/IF97 standard"
 
-  extends Modelica.Icons.Library;
-
   replaceable record iter =
       ThermoSysPro.Properties.WaterSteam.BaseIF97.IterationData;
-
-protected
-  package ThermoFluidSpecial
-    function water_ph
-      "calculate the property record for dynamic simulation properties using p,h as states"
-      extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-      input Integer phase= 0
-        "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
-        "property record for dynamic simulation";
-    protected
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs g
-        "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs f
-        "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-      Integer region(min=1, max=5) "IF97 region";
-      Integer error "error flag";
-      Modelica.SIunits.Temperature T "temperature";
-      Modelica.SIunits.Density d "density";
-    algorithm
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ph(
-                                           p, h, phase);
-      if (region == 1) then
-        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph1(
-                                 p, h);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-      elseif (region == 2) then
-        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(
-                                 p, h);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-      elseif (region == 3) then
-        (d,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofph3(
-                                                 p=p,h= h,delp= 1.0e-7,delh=
-          1.0e-6);
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                               d, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_ph(f);
-      elseif (region == 4) then
-        pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_ph(
-                                            p=p,h= h);
-      elseif (region == 5) then
-        (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofph5(
-                                              p=p,h= h,reldh= 1.0e-7);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-      end if;
-    end water_ph;
-
-    function water_dT
-      "calculate property record for dynamic simulation properties using d and T as dynamic states"
-      extends Modelica.Icons.Function;
-      input Modelica.SIunits.Density d "density";
-      input Modelica.SIunits.Temperature T "temperature";
-      input Integer phase= 0
-        "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT pro
-        "property record for dynamic simulation";
-    protected
-      Modelica.SIunits.Pressure p "pressure";
-      Integer region(min=1, max=5) "IF97 region";
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs g
-        "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs f
-        "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-      Integer error "error flag";
-    algorithm
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_dT(
-                                           d, T, phase);
-      if (region == 1) then
-        (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                d=d,T= T,reldd= iter.DELD,region=
-                 1);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-      elseif (region == 2) then
-        (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                d=d,T= T,reldd= iter.DELD,region=
-                 2);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-      elseif (region == 3) then
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                               d, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_dT(f);
-      elseif (region == 4) then
-        pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_dT(
-                                            d=d,T= T);
-      elseif (region == 5) then
-        (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                d=d,T= T,reldd= iter.DELD,region=
-                 5);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                               p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-      end if;
-    end water_dT;
-
-    function water_pT
-      "calculate property record for dynamic simulation properties using p and T as dynamic states"
-
-      extends Modelica.Icons.Function;
-      input Modelica.SIunits.Pressure p "pressure";
-      input Modelica.SIunits.Temperature T "temperature";
-      output Modelica.Media.Common.ThermoFluidSpecial.ThermoProperties_pT pro
-        "property record for dynamic simulation";
-    protected
-      Modelica.SIunits.Density d "density";
-      Integer region(min=1, max=5) "IF97 region";
-      Modelica.Media.Common.GibbsDerivs g
-        "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      Modelica.Media.Common.HelmholtzDerivs f
-        "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-      Integer error "error flag";
-    algorithm
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(
-                                           p, T);
-      if (region == 1) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                               p, T);
-        pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-      elseif (region == 2) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                               p, T);
-        pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-      elseif (region == 3) then
-        (d,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(
-                                              p=p,T= T,delp= iter.DELP);
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                               d, T);
-        pro := Modelica.Media.Common.ThermoFluidSpecial.helmholtzToProps_pT(f);
-      elseif (region == 5) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                               p, T);
-        pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-      end if;
-    end water_pT;
-  end ThermoFluidSpecial;
 
 //   function isentropicEnthalpy
 //     "isentropic specific enthalpy from p,s (preferably use dynamicIsentropicEnthalpy in dynamic simulation!)"
@@ -843,7 +695,7 @@ public
       output Integer phase "true if in liquid or gas or supercritical region";
     algorithm
       phase := if ((h < hl_p(p) or h > hv_p(p)) or p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT)
-                                                                                                   then
+                                                                                               then
                                                                                  1 else 2;
       annotation (InlineNoEvent=false);
     end phase_ph;
@@ -2248,152 +2100,6 @@ public
         LateInline=true);
     end isentropicExponent_dT;
 
-  protected
-    package ThermoFluidSpecial
-      function water_ph
-        "calculate the property record for dynamic simulation properties using p,h as states"
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Pressure p "pressure";
-        input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-        input Integer phase= 0
-          "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-        output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph
-          pro "property record for dynamic simulation";
-      protected
-        Modelica.Media.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        Modelica.Media.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer region(min=1, max=5) "IF97 region";
-        Integer error "error flag";
-        Modelica.SIunits.Temperature T "temperature";
-        Modelica.SIunits.Density d "density";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ph(
-                                             p, h, phase);
-        if (region == 1) then
-          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph1(
-                                   p, h);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        elseif (region == 2) then
-          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(
-                                   p, h);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        elseif (region == 3) then
-          (d,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofph3(
-                                                   p=p,h= h,delp= 1.0e-7,delh=
-            1.0e-6);
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_ph(f);
-        elseif (region == 4) then
-          pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_ph(
-                                              p=p,h= h);
-        elseif (region == 5) then
-          (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofph5(
-                                                p=p,h= h,reldh= 1.0e-7);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        end if;
-      end water_ph;
-
-      function water_dT
-        "calculate property record for dynamic simulation properties using d and T as dynamic states"
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Density d "density";
-        input Modelica.SIunits.Temperature T "temperature";
-        input Integer phase= 0
-          "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-        output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT
-          pro "property record for dynamic simulation";
-      protected
-        Modelica.SIunits.Pressure p "pressure";
-        Integer region(min=1, max=5) "IF97 region";
-        Modelica.Media.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        Modelica.Media.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer error "error flag";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_dT(
-                                             d, T, phase);
-        if (region == 1) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   1);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        elseif (region == 2) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   2);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        elseif (region == 3) then
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_dT(f);
-        elseif (region == 4) then
-          pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_dT(
-                                              d=d,T= T);
-        elseif (region == 5) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   5);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        end if;
-      end water_dT;
-
-      function water_pT
-        "calculate property record for dynamic simulation properties using p and T as dynamic states"
-
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Pressure p "pressure";
-        input Modelica.SIunits.Temperature T "temperature";
-        output Modelica.Media.Common.ThermoFluidSpecial.ThermoProperties_pT pro
-          "property record for dynamic simulation";
-      protected
-        Modelica.SIunits.Density d "density";
-        Integer region(min=1, max=5) "IF97 region";
-        Modelica.Media.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        Modelica.Media.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer error "error flag";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(
-                                             p, T);
-        if (region == 1) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        elseif (region == 2) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        elseif (region == 3) then
-          (d,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(
-                                                p=p,T= T,delp= iter.DELP);
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.helmholtzToProps_pT(f);
-        elseif (region == 5) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        end if;
-      end water_pT;
-    end ThermoFluidSpecial;
-
   public
     function hl_p =
         ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hl_p
@@ -2504,6 +2210,125 @@ public
                                                     p,s,dguess,Tguess,0);
     end dynamicIsentropicEnthalpy;
 
+    annotation (Icon(graphics={
+          Text(
+            extent={{-102,0},{24,-26}},
+            lineColor={242,148,0},
+            textString=
+                 "Thermo"),
+          Text(
+            extent={{-4,8},{68,-34}},
+            lineColor={46,170,220},
+            textString=
+                 "SysPro"),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{
+                42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{
+                -50,6},{-62,2}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,
+                8},{-42,22},{-42,30},{-44,38}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,
+                12},{-26,12},{-28,12},{-26,20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,30},{-6,26}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,36},{-6,32}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,42},{-6,38}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,48},{-6,44}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,32},{-2,28}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,38},{-2,34}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,44},{-2,40}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,50},{-2,46}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,
+                20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{
+                42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{
+                -50,6},{-62,2}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Line(
+            points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+            color={46,170,220},
+            thickness=0.5),
+          Polygon(
+            points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+          Line(
+            points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+            color={0,0,255},
+            smooth=Smooth.None),
+          Line(
+            points={{80,80},{100,100}},
+            color={0,0,255},
+            smooth=Smooth.None)}));
   end AnalyticDerivatives;
 
   package Standard "Standard version without Anaytic Jacobians"
@@ -2898,7 +2723,7 @@ public
       output Integer phase "true if in liquid or gas or supercritical region";
     algorithm
       phase := if ((s < sl_p(p) or s > sv_p(p)) or p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT)
-                                                                                                   then
+                                                                                               then
                                                                                  1 else 2;
       annotation (InlineNoEvent=false);
     end phase_ps;
@@ -2910,7 +2735,7 @@ public
       output Integer phase "true if in liquid or gas or supercritical region";
     algorithm
       phase := if ((h < hl_p(p) or h > hv_p(p)) or p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT)
-                                                                                                   then
+                                                                                               then
                                                                                  1 else 2;
       annotation (InlineNoEvent=false);
     end phase_ph;
@@ -4193,152 +4018,6 @@ public
         LateInline=true);
     end isentropicExponent_dT;
 
-  protected
-    package ThermoFluidSpecial
-      function water_ph
-        "calculate the property record for dynamic simulation properties using p,h as states"
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Pressure p "pressure";
-        input Modelica.SIunits.SpecificEnthalpy h "specific enthalpy";
-        input Integer phase= 0
-          "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-        output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph
-          pro "property record for dynamic simulation";
-      protected
-        ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer region(min=1, max=5) "IF97 region";
-        Integer error "error flag";
-        Modelica.SIunits.Temperature T "temperature";
-        Modelica.SIunits.Density d "density";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ph(
-                                             p, h, phase);
-        if (region == 1) then
-          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph1(
-                                   p, h);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        elseif (region == 2) then
-          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(
-                                   p, h);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        elseif (region == 3) then
-          (d,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofph3(
-                                                   p=p,h= h,delp= 1.0e-7,delh=
-            1.0e-6);
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_ph(f);
-        elseif (region == 4) then
-          pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_ph(
-                                              p=p,h= h);
-        elseif (region == 5) then
-          (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofph5(
-                                                p=p,h= h,reldh= 1.0e-7);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_ph(g);
-        end if;
-      end water_ph;
-
-      function water_dT
-        "calculate property record for dynamic simulation properties using d and T as dynamic states"
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Density d "density";
-        input Modelica.SIunits.Temperature T "temperature";
-        input Integer phase= 0
-          "phase: 2 for two-phase, 1 for one phase, 0 if unknown";
-        output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT
-          pro "property record for dynamic simulation";
-      protected
-        Modelica.SIunits.Pressure p "pressure";
-        Integer region(min=1, max=5) "IF97 region";
-        ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer error "error flag";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_dT(
-                                             d, T, phase);
-        if (region == 1) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   1);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        elseif (region == 2) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   2);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        elseif (region == 3) then
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_dT(f);
-        elseif (region == 4) then
-          pro := ThermoSysPro.Properties.WaterSteam.BaseIF97.TwoPhase.waterR4_dT(
-                                              d=d,T= T);
-        elseif (region == 5) then
-          (p,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.pofdt125(
-                                                  d=d,T= T,reldd= iter.DELD,region=
-                   5);
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_dT(g);
-        end if;
-      end water_dT;
-
-      function water_pT
-        "calculate property record for dynamic simulation properties using p and T as dynamic states"
-
-        extends Modelica.Icons.Function;
-        input Modelica.SIunits.Pressure p "pressure";
-        input Modelica.SIunits.Temperature T "temperature";
-        output Modelica.Media.Common.ThermoFluidSpecial.ThermoProperties_pT pro
-          "property record for dynamic simulation";
-      protected
-        Modelica.SIunits.Density d "density";
-        Integer region(min=1, max=5) "IF97 region";
-        Modelica.Media.Common.GibbsDerivs g
-          "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-        Modelica.Media.Common.HelmholtzDerivs f
-          "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
-        Integer error "error flag";
-      algorithm
-        region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(
-                                             p, T);
-        if (region == 1) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        elseif (region == 2) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        elseif (region == 3) then
-          (d,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(
-                                                p=p,T= T,delp= iter.DELP);
-          f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 d, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.helmholtzToProps_pT(f);
-        elseif (region == 5) then
-          g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                 p, T);
-          pro := Modelica.Media.Common.ThermoFluidSpecial.gibbsToProps_pT(g);
-        end if;
-      end water_pT;
-    end ThermoFluidSpecial;
-
   public
     function hl_p =
         ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hl_p
@@ -4449,6 +4128,125 @@ public
                                                     p,s,dguess,Tguess,0);
     end dynamicIsentropicEnthalpy;
 
+    annotation (Icon(graphics={
+          Text(
+            extent={{-102,0},{24,-26}},
+            lineColor={242,148,0},
+            textString=
+                 "Thermo"),
+          Text(
+            extent={{-4,8},{68,-34}},
+            lineColor={46,170,220},
+            textString=
+                 "SysPro"),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{
+                42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{
+                -50,6},{-62,2}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,
+                8},{-42,22},{-42,30},{-44,38}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,
+                12},{-26,12},{-28,12},{-26,20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,30},{-6,26}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,36},{-6,32}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,42},{-6,38}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,48},{-6,44}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,32},{-2,28}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,38},{-2,34}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,44},{-2,40}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,50},{-2,46}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,
+                20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{
+                42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{
+                -50,6},{-62,2}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Line(
+            points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+            color={46,170,220},
+            thickness=0.5),
+          Polygon(
+            points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+          Line(
+            points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+            color={0,0,255},
+            smooth=Smooth.None),
+          Line(
+            points={{80,80},{100,100}},
+            color={0,0,255},
+            smooth=Smooth.None)}));
   end Standard;
   annotation (Documentation(info="<HTML>
       <h4>Package description:</h4>
@@ -4539,5 +4337,124 @@ public
       email: hubertus@modelon.se
       </address>
       </HTML>", revisions="<h4>Intermediate release notes during development<\\h4>
-<p>Currenly the Events/noEvents switch is only implmented for p-h states. Only after testing that implmentation, it will be extended to dT.</p>"));
+<p>Currenly the Events/noEvents switch is only implmented for p-h states. Only after testing that implmentation, it will be extended to dT.</p>"),
+      Icon(graphics={
+        Text(
+          extent={{-102,0},{24,-26}},
+          lineColor={242,148,0},
+          textString=
+               "Thermo"),
+        Text(
+          extent={{-4,8},{68,-34}},
+          lineColor={46,170,220},
+          textString=
+               "SysPro"),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{42,
+              8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{-50,6},
+              {-62,2}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,8},
+              {-42,22},{-42,30},{-44,38}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,12},
+              {-26,12},{-28,12},{-26,20}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,30},{-6,26}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,36},{-6,32}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,42},{-6,38}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,48},{-6,44}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,32},{-2,28}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,38},{-2,34}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,44},{-2,40}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,50},{-2,46}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,20}},
+
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{42,
+              6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{-50,6},
+              {-62,2}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+          color={46,170,220},
+          thickness=0.5),
+        Polygon(
+          points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+        Line(
+          points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{80,80},{100,100}},
+          color={0,0,255},
+          smooth=Smooth.None)}));
 end IF97_Utilities;

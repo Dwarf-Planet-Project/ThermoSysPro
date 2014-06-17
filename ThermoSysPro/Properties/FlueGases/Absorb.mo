@@ -1,11 +1,11 @@
 within ThermoSysPro.Properties.FlueGases;
 function Absorb "Flue gases - particles emissivity"
   extends ThermoSysPro.Properties.FlueGases.unSafeForJacobian;
-  input ThermoSysPro.Units.AbsolutePressure PC "CO2 partial pressure";
-  input ThermoSysPro.Units.AbsolutePressure PW "H2O partial pressure";
+  input Modelica.SIunits.AbsolutePressure PC "CO2 partial pressure";
+  input Modelica.SIunits.AbsolutePressure PW "H2O partial pressure";
   input Real FV "Volume concentration of the particules";
   input Modelica.SIunits.Length L "Optical path";
-  input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+  input Modelica.SIunits.Temperature T "Temperature";
   output Real EG " ";
   output Real ES " ";
   output Real emigaz "Gas emissivity";

@@ -1,7 +1,7 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks.Sources;
 block ConstanteEntier
   parameter Integer k=1 "Valeur de la sortie entiere";
-  ThermoSysPro.InstrumentationAndControl.Connectors.OuputInteger y
+  ThermoSysPro.InstrumentationAndControl.Connectors.OutputInteger y
                                           annotation (Placement(transformation(
           extent={{100,-10},{120,10}}, rotation=0)));
 equation

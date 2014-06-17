@@ -10,7 +10,7 @@ public
   ThermoSysPro.Units.DifferentialPressure deltaPf(start=1.e2)
     "Friction pressure loss";
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=290) "Fluid temperature";
+  Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
 
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet C1
     annotation (Placement(transformation(extent={{-100,-10},{-80,10}}, rotation

@@ -34,9 +34,9 @@ public
   discrete Real Bp2[N + 1] "(s-3)";
   discrete Real Bm2[N + 1] "(s-3)";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=290) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
 
 public
   Connectors.FluidInlet C1

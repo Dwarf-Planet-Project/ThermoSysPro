@@ -2,9 +2,9 @@ within ThermoSysPro.FlueGases.BoundaryConditions;
 model SinkG "General flue gas sink"
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
+  Modelica.SIunits.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
+  Modelica.SIunits.Temperature T "Fluid temperature";
   Real Xco2 "CO2 mass fraction";
   Real Xh2o "H2O mass fraction";
   Real Xo2 "O2 mass fraction";

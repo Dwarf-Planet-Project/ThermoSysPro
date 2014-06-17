@@ -1,7 +1,7 @@
 within ThermoSysPro.WaterSteam.PressureLosses;
 model LumpedStraightPipe "Lumped straight pipe (circular duct)"
   parameter Modelica.SIunits.Length L=10. "Pipe length";
-  parameter Modelica.SIunits.Diameter D=0.2 "Pipe internal diameter";
+  parameter Modelica.SIunits.Diameter D=0.2 "Pipe internal hydraulic diameter";
   parameter Real lambda=0.03
     "Friction pressure loss coefficient (active if lambda_fixed=true)";
   parameter Real rugosrel=0.0001
@@ -28,8 +28,6 @@ protected
     "Small mass flow for continuous flow reversal";
   parameter Modelica.SIunits.Area A=pi*D^2/4
     "Pipe cross-sectional area (circular duct is assumed)";
-  parameter Modelica.SIunits.Diameter DH=D
-    "Pipe hydraulic diameter (circular duct is assumed)";
   parameter Modelica.SIunits.Area Pw=pi*D
     "Pipe wetted perimeter (circular duct is assumed)";
 
@@ -43,9 +41,9 @@ public
   Real lam "Friction pressure loss coefficient";
   Modelica.SIunits.Density rho "Fluid density";
   Modelica.SIunits.DynamicViscosity mu "Fluid dynamic viscosity";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
 public
   Connectors.FluidInlet C1
                           annotation (Placement(transformation(extent={{-110,
@@ -90,7 +88,7 @@ equation
   deltaPf = khi*ThermoSysPro.Functions.ThermoSquare(Q, eps)/(2*A^2*rho);
 
   /* Darcy-Weisbach formula (Idel'cik p. 55). Quadratic flow regime is assumed and Re > 4000 (Re > Relim). */
-  khi = lam*L/DH;
+  khi = lam*L/D;
 
   if lambda_fixed then
     lam = lambda;
@@ -144,7 +142,7 @@ equation
       height=0.65),
     Documentation(info="<html>
 <p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

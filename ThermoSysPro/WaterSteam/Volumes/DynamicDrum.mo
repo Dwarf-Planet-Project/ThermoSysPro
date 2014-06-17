@@ -7,7 +7,7 @@ model DynamicDrum "Dynamic drum"
   parameter Modelica.SIunits.Length L=16.27 "Drum length";
   parameter Real Vf0=0.5
     "Fraction of initial water volume in the drum (active if steady_state=false)";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=50.e5
+  parameter Modelica.SIunits.AbsolutePressure P0=50.e5
     "Fluid initial pressure (active if steady_state=false)";
   parameter Real Ccond=0.01 "Condensation coefficient";
   parameter Real Cevap=0.09 "Evaporation coefficient";
@@ -36,15 +36,15 @@ protected
   parameter Modelica.SIunits.Volume Vmin=1.e-6;
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid average pressure";
-  ThermoSysPro.Units.AbsolutePressure Pfond
+  Modelica.SIunits.AbsolutePressure P "Fluid average pressure";
+  Modelica.SIunits.AbsolutePressure Pfond
     "Fluid pressure at the bottom of the drum";
-  ThermoSysPro.Units.SpecificEnthalpy hl "Liquid phase specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv "Gas phase specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature Tl "Liquid phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tv "Gas phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tp(start=550) "Wall temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Ta "External temperature";
+  Modelica.SIunits.SpecificEnthalpy hl "Liquid phase specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hv "Gas phase specific enthalpy";
+  Modelica.SIunits.Temperature Tl "Liquid phase temperature";
+  Modelica.SIunits.Temperature Tv "Gas phase temperature";
+  Modelica.SIunits.Temperature Tp(start=550) "Wall temperature";
+  Modelica.SIunits.Temperature Ta "External temperature";
   Modelica.SIunits.Volume Vl "Liquid phase volume";
   Modelica.SIunits.Volume Vv "Gas phase volume";
   Modelica.SIunits.Area Alp "Liquid phase surface on contact with the wall";
@@ -218,8 +218,8 @@ equation
   yLevel.signal = zl;
 
   /* Liquid surface and vapor surface on contact with wall */
-  Alp = if Vertical then 2*sqrt(pi/Al)*Vl + Al else (pi - 2*theta)*R*L + 2*Al;
-  Avp = if Vertical then 2*sqrt(pi/Al)*Vv + Al else (pi + 2*theta)*R*L + 2*Al;
+  Alp = if Vertical then 2*pi*R*zl + Al else (pi - 2*theta)*R*L + 2*Al;
+  Avp = if Vertical then 2*pi*R*(L - zl) + Al else (pi + 2*theta)*R*L + 2*Al;
 
   /* Wall surface on contact with the outside */
   Ape = Alp + Avp;
@@ -336,12 +336,10 @@ equation
       width=0.78,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

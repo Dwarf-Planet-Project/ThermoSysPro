@@ -4,12 +4,12 @@ model TestDynamicDrum
   ThermoSysPro.WaterSteam.Volumes.DynamicDrum Drum(
     Vv(start=39),
     Vertical=false,
-    zl(fixed=true, start=1.05),
     hl(start=1400000),
     hv(start=2689980),
+    P0=13000000,
+    P(start=13000000, fixed=true),
     Tp(start=500),
-    P0=130e5,
-    P(start=13000000, fixed=true))
+    zl(fixed=true, start=1.05))
                      annotation (Placement(transformation(extent={{-61,16},{1,
             78}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve FeedwaterValve(
@@ -111,7 +111,7 @@ equation
     annotation (Line(points={{6,-38},{6,-70},{-66,-70},{-66,-38}}));
   connect(ConsigneNiveauBallon1.y, SteamValve.Ouv)
     annotation (Line(points={{21,130},{50,130},{50,95}}, smooth=Smooth.None));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.43,
       y=0,

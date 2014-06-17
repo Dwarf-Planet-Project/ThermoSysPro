@@ -36,5 +36,5 @@ equation
           -0.1,34},{10,34},{10,30},{20,30}}, color={0,0,255}));
   connect(steamDryer.Csl, singularPressureLoss3.C1) annotation (Line(points={{
           -9.9,20},{-10,20},{-10,-10},{0,-10}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestSteamDryer2;

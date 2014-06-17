@@ -45,25 +45,21 @@ public
   Modelica.SIunits.CoefficientOfHeatTransfer K[N]
     "Global heat transfer coefficient";
   Modelica.SIunits.Area dS "Heat exchange surface";
-  ThermoSysPro.Units.AbsoluteTemperature Tec
-    "Fluid temperature at the hot inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc
-    "Fluid temperature at the hot outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef
-    "Fluid temperature at the cold inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf
-    "Fluid temperature at the cold outlet";
-  ThermoSysPro.Units.AbsolutePressure Pcc[N + 1]
+  Modelica.SIunits.Temperature Tec "Fluid temperature at the hot inlet";
+  Modelica.SIunits.Temperature Tsc "Fluid temperature at the hot outlet";
+  Modelica.SIunits.Temperature Tef "Fluid temperature at the cold inlet";
+  Modelica.SIunits.Temperature Tsf "Fluid temperature at the cold outlet";
+  Modelica.SIunits.AbsolutePressure Pcc[N + 1]
     "Hot fluid pressure at the boundary of section i";
   Modelica.SIunits.MassFlowRate Qcc[N + 1]
     "Hot fluid mass flow rate at the boundary of section i";
-  ThermoSysPro.Units.SpecificEnthalpy Hcc[N + 1]
+  Modelica.SIunits.SpecificEnthalpy Hcc[N + 1]
     "Hot fluid specific enthalpy at the boundary of section i";
-  ThermoSysPro.Units.AbsolutePressure Pcf[N + 1]
+  Modelica.SIunits.AbsolutePressure Pcf[N + 1]
     "Cold fluid pressure at the boundary of section i";
   Modelica.SIunits.MassFlowRate Qcf[N + 1]
     "Cold fluid mass flow rate at the boundary of section i";
-  ThermoSysPro.Units.SpecificEnthalpy Hcf[N + 1]
+  Modelica.SIunits.SpecificEnthalpy Hcf[N + 1]
     "Cold fluid specific enthalpy at the boundary of section i";
   Modelica.SIunits.MassFlowRate Qc[N](start=fill(500, N))
     "Mass flow rate of the hot fluid";
@@ -84,32 +80,32 @@ public
     "Hot fluid thermal conductivity";
   Modelica.SIunits.ThermalConductivity lambdaf[N](start=fill(0.597928, N))
     "Cold fluid thermal conductivity";
-  ThermoSysPro.Units.AbsoluteTemperature Tmc[N](start=fill(290, N))
+  Modelica.SIunits.Temperature Tmc[N](start=fill(290, N))
     "Hot fluid average temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tmf[N](start=fill(290, N))
+  Modelica.SIunits.Temperature Tmf[N](start=fill(290, N))
     "Cold fluid average temperature";
-  ThermoSysPro.Units.AbsolutePressure Pmc[N](start=fill(1.e5, N))
+  Modelica.SIunits.AbsolutePressure Pmc[N](start=fill(1.e5, N))
     "Hot fluid average pressure";
-  ThermoSysPro.Units.AbsolutePressure Pmf[N](start=fill(1.e5, N))
+  Modelica.SIunits.AbsolutePressure Pmf[N](start=fill(1.e5, N))
     "Cold fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy Hmc[N](start=fill(100000, N))
+  Modelica.SIunits.SpecificEnthalpy Hmc[N](start=fill(100000, N))
     "Hot fluid average specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hmf[N](start=fill(100000, N))
+  Modelica.SIunits.SpecificEnthalpy Hmf[N](start=fill(100000, N))
     "Cold fluid average specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proc[
                                                               N]
-    "Propriétés du fluide chaud" annotation (Placement(transformation(extent=
-            {{-60,-100},{-40,-80}}, rotation=0)));
+    "Propriétés du fluide chaud" annotation (Placement(transformation(extent={{
+            -60,-100},{-40,-80}}, rotation=0)));
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph prof[
                                                               N]
-    "Propriétés du fluide froid" annotation (Placement(transformation(extent=
-            {{-100,-100},{-80,-80}}, rotation=0)));
+    "Propriétés du fluide froid" annotation (Placement(transformation(extent={{
+            -100,-100},{-80,-80}}, rotation=0)));
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proce
-    "Propriétés du fluide chaud en entrée" annotation (Placement(
-        transformation(extent={{-20,80},{0,100}}, rotation=0)));
+    "Propriétés du fluide chaud en entrée" annotation (Placement(transformation(
+          extent={{-20,80},{0,100}}, rotation=0)));
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph procs
-    "Propriétés du fluide chaud en sortie" annotation (Placement(
-        transformation(extent={{20,80},{40,100}}, rotation=0)));
+    "Propriétés du fluide chaud en sortie" annotation (Placement(transformation(
+          extent={{20,80},{40,100}}, rotation=0)));
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph profe
     "Propriétés du fluide froid en entrée"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation
@@ -208,8 +204,8 @@ equation
     quf[i] = noEvent(abs(Qf[i])/M);
 
     if (pressure_loss_correlation == 0) then
-      DPc[i] = p_Kc*Qc[i]^2/(2*rhoc[i]);
-      DPf[i] = p_Kf*Qf[i]^2/(2*rhof[i]);
+      DPc[i] = p_Kc*Qc[i]^2/rhoc[i];
+      DPf[i] = p_Kf*Qf[i]^2/rhof[i];
     elseif (pressure_loss_correlation == 1) then
       DPc[i] = noEvent(if (qmc[i] < 1.e-3) then 0 else c1*14423.2/rhoc[i]*abs(
         qmc[i])^(-0.097)*quc[i]^2*(1472.47 + 1.54*(M - 1)/2 + 104.97*abs(qmc[i])
@@ -323,12 +319,10 @@ equation
       width=0.93,
       height=0.91),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

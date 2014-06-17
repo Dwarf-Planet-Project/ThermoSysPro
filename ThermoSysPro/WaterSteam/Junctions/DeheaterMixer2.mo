@@ -1,15 +1,14 @@
 within ThermoSysPro.WaterSteam.Junctions;
 model DeheaterMixer2
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tmax=700
-    "Maximum fluid temperature";
+  parameter Modelica.SIunits.Temperature Tmax=700 "Maximum fluid temperature";
   parameter Integer mode=0
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P(start=50e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=600) "Fluid temperature";
-  ThermoSysPro.Units.SpecificEnthalpy hmax(start=10e5)
+  Modelica.SIunits.AbsolutePressure P(start=50e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=600) "Fluid temperature";
+  Modelica.SIunits.SpecificEnthalpy hmax(start=10e5)
     "Maximum fluid specific enthalpy";
 
 public

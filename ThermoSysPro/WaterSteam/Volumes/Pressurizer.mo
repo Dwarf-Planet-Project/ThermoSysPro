@@ -8,7 +8,7 @@ model Pressurizer "Pressurizer"
     "Hauteur de la gamme de mesure niveau";
   parameter Real Yw0=50
     "Initial water level - percent of the measure scale level (active if steady_state=false)";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=155e5
+  parameter Modelica.SIunits.AbsolutePressure P0=155e5
     "Initial fluid pressure (active if steady_state=false)";
   parameter Real Ccond=0.1 "Condensation coefficient";
   parameter Real Cevap=0.5 "Evaporation coefficient";
@@ -41,19 +41,19 @@ public
   Modelica.SIunits.Position Zl(start=20) "Liquid level in the pressurizer";
   Modelica.SIunits.Volume Vl "Liquid phase volume";
   Modelica.SIunits.Volume Vv "Gas phase volume";
-  ThermoSysPro.Units.AbsolutePressure P(start=155.0e5) "Average fluid pressure";
-  ThermoSysPro.Units.AbsolutePressure Pfond
+  Modelica.SIunits.AbsolutePressure P(start=155.0e5) "Average fluid pressure";
+  Modelica.SIunits.AbsolutePressure Pfond
     "Fluid pressure at the bottom of the drum";
-  ThermoSysPro.Units.SpecificEnthalpy hl "Liquid phase specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv "Gas phase specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hls
+  Modelica.SIunits.SpecificEnthalpy hl "Liquid phase specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hv "Gas phase specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hls
     "Liquid phase saturation specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hvs
+  Modelica.SIunits.SpecificEnthalpy hvs
     "Gas phase saturation specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature Tl "Liquid phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tv "Gas phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tp(start=617.24) "Wall temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Ta "External temperature";
+  Modelica.SIunits.Temperature Tl "Liquid phase temperature";
+  Modelica.SIunits.Temperature Tv "Gas phase temperature";
+  Modelica.SIunits.Temperature Tp(start=617.24) "Wall temperature";
+  Modelica.SIunits.Temperature Ta "External temperature";
   Modelica.SIunits.Power Wlv
     "Thermal power exchanged from the gas phase to the liquid phase";
   Modelica.SIunits.Power Wpl

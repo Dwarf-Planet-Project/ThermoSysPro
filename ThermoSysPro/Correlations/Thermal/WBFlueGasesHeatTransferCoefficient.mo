@@ -4,16 +4,14 @@ function WBFlueGasesHeatTransferCoefficient
   input Real propf[4] "Flue gases properties vector";
   input Modelica.SIunits.MassFlowRate Qef
     "Flue gases mass flow rate at the inlet";
-  input ThermoSysPro.Units.AbsolutePressure Pmf "Flue gases average pressure";
-  input ThermoSysPro.Units.AbsoluteTemperature Tmf
-    "Flue gases average temperature";
+  input Modelica.SIunits.AbsolutePressure Pmf "Flue gases average pressure";
+  input Modelica.SIunits.Temperature Tmf "Flue gases average temperature";
   input Real XefCO2 "CO2 mass fraction at the inlet";
   input Real XefH2O "H2O mass fraction at the inlet";
   input Modelica.SIunits.PathLength dz "Step in the z direction";
   input Modelica.SIunits.Length long "Wall zone length";
   input Modelica.SIunits.Length prof "Wall zone width";
-  input ThermoSysPro.Units.AbsoluteTemperature Tpext
-    "External wall temperature";
+  input Modelica.SIunits.Temperature Tpext "External wall temperature";
   input Real fvd=0 "Particles volume fraction";
   input Real emimur=0.1 "Wall emissivity";
 

@@ -33,13 +33,13 @@ protected
     "Variable for the computation of the friction coefficient";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=800)
+  Modelica.SIunits.Temperature Tef(start=800)
     "Flue gases temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=800)
+  Modelica.SIunits.Temperature Tsf(start=800)
     "Flue gases temperature at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Pef(start=1e5)
+  Modelica.SIunits.AbsolutePressure Pef(start=1e5)
     "Flue gases pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=1e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=1e5)
     "Flue gases pressure at the outlet";
   Modelica.SIunits.MassFlowRate Qf(start=10) "Flue gases mass flow rate";
   Real XfCO2(start=0.1) "CO2 mass fraction";
@@ -49,12 +49,12 @@ public
   Real XfSO2(start=0.6) "SO2 mass fraction";
   Modelica.SIunits.Power Wer(start=10e5) "Radiation power received";
   Modelica.SIunits.Power Wech(start=1e6) "Power exchanged";
-  ThermoSysPro.Units.AbsoluteTemperature Ts(start=600)
+  Modelica.SIunits.Temperature Ts(start=600)
     "Average surface temperature on the flue gases side";
-  ThermoSysPro.Units.AbsoluteTemperature Tpet(start=600)
+  Modelica.SIunits.Temperature Tpet(start=600)
     "Average external fin wall temperature";
-  ThermoSysPro.Units.AbsolutePressure Pec0(start=1e5) "Coolant pressure";
-  ThermoSysPro.Units.AbsolutePressure Pec(start=1e5) "Coolant pressure";
+  Modelica.SIunits.AbsolutePressure Pec0(start=1e5) "Coolant pressure";
+  Modelica.SIunits.AbsolutePressure Pec(start=1e5) "Coolant pressure";
   Modelica.SIunits.Angle anglb(start=1.5)
     "Angle of the junction between the pipe and the membrane";
   Modelica.SIunits.Angle angla(start=1.5)
@@ -62,12 +62,10 @@ public
   Real rtube(start=100) "Number of coressponding pipes";
   Modelica.SIunits.Length long(start=100) "Chamber length";
   Modelica.SIunits.Length prof(start=10) "Chamber depth";
-  ThermoSysPro.Units.AbsoluteTemperature Tc(start=800)
-    "Coolant saturation temperature";
-  ThermoSysPro.Units.AbsolutePressure Pmf(start=1e5)
+  Modelica.SIunits.Temperature Tc(start=800) "Coolant saturation temperature";
+  Modelica.SIunits.AbsolutePressure Pmf(start=1e5)
     "Flue gases average pressure";
-  ThermoSysPro.Units.AbsoluteTemperature Tmf(start=800)
-    "Flue gases average temperature";
+  Modelica.SIunits.Temperature Tmf(start=800) "Flue gases average temperature";
   Real Xcor(start=0.1)
     "Corrective coefficient for the flue gases mass fractions";
   Real XfH2O0(start=0.1) "H2O corrected mass fraction";
@@ -75,10 +73,8 @@ public
   Real XfO20(start=0.1) "O2 corrected mass fraction";
   Real XfSO20(start=0.1) "SO2 corrected mass fraction";
   Real XfN20(start=0.1) "N2 corrected mass fraction";
-  constant ThermoSysPro.Units.AbsolutePressure Pnorm=1.01325e5
-    "Normal pressure";
-  constant ThermoSysPro.Units.AbsoluteTemperature Tnorm=273.15
-    "Normal temperature";
+  constant Modelica.SIunits.AbsolutePressure Pnorm=1.01325e5 "Normal pressure";
+  constant Modelica.SIunits.Temperature Tnorm=273.15 "Normal temperature";
   Modelica.SIunits.Density rhonorm(start=100)
     "Flue gases density at (Pnorm,Tnorm)";
   Modelica.SIunits.ThermalConductivity condf(start=100)
@@ -105,8 +101,8 @@ public
   Modelica.SIunits.Length rop(start=5)
     "Average optical radius between the pipes";
   Real Masmol(start=0.1) "Mixture molar mass";
-  ThermoSysPro.Units.AbsolutePressure PCO2R(start=0.5e5) "CO2 partial pressure";
-  ThermoSysPro.Units.AbsolutePressure PH2OR(start=0.5e5) "H2O partial pressure";
+  Modelica.SIunits.AbsolutePressure PCO2R(start=0.5e5) "CO2 partial pressure";
+  Modelica.SIunits.AbsolutePressure PH2OR(start=0.5e5) "H2O partial pressure";
   Real EG(start=0.5);
   Real ES(start=0.5);
   Real emigaz(start=0.5) "Gases emissivity";

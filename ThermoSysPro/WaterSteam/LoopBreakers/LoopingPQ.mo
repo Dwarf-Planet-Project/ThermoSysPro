@@ -1,7 +1,7 @@
 within ThermoSysPro.WaterSteam.LoopBreakers;
 model LoopingPQ
 
-  parameter ThermoSysPro.Units.AbsolutePressure P=1e5
+  parameter Modelica.SIunits.AbsolutePressure P=1e5
     "Pression imposée en sortie";
   parameter Modelica.SIunits.MassFlowRate Q=1.0 "Débit imposé";
 

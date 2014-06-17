@@ -7,6 +7,8 @@ model SteamEngine
     "Power losses due to hydrodynamic friction (percent)";
   parameter Real eta_stato=1.0
     "Efficiency to account for cinetic losses (<= 1) (s.u.)";
+  parameter Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
   parameter Integer mode_e=0
     "Inlet IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
   parameter Integer mode_s=0
@@ -15,13 +17,13 @@ model SteamEngine
 public
   Modelica.SIunits.Power W "Power produced by the engine";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy His
+  Modelica.SIunits.SpecificEnthalpy His
     "Fluid specific enthalpy after isentropic expansion";
   ThermoSysPro.Units.DifferentialPressure deltaP "Pressure loss";
-  ThermoSysPro.Units.AbsolutePressure Pe(start=10e5) "Pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Ps(start=10e5) "Pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Te "Temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Ts "Temperature at the outlet";
+  Modelica.SIunits.AbsolutePressure Pe(start=10e5) "Pressure at the inlet";
+  Modelica.SIunits.AbsolutePressure Ps(start=10e5) "Pressure at the outlet";
+  Modelica.SIunits.Temperature Te "Temperature at the inlet";
+  Modelica.SIunits.Temperature Ts "Temperature at the outlet";
   Real xm(start=1.0,min=0) "Average vapor mass fraction (n.u.)";
 
 public
@@ -53,7 +55,13 @@ equation
   xm = (proe.x + pros.x)/2.0;
 
   /* Mass flow */
-  Q = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], deltaP);
+  if (option_interpolation == 1) then
+    Q = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], deltaP);
+  elseif (option_interpolation == 2) then
+    Q = ThermoSysPro.Functions.SplineInterpolation(caract[:, 1], caract[:, 2], deltaP);
+  else
+    assert(false, "SteamEngine: incorrect interpolation option");
+  end if;
 
   /* Fluid specific enthalpy at the outlet */
   C2.h - C1.h = xm*eta_is*(His - C1.h);
@@ -130,8 +138,8 @@ equation
       width=0.76,
       height=0.76),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

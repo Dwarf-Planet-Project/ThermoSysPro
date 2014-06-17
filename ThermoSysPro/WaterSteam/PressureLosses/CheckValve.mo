@@ -29,9 +29,9 @@ public
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
   ThermoSysPro.Units.DifferentialPressure deltaP "Singular pressure loss";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=290) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
     "Propriétés de l'eau"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation

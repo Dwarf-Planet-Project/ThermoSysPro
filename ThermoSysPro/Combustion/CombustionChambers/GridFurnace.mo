@@ -7,7 +7,7 @@ model GridFurnace "Combustion furnace"
   parameter Real XMACHeom=0 "machefers mass fraction in the biomass";
   parameter Modelica.SIunits.Density rhoCENDom=0.5
     "Density of the ashes in the biomass";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tfrecirc=600
+  parameter Modelica.SIunits.Temperature Tfrecirc=600
     "Temperature of the recirculated flue gases";
   parameter Real XfCO2recirc=0.3
     "CO2 mass fraction in the recirculated flue gases";
@@ -26,9 +26,9 @@ model GridFurnace "Combustion furnace"
     "Clinker specific heat capacity at the outlet of zone 3";
   parameter Modelica.SIunits.SpecificHeatCapacity CpMACHs4=500
     "Clinker specific heat capacity at the outlet of zone 4";
-  parameter ThermoSysPro.Units.AbsoluteTemperature TsjeMACH=293
+  parameter Modelica.SIunits.Temperature TsjeMACH=293
     "Clinker temperature at the outlet of the water seal";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Teeje=293
+  parameter Modelica.SIunits.Temperature Teeje=293
     "Water temperature at the outlet of the water seal";
   parameter Real XsjeH2OMACH=0.2
     "Clinker humidity at the outlet of the water seal";
@@ -36,7 +36,7 @@ model GridFurnace "Combustion furnace"
   parameter Integer jointeau=0 "1: with water seal - 0: without water seal";
   parameter Real XCvol=0 "Volatile carbon fraction";
   parameter Real XCimb=0 "Unburnt carbon fraction";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T1sfm=500
+  parameter Modelica.SIunits.Temperature T1sfm=500
     "Flue gases temperature at the outlet of zone 1";
   parameter Real Eray2=0.1
     "Energy fraction radiated towards zone 2 of the furnace";
@@ -49,9 +49,9 @@ model GridFurnace "Combustion furnace"
 public
   Modelica.SIunits.MassFlowRate Qsf(start=10)
     "Flue gases mass flow rate at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=1e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=1e5)
     "Flue gases pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=1000)
+  Modelica.SIunits.Temperature Tsf(start=1000)
     "Flue gases temperature at the outlet";
   Real XsfN2(start=0.6) "Flue gases N2 mass fraction at the outlet";
   Real XsfCO2(start=0.1) "Flue gases CO2 mass fraction at the outlet";
@@ -59,25 +59,23 @@ public
   Real XsfO2(start=0.1) "Flue gases O2 mass fraction at the outlet";
   Real XsfSO2(start=0.1) "Flue gases SO2 mass fraction at the outlet";
   Modelica.SIunits.MassFlowRate Qeap(start=10) "Primary air mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Peap(start=1e5) "Primary air pressure";
-  ThermoSysPro.Units.AbsoluteTemperature Teap(start=300)
-    "Primary air temperature";
+  Modelica.SIunits.AbsolutePressure Peap(start=1e5) "Primary air pressure";
+  Modelica.SIunits.Temperature Teap(start=300) "Primary air temperature";
   Real XeapN2(start=0.6) "Primary air N2 mass fraction";
   Real XeapCO2(start=0.1) "Primary air CO2 mass fraction";
   Real XeapH2O(start=0.1) "Primary air H2O mass fraction";
   Real XeapO2(start=0.1) "Primary air O2 mass fraction";
   Real XeapSO2(start=0.1) "Primary air SO2 mass fraction";
   Modelica.SIunits.MassFlowRate Qeas(start=10) "Secondary air mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Peas(start=1e5) "Secondary air pressure";
-  ThermoSysPro.Units.AbsoluteTemperature Teas(start=300)
-    "Secondary air temperature";
+  Modelica.SIunits.AbsolutePressure Peas(start=1e5) "Secondary air pressure";
+  Modelica.SIunits.Temperature Teas(start=300) "Secondary air temperature";
   Real XeasN2(start=0.6) "Secondary air N2 mass fraction";
   Real XeasCO2(start=0.1) "Secondary air CO2 mass fraction";
   Real XeasH2O(start=0.1) "Secondary air H2O mass fraction";
   Real XeasO2(start=0.1) "Secondaryr O2 mass fraction";
   Real XeasSO2(start=0.1) "Secondary SO2 mass fraction";
   Modelica.SIunits.MassFlowRate Qeom(start=10) "Biomass mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature Teom(start=300) "Biomass temperature";
+  Modelica.SIunits.Temperature Teom(start=300) "Biomass temperature";
   Real PCIom(start=1e6) "Biomass LHV (J/kg)";
   Real XCeom(start=0.1) "Biomass C mass fraction";
   Real XHeom(start=0.1) "Biomass H mass fraction";
@@ -89,32 +87,31 @@ public
   Modelica.SIunits.SpecificHeatCapacity Cpom(start=1000)
     "Biomass specific heat capacity";
   Modelica.SIunits.MassFlowRate Qerefo(start=10) "Cooling water mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy Herefo(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Herefo(start=10e3)
     "Cooling water specific enthalpy";
   Modelica.SIunits.MassFlowRate Qfrecirc(start=10)
     "Recirculated flue gases mass flow rate";
   Real XsfN2recirc(start=0.1) "Recirculated flue gases N2 mass fraction";
   Real PCIMACH(start=10e6) "Clinker LHV";
   Modelica.SIunits.MassFlowRate QsMACH(start=10) "Clinker mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature TsMACH(start=500)
-    "Clinket temperature";
+  Modelica.SIunits.Temperature TsMACH(start=500) "Clinket temperature";
   Real FVN(start=0.1) "Volatile ashes mass fraction";
   Modelica.SIunits.Density rhocend(start=500) "Ashes density in the flue gases";
   Modelica.SIunits.Power Wsr(start=10e6) "Radiated power";
   Real excair(start=0.1) "Combustion excess air";
 
 protected
-  constant ThermoSysPro.Units.SpecificEnthalpy H0v=2501551.43
+  constant Modelica.SIunits.SpecificEnthalpy H0v=2501551.43
     "Vaporisation energy at 0°C";
-  constant ThermoSysPro.Units.SpecificEnthalpy HfCO2=3.2791664e7
+  constant Modelica.SIunits.SpecificEnthalpy HfCO2=3.2791664e7
     "CO2 formation enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy HfCO=9.201e6
+  constant Modelica.SIunits.SpecificEnthalpy HfCO=9.201e6
     "CO formation enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy HfH2Og=13.433333e6
+  constant Modelica.SIunits.SpecificEnthalpy HfH2Og=13.433333e6
     "H2Og formation enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy HfSO2=4.6302650e6
+  constant Modelica.SIunits.SpecificEnthalpy HfSO2=4.6302650e6
     "SO2 formation enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy HfH2Ol=15.883300e6
+  constant Modelica.SIunits.SpecificEnthalpy HfH2Ol=15.883300e6
     "H2Ol formation enthalpy";
 
 public
@@ -130,19 +127,19 @@ public
   Real XCvol3(start=0.1) "C mass fraction burnt in zone 3";
 
 //Zone1
-  ThermoSysPro.Units.SpecificEnthalpy Heap(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Heap(start=1e3)
     "Humid air specific enthalpy at the primary air temperature";
-  ThermoSysPro.Units.SpecificEnthalpy Heas(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Heas(start=1e3)
     "Humid air specific enthalpy at the secondary air temperature";
-  ThermoSysPro.Units.SpecificEnthalpy H1a(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy H1a(start=1e3)
     "Primary air specific enthalpy at T1sfm";
-  ThermoSysPro.Units.SpecificEnthalpy Hefrecirc(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hefrecirc(start=1e3)
     "Specific enthalpy of the incoming recirculated flue gases";
   Modelica.SIunits.MassFlowRate Qeasm(start=10)
     "Mass flow rate of the secondary air / recirculated flue gases mixture";
-  ThermoSysPro.Units.SpecificEnthalpy Heasm(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Heasm(start=1e3)
     "Specific enthalpy of the secondary air / recirculated flue gases mixture";
-  ThermoSysPro.Units.AbsoluteTemperature Teasm(start=500)
+  Modelica.SIunits.Temperature Teasm(start=500)
     "Temperature of the secondary air / recirculated flue gases mixture";
   Real XeasmO2(start=0.1)
     "O2 mass fraction in the secondary air / recirculated flue gases mixture";
@@ -156,19 +153,19 @@ public
     "N2 mass fraction in the secondary air / recirculated flue gases mixture";
   Integer mode=0
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
-  ThermoSysPro.Units.SpecificEnthalpy Heauom(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Heauom(start=1e3)
     "Biomass water specific enthalpy";
-  ThermoSysPro.Units.AbsolutePressure Psateom(start=1e5)
+  Modelica.SIunits.AbsolutePressure Psateom(start=1e5)
     "Water saturation presure at Teom";
-  ThermoSysPro.Units.SpecificEnthalpy Hvteom(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hvteom(start=10e3)
     "Steam saturation specific enthalpy at Teom";
-  ThermoSysPro.Units.SpecificEnthalpy Hlteom(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hlteom(start=10e3)
     "Water saturation specific enthalpy at Teom";
-  ThermoSysPro.Units.SpecificEnthalpy Hvapteom(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hvapteom(start=10e3)
     "Phase transition energy at Teom";
-  ThermoSysPro.Units.SpecificEnthalpy Hs1vom(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hs1vom(start=1e3)
     "Water specific enthalpy of the outgoing biomass at T1sfm vapor";
-  ThermoSysPro.Units.SpecificEnthalpy Heom(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Heom(start=1e3)
     "Biomass specific enthalpy at the inlet";
   Modelica.SIunits.Power Wff(start=1e6) "Flue gases formation energy";
   Modelica.SIunits.Power Wp(start=1e6) "Biomass pyrolysis power";
@@ -176,9 +173,9 @@ public
     "Power saved in the combustion flue gases due to the non-destruction of unburnt C";
   Modelica.SIunits.Power Wimbm(start=1e6)
     "Power lost by the combustion flue gases due to the non-combustion of unburnt C";
-  ThermoSysPro.Units.SpecificEnthalpy Hpyr(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hpyr(start=1e3)
     "Pyrolysis specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy H1om(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy H1om(start=1e3)
     "Specific enthalpy of the dry biomass at the pyrolysis temperature of the biomass";
   Modelica.SIunits.MassFlowRate Q1H2O(start=10)
     "H2O mass flow rate at the oultet of zone 1";
@@ -245,8 +242,7 @@ public
     "Unburnt C mas fraction in the clinker after volatilisation";
   Real PCICsol(start=1e6) "LHV of the solid outgoing carbon";
   Real PCICvol(start=1e6) "LHV of the volatile carbon transformed into CO";
-  ThermoSysPro.Units.SpecificEnthalpy H2(start=1e3)
-    "Enthalpy released in zone 2";
+  Modelica.SIunits.SpecificEnthalpy H2(start=1e3) "Enthalpy released in zone 2";
   Modelica.SIunits.Power P2g(start=1e6)
     "Power released by the combustion in zone 2";
   Modelica.SIunits.Power P1o(start=1e6) "Power captured by the biomass";
@@ -260,9 +256,9 @@ public
   Real X2CO2(start=0.1) "CO2 mass fraction at the oultet of zone 2";
   Real X2H2O(start=0.1) "H2O mass fraction at the oultet of zone 2";
   Real X2N2(start=0.1) "N2 mass fraction at the oultet of zone 2";
-  ThermoSysPro.Units.SpecificEnthalpy H2g(start=1200000)
+  Modelica.SIunits.SpecificEnthalpy H2g(start=1200000)
     "Flue gases specific enthalpy at the oultet of zone 2";
-  ThermoSysPro.Units.AbsoluteTemperature T2(start=1000)
+  Modelica.SIunits.Temperature T2(start=1000)
     "Flue gases temperature at the oultet of zone 2";
 
 //Zone 3
@@ -288,9 +284,9 @@ public
     "Power captured by solid matter in zone 3";
   Modelica.SIunits.Power P3g(start=1e6)
     "Power captured by gaseous matter in zone 3";
-  ThermoSysPro.Units.SpecificEnthalpy H3s(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy H3s(start=1e3)
     "Gaseous matter specific enthalpy at T3g";
-  ThermoSysPro.Units.SpecificEnthalpy H3g(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy H3g(start=1e3)
     "Solid matter specific enthalpy at T3o";
   Real XC2vol31(start=0.1)
     "C mass fraction burnt in zone 3 after volatilisation";
@@ -305,7 +301,7 @@ public
     "Unburnt C mass fraction in the clinker after C volatilisation in zone 3";
   Modelica.SIunits.SpecificHeatCapacity Cp3a(start=1000)
     "Average specific heat capacity at the inlet of zone 3";
-  ThermoSysPro.Units.AbsoluteTemperature T3o(start=500)
+  Modelica.SIunits.Temperature T3o(start=500)
     "Clinker temperature at the outlet of zone 3";
   constant Modelica.SIunits.SpecificHeatCapacity Cp3g=1100
     "Average flue gases specific heat capacity at T3g";
@@ -315,9 +311,9 @@ public
     "Total flue gases power at the outlet of zone 3";
 
 //Zone 4
-  ThermoSysPro.Units.AbsoluteTemperature T4o(start=600)
+  Modelica.SIunits.Temperature T4o(start=600)
     "Clinker temperature at the outlet for the water seal";
-  ThermoSysPro.Units.AbsoluteTemperature T4er(start=600)
+  Modelica.SIunits.Temperature T4er(start=600)
     "Water temperature at the inlet of the water seal";
   Real X4H2O(start=0.1)
     "H2O mass fraction in the clinker at the outlet of the water seal";
@@ -329,9 +325,9 @@ public
     "Power associated to the clinker humidity";
   Modelica.SIunits.MassFlowRate Q4v(start=10)
     "Steam mass flow rate generated by the water seal";
-  ThermoSysPro.Units.SpecificEnthalpy H4(start=1e3) "Enthalpy in zone 4";
+  Modelica.SIunits.SpecificEnthalpy H4(start=1e3) "Enthalpy in zone 4";
   Modelica.SIunits.Power P4v(start=1e6) "Power captured by the steam in zone 4";
-  constant ThermoSysPro.Units.SpecificEnthalpy Hvapo=2501600
+  constant Modelica.SIunits.SpecificEnthalpy Hvapo=2501600
     "Vaporisation energy";
 
 //Zone 5

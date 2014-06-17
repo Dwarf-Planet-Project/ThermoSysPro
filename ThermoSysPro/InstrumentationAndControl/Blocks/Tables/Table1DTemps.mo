@@ -1,8 +1,8 @@
 within ThermoSysPro.InstrumentationAndControl.Blocks.Tables;
-
-
 block Table1DTemps
   parameter Real Table[:, 2]=[0, 0; 1, 0] "Table (temps = première colonne)";
+  parameter Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
 
 protected
   parameter Real Tu[:]=Table[:, 1] "Entrées de la table";
@@ -13,7 +13,13 @@ public
           extent={{100,-10},{120,10}}, rotation=0)));
 equation
 
-  y.signal = ThermoSysPro.Functions.LinearInterpolation(Tu, Ty, time);
+  if (option_interpolation == 1) then
+    y.signal = ThermoSysPro.Functions.LinearInterpolation(Tu, Ty, time);
+  elseif (option_interpolation == 2) then
+    y.signal = ThermoSysPro.Functions.SplineInterpolation(Tu, Ty, time);
+  else
+    assert(false, "Table1DTemps: incorrect interpolation option");
+  end if;
 
   annotation (
     Icon(coordinateSystem(
@@ -104,10 +110,7 @@ equation
         Line(points={{80,0},{100,0}}),
         Line(points={{0,-40},{28,-40}}, color={0,0,0})}),
     Documentation(info="<html>
-<p><b>Adapted from the ModelicaAdditions.Blocks.Tables library</b></p>
-</HTML>
-<html>
-<p><b>Version 1.0</b></p>
-</HTML>
-"));
+<p><b>Adapted from the ModelicaAdditions.Blocks.Tables library</b> </p>
+<p><b>Version 3.1</b>  </p>
+</html>"));
 end Table1DTemps;

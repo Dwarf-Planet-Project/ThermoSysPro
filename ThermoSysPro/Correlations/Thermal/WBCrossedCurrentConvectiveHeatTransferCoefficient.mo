@@ -1,12 +1,14 @@
 within ThermoSysPro.Correlations.Thermal;
 function WBCrossedCurrentConvectiveHeatTransferCoefficient
   "Convective heat transfer coefficient for crossed current heat exchangers"
-  input ThermoSysPro.Units.AbsoluteTemperature TFilm "Film temperature";
+  input Modelica.SIunits.Temperature TFilm "Film temperature";
   input Modelica.SIunits.MassFlowRate Qf "Flue gases mass flow rate";
   input Real Xh2o "H2O mass fraction in the flue gases";
   input Modelica.SIunits.Area Sgaz "Geometrical parameter";
   input Modelica.SIunits.Diameter Dext "Pipes external diameter";
   input Real Fa "Pipes position coefficient";
+  input Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
 
   output Modelica.SIunits.CoefficientOfHeatTransfer Kcfc
     "Convective heat transfer coefficient for crossed current heat exchanger";
@@ -47,7 +49,13 @@ algorithm
   CondConv := 0.287*MassFlow^0.61/Dextb^0.39;
 
   /* Physical properties factor */
-  Fpp := ThermoSysPro.Functions.TableLinearInterpolation(TabUm, TabTFilm, TabFpp, Xh2o, TFilmb);
+  if (option_interpolation == 1) then
+    Fpp := ThermoSysPro.Functions.TableLinearInterpolation(TabUm, TabTFilm, TabFpp, Xh2o, TFilmb);
+  elseif (option_interpolation == 2) then
+    Fpp := ThermoSysPro.Functions.TableSplineInterpolation(TabUm, TabTFilm, TabFpp, Xh2o, TFilmb);
+  else
+    assert(false, "WBCrossedCurrentConvectiveHeatTransferCoefficient: incorrect interpolation option");
+  end if;
 
   /* Heat transfer coefficient for crossed-current flue gases */
   Kcb := CondConv*Fpp*Fa;
@@ -58,12 +66,9 @@ algorithm
   annotation (
       smoothOrder=2,
       Icon(graphics),      Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-",        revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>", revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

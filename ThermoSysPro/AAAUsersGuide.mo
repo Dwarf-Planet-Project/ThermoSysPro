@@ -6,6 +6,7 @@ package AAAUsersGuide "ThermoSysPro Licence and Users Guide"
 
 
   class Version_2_0 "Version 2.0"
+
       annotation (Documentation(info="<html>
 <h3><font color=\"#008000\">Version 2.0 (January 24, 2011)</font></h3>
 <p> This is the first open source release of the library.
@@ -15,12 +16,494 @@ package AAAUsersGuide "ThermoSysPro Licence and Users Guide"
   end Version_2_0;
 
   class Version_3_0 "Version 3.0"
+
       annotation (Documentation(info="<html>
 <p><b><font style=\"font-size: 10pt; color: #008000; \">Version 3.0 (December 20, 2011)</font></b></p>
-<p>Analytic jacobian is added to the library. </p>
+<p align=\"center\"><b><font style=\"font-size: 16pt; \">ThermoSysPro modifications from version 2.0</b> </p>
+<p>Analytic jacobian is added to the library.</p>
 <p>The examples package is added to the library.</p>
+<p>Other modifications:</p>
+<p><ul>
+<li>Component MultiFluids.HeatExchangers.DynamicExchangerWaterSteamFlueGases </li>
+<li><ul>
+<li>Introduction of two new parameters z1 and z2 </li>
+<li>Correction of parameters TwoPhaseFlowPipe.z1, and TwoPhaseFlowPipe.z2 </li>
+<li>Old values: z1 = 0, z2 = 0</li>
+<li>New values: z1 = z1, z2 = z2</li>
+</ul></li>
+<li>Package Units </li>
+<li><ul>
+<li>New unit AbsoluteTemperature </li>
+<li>New unit DifferentialTemperature </li>
+<li>New unit&nbsp; AbsolutePressure </li>
+<li>New unit DifferentialPressure </li>
+<li>New unit SpecificEnthalpy </li>
+</ul></li>
+<li>Component&nbsp; ElectroMechanics.Machines.SynchronousMotor </li>
+<li><ul>
+<li>Parameter permanent_meca changed to steady_state_mech </li>
+<li>Parameter Coupleur changed to mech_coupling </li>
+</ul></li>
+<li>Component&nbsp; ElectroMechanics.Machines.Shaft </li>
+<li><ul>
+<li>Parameter permanent_meca changed to steady_state_mech </li>
+</ul></li>
+<li>Package Properties.WaterSteam.IF97_packages </li>
+<li><ul>
+<li>New IF97 package with analytic jacobian </li>
+<li>Removal of the old IF97 package </li>
+</ul></li>
+<li>Function IF97.SplineUtilities.Modelica_Interpolation.Bspline1D.parametrization </li>
+<li><ul>
+<li>arccos changed to acos </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.CheckValve </li>
+<li><ul>
+<li>Adding modifier (start=false, fixed=true) for variables touvert and tferme. </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.IdealCheckValve </li>
+<li><ul>
+<li>Adding modifier (start=false, fixed=true) for variables touvert and tferme. </li>
+</ul></li>
+<li>Component FlueGases.PressureLosses.CheckValve </li>
+<li><ul>
+<li>Adding modifier (start=false, fixed=true) for variables touvert and tferme. </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicTwoPhaseFlowPipe </li>
+<li><ul>
+<li>Adding a default value to parameter T0 </li>
+</ul></li>
+<li>Package Functions </li>
+<li><ul>
+<li>New function SmoothStep </li>
+<li>New function SmoothSign </li>
+<li>New function SmoothAbs </li>
+</ul></li>
+<li>Component WaterSteam.Machines.DynamicCentrifugalPump </li>
+<li><ul>
+<li>Use of function SmoothSign for computation of Cf. </li>
+<li>New parameter continuous_flow_reversal </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StaticCentrifugalPump </li>
+<li><ul>
+<li>New parameter continuous_flow_reversal </li>
+<li>Removing input commandePompe </li>
+<li>Input VRotation changed to rpm_or_mpower </li>
+<li>New parameter MPower </li>
+<li>New parameter fixed_rot_or_power </li>
+<li>Efficiency characteristics rh=a*Qv^2/R^2 + b*Qv/R + c changed to rh=a*Qv*abs(Qv)/R^2+b*Qv/R+c to ensure convergence for fixed mechanical power </li>
+</ul></li>
+<li>Component</font><font style=\"color: #ff0000; \"> </font>WaterSteam.PressureLoses.LumpedStraightPipe &LT;====== </li>
+<li><ul>
+<li>Modification of default value of parameter rugosrel. Old value: 0, new value 0.0001. </li>
+<li>Adding initial equation:&nbsp; der(Q) = 0 </li>
+</ul></li>
+<li>Component WaterSteam.Volumes.TwoPhaseVolume </li>
+<li><ul>
+<li>Property prol is computed at pressure (P + Pfond)/2 instead of P. </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicOnePhaseFlowPipe </li>
+<li><ul>
+<li>New parameter dpfCorr </li>
+<li>New parameter hcCorr </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchanger.DynamicTwoPhaseFlowPipe </li>
+<li><ul>
+<li>New parameter dpfCorr </li>
+</ul></li>
+<li>Component Thermal.HeatTransfer.HeatExchangerWall </li>
+<li><ul>
+<li>Wall 1 becomes the internal wall </li>
+<li>Wall 2 becomes the external wall </li>
+<li>Heat flux through external wall is corrected </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchanger. StaticWaterWaterExchangerDTorWorEff </li>
+<li><ul>
+<li>Modification of the power equation for case exchanger_type = 3. </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchanger.TemperatureWallBoiler </li>
+<li><ul>
+<li>Modification of some parameter default values </li>
+</ul></li>
+<li>Function Correlations.PressureLosses.WBWaterSteamPressureLosses </li>
+<li><ul>
+<li>b0 is bounded to 0.01 </li>
+<li>Gm^2 is replaced by Gm*abs(Gm) </li>
+<li>Adding equation dpa := 0. </li>
+</ul></li>
+<li>Function Properties.WaterSteam.BaseIF97.Basic.psat </li>
+<li><ul>
+<li>Calls to LogVariable removed. </li>
+</ul></li>
+<li>Component Combustion.BoundaryConditions.FuelSourcePQ </li>
+<li><ul>
+<li>Handling of input signals corrected. </li>
+</ul></li>
+<li>Component MultiFluid.HeatExchangers.NTUTechnologicalExchangerWaterSteamFlueGases </li>
+<li><ul>
+<li>Correction of computation of variable mono. </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StodolaTurbine </li>
+<li><ul>
+<li>Modification of default value for parameter Qmax. Old Value=15, new value=1. </li>
+</ul></li>
+<li>Function Correlation.Thermal.WBInternalHeatTransferCoefficient </li>
+<li><ul>
+<li>New function. </li>
+</ul></li>
+<li>Component WaterSteamHeatExchangers.TemperatureWallBoiler </li>
+<li><ul>
+<li>Call to WBInternalHeatTransferCoefficient instead of separate calls to WBInternalOnePhaseFlowHeatTransferCoefficient and WBInternalTwoPhaseFlowHeatTransferCoefficient </li>
+</ul></li>
+<li>Component WaterSteam.Junctions.Mixer3 </li>
+<li><ul>
+<li>Bug correction: flow from port Ce3 added in mass balance and energy balance equations. </li>
+</ul></li>
+<li>Component WaterSteam.BoundaryConditions.RefQ </li>
+<li><ul>
+<li>Correction of default value for Q0. Old value=1.e5. New value=10. </li>
+</ul></li>
+<li>Component WaterSteam.Junctions.StaticDrum </li>
+<li><ul>
+<li>Correction of comment for parameter x </li>
+<li>Adding thermal connector Cth and variable T </li>
+<li>Modification of energy balance equation to take into account external energy supply. </li>
+<li>Adding equation Cth.T = T; </li>
+</ul></li>
+<li>Package Thermal.BoundaryConditions </li>
+<li><ul>
+<li>New component HeatSink </li>
+</ul></li>
+<li>Package WaterSteam.BoundaryConditions </li>
+<li><ul>
+<li>New components PlugA, PlugB </li>
+</ul></li>
+<li>Component InstrumentationAndControl.Blocks.Tables.Table1D </li>
+<li><ul>
+<li>Dymola specific function Interpolate is replaced by ThermoSysPro.Functions.LinearInterpolation. </li>
+</ul></li>
+<li>Component InstrumentationAndControl.Blocks.Tables.Table1DTemps </li>
+<li><ul>
+<li>Dymola specific function Interpolate is replaced by ThermoSysPro.Functions.LinearInterpolation. </li>
+</ul></li>
+<li>Function Functions.LinearInterpolation </li>
+<li><ul>
+<li>Output DeltaYX is removed. </li>
+<li>Function calls Functions.LinearInterpolation_i, which returns DelTaXY. </li>
+</ul></li>
+<li>Function Functions.TableLinearInterpolation </li>
+<li><ul>
+<li>Outputs DeltaYX and DeltaYP are removed. </li>
+<li>Function calls Functions.TableLinearInterpolation_i, which returns DelTaXY and DeltaYP. </li>
+</ul></li>
+<li>Function Correlations.Misc..WBCorrectiveDiameterCoefficient </li>
+<li><ul>
+<li>Unused variables Z1, Z2 are removed. </li>
+</ul></li>
+<li>Function Correlations.Thermal.WBCrossedCurrentConvectiveHeatTranferCoefficient </li>
+<li><ul>
+<li>Unused variables Z1, Z2 are removed. </li>
+</ul></li>
+<li>Function Correlations.Thermal.WBLongitudinalCurrentConvectiveHeatTranferCoefficient </li>
+<li><ul>
+<li>Unused variables Z1, Z2 are removed. </li>
+</ul></li>
+<li>Function Correlations.Thermal.WBRadiativeHeatTranferCoefficient </li>
+<li><ul>
+<li>Unused variables Z1, Z2, Z3, Z4 are removed. </li>
+</ul></li>
+<li>Component WaterSteam.Machines.SteamEngine </li>
+<li><ul>
+<li>Function Interpolation is replaced by function LinearInterpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.ControlValve </li>
+<li><ul>
+<li>Function Interpolation is replaced by function LinearInterpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.DynamicCheckValve </li>
+<li><ul>
+<li>Function Interpolation is replaced by function LinearInterpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.DynamicReliefValve </li>
+<li><ul>
+<li>Function Interpolation is replaced by function LinearInterpolation </li>
+</ul></li>
+<li>Component FlueGases.PressureLosses.ControlValve </li>
+<li><ul>
+<li>Function Interpolation is replaced by function LinearInterpolation </li>
+</ul></li>
+<li>Package Functions </li>
+<li><ul>
+<li>Function Interpolation is removed. One should use function LinearInterpolation instead. </li>
+</ul></li>
+<li>Package Units </li>
+<li><ul>
+<li>Unit RotationVelocity renamed to AngularVelocity_rpm </li>
+</ul></li>
+</ul></p>
+<p><b>&nbsp;</b> </p>
 </html>"));
   end Version_3_0;
+
+  class Version_3_1 "Version 3.1"
+
+      annotation (Documentation(info="<html>
+<p><b><font style=\"font-size: 10pt; color: #008000; \">Version 3.1 (June 12, 2014)</font></b> </p>
+<p align=\"center\"><b><font style=\"font-size: 16pt; \">ThermoSysPro modifications from version 3.0</b> </p>
+<p>&nbsp; </p>
+<p><ul>
+<li>Component ElectroMechanics.BoundaryConditions.SourceMechanicalPower </li>
+<li><ul>
+<li>Equation M.Ctr*abs(M.w) = IPower.signal is replaced by M.Ctr*M.w = IPower.signal </li>
+</ul></li>
+<li>Package ElectroMechanics.BoundaryConditions </li>
+<li><ul>
+<li>New component SourceAngularVelocity </li>
+<li>New component SourceTorque </li>
+</ul></li>
+<li>Package Function </li>
+<li><ul>
+<li>New function SmoothMax </li>
+<li>New function SmoothMin </li>
+<li>New function SmoothCond </li>
+</ul></li>
+<li>Package WaterSteam.Machines </li>
+<li><ul>
+<li>New component CentrifugalPump, replaces old components DynamicCentrifugalPump and StaticCentrifugalPump. </li>
+</ul></li>
+<li>Component WaterSteam.Machines.DynamicCentrifugalPump </li>
+<li><ul>
+<li>Obsolete component, replaced by component CentrifugalPump </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StaticCentrifugalPump </li>
+<li><ul>
+<li>Obsolete component, replaced by component CentrifugalPump </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicOnePhaseFlowPipe </li>
+<li><ul>
+<li>Parameter dynamic_energy_balance is removed </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicTwoPhaseFlowPipe </li>
+<li><ul>
+<li>Parameter dynamic_energy_balance is removed </li>
+</ul></li>
+<li>Function Properties.CH3F5.CH3F5_Ps </li>
+<li><ul>
+<li>Correction of the computation of x for one-phase flow (liquid or vapor) </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.SimpleDynamicCondenser </li>
+<li><ul>
+<li>Correction of the computation of Wout </li>
+</ul></li>
+<li>Component WaterSteam.Volumes.TwoPhaseVolume </li>
+<li><ul>
+<li>Correction: Cl.a = true (instead of Cl.b = true) </li>
+</ul></li>
+<li>Component FlueGases.HeatExchangers. StaticWallFlueGasesExchanger </li>
+<li><ul>
+<li>Correction of the computation of dW[i] </li>
+</ul></li>
+<li>Component WaterSteam.Junctions.SteamDryer </li>
+<li><ul>
+<li>Correction of the mass balance equations </li>
+</ul></li>
+<li>Component Combustion.CombustionChambers.GenericCombustionChamber </li>
+<li><ul>
+<li>Correction of the computation of HFuel </li>
+</ul></li>
+<li>Component Combustion.CombustionChambers.GTCombustionChamber </li>
+<li><ul>
+<li>Correction of the computation of HFuel </li>
+</ul></li>
+<li>Component WaterSteam.Volumes.Tank </li>
+<li><ul>
+<li>Parameter k is replaced by parameters ke1, ke2, ks1, ks2. </li>
+</ul></li>
+<li>Function Functions. LinearInterpolation_i </li>
+<li><ul>
+<li>Correction of the computation of Y </li>
+</ul></li>
+<li>Package Units </li>
+<li><ul>
+<li>Unit SpecificEnthalpy removed </li>
+<li>Unit AbsolutePressure removed </li>
+<li>Unit AbsoluteTemperature removed </li>
+</ul></li>
+<li>Package WaterSteam.HeatExchangers </li>
+<li><ul>
+<li>New component DynamicWaterHeating </li>
+</ul></li>
+<li>Package WaterSteam.Volumes </li>
+<li><ul>
+<li>New component TwoPhaseCavity </li>
+</ul></li>
+<li>Component FlueGases.Volumes.VolumeATh </li>
+<li><ul>
+<li>Modifier stateSelect removed </li>
+</ul></li>
+<li>Component FlueGases.Volumes.VolumeBTh </li>
+<li><ul>
+<li>Modifier stateSelect removed </li>
+</ul></li>
+<li>Component FlueGases.Volumes.VolumeCTh </li>
+<li><ul>
+<li>Modifier stateSelect removed </li>
+</ul></li>
+<li>Component FlueGases.Volumes.VolumeDTh </li>
+<li><ul>
+<li>Modifier stateSelect removed </li>
+</ul></li>
+<li>Component WaterSteam.Machines.Compressor </li>
+<li><ul>
+<li>xm is bounded by min value 0.01 (to avoid division by zero in case fluid is water, which should not happen in a compressor). </li>
+</ul></li>
+<li>Component FlueGases.PressureLosses.SingularPressureLoss </li>
+<li><ul>
+<li>Default value for parameter K changed to 1.e-3. </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StodolaTurbine </li>
+<li><ul>
+<li>Extension of the computation of xm and Q for supercritical regimes. </li>
+</ul></li>
+<li>Component WaterSteam.Boilers.ElectricBoiler </li>
+<li><ul>
+<li>Correction of the computation of deltaH. </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StaticCentrifugalPump </li>
+<li><ul>
+<li>Value of rh is changed. Old value: 0.05 - New value: 0.20 </li>
+</ul></li>
+<li>Component WaterSolution.Machines.StaticCentrifugalPump </li>
+<li><ul>
+<li>Value of rh is changed. Old value: 0.05 - New value: 0.20 </li>
+</ul></li>
+<li>Component FlueGases.Machines.StaticFan </li>
+<li><ul>
+<li>Value of rh is changed. Old value: 0.05 - New value: 0.20 </li>
+</ul></li>
+<li>Package Functions </li>
+<li><ul>
+<li>New functions SplineInterpolation and TableSplineInterpolation </li>
+<li>New package Utilities </li>
+<li>Function LinearInterpolation_i&nbsp; moved to Functions.Utilities </li>
+<li>Function TableLinearInterpolation_i&nbsp; moved to Functions.Utilities </li>
+</ul></li>
+<li>Package Functions.Utilities </li>
+<li><ul>
+<li>New function CubicHermite </li>
+</ul></li>
+<li>Block InstrumentationAndControl.Blocks.Table.Table1D </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Block InstrumentationAndControl.Blocks.Table.Table1DTemps </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Block InstrumentationAndControl.Blocks.Table.Table2D </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.Machines.CentrifugalPump </li>
+<li><ul>
+<li>Linear interpolation of F and G is replaced by spline interpolation </li>
+</ul></li>
+<li>Component FlueGases.PressureLosses.ControlValve </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.ControlValve </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.DynamicCheckValve </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.PressureLosses.DynamicReliefValve </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.Machines.SteamEngine </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Function Correlation.Misc.WBCorrectiveDiameterCoefficient </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Function Correlation.Thermal. WBCrossedCurrentConvectiveHeatTransferCoefficient </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Function Correlation.Thermal. WBLongitudinalCurrentConvectiveHeatTransferCoefficient </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Function Correlation.Thermal. WBRadiativeHeatTransferCoefficient </li>
+<li><ul>
+<li>New interpolating option: spline interpolation </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.TwoPhaseFlowPipe </li>
+<li><ul>
+<li>Adding noEvent for the computation of hi and Xtt </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicOnePhaseFlowPipe </li>
+<li><ul>
+<li>Extension of the computation of hc for laminar flows </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicWaterWaterExchanger </li>
+<li><ul>
+<li>Modification of the computation of DPc and DPf </li>
+<li>Previous version </li>
+<li>DPc[i] = p_Kc*Qc[i]^2/(2*rhoc[i]); </li>
+<li>DPf[i] = p_Kf*Qf[i]^2/(2*rhof[i]); </li>
+<li>New version </li>
+<li>DPc[i] = p_Kc*Qc[i]^2/rhoc[i]; </li>
+<li>DPf[i] = p_Kf*Qf[i]^2/rhof[i]; </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.StaticWaterWaterExchanger </li>
+<li><ul>
+<li>Modification of the computation of DPc and DPf </li>
+<li>Previousversion </li>
+<li>DPc[i] = p_Kc*Qc[i]^2/(2*rhoc[i]); </li>
+<li>DPf[i] = p_Kf*Qf[i]^2/(2*rhof[i]); </li>
+<li>New version </li>
+<li>DPc[i] = p_Kc*Qc[i]^2/rhoc[i]; </li>
+<li>DPf[i] = p_Kf*Qf[i]^2/rhof[i]; </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.NTUWaterHeating </li>
+<li><ul>
+<li>Modification of the value of eps </li>
+<li>Previous value: 1 </li>
+<li>New value: 1.e-3 </li>
+</ul></li>
+<li>Component WaterSteam.HeatExchangers.DynamicTwoPhaseFlowPipe </li>
+<li><ul>
+<li>Adaptation to the supercritical phase </li>
+</ul></li>
+<li>Package WaterSteam.HeatExchangers </li>
+<li><ul>
+<li>New component DynamicWaterHeatingOnePipe </li>
+</ul></li>
+<li>Package Thermal.HeatTransfer </li>
+<li><ul>
+<li>New component HeatExchangerWallCounterFlow </li>
+</ul></li>
+<li>Package Properties </li>
+<li><ul>
+<li>New package MoltenSalt </li>
+<li>New package Oil_TherminolVP1 </li>
+</ul></li>
+<li>Component WaterSteam.Machines.StodolaTurbine </li>
+<li><ul>
+<li>Equation xm = if noEvent(Ps &GT; pcrit) then 1 else (1 + pros1.x)/2; is replaced by xm = 1; </li>
+</ul></li>
+</ul></p>
+<p>&nbsp; </p>
+<p>&nbsp; </p>
+</html>"));
+  end Version_3_1;
     annotation (Documentation(info="<html>
 <h3><font color=\"#008000\" size=5>Release notes</font></h3>
 <p>
@@ -33,7 +516,7 @@ on the ThermoSysPro library.
   class Contact "Contact"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Contact
+<h3><font color=\"#008000\" size=5>Contact 
 </font></h3>
 <dl><dt>The development of the ThermoSysPro library is organized by<br/></dt>
 <dd>Daniel Bouskela and Baligh El Hefni<br/></dd>
@@ -50,7 +533,7 @@ on the ThermoSysPro library.
   class ThermoSysProLicense "License"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>The ThermoSysPro License
+<h3><font color=\"#008000\" size=5>The ThermoSysPro License 
 </font></h3>
 <p>The use of the ThermoSysPro Library is granted by EDF under the provisions of Modelica License 2.
 <ol>
@@ -350,7 +833,7 @@ action. This section shall survive the termination of this License.</p>
   class ThermoSysProDocumentation "Documentation"
 
     annotation (Documentation(info="<html>
-<h3><font color=\"#008000\" size=5>Documentation
+<h3><font color=\"#008000\" size=5>Documentation 
 </font></h3>
 <p>The full documentation of the library is still under construction. </p>
 <p>A conference paper explaining the fundamentals of the library can be found here:

@@ -2,7 +2,7 @@ within ThermoSysPro.FlueGases.Machines;
 model Compressor "Gas compressor"
   parameter Integer mass_flow_rate_comp=1
     "Ways for computing the mass flow rate - 1: Q = rho*Qv - 2: Q = rho*f(T)";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tmax=284.16
+  parameter Modelica.SIunits.Temperature Tmax=284.16
     "Air transition temperature between f1 = a*x + b and f2 = c*x + d for the computation of Q (active if mass_flow_rate_comp == 2)";
   parameter Real coef1_1=0.1164 "Coefficient a for f1 = a*x + b";
    parameter Real coef2_1=38.643 "Coefficient b for f1 = a*x + b";
@@ -29,24 +29,20 @@ public
   Real tau(start=15) "Compression rate";
   Real is_eff(start=0.85) "Isentropic efficiency";
   Modelica.SIunits.Power Wcp(start=1e9) "Compressor power";
-  ThermoSysPro.Units.AbsolutePressure Pe( start=1e5)
-    "Air pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Ps(start=15e5)
-    "Air pressure at the outlet";
+  Modelica.SIunits.AbsolutePressure Pe( start=1e5) "Air pressure at the inlet";
+  Modelica.SIunits.AbsolutePressure Ps(start=15e5) "Air pressure at the outlet";
   Real Xtau( start=1) "Normal and nominal compression rates ratio";
   Modelica.SIunits.MassFlowRate Q(start=500) "Air mass flow rate";
   Modelica.SIunits.VolumeFlowRate Qv(start=500) "Air volume flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature Te( start=300)
-    "Air temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Ts(start=750)
-    "Air temperature at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tis(start=750)
+  Modelica.SIunits.Temperature Te( start=300) "Air temperature at the inlet";
+  Modelica.SIunits.Temperature Ts(start=750) "Air temperature at the outlet";
+  Modelica.SIunits.Temperature Tis(start=750)
     "Isentropic air temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy He(start=80e3)
+  Modelica.SIunits.SpecificEnthalpy He(start=80e3)
     "Air specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hs(start=500e3)
+  Modelica.SIunits.SpecificEnthalpy Hs(start=500e3)
     "Air specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy His(start=450e3)
+  Modelica.SIunits.SpecificEnthalpy His(start=450e3)
     "Air specific enthalpy after the isentropic compression";
   Modelica.SIunits.SpecificEntropy Se "Air specific entropy at the inlet";
   Modelica.SIunits.Density rho_e(start=1) "Air density at the inlet";

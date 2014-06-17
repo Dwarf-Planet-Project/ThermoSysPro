@@ -36,9 +36,10 @@ public
   Real lambda "Friction pressure loss coefficient";
   Modelica.SIunits.Density rho "Fluid density";
   Modelica.SIunits.DynamicViscosity mu "Fluid dynamic viscosity";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
+
 
 public
   ThermoSysPro.InstrumentationAndControl.Blocks.Tables.Table1D TA1(
@@ -58,8 +59,8 @@ public
                           annotation (Placement(transformation(extent={{-10,
             -110},{10,-90}}, rotation=0)));
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
-    annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation=
-           0)));
+    annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation
+          =0)));
 equation
 
   C1.Q = C2.Q;
@@ -168,6 +169,7 @@ equation
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-30,-20},{-24,-22},{-22,-24},{-20,-28},{-20,-20},{-30,-20}},
+
           lineColor={192,192,192},
           fillColor={127,255,0},
           fillPattern=FillPattern.Solid),
@@ -199,6 +201,7 @@ equation
           fillPattern=FillPattern.Solid),
         Polygon(
           points={{-30,-20},{-24,-22},{-22,-24},{-20,-28},{-20,-20},{-30,-20}},
+
           lineColor={192,192,192},
           fillColor={127,255,0},
           fillPattern=FillPattern.Solid),

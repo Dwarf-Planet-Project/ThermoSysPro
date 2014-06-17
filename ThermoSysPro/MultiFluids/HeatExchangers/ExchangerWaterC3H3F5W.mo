@@ -18,13 +18,13 @@ protected
     "Small mass flow for continuous flow reversal";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature Tec
+  Modelica.SIunits.Temperature Tec
     "Fluid temperature at the inlet of the hot side";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc
+  Modelica.SIunits.Temperature Tsc
     "Fluid temperature at the outlet of the hot side";
-  ThermoSysPro.Units.AbsoluteTemperature Tef
+  Modelica.SIunits.Temperature Tef
     "Fluid temperature at the inlet of the cold side";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf
+  Modelica.SIunits.Temperature Tsf
     "Fluid temperature at the outlet of the cold side";
   Modelica.SIunits.MassFlowRate Qc(start=100) "Hot fluid mass flow rate";
   Modelica.SIunits.MassFlowRate Qf(start=100) "Cold fluid mass flow rate";

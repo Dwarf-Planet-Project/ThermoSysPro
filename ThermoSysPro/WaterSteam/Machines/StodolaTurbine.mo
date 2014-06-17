@@ -26,20 +26,26 @@ model StodolaTurbine "Multistage turbine group using Stodola's ellipse"
   parameter Integer mode_ps=0
     "IF97 region after isentropic expansion. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
+protected
+  parameter Modelica.SIunits.AbsolutePressure pcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT
+    "Critical pressure";
+  parameter Modelica.SIunits.Temperature Tcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT
+    "Critical temperature";
+
 public
   Real eta_is(start=0.85) "Isentropic efficiency";
   Modelica.SIunits.Power W "Mechanical power produced by the turbine";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy His
+  Modelica.SIunits.SpecificEnthalpy His
     "Fluid specific enthalpy after isentropic expansion";
-  ThermoSysPro.Units.SpecificEnthalpy Hrs
+  Modelica.SIunits.SpecificEnthalpy Hrs
     "Fluid specific enthalpy after the real expansion";
-  ThermoSysPro.Units.AbsolutePressure Pe(start=10e5,min=0)
+  Modelica.SIunits.AbsolutePressure Pe(start=10e5,min=0)
     "Pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Ps(start=10e5,min=0)
+  Modelica.SIunits.AbsolutePressure Ps(start=10e5,min=0)
     "Pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Te(min=0) "Temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Ts(min=0) "Temperature at the outlet";
+  Modelica.SIunits.Temperature Te(min=0) "Temperature at the inlet";
+  Modelica.SIunits.Temperature Ts(min=0) "Temperature at the outlet";
   Modelica.SIunits.Velocity Vs "Fluid velocity at the outlet";
   Modelica.SIunits.Density rhos(start=200) "Fluid density at the outlet";
   Real xm(start=1.0,min=0) "Average vapor mass fraction";
@@ -93,10 +99,18 @@ equation
   eta_is = if (Q < Qmax) then (max(eta_is_min,(a*(Q/Qmax)^2 + b*(Q/Qmax) + c))) else eta_is_nom;
 
   /* Average vapor mass fraction during the expansion */
-  xm = (proe.x + pros1.x)/2.0;
+  if noEvent((Pe > pcrit) or (Te > Tcrit)) then
+    xm = 1;
+  else
+    xm = (proe.x + pros1.x)/2.0;
+  end if;
 
   /* Stodola's ellipse law */
-  Q = sqrt((Pe^2 - Ps^2)/(Cst*Te*proe.x));
+  if noEvent((Pe > pcrit) or (Te > Tcrit)) then
+    Q = sqrt((Pe^2 - Ps^2)/(Cst*Te));
+  else
+    Q = sqrt((Pe^2 - Ps^2)/(Cst*Te*proe.x));
+  end if;
 
   /* Fluid specific enthalpy after the expansion */
   Hrs - Ce.h = xm*eta_is*(His - Ce.h);
@@ -156,8 +170,8 @@ equation
       width=0.76,
       height=0.76),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

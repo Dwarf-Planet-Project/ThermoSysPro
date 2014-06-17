@@ -11,18 +11,17 @@ model TestControlValve
         0,0; 0.5,3000; 0.75,7000; 1,8000])
                                           annotation (Placement(transformation(
           extent={{-20,26},{0,46}}, rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
-                                            k=0.5)
+  InstrumentationAndControl.Blocks.Tables.Table1DTemps            Constante1(Table=[0,
+        0.9; 5,0.9; 15,0.5; 25,0.5; 50,0.2; 100,0.2])
     annotation (Placement(transformation(extent={{-40,60},{-20,80}}, rotation=0)));
 equation
   connect(ControlValve.C2, PuitsP1.C)
-    annotation (Line(points={{0,30},{40,30},{40,30},{60,30}}, color={0,0,255}));
+    annotation (Line(points={{0,30},{60,30}}, color={0,0,255}));
   connect(Constante1.y, ControlValve.Ouv)
     annotation (Line(points={{-19,70},{-10,70},{-10,47}}, color={0,0,255}));
   connect(SourceP1.C, ControlValve.C1)
     annotation (Line(points={{-80,30},{-20,30}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000),
-    Window(
+  annotation (             Window(
       x=0.45,
       y=0.01,
       width=0.35,

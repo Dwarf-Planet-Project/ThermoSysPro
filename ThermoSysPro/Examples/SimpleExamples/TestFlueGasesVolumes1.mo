@@ -99,5 +99,5 @@ equation
       points={{-40,70},{-10,70},{-10,40}},
       color={0,0,0},
       thickness=1));
-  annotation (experiment(StopTime=200), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestFlueGasesVolumes1;

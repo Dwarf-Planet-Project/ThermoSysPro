@@ -1,7 +1,6 @@
 within ThermoSysPro.MultiFluids.Machines;
 model CHPEngineTriGenPredSystem
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tair=298
-    "Temperature inlet air";
+  parameter Modelica.SIunits.Temperature Tair=298 "Temperature inlet air";
   parameter Real RechFumEff=0.717833 "Flue gases heater efficiency";
   parameter Real RechWaterEff=0.837865 "Water heater efficiency";
   parameter Integer mechanical_efficiency_type=3 "Engine efficiency type"

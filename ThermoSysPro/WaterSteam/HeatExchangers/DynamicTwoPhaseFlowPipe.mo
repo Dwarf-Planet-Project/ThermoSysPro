@@ -11,10 +11,10 @@ model DynamicTwoPhaseFlowPipe "Dynamic two-phase flow pipe"
   parameter Real dpfCorr=1.00
     "Corrective term for the friction pressure loss (dpf) for each node";
   parameter Integer Ns=10 "Number of segments";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0[Ns]=fill(300, Ns)
+  parameter Modelica.SIunits.Temperature T0[Ns]=fill(300, Ns)
     "Initial fluid temperature (active if steady_state = false and option_temperature = 1)"
                                                                                             annotation(Evaluate=false);
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0[Ns]=fill(1e5, Ns)
+  parameter Modelica.SIunits.SpecificEnthalpy h0[Ns]=fill(1e5, Ns)
     "Initial fluid specific enthalpy (active if steady_state = false and option_temperature = 2)";
   parameter Boolean inertia=true
     "true: momentum balance equation with inertia - false: without inertia";
@@ -22,10 +22,8 @@ model DynamicTwoPhaseFlowPipe "Dynamic two-phase flow pipe"
     "true: momentum balance equation with advection terme - false: without advection terme";
   parameter Boolean dynamic_mass_balance=true
     "true: dynamic mass balance equation - false: static mass balance equation";
-  parameter Boolean dynamic_energy_balance=true
-    "true: dynamic energy balance equation - false: static energy balance equation";
   parameter Boolean simplified_dynamic_energy_balance=true
-    "true: simplified dynamic energy balance equation - false: full dynamic energy balance equation (active if dynamic_energy_balance=true)";
+    "true: simplified dynamic energy balance equation - false: full dynamic energy balance equation (active if dynamic_mass_balance=true)";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from T0 (if option_temperature=1) or h0 (if option_temperature=2)";
   parameter Integer option_temperature=1
@@ -53,23 +51,25 @@ protected
   parameter Modelica.SIunits.Area dSi=pi*Di*dx1
     "Internal heat exchange area for a node";
   parameter Real Mmol=18.015 "Water molar mass";
-  parameter ThermoSysPro.Units.AbsolutePressure pcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT
+  parameter Modelica.SIunits.AbsolutePressure pcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT
     "Critical pressure";
-  parameter ThermoSysPro.Units.AbsolutePressure ptriple=ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple
+  parameter Modelica.SIunits.Temperature Tcrit=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.TCRIT
+    "Critical temperature";
+  parameter Modelica.SIunits.AbsolutePressure ptriple=ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple
     "Triple point pressure";
   parameter Real xb1=0.0002 "Min value for vapor mass fraction";
   parameter Real xb2=0.85 "Max value for vapor mass fraction";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
+  Modelica.SIunits.AbsolutePressure P[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
     "Fluid pressure in node i";
   Modelica.SIunits.MassFlowRate Q[N](start=fill(10, N), nominal=fill(10, N))
     "Mass flow rate in node i";
-  ThermoSysPro.Units.SpecificEnthalpy h[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e6, N + 1))
+  Modelica.SIunits.SpecificEnthalpy h[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e6, N + 1))
     "Fluid specific enthalpy in node i";
-  ThermoSysPro.Units.SpecificEnthalpy hb[N]
+  Modelica.SIunits.SpecificEnthalpy hb[N]
     "Fluid specific enthalpy at the boundary of node i";
-  ThermoSysPro.Units.AbsolutePressure Pb[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
+  Modelica.SIunits.AbsolutePressure Pb[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
     "Bounded fluid pressure in node i";
   Modelica.SIunits.Density rho1[N - 1](start=fill(998, N - 1), nominal=fill(1, N - 1))
     "Fluid density in thermal node i";
@@ -80,7 +80,7 @@ public
   Modelica.SIunits.Power dW1[N - 1](start=fill(3.e5, N - 1), nominal=fill(3.e5, N - 1))
     "Thermal power exchanged on the liquid side for node i";
   Modelica.SIunits.Power W1t "Total power exchanged on the liquid side";
-  ThermoSysPro.Units.AbsoluteTemperature Tp1[N - 1](each start = 500.0)
+  Modelica.SIunits.Temperature Tp1[N - 1](each start = 500.0)
     "Wall temperature in node i";
   Modelica.SIunits.CoefficientOfHeatTransfer hi[N - 1](start=fill(2000, N - 1), nominal=fill(2.e4, N - 1))
     "Fluid heat exchange coefficient in node i";
@@ -128,7 +128,7 @@ public
     "Boiling number";
   Real Xtt[N - 1](start=fill(1, N - 1), nominal=fill(1, N - 1))
     "Martinelli number";
-  ThermoSysPro.Units.SpecificEnthalpy lv[N - 1](start=fill(2.e6, N - 1), nominal=fill(2.e6, N - 1))
+  Modelica.SIunits.SpecificEnthalpy lv[N - 1](start=fill(2.e6, N - 1), nominal=fill(2.e6, N - 1))
     "Specific enthalpy for vaporisation";
   Modelica.SIunits.Density rhol1[N - 1](start=fill(998, N - 1), nominal=fill(998, N - 1))
     "Fluid density in thermal node i for the liquid";
@@ -138,10 +138,8 @@ public
     "Fluid density in thermal node i for the vapor";
   Modelica.SIunits.Density rhov2[N](start=fill(1, N), nominal=fill(1, N))
     "Fluid density in hydraulic node i for the vapor";
-  ThermoSysPro.Units.AbsoluteTemperature T1[N - 1]
-    "Fluid temperature in thermal node i";
-  ThermoSysPro.Units.AbsoluteTemperature T2[N]
-    "Fluid temperature in hydraulic node i";
+  Modelica.SIunits.Temperature T1[N - 1] "Fluid temperature in thermal node i";
+  Modelica.SIunits.Temperature T2[N] "Fluid temperature in hydraulic node i";
   ThermoSysPro.Units.DifferentialPressure dpa[N]
     "Advection term for the mass balance equation in node i";
   ThermoSysPro.Units.DifferentialPressure dpf[N]
@@ -255,7 +253,7 @@ equation
     end if;
 
     /* Energy balance equation */
-    if dynamic_energy_balance then
+    if dynamic_mass_balance then
       if simplified_dynamic_energy_balance then
         A*(-der(P[i + 1]) + rho1[i]*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
       else
@@ -268,11 +266,11 @@ equation
     /* Heat transfer at the wall */
     dW1[i] = hi[i]*dSi*(Tp1[i] - T1[i]);
 
-    if (xv1[i] < xb1) then
-      hi[i] = (1 - xv1[i]/xb1)*hcl[i] + xv1[i]/xb1*(E[i]*hcl[i] + S[i]*heb[i]);
+    if noEvent(xv1[i] < xb1) then
+      hi[i] = if noEvent((P[i+1] > pcrit) or (T1[i] > Tcrit)) then hcl[i] else (1 - xv1[i]/xb1)*hcl[i] + xv1[i]/xb1*(E[i]*hcl[i] + S[i]*heb[i]);
       Xtt[i] = ((1 - xb1)/xb1)^0.9*(rhov1[i]/rhol1[i])^0.5*(mul1[i]/muv1[i])^
         0.1;
-    elseif (xv1[i] > xb2) then
+    elseif noEvent(xv1[i] > xb2) then
       hi[i] = (xv1[i] - xb2)/(1 - xb2)*hcv[i] + (1 - xv1[i])/(1 - xb2)*(E[i]*
         hcl[i] + S[i]*heb[i]);
       Xtt[i] = ((1 - xb2)/xb2)^0.9*(rhov1[i]/rhol1[i])^0.5*(mul1[i]/muv1[i])^
@@ -312,23 +310,32 @@ equation
     rho1[i] = pro1[i].d;
     T1[i] = pro1[i].T;
     xv1[i] = pro1[i].x;
-    xbs[i] = min(pro1[i].x, 0.90);
-    xbi[i] = max(pro1[i].x, 0.10);
 
     (lsat1[i],vsat1[i]) = ThermoSysPro.Properties.WaterSteam.IF97.Water_sat_P(P[i + 1]);
 
-    rhol1[i] = max(pro1[i].d, lsat1[i].rho);
-    rhov1[i] = min(pro1[i].d, vsat1[i].rho);
-    cpl[i] = if noEvent(xv1[i] <= 0.0) then pro1[i].cp else lsat1[i].cp;
-    cpv[i] = if noEvent(xv1[i] >= 1.0) then pro1[i].cp else vsat1[i].cp;
+    if noEvent((P[i+1] > pcrit) or (T1[i] > Tcrit)) then
+      xbs[i]   = 0;
+      xbi[i]   = 1;
+      rhol1[i] = pro1[i].d;
+      rhov1[i] = pro1[i].d;
+      cpl[i]   = pro1[i].cp;
+      cpv[i]   = pro1[i].cp;
+      lv[i]    = 1;
+    else
+      xbs[i]   = min(pro1[i].x, 0.90);
+      xbi[i]   = max(pro1[i].x, 0.10);
+      rhol1[i] = max(pro1[i].d, lsat1[i].rho);
+      rhov1[i] = min(pro1[i].d, vsat1[i].rho);
+      cpl[i]   = if noEvent(xv1[i] <= 0.0) then pro1[i].cp else lsat1[i].cp;
+      cpv[i]   = if noEvent(xv1[i] >= 1.0) then pro1[i].cp else vsat1[i].cp;
+      lv[i]    = vsat1[i].h - lsat1[i].h;
+    end if;
 
     mul1[i] = ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhol1[i], T1[i]);
     muv1[i] = ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhov1[i], T1[i]);
 
     kl[i] = ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rhol1[i], T1[i], P[i + 1]);
     kv[i] = ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rhov1[i], T1[i], P[i + 1]);
-
-    lv[i] = vsat1[i].h - lsat1[i].h;
 
     Pb[i + 1] = max(min(P[i + 1], pcrit - 1), ptriple);
 
@@ -373,11 +380,15 @@ equation
     Rel2[i] = noEvent(abs(4*Q[i]/(pi*Di*mul2[i])));
     Rev2[i] = noEvent(abs(4*Q[i]/(pi*Di*muv2[i])));
 
-    if noEvent(xv2[i] < 0.8) then
-      filo[i] = 1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)/exp(Pb[i]*1.e-5/84);
+    if noEvent(xv2[i] < 0) then
+      filo[i] = 1;
     else
-      filo[i] = (1 - xv2[i]*rgliss)/0.2*(1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)
+      if noEvent((xv2[i] >= 0) and (xv2[i] < 0.8)) then
+        filo[i] = 1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)/exp(Pb[i]*1.e-5/84);
+      else
+        filo[i] = (1 - xv2[i]*rgliss)/0.2*(1 + a*xv2[i]*rgliss/(19 + Pb[i]*1.e-5)
         /exp(Pb[i]*1.e-5/84)) + (xv2[i]*rgliss - 0.8)/0.2*rhol2[i]/rhov2[i]*lambdav[i]/lambdal[i];
+      end if;
     end if;
 
     /* Fluid thermodynamic properties */
@@ -389,8 +400,8 @@ equation
 
     (lsat2[i],vsat2[i]) = ThermoSysPro.Properties.WaterSteam.IF97.Water_sat_P((P[i] + P[i + 1])/2);
 
-    rhol2[i] = max(pro2[i].d, lsat2[i].rho);
-    rhov2[i] = min(pro2[i].d, vsat2[i].rho);
+    rhol2[i] = if noEvent((P[i+1] > pcrit) or (T2[i] > Tcrit)) then pro2[i].d else max(pro2[i].d, lsat2[i].rho);
+    rhov2[i] = if noEvent((P[i+1] > pcrit) or (T2[i] > Tcrit)) then pro2[i].d else min(pro2[i].d, vsat2[i].rho);
 
     mul2[i] = ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhol2[i], T2[i]);
     muv2[i] = ThermoSysPro.Properties.WaterSteam.IF97.DynamicViscosity_rhoT(rhov2[i], T2[i]);
@@ -453,8 +464,8 @@ equation
       width=0.71,
       height=0.85),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

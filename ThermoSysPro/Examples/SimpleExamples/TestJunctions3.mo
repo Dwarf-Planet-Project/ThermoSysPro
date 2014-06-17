@@ -20,7 +20,8 @@ model TestJunctions3
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe2(
     Duration=1,
     Initialvalue=1,
-    Finalvalue=0) annotation (Placement(transformation(extent={{32,20},{52,40}},
+    Finalvalue=0.05)
+                  annotation (Placement(transformation(extent={{32,20},{52,40}},
           rotation=0)));
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampe3(
                                     Initialvalue=1,
@@ -72,5 +73,5 @@ equation
           -50},{-50,-46},{-40.2,-46}}, color={0,0,255}));
   connect(staticVolume2.Cs, valve2.C1) annotation (Line(points={{-20,-50},{-10,
           -50}}, color={0,0,255}));
-  annotation (experiment(StopTime=10), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestJunctions3;

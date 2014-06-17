@@ -1,7 +1,7 @@
 within ThermoSysPro.Properties.Fluid;
 function Ph
-  input ThermoSysPro.Units.AbsolutePressure P "Pressure";
-  input ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+  input Modelica.SIunits.AbsolutePressure P "Pressure";
+  input Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
   input Integer mode = 0 "IF97 region - 0:automatic computation";
   input Integer fluid = 1 "Fluid number - 1: IF97 - 2: C3H3F5";
 

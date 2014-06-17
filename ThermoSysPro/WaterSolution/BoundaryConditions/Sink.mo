@@ -2,9 +2,9 @@ within ThermoSysPro.WaterSolution.BoundaryConditions;
 model Sink
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Sink pressure";
+  Modelica.SIunits.AbsolutePressure P "Sink pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature T "Sink Temperature";
+  Modelica.SIunits.Temperature T "Sink Temperature";
   Real Xh2o "h2o mas fraction";
 
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet Ce

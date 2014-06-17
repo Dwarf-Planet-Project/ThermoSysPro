@@ -27,8 +27,8 @@ algorithm
   TYP2 := 1;
 
   /* Verification of the inputs */
-  KEG := if (KEG0 > 0.) then KEG0 else 50;
-  S := if (S0 > 0.) then S0 else 5;
+  KEG := if (KEG0 > 0) then KEG0 else 10;
+  S := if (S0 > 0) then S0 else 1;
 
   //  NTU method
   //  ----------
@@ -72,10 +72,7 @@ algorithm
 </ul>
 </html>
 ", info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end WBHeatExchangerEfficiency;

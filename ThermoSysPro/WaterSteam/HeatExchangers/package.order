@@ -1,6 +1,8 @@
 DynamicCondenser
 DynamicOnePhaseFlowPipe
 DynamicTwoPhaseFlowPipe
+DynamicWaterHeating
+DynamicWaterHeatingOnePipe
 DynamicWaterWaterExchanger
 NTUWaterHeating
 SimpleDynamicCondenser

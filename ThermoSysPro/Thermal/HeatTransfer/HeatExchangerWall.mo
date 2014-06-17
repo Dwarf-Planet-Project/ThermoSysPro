@@ -9,7 +9,7 @@ model HeatExchangerWall "Heat exchanger wall"
   parameter Modelica.SIunits.SpecificHeatCapacity cpw=1000
     "Wall specific heat capacity";
   parameter Modelica.SIunits.Density rhow=7800 "Wall density";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=350
+  parameter Modelica.SIunits.Temperature T0=350
     "Initial temperature (active if steady_state=false)";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from T0";
@@ -26,11 +26,11 @@ public
     "Power in section i of side 1";
   Modelica.SIunits.Power dW2[Ns](start=fill(3.e5, Ns), nominal=fill(3.e5, Ns))
     "Power in section i of side 2";
-  ThermoSysPro.Units.AbsoluteTemperature Tp1[Ns](start=fill(300, Ns))
+  Modelica.SIunits.Temperature Tp1[Ns](start=fill(300, Ns))
     "Wall temperature in section i of side 1";
-  ThermoSysPro.Units.AbsoluteTemperature Tp2[Ns](start=fill(300, Ns))
+  Modelica.SIunits.Temperature Tp2[Ns](start=fill(300, Ns))
     "Wall temperature in section i of side 2";
-  ThermoSysPro.Units.AbsoluteTemperature Tp[Ns](start=fill(300, Ns))
+  Modelica.SIunits.Temperature Tp[Ns](start=fill(300, Ns))
     "Average wall temperature in section i";
 
   ThermoSysPro.Thermal.Connectors.ThermalPort WT2[Ns] "Side 2"

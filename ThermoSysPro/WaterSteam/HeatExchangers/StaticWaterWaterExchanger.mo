@@ -41,14 +41,10 @@ public
   Modelica.SIunits.CoefficientOfHeatTransfer K
     "Global heat transfer coefficient";
   Modelica.SIunits.Area S "Heat exchange surface";
-  ThermoSysPro.Units.AbsoluteTemperature Tec
-    "Fluid temperature at the hot inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc
-    "Fluid temperature at the hot outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef
-    "Fluid temperature at the cold inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf
-    "Fluid temperature at the cold outlet";
+  Modelica.SIunits.Temperature Tec "Fluid temperature at the hot inlet";
+  Modelica.SIunits.Temperature Tsc "Fluid temperature at the hot outlet";
+  Modelica.SIunits.Temperature Tef "Fluid temperature at the cold inlet";
+  Modelica.SIunits.Temperature Tsf "Fluid temperature at the cold outlet";
   ThermoSysPro.Units.DifferentialTemperature DTm
     "Difference in average temperature";
   ThermoSysPro.Units.DifferentialTemperature DT1
@@ -74,17 +70,15 @@ public
     "Hot fluid thermal conductivity";
   Modelica.SIunits.ThermalConductivity lambdaf(start=0.597928)
     "Cold fluid thermal conductivity";
-  ThermoSysPro.Units.AbsoluteTemperature Tmc(start=290)
-    "Hot fluid average temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tmf(start=290)
-    "Cold fluid average temperature";
-  ThermoSysPro.Units.AbsolutePressure Pmc(start=1.e5)
+  Modelica.SIunits.Temperature Tmc(start=290) "Hot fluid average temperature";
+  Modelica.SIunits.Temperature Tmf(start=290) "Cold fluid average temperature";
+  Modelica.SIunits.AbsolutePressure Pmc(start=1.e5)
     "Hot fluid average pressure";
-  ThermoSysPro.Units.AbsolutePressure Pmf(start=1.e5)
+  Modelica.SIunits.AbsolutePressure Pmf(start=1.e5)
     "Cold fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy Hmc(start=100000)
+  Modelica.SIunits.SpecificEnthalpy Hmc(start=100000)
     "Hot fluid average specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hmf(start=100000)
+  Modelica.SIunits.SpecificEnthalpy Hmf(start=100000)
     "Cold fluid average specific enthalpy";
 
 public
@@ -200,8 +194,8 @@ equation
   quf = noEvent(abs(Qf)/N);
 
   if (pressure_loss_correlation == 0) then
-    DPc = p_Kc*Qc^2/(2*rhoc);
-    DPf = p_Kf*Qf^2/(2*rhof);
+    DPc = p_Kc*Qc^2/rhoc;
+    DPf = p_Kf*Qf^2/rhof;
   elseif (pressure_loss_correlation == 1) then
     DPc = noEvent(if (qmc < 1.e-3) then 0 else c1*14423.2/rhoc*qmc^(-0.097)*quc
       ^2*(1472.47 + 1.54*(N - 1)/2 + 104.97*qmc^(-0.25)));
@@ -289,12 +283,10 @@ equation
       width=0.93,
       height=0.87),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

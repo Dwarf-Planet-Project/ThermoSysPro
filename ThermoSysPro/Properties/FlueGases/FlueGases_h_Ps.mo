@@ -2,7 +2,7 @@ within ThermoSysPro.Properties.FlueGases;
 function FlueGases_h_Ps "Specific enthalpy"
   extends ThermoSysPro.Properties.FlueGases.unSafeForJacobian;
 
-  input ThermoSysPro.Units.AbsolutePressure PMF "Flue gases average pressure";
+  input Modelica.SIunits.AbsolutePressure PMF "Flue gases average pressure";
   input Modelica.SIunits.SpecificEntropy SMF
     "Flue gases average specific entropy";
   input Real Xco2 "CO2 mass fraction";
@@ -10,7 +10,7 @@ function FlueGases_h_Ps "Specific enthalpy"
   input Real Xo2 "O2 mass fraction";
   input Real Xso2 "SO2 mass fraction";
 
-  output ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+  output Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
 
 protected
   ThermoSysPro.Properties.ModelicaMediaFlueGases.ThermodynamicState state;

@@ -1,9 +1,9 @@
 within ThermoSysPro.WaterSolution.BoundaryConditions;
 model SourcePQ "Pressure and mass flow source"
 
-  parameter ThermoSysPro.Units.AbsolutePressure P=1.e5 "Source presure";
+  parameter Modelica.SIunits.AbsolutePressure P=1.e5 "Source presure";
   parameter Modelica.SIunits.MassFlowRate Q=10 "Mass flow rate";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T=300 "Source temperature";
+  parameter Modelica.SIunits.Temperature T=300 "Source temperature";
   parameter Real Xh2o=0.05 "h2o mass fraction";
 
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionOutlet Cs

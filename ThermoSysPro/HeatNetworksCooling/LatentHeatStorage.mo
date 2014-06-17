@@ -19,13 +19,11 @@ model LatentHeatStorage "Latent heat storage"
     "Convective heat exchange coefficient with the water";
   parameter Modelica.SIunits.CoefficientOfHeatTransfer ha=20
     "Convective heat exchange coefficient with the ambient air";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tamb
-    "Ambient air temperature";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tsl0
+  parameter Modelica.SIunits.Temperature Tamb "Ambient air temperature";
+  parameter Modelica.SIunits.Temperature Tsl0
     "Initial storage temperature (active if steady_state=false)";
   parameter Real xL0=0.5 "Initial liquid PCM fraction";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tfusion=293
-    "PCM fusion temperature";
+  parameter Modelica.SIunits.Temperature Tfusion=293 "PCM fusion temperature";
   parameter Modelica.SIunits.SpecificEnergy hfus "PCM fusion specific enthalpy";
   parameter Real Fremp=0.5 "Volume fraction of the storage filled by the PCM";
   parameter Boolean steady_state=false
@@ -43,22 +41,21 @@ protected
 public
   Modelica.SIunits.MassFlowRate Q "Water mass flow rate";
   Modelica.SIunits.Mass m "PCM mass";
-  ThermoSysPro.Units.AbsoluteTemperature Tsl "Storage average temperature";
+  Modelica.SIunits.Temperature Tsl "Storage average temperature";
   Real xL "Liquid PCM fraction in the storage";
-  ThermoSysPro.Units.AbsoluteTemperature T1 "Water temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature T2 "Water temperature at the outlet";
+  Modelica.SIunits.Temperature T1 "Water temperature at the inlet";
+  Modelica.SIunits.Temperature T2 "Water temperature at the outlet";
   Modelica.SIunits.Power Ws "Stored power";
   Modelica.SIunits.Power We "Power exchanged with the water";
   Modelica.SIunits.Power Wa "Power exchanged with the ambient air";
-  ThermoSysPro.Units.SpecificEnthalpy Hsl "Storage specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy HsatL
+  Modelica.SIunits.SpecificEnthalpy Hsl "Storage specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy HsatL
     "Storage specific enthalpy at the liquid saturation temperature";
-  ThermoSysPro.Units.SpecificEnthalpy HsatS
+  Modelica.SIunits.SpecificEnthalpy HsatS
     "Storage specific enthalpy at the solid saturation temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tm(start=293)
-    "Water average temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Water average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hm(start=100000)
+  Modelica.SIunits.Temperature Tm(start=293) "Water average temperature";
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Water average pressure";
+  Modelica.SIunits.SpecificEnthalpy hm(start=100000)
     "Water average specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proe
     "Propriétés de l'eau"

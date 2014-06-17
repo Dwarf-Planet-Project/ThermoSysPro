@@ -1,21 +1,20 @@
 within ThermoSysPro.Correlations.Misc;
 function PropWaterSteam "Computation of the water/steam properties"
-  input ThermoSysPro.Units.AbsolutePressure Pmc "Water/steam average pressure";
-  input ThermoSysPro.Units.SpecificEnthalpy Hmc
+  input Modelica.SIunits.AbsolutePressure Pmc "Water/steam average pressure";
+  input Modelica.SIunits.SpecificEnthalpy Hmc
     "Water/steam average specific enthalpy";
   input Real Xmc "Steam average mass fraction";
 
 protected
-  constant ThermoSysPro.Units.AbsolutePressure Pc=221.2e5 "Critical pressure";
-  ThermoSysPro.Units.AbsoluteTemperature Tsat1 "Saturation temperature at Pmc";
-  ThermoSysPro.Units.AbsoluteTemperature T "Water/steam mixture temperature";
-  ThermoSysPro.Units.SpecificEnthalpy hlv
-    "Water/steam mixture specific enthalpy";
+  constant Modelica.SIunits.AbsolutePressure Pc=221.2e5 "Critical pressure";
+  Modelica.SIunits.Temperature Tsat1 "Saturation temperature at Pmc";
+  Modelica.SIunits.Temperature T "Water/steam mixture temperature";
+  Modelica.SIunits.SpecificEnthalpy hlv "Water/steam mixture specific enthalpy";
   Modelica.SIunits.Density rholv "Water/steam mixture density";
   Modelica.SIunits.Density rhol "Water density";
   Modelica.SIunits.Density rhov "Steam density";
-  ThermoSysPro.Units.SpecificEnthalpy hl "Water specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv "Steam specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hl "Water specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hv "Steam specific enthalpy";
   Modelica.SIunits.SpecificEnergy lv "Phase transition energy";
   Modelica.SIunits.SpecificHeatCapacity cpl "Water specific heat capacity";
   Modelica.SIunits.SpecificHeatCapacity cpv "Steam specific heat capacity";

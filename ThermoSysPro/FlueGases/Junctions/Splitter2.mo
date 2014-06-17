@@ -3,19 +3,19 @@ model Splitter2 "Flue gases splitter with two outlets"
 
 public
   Real alpha1 "Extraction coefficient for outlet 1 (<=1)";
-  ThermoSysPro.Units.AbsolutePressure P(start=10e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=10e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
   Real Xco2 "CO2 mass fraction";
   Real Xh2o "H20 mass fraction";
   Real Xo2 "O2 mass fraction";
   Real Xso2 "SO2 mass fraction";
   Real Xn2 "N2 mass fraction";
-  ThermoSysPro.Units.SpecificEnthalpy he(start=100000)
+  Modelica.SIunits.SpecificEnthalpy he(start=100000)
     "Fluid specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy hs1(start=100000)
+  Modelica.SIunits.SpecificEnthalpy hs1(start=100000)
     "Fluid specific enthalpy at outlet #1";
-  ThermoSysPro.Units.SpecificEnthalpy hs2(start=100000)
+  Modelica.SIunits.SpecificEnthalpy hs2(start=100000)
     "Fluid specific enthalpy at outlet #2";
 
 public
@@ -35,7 +35,7 @@ public
 equation
 
   if (cardinality(Ialpha1) == 0) then
-    Ialpha1.signal = 1;
+    Ialpha1.signal = 0.5;
   end if;
 
   /* Fluid pressure */
@@ -122,12 +122,10 @@ equation
       width=0.71,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

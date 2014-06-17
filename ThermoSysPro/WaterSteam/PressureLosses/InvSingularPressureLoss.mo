@@ -18,9 +18,9 @@ public
   ThermoSysPro.Units.DifferentialPressure deltaP "Singular pressure loss";
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=290) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Average fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Average fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
 
 public
   Connectors.FluidInlet C1

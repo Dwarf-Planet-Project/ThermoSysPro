@@ -7,8 +7,7 @@ model StaticCondenser "Static condenser"
   parameter Modelica.SIunits.CoefficientOfHeatTransfer KCO=1
     "Reference heat exchange coefficient";
   parameter Modelica.SIunits.MassFlowRate QC0=100 "Reference mass flow rate";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tref=293
-    "Rerence temperature";
+  parameter Modelica.SIunits.Temperature Tref=293 "Reference temperature";
   parameter Real COPR=1 "Reference fouling coefficient";
   parameter Real COP=1 "Actual fouling coefficient";
   parameter Boolean continuous_flow_reversal=false
@@ -31,43 +30,43 @@ protected
 public
   Modelica.SIunits.MassFlowRate Qee(start=10)
     "Cooling water mass flow rate at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hee(start=250000)
+  Modelica.SIunits.SpecificEnthalpy Hee(start=250000)
     "Cooling water specific anthalpy at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pee(start=1.e5)
+  Modelica.SIunits.AbsolutePressure Pee(start=1.e5)
     "Cooling water pressure at the inlet";
   Modelica.SIunits.MassFlowRate Qep(start=10)
     "Drain mass flow rate at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hep(start=1000000)
+  Modelica.SIunits.SpecificEnthalpy Hep(start=1000000)
     "Drain specific enthalpy at the inlet";
   Modelica.SIunits.MassFlowRate Qev(start=10)
     "Vapor mass flow rate at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hev(start=2500000)
+  Modelica.SIunits.SpecificEnthalpy Hev(start=2500000)
     "Vapor specific enthalpy at the inlet";
   Modelica.SIunits.MassFlowRate Qvt(start=10)
     "Vapor mass flow rate leaving the turbine";
-  ThermoSysPro.Units.SpecificEnthalpy Hvt(start=2500000)
+  Modelica.SIunits.SpecificEnthalpy Hvt(start=2500000)
     "Vapor specific enthalpy leaving the turbine";
   Modelica.SIunits.MassFlowRate Qse(start=10)
     "Cooling water mass flow rate at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hse(start=500000)
+  Modelica.SIunits.SpecificEnthalpy Hse(start=500000)
     "Cooling water specific enthalpy at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Pse(start=1.e5)
+  Modelica.SIunits.AbsolutePressure Pse(start=1.e5)
     "Cooling water pressure at the outlet";
   Modelica.SIunits.MassFlowRate Qex(start=10)
     "Drain mass flow rate at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hex(start=500000)
+  Modelica.SIunits.SpecificEnthalpy Hex(start=500000)
     "Drain specific enthalpy at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Pex(start=1.e5)
+  Modelica.SIunits.AbsolutePressure Pex(start=1.e5)
     "Drain pressure at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hsate(start=200000)
+  Modelica.SIunits.SpecificEnthalpy Hsate(start=200000)
     "Water specific enthalpy at the saturation point";
-  ThermoSysPro.Units.AbsolutePressure Pcond( start=17000)
+  Modelica.SIunits.AbsolutePressure Pcond( start=17000)
     "Vapor pressure inside the condenser";
-  ThermoSysPro.Units.AbsoluteTemperature Tsat(start=500)
+  Modelica.SIunits.Temperature Tsat(start=500)
     "Water temperature at the saturation point";
-  ThermoSysPro.Units.AbsoluteTemperature Tee(start=300)
+  Modelica.SIunits.Temperature Tee(start=300)
     "Cooling water temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tse(start=400)
+  Modelica.SIunits.Temperature Tse(start=400)
     "Cooling water temperature at the outlet";
    Modelica.SIunits.Density rho_ee(start=900)
     "Cooling water density at the inlet";
@@ -79,9 +78,9 @@ public
     "Second reference value for the exchange coefficient";
   Modelica.SIunits.CoefficientOfHeatTransfer XKCO(start=200)
     "Heat transfer coefficient";
-  ThermoSysPro.Units.SpecificEnthalpy Hmv(start=2500000)
+  Modelica.SIunits.SpecificEnthalpy Hmv(start=2500000)
     "Fluid input average specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hml(start=250000)
+  Modelica.SIunits.SpecificEnthalpy Hml(start=250000)
     "Extraction water average specific enthalpy";
   Modelica.SIunits.Power W "Heat power released to the cold source";
 public
@@ -353,12 +352,10 @@ equation
       width=0.76,
       height=0.76),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

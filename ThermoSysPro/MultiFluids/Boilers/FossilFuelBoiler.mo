@@ -1,6 +1,6 @@
 within ThermoSysPro.MultiFluids.Boilers;
 model FossilFuelBoiler "Fossil fuel boiler"
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tsf=400
+  parameter Modelica.SIunits.Temperature Tsf=400
     "Flue gases temperature at the outlet";
   parameter ThermoSysPro.Units.PressureLossCoefficient Kf=0.05
     "Flue gases pressure loss coefficient";
@@ -27,13 +27,11 @@ protected
 public
   Modelica.SIunits.MassFlowRate Qea(start=400)
     "Air mass flow rate at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pea(start=1e5)
-    "Air pressure at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tea(start=400)
-    "Air temperature at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hea(start=50e3)
+  Modelica.SIunits.AbsolutePressure Pea(start=1e5) "Air pressure at the inlet";
+  Modelica.SIunits.Temperature Tea(start=400) "Air temperature at the inlet";
+  Modelica.SIunits.SpecificEnthalpy Hea(start=50e3)
     "Air specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hrair(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hrair(start=10e3)
     "Air reference specific enthalpy";
   Real XeaCO2(start=0) "CO2 mass fraction at the inlet";
   Real XeaH2O(start=0.1) "H2O mass fraction at the inlet";
@@ -41,10 +39,9 @@ public
   Real XeaSO2(start=0) "SO2 mass fraction at the inlet";
 
   Modelica.SIunits.MassFlowRate Qcomb(start=5) "Fuel mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature Tcomb(start=300) "Fuel temperature";
-  ThermoSysPro.Units.SpecificEnthalpy Hcomb(start=10e3)
-    "Fuel specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hrcomb(start=10e3)
+  Modelica.SIunits.Temperature Tcomb(start=300) "Fuel temperature";
+  Modelica.SIunits.SpecificEnthalpy Hcomb(start=10e3) "Fuel specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy Hrcomb(start=10e3)
     "Fuel reference specific enthalpy";
   Real XCcomb(start=0.8) "Carbon mass fraction";
   Real XHcomb(start=0.2) "Hydrogen mass fraction";
@@ -55,31 +52,31 @@ public
     "Fuel specific heat capacity";
 
   Modelica.SIunits.MassFlowRate Qe(start=100) "Water/steam mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Pee(start=50e5)
+  Modelica.SIunits.AbsolutePressure Pee(start=50e5)
     "Water/steam pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pse(start=50e5)
+  Modelica.SIunits.AbsolutePressure Pse(start=50e5)
     "Water/steam pressure at the outlet";
   ThermoSysPro.Units.DifferentialPressure deltaPe(start=1e5)
     "Water/steam pressure losses";
-  ThermoSysPro.Units.AbsoluteTemperature Tse(start=500)
+  Modelica.SIunits.Temperature Tse(start=500)
     "Water/steam temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hee(start=400e3)
+  Modelica.SIunits.SpecificEnthalpy Hee(start=400e3)
     "Water/steam specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hse(start=400e3)
+  Modelica.SIunits.SpecificEnthalpy Hse(start=400e3)
     "Water/steam specific enthalpy at the outlet";
   Modelica.SIunits.Density rhoe(start=998) "Average water/steam density";
 
   Modelica.SIunits.MassFlowRate Qsf(start=400)
     "Flue gases mass flow rate at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=1e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=1e5)
     "Flue gases pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tf(start=1500)
+  Modelica.SIunits.Temperature Tf(start=1500)
     "Flue gases temperature after combustion";
-  ThermoSysPro.Units.SpecificEnthalpy Hsf(start=50e3)
+  Modelica.SIunits.SpecificEnthalpy Hsf(start=50e3)
     "Flue gases specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hf(start=100e3)
+  Modelica.SIunits.SpecificEnthalpy Hf(start=100e3)
     "Flue gases specific enthalpy after combustion";
-  ThermoSysPro.Units.SpecificEnthalpy Hrfum(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hrfum(start=10e3)
     "Flue gases reference specific enthalpy";
   ThermoSysPro.Units.DifferentialPressure deltaPf(start=1e3)
     "Pressure losses in the combusiton chamber";

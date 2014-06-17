@@ -1,8 +1,7 @@
 within ThermoSysPro.MultiFluids.Boilers;
 model BoilerSystem
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tair=300
-    "Source air temperature";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tsf=423.16
+  parameter Modelica.SIunits.Temperature Tair=300 "Source air temperature";
+  parameter Modelica.SIunits.Temperature Tsf=423.16
     "Flue gases temperature at the outlet";
   parameter Modelica.SIunits.Power Wloss=1e5 "Thermal losses";
 
@@ -58,8 +57,8 @@ model BoilerSystem
           rotation=0)));
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Air_T(
                                     k=Tair)
-    annotation (Placement(transformation(extent={{-80,-50},{-60,-30}}, rotation=
-           0)));
+    annotation (Placement(transformation(extent={{-80,-50},{-60,-30}}, rotation
+          =0)));
 equation
   connect(FlueGas_P.y, SinkFlueGases.IPressure)
     annotation (Line(points={{-59,20},{-35,20}}));
@@ -72,15 +71,15 @@ equation
   connect(Boiler.Cws1, inletWaterSteamI)
     annotation (Line(points={{18,-20},{18,-60},{-10,-60},{-10,-98}}));
   connect(SinkFlueGases.C, Boiler.Cfg) annotation (Line(
-      points={{-20.2,20},{-13.3,20},{-13.3,20},{-6.4,20}},
+      points={{-20.2,20},{-6.4,20}},
       color={0,0,0},
       thickness=1));
   connect(SourceAir.C, Boiler.Cair) annotation (Line(
-      points={{-20,-20},{-13.2,-20},{-13.2,-20},{-6.4,-20}},
+      points={{-20,-20},{-6.4,-20}},
       color={0,0,0},
       thickness=1));
-  connect(Boiler.Cfuel, Fuel.C) annotation (Line(points={{-10,2.93915e-015},{
-          -16,2.93915e-015},{-16,0},{-20,0}}, color={0,0,0}));
+  connect(Boiler.Cfuel, Fuel.C) annotation (Line(points={{-10,9.79717e-016},{
+          -16,9.79717e-016},{-16,0},{-20,0}}, color={0,0,0}));
   annotation (Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-80,-100},{60,100}},
@@ -104,6 +103,7 @@ equation
               18},{0,26},{-2,32},{-6,50},{-10,40},{-14,32},{-18,20},{-18,16},{
               -20,12},{-22,20},{-24,22},{-26,18},{-30,10},{-32,4},{-36,-4},{-38,
               -14},{-40,-24},{-40,-32},{-34,-40},{-30,-46},{-20,-52},{-12,-46}},
+
           lineColor={255,0,128},
           fillColor={255,128,0},
           fillPattern=FillPattern.Solid),

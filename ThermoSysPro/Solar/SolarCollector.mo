@@ -21,7 +21,7 @@ model SolarCollector "Solar Collector"
   parameter Modelica.SIunits.SpecificHeatCapacity cp_glass=720
     "Glass heat capacity";
   parameter Modelica.SIunits.Density rho_glass=2500 "Glass density";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=350
+  parameter Modelica.SIunits.Temperature T0=350
     "Initial temperature (active if steady_state=false)";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from T0";
@@ -33,10 +33,9 @@ protected
 public
   Real PhiSun(start=1) "Radiation flux";
   Real Theta(start=0) "Incidence angle";
-  ThermoSysPro.Units.AbsoluteTemperature Twall[Ns](start=fill(350,Ns))
+  Modelica.SIunits.Temperature Twall[Ns](start=fill(350,Ns))
     "Pipe wall temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tatm(start=300)
-    "Atmospheric temperature";
+  Modelica.SIunits.Temperature Tatm(start=300) "Atmospheric temperature";
   Real WTube[Ns](start=fill(1,Ns)) "Flux to the pipe";
   Modelica.SIunits.Area AReflector(start=1) "Reflector surface";
   Modelica.SIunits.Area AGlass(start=1) "Glass surface";
@@ -56,8 +55,8 @@ public
     "Convection of the glass layer";
   Modelica.SIunits.Power WAbsGlass[Ns](start=fill(0,Ns))
     "Absorption of the glass layer";
-  ThermoSysPro.Units.AbsoluteTemperature Tsky(start=300) "Sky temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tglass[Ns](start=fill(300,Ns))
+  Modelica.SIunits.Temperature Tsky(start=300) "Sky temperature";
+  Modelica.SIunits.Temperature Tglass[Ns](start=fill(300,Ns))
     "Glass temperature";
 
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ISun
@@ -71,7 +70,8 @@ public
     annotation (Placement(transformation(extent={{-100,40},{-80,60}}, rotation=
             0)));
   ThermoSysPro.Thermal.Connectors.ThermalPort ITemperature[Ns]
-    annotation (Placement(transformation(extent={{80,0},{100,20}}, rotation=0)));
+    annotation (Placement(transformation(extent={{-10,-60},{10,-40}}, rotation=
+            0)));
 initial equation
   if steady_state then
     for i in 1:Ns loop
@@ -149,7 +149,7 @@ equation
           fillColor={255,255,0},
           fillPattern=FillPattern.Solid), Bitmap(extent={{-72,58},{84,-38}},
             fileName=
-            "../../../EDF_EUROSYSLIB/documentation/solarcollector.bmp")}),
+            "SolarCollector.bmp")}),
     DymolaStoredErrors,
     Documentation(revisions="<html>
 <u><p><b>Authors</u> : </p></b>
@@ -163,10 +163,7 @@ equation
 </ul>
 </html>
 ", info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end SolarCollector;

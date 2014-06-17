@@ -3,16 +3,18 @@ function WBRadiativeHeatTransferCoefficient
   "Radiative heat transfer coefficient for the wall heat exchanger"
   input ThermoSysPro.Units.DifferentialTemperature DeltaT
     "Temperature difference between the flue gases and the walls";
-  input ThermoSysPro.Units.AbsoluteTemperature Tp "Surface temperature";
+  input Modelica.SIunits.Temperature Tp "Surface temperature";
   input Real Pph2o "H20 fraction";
   input Real Ppco2 "CO2 fraction";
   input Real Beaml "Geometrical parameter";
+  input Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
 
   output Modelica.SIunits.CoefficientOfHeatTransfer Kr
     "Radiative heat transgfer coefficient";
 
 protected
-  ThermoSysPro.Units.AbsolutePressure Pgaz "CO2+H2O partial pressure";
+  Modelica.SIunits.AbsolutePressure Pgaz "CO2+H2O partial pressure";
   Real Rap "H20/C02 partial pressure";
   Real Kprim "Interpolation result over TabKr";
   Real Ak "Interpolation result over TabK2";
@@ -23,12 +25,12 @@ protected
                 D. Annaratone - GENERATORI DI VAPORE - fig. 9.8.6
                 The Babcock & Wilcox Company - STEAM - fig 26.
         Les valeurs correspondantes à une température de paroi de 1366.483
-        (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe
+        (2000. F) (tirées de STEAM) sont obtenues en supposant la courbe 
         une droite et en actionnant une conversion d'unités de mesure
                                 7.75      9
           Kr = 5.67826*[15.5 + ------- * --- DeltaT(°K)]
                                 1500.     5
-
+ 
   ******************************************************************************/
   constant Real TabDeltaT[20]={-1100,-1000,-900,-800,-700,-600,-500,-400,-300,-200,
       -100,0,100,200,400,600,800,1000,1400,1500};
@@ -59,22 +61,31 @@ algorithm
   if Beaml <= 0 then
     Kr := 0;
   else
-    Kprim := ThermoSysPro.Functions.TableLinearInterpolation(TabTp, TabDeltaT, TabKr, Tp, DeltaT);
+    if (option_interpolation == 1) then
+      Kprim := ThermoSysPro.Functions.TableLinearInterpolation(TabTp, TabDeltaT, TabKr, Tp, DeltaT);
+    elseif (option_interpolation == 2) then
+      Kprim := ThermoSysPro.Functions.TableSplineInterpolation(TabTp, TabDeltaT, TabKr, Tp, DeltaT);
+    else
+      assert(false, "WBRadiativeHeatTransferCoefficient: incorrect interpolation option");
+    end if;
     Pperl := Pgaz*Beaml;
 
-    Ak := ThermoSysPro.Functions.TableLinearInterpolation(TabRap, TabPl, TabK2, Rap, Pperl);
+    if (option_interpolation == 1) then
+      Ak := ThermoSysPro.Functions.TableLinearInterpolation(TabRap, TabPl, TabK2, Rap, Pperl);
+    elseif (option_interpolation == 2) then
+      Ak := ThermoSysPro.Functions.TableSplineInterpolation(TabRap, TabPl, TabK2, Rap, Pperl);
+    else
+      assert(false, "WBRadiativeHeatTransferCoefficient: incorrect interpolation option");
+    end if;
     Kr := Kprim*Ak;
   end if;
 
   annotation (
       smoothOrder=2,
       Icon(graphics),      Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-",        revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>", revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

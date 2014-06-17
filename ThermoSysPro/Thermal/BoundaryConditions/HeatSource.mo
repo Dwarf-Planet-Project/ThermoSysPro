@@ -1,6 +1,6 @@
 within ThermoSysPro.Thermal.BoundaryConditions;
 model HeatSource "Heat source"
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0[:]={300}
+  parameter Modelica.SIunits.Temperature T0[:]={300}
     "Source temperature (active if option_temperature=1)";
   parameter Modelica.SIunits.Power W0[:]={2e6}
     "Heat power emitted by the source (active if option_temperature=2)";

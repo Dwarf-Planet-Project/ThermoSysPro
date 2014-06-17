@@ -21,8 +21,8 @@ public
   ThermoSysPro.Units.DifferentialPressure deltaP(start=10)
     "Singular pressure loss";
   Modelica.SIunits.Density rho(start=1) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=300) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.Temperature T(start=300) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
 
   Connectors.FlueGasesInlet C1      annotation (Placement(transformation(extent
           ={{-120,-10},{-100,10}}, rotation=0)));

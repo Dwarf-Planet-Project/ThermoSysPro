@@ -8,12 +8,12 @@ model Compressor "Heat pump compressor "
 public
   Modelica.SIunits.Power W "Mechanical power delivered to the compressor";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy His
+  Modelica.SIunits.SpecificEnthalpy His
     "Fluid specific enthalpy after isentropic compression";
-  ThermoSysPro.Units.AbsolutePressure Pe(start=10e5) "Inlet pressure";
-  ThermoSysPro.Units.AbsolutePressure Ps(start=10e5) "Outlet pressure";
-  ThermoSysPro.Units.AbsoluteTemperature Te "Inlet temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Ts "Outlet temperature";
+  Modelica.SIunits.AbsolutePressure Pe(start=10e5) "Inlet pressure";
+  Modelica.SIunits.AbsolutePressure Ps(start=10e5) "Outlet pressure";
+  Modelica.SIunits.Temperature Te "Inlet temperature";
+  Modelica.SIunits.Temperature Ts "Outlet temperature";
   Real xm(start=1.0) "Average vapor mass fraction";
 
   Connectors.FluidInlet C1
@@ -52,7 +52,7 @@ equation
   xm = (proe.x + pros.x)/2.0;
 
   /* Compression efficiency */
-  His - C1.h = xm*eta*(C2.h - C1.h);
+  His - C1.h = max(xm, 0.01)*eta*(C2.h - C1.h);
 
   /* Fluid thermodynamic properties before the compression */
   proe = ThermoSysPro.Properties.Fluid.Ph(Pe, C1.h, 0, 2);
@@ -91,12 +91,10 @@ equation
       width=0.76,
       height=0.76),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

@@ -11,9 +11,9 @@ model DynamicOnePhaseFlowPipe "Dynamic one-phase flow pipe"
   parameter Real hcCorr=1.00
     "Corrective term for the heat exchange coefficient (hc) for each node";
   parameter Integer Ns=10 "Number of segments";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0[Ns]=fill(290, Ns)
+  parameter Modelica.SIunits.Temperature T0[Ns]=fill(290, Ns)
     "Initial fluid temperature (active if steady_state = false and option_temperature = 1)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0[Ns]=fill(1e5, Ns)
+  parameter Modelica.SIunits.SpecificEnthalpy h0[Ns]=fill(1e5, Ns)
     "Initial fluid specific enthalpy (active if steady_state = false and option_temperature = 2)";
   parameter Boolean inertia=true
     "true: momentum balance equation with inertia - false: without inertia";
@@ -21,10 +21,8 @@ model DynamicOnePhaseFlowPipe "Dynamic one-phase flow pipe"
     "true: momentum balance equation with advection terme - false: without advection terme";
   parameter Boolean dynamic_mass_balance=true
     "true: dynamic mass balance equation - false: static mass balance equation";
-  parameter Boolean dynamic_energy_balance=true
-    "true: dynamic energy balance equation - false: static energy balance equation";
   parameter Boolean simplified_dynamic_energy_balance=true
-    "true: simplified dynamic energy balance equation - false: full dynamic energy balance equation (active if dynamic_energy_balance=true)";
+    "true: simplified dynamic energy balance equation - false: full dynamic energy balance equation (active if dynamic_mass_balance=true)";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from T0 (if option_temperature=1) or h0 (if option_temperature=2)";
   parameter Integer option_temperature=1
@@ -53,13 +51,13 @@ protected
     "Internal heat exchange area for a node";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
+  Modelica.SIunits.AbsolutePressure P[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e5, N + 1))
     "Fluid pressure in node i";
   Modelica.SIunits.MassFlowRate Q[N](start=fill(10, N), nominal=fill(10, N))
     "Mass flow rate in node i";
-  ThermoSysPro.Units.SpecificEnthalpy h[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e6, N + 1))
+  Modelica.SIunits.SpecificEnthalpy h[N + 1](start=fill(1.e5, N + 1), nominal=fill(1.e6, N + 1))
     "Fluid specific enthalpy in node i";
-  ThermoSysPro.Units.SpecificEnthalpy hb[N]
+  Modelica.SIunits.SpecificEnthalpy hb[N]
     "Fluid specific enthalpy at the boundary of node i";
   Modelica.SIunits.Density rho1[N - 1](start=fill(998, N - 1), nominal=fill(1, N - 1))
     "Fluid density in thermal node i";
@@ -70,8 +68,7 @@ public
   Modelica.SIunits.Power dW1[N - 1](start=fill(3.e5, N - 1), nominal=fill(3.e5, N - 1))
     "Thermal power exchanged on the water side for node i";
   Modelica.SIunits.Power W1t "Total power exchanged on the water side";
-  ThermoSysPro.Units.AbsoluteTemperature Tp[N - 1](start=T0)
-    "Wall temperature in node i";
+  Modelica.SIunits.Temperature Tp[N - 1](start=T0) "Wall temperature in node i";
   Modelica.SIunits.CoefficientOfHeatTransfer hc[N - 1](start=fill(2000, N - 1), nominal=fill(200, N - 1))
     "Fluid heat exchange coefficient in node i";
   Modelica.SIunits.ReynoldsNumber Re1[N - 1](start=fill(6.e4, N - 1), nominal=fill(0.5e4, N - 1))
@@ -88,10 +85,8 @@ public
     "Fluid dynamic viscosity in hydraulic node i";
   Modelica.SIunits.SpecificHeatCapacity cp[N - 1](start=fill(4000, N - 1), nominal=fill(4000, N - 1))
     "Fluid specific heat capacity";
-  ThermoSysPro.Units.AbsoluteTemperature T1[N - 1]
-    "Fluid temperature in thermal node i";
-  ThermoSysPro.Units.AbsoluteTemperature T2[N]
-    "Fluid temperature in hydraulic node i";
+  Modelica.SIunits.Temperature T1[N - 1] "Fluid temperature in thermal node i";
+  Modelica.SIunits.Temperature T2[N] "Fluid temperature in hydraulic node i";
   ThermoSysPro.Units.DifferentialPressure dpa[N]
     "Advection term for the mass balance equation in node i";
   ThermoSysPro.Units.DifferentialPressure dpf[N]
@@ -191,7 +186,7 @@ equation
     end if;
 
     /* Energy balance equation */
-    if dynamic_energy_balance then
+    if dynamic_mass_balance then
       if simplified_dynamic_energy_balance then
         A*(-der(P[i + 1]) + rho1[i]*der(h[i + 1]))*dx1 = hb[i]*Q[i] - hb[i + 1]*Q[i + 1] + dW1[i];
       else
@@ -218,7 +213,11 @@ equation
     k[i] = noEvent(ThermoSysPro.Properties.WaterSteam.IF97.ThermalConductivity_rhoT(rho1[i], T1[i],P[i + 1]));
 
     /* Heat exchange coefficient (using the Dittus-Boelter correlation) */
-    hc[i] = noEvent(if ((Re1[i] > 1.e-6) and (Pr[i] > 1.e-6)) then hcCorr*0.023*k[i]/D*Re1[i]^0.8*Pr[i]^0.4 else 0);
+    if noEvent(Re1[i] > 2000) then
+      hc[i] = hcCorr*0.023*k[i]/D*Re1[i]^0.8*Pr[i]^0.4;
+    else
+      hc[i] = hcCorr*3.66*k[i]/D;
+    end if;
 
     Pr[i] = mu1[i]*cp[i]/k[i];
     Re1[i] = noEvent(abs(4*(Q[i] + Q[i + 1])/2/(pi*Di*mu1[i])));
@@ -326,8 +325,8 @@ equation
       width=0.68,
       height=0.94),
     Documentation(info="<html>
-<p><h4>Copyright &copy; EDF 2002 - 2012</h4></p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><h4>Copyright &copy; EDF 2002 - 2014</h4></p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

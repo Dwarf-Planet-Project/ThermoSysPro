@@ -11,13 +11,13 @@ model StaticFluegasesFluegasesExchangerKS
 
 public
   Modelica.SIunits.Power W "Power exchanged";
-  ThermoSysPro.Units.AbsoluteTemperature Tec(start=400)
+  Modelica.SIunits.Temperature Tec(start=400)
     "Temperature of the hot fluid at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc(start=300)
+  Modelica.SIunits.Temperature Tsc(start=300)
     "Temperature of the hot fluid at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=300)
+  Modelica.SIunits.Temperature Tef(start=300)
     "Temperature of the cold fluid at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=400)
+  Modelica.SIunits.Temperature Tsf(start=400)
     "Temperature of the cold fluid at the outlet";
   ThermoSysPro.Units.DifferentialTemperature DT1 "Delta T at the inlet";
   ThermoSysPro.Units.DifferentialTemperature DT2 "Delta T at the outlet";

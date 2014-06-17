@@ -11,9 +11,9 @@ model StaticCentrifugalPumpNom
 public
   ThermoSysPro.Units.DifferentialPressure deltaP(start=1e5)
     "Pressure difference between the outlet and the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy He(start = 1e3)
+  Modelica.SIunits.SpecificEnthalpy He(start = 1e3)
     "Fluid specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hs(start = 1e3)
+  Modelica.SIunits.SpecificEnthalpy Hs(start = 1e3)
     "Fluid specific enthalpy at the outlet";
   Modelica.SIunits.Power W(start=1e6) "Mechanical power of the pump";
 

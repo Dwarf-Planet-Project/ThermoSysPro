@@ -4,7 +4,7 @@ model HeatSink "Heat sink"
   parameter Integer N=1;
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature T[N] "Sink temperature";
+  Modelica.SIunits.Temperature T[N] "Sink temperature";
   Modelica.SIunits.Power W[N] "Heat power received by the sink";
 
 public

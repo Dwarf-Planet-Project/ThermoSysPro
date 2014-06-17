@@ -3,43 +3,43 @@ model ExchangerEfficiency
   "H2O/LiBr solution heat exchanger with prescribed efficiency"
   parameter Real Eff=0.9
     "Thermal exchange efficiency (between 0 and 1 =W/Wmax)";
-  parameter ThermoSysPro.Units.AbsolutePressure DPc=0
+  parameter Modelica.SIunits.AbsolutePressure DPc=0
     "Pressure loss in the hot fluid as a percent of the pressure at the inlet";
-  parameter ThermoSysPro.Units.AbsolutePressure DPf=0
+  parameter Modelica.SIunits.AbsolutePressure DPf=0
     "Pressure loss in the cold fluid as a percent of the pressure at the inlet";
 
 public
   Modelica.SIunits.Power W(start=1e6) "Power exchanged";
-  ThermoSysPro.Units.AbsoluteTemperature Tec(start=500)
+  Modelica.SIunits.Temperature Tec(start=500)
     "Hot fluid temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc(start=400)
+  Modelica.SIunits.Temperature Tsc(start=400)
     "Hot fluid temperature at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=350)
+  Modelica.SIunits.Temperature Tef(start=350)
     "Cold fluid temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=450)
+  Modelica.SIunits.Temperature Tsf(start=450)
     "Cold fluid temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hec(start=5e5)
+  Modelica.SIunits.SpecificEnthalpy Hec(start=5e5)
     "Hot fluid specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hsc(start=2e5)
+  Modelica.SIunits.SpecificEnthalpy Hsc(start=2e5)
     "Hot fluid specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hef(start=1e5)
+  Modelica.SIunits.SpecificEnthalpy Hef(start=1e5)
     "Cold fluid specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hsf(start=4e5)
+  Modelica.SIunits.SpecificEnthalpy Hsf(start=4e5)
     "Cold fluid specific enthalpy at the outlet";
   Modelica.SIunits.Power Wmax(start=1e6) "Maximum exchangeable power";
   Modelica.SIunits.Power Wmaxf(start=1e6)
     "Maximum power acceptable by the cold fluid";
   Modelica.SIunits.Power Wmaxc(start=1e6)
     "Maximum power releasable by the hot fluid";
-  ThermoSysPro.Units.SpecificEnthalpy Hmaxf(start=1e5)
+  Modelica.SIunits.SpecificEnthalpy Hmaxf(start=1e5)
     "Maximum specific enthalpy reachable by the cold fluid";
-  ThermoSysPro.Units.SpecificEnthalpy Hminc(start=1e5)
+  Modelica.SIunits.SpecificEnthalpy Hminc(start=1e5)
     "Minimum specific enthalpy reachable by the hot fluid";
   Real Xc(start=0.5) "H2O mass fraction in the hot fluid";
   Real Xf(start=0.5) "H2O mass fraction in the cold fluid";
   Modelica.SIunits.MassFlowRate Qc(start=100) "Hot fluid mass flow rate";
   Modelica.SIunits.MassFlowRate Qf(start=100) "Cold fluid mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy Hliq(start=4e5)
+  Modelica.SIunits.SpecificEnthalpy Hliq(start=4e5)
     "Liquid water specific enthalpy at the cold inlet";
   ThermoSysPro.Units.DifferentialTemperature DTc_ec(start=10)
     "Difference with the cristallisation temperature at the hot inlet";

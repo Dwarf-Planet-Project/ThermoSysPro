@@ -6,9 +6,9 @@ model DegasifierVolume "Degazifier volume"
   parameter Modelica.SIunits.SpecificHeatCapacity Cpmetal=460
     "Metal specific heat";
   parameter Modelica.SIunits.Mass Mmetal=10869 "Metal mass";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=1e5
     "Initial fluid pressure (active if steady_state=false)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1e5
+  parameter Modelica.SIunits.SpecificEnthalpy h0=1e5
     "Initial fluid specific enthalpy (active if steady_state=false)";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from (P0, h0)";
@@ -19,11 +19,11 @@ model DegasifierVolume "Degazifier volume"
 public
   Modelica.SIunits.Power W
     "Thermal power exchanged between the liquid and the basins";
-  ThermoSysPro.Units.AbsoluteTemperature Tl
+  Modelica.SIunits.Temperature Tl
     "Saturation temperature of the liquid in the basins";
   Real x "Vapor mass fraction";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Average fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Average fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
   Modelica.SIunits.MassFlowRate BQ
     "Right hand side of the mass balance equation";

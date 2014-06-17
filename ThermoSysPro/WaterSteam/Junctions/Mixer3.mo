@@ -7,9 +7,9 @@ model Mixer3 "Mixer with three inlets"
 public
   Real alpha1 "Extraction coefficient for inlet 1 (<=1)";
   Real alpha2 "Extraction coefficient for inlet 2 (<=1)";
-  ThermoSysPro.Units.AbsolutePressure P(start=10e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=10e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
 
 public
   Connectors.FluidInlet Ce2
@@ -43,11 +43,11 @@ public
 equation
 
   if (cardinality(Ialpha1) == 0) then
-    Ialpha1.signal = 1;
+    Ialpha1.signal = 0.3;
   end if;
 
   if (cardinality(Ialpha2) == 0) then
-    Ialpha2.signal = 1;
+    Ialpha2.signal = 0.3;
   end if;
 
   /* Fluid pressure */
@@ -74,7 +74,7 @@ equation
   end if;
 
   if (cardinality(Ialpha2) <> 0) then
-    Ce2.Q = Ialpha1.signal*Cs.Q;
+    Ce2.Q = Ialpha2.signal*Cs.Q;
   end if;
 
   alpha1 =  Ce1.Q/Cs.Q;
@@ -125,8 +125,8 @@ equation
       width=0.71,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

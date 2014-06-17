@@ -7,7 +7,7 @@ block SelecteurEntier "Sélection entre deux entiers"
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical uCond
     annotation (Placement(transformation(extent={{-120,-10},{-100,10}},
           rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Connectors.OuputInteger y
+  ThermoSysPro.InstrumentationAndControl.Connectors.OutputInteger y
                                           annotation (Placement(transformation(
           extent={{100,-10},{120,10}}, rotation=0)));
   ThermoSysPro.InstrumentationAndControl.Connectors.InputInteger u1

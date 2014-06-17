@@ -9,14 +9,14 @@ function WBInternalHeatTransferCoefficient
   input Real Gm "Water mass velocity at the inlet (kg/m2s)";
   input Real Xmc "Steam average mass fraction";
   input Modelica.SIunits.Power flux "Heat flux";
-  input ThermoSysPro.Units.AbsolutePressure Pmc "Water average pressure";
+  input Modelica.SIunits.AbsolutePressure Pmc "Water average pressure";
   input Modelica.SIunits.Area Si "Internal exchnage surface over dz";
 
   output Modelica.SIunits.CoefficientOfHeatTransfer hi
     "Internal heat transfer coefficient";
 
 protected
-  constant ThermoSysPro.Units.AbsolutePressure Pc=221.2e5 "Critical pressure";
+  constant Modelica.SIunits.AbsolutePressure Pc=221.2e5 "Critical pressure";
   Modelica.SIunits.Density rhol "Density of the liquid phase";
   Modelica.SIunits.Density rhov "Density of the steam phase";
   Modelica.SIunits.DynamicViscosity mul "Dynamic viscosity of the liquid phase";

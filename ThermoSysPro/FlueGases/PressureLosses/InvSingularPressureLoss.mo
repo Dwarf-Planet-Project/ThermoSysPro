@@ -12,8 +12,8 @@ public
     "Singular pressure loss";
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow";
   Modelica.SIunits.Density rho(start=1) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=300) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.Temperature T(start=300) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
 
 public
   ThermoSysPro.FlueGases.Connectors.FlueGasesInlet C1

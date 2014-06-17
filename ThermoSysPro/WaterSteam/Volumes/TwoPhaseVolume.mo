@@ -4,7 +4,7 @@ model TwoPhaseVolume "TwoPhaseVolume"
   parameter Modelica.SIunits.Area A=1 "Cavity cross-sectional area";
   parameter Real Vf0=0.5
     "Fraction of initial water volume in the drum (active if steady_state=false)";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=0.1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=0.1e5
     "Fluid initial pressure (active if steady_state=false)";
   parameter Real Ccond=0.01 "Condensation coefficient";
   parameter Real Cevap=0.09 "Evaporation coefficient";
@@ -24,13 +24,13 @@ protected
     "Gravity constant";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid average pressure";
-  ThermoSysPro.Units.AbsolutePressure Pfond
+  Modelica.SIunits.AbsolutePressure P "Fluid average pressure";
+  Modelica.SIunits.AbsolutePressure Pfond
     "Fluid pressure at the bottom of the cavity";
-  ThermoSysPro.Units.SpecificEnthalpy hl "Liquid phase spepcific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv "Gas phase spepcific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature Tl "Liquid phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tv "Gas phase temperature";
+  Modelica.SIunits.SpecificEnthalpy hl "Liquid phase spepcific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hv "Gas phase spepcific enthalpy";
+  Modelica.SIunits.Temperature Tl "Liquid phase temperature";
+  Modelica.SIunits.Temperature Tv "Gas phase temperature";
   Modelica.SIunits.Volume Vl "Liquid phase volume";
   Modelica.SIunits.Volume Vv "Gas phase volume";
   Real xl(start=0.5) "Mass vapor fraction in the liquid phase";
@@ -101,13 +101,13 @@ equation
   if (cardinality(Cl) == 0) then
     Cl.Q = 0;
     Cl.h = 1.e5;
-    Cl.b = true;
+    Cl.a = true;
   end if;
 
   if (cardinality(Cv) == 0) then
     Cv.Q = 0;
     Cv.h = 1.e5;
-    Cv.a = true;
+    Cv.b = true;
   end if;
 
   if (cardinality(Ce) == 0) then
@@ -206,8 +206,8 @@ equation
       width=0.78,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

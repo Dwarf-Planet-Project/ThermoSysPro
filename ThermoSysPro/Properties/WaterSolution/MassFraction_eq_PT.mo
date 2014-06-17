@@ -1,8 +1,8 @@
 within ThermoSysPro.Properties.WaterSolution;
 function MassFraction_eq_PT
   "Equilibrium mass fraction of the H2O/LiBr solution as a function of T et Xh2o"
-  input ThermoSysPro.Units.AbsolutePressure P "Pressure";
-  input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+  input Modelica.SIunits.AbsolutePressure P "Pressure";
+  input Modelica.SIunits.Temperature T "Temperature";
 
   output Real Xe "Equilibrium mass fraction";
 
@@ -20,8 +20,8 @@ protected
 
 algorithm
   /* Units conversions */
-  lnP := ln( P);
-  Tinv := -1 / T;
+  lnP := log(P);
+  Tinv := -1/T;
 
   /* Computation of the coefficients */
   A1 := 7.05850237E+03*Tinv*Tinv + 7.29531684E+01*Tinv + 2.64270714E-01;
@@ -36,9 +36,9 @@ algorithm
 
   /* Equilibrium pressure */
   if (lnP < lnPlim) then
-    Xe := A1 * lnP + B1;
+    Xe := A1*lnP + B1;
   else
-    Xe := A2 * lnP + B2;
+    Xe := A2*lnP + B2;
   end if;
 
   annotation (

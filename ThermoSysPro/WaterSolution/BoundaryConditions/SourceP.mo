@@ -1,14 +1,14 @@
 within ThermoSysPro.WaterSolution.BoundaryConditions;
 model SourceP "Pressure source"
-  parameter ThermoSysPro.Units.AbsolutePressure P0=300000 "Source pressure";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=290 "Source temperature";
+  parameter Modelica.SIunits.AbsolutePressure P0=300000 "Source pressure";
+  parameter Modelica.SIunits.Temperature T0=290 "Source temperature";
   parameter Real Xh2o0=0.5 "Source water mass fraction";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
+  Modelica.SIunits.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.SpecificEnthalpy Xh2o "Water mass fraction";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.SpecificEnthalpy Xh2o "Water mass fraction";
 public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ITemperature
     annotation (Placement(transformation(

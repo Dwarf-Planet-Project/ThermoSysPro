@@ -8,7 +8,7 @@ model GTCombustionChamber "Gas turbine combustion chamber"
     "Thermal loss fraction in the body of the combustion chamber";
   parameter Boolean air_atomisation=false
     "true: computation with air atomisation - false: computation without air atomisation";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tecpat=293
+  parameter Modelica.SIunits.Temperature Tecpat=293
     "Temperature at the inlet of the atomisation compressor";
   parameter Real kat=0 "Atomisation pressure loss coefficient";
   parameter Real XQat=0 "Atomisation air mass flow rate coefficient";
@@ -34,20 +34,17 @@ protected
 
 public
   Modelica.SIunits.MassFlowRate Qea(start=400) "Air mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Pea(start=1e5)
-    "Air pressure at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tea(start=600)
-    "Air temperature at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hea(start=50e3)
+  Modelica.SIunits.AbsolutePressure Pea(start=1e5) "Air pressure at the inlet";
+  Modelica.SIunits.Temperature Tea(start=600) "Air temperature at the inlet";
+  Modelica.SIunits.SpecificEnthalpy Hea(start=50e3)
     "Air specific enthalpy at the inlet";
   Real XeaCO2(start=0) "CO2 mass fraction at the air inlet";
   Real XeaH2O(start=0.1) "H2O mass fraction at the air inlet";
   Real XeaO2(start=0.2) "O2 mass fraction at the air inlet";
   Real XeaSO2(start=0) "SO2 mass fraction at the air inlet";
   Modelica.SIunits.MassFlowRate Qfuel(start=5) "Fuel mass flow rate";
-  ThermoSysPro.Units.AbsoluteTemperature Tfuel(start=300) "Fuel temperature";
-  ThermoSysPro.Units.SpecificEnthalpy Hfuel(start=10e3)
-    "Fuel specific enthalpy";
+  Modelica.SIunits.Temperature Tfuel(start=300) "Fuel temperature";
+  Modelica.SIunits.SpecificEnthalpy Hfuel(start=10e3) "Fuel specific enthalpy";
   Real XCfuel(start=0.8) "C mass fraction in the fuel";
   Real XHfuel(start=0.2) "H mass fraction in the fuel";
   Real XOfuel(start=0) "O mass fraction in the fuel";
@@ -56,14 +53,14 @@ public
   Modelica.SIunits.SpecificHeatCapacity Cpfuel(start=1000)
     "Fuel specific heat capacity";
   Modelica.SIunits.MassFlowRate Qews(start=1) "Water/steam mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy Hews(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hews(start=10e3)
     "Water/steam specific enthalpy at the inlet";
   Modelica.SIunits.MassFlowRate Qsf(start=400) "Flue gases mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=12e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=12e5)
     "Flue gases pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=1500)
+  Modelica.SIunits.Temperature Tsf(start=1500)
     "Flue gases temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hsf(start=50e4)
+  Modelica.SIunits.SpecificEnthalpy Hsf(start=50e4)
     "Flue gases specific enthalpy at the outlet";
   Real XsfCO2(start=0.5) "CO2 mass fraction in the flue gases";
   Real XsfH2O(start=0.1) "H2O mass fraction in the flue gases";
@@ -73,21 +70,21 @@ public
   Real exc(start=1) "Combustion air ratio";
   ThermoSysPro.Units.DifferentialPressure deltaPccb(start=1e3)
     "Pressure loss in the combusiton chamber";
-  ThermoSysPro.Units.SpecificEnthalpy Hrair(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hrair(start=10e3)
     "Air reference specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hrws(start=10e4)
+  Modelica.SIunits.SpecificEnthalpy Hrws(start=10e4)
     "Water/steam reference specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hrfuel(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hrfuel(start=10e3)
     "Fuel reference specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hrfg(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hrfg(start=10e3)
     "Flue gases reference specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy Hecpat(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hecpat(start=10e3)
     "Air specific enthalpy at the inlet of the atomisaiton compressor";
-  ThermoSysPro.Units.SpecificEnthalpy Hiscpat(start=10e3)
+  Modelica.SIunits.SpecificEnthalpy Hiscpat(start=10e3)
     "Air specific enthalpy after isentropic expansion at the outlet of the atomisaiotn compressor";
-  ThermoSysPro.Units.AbsolutePressure Pecpat(start=1e5)
+  Modelica.SIunits.AbsolutePressure Pecpat(start=1e5)
     "Pressure at the inlet of the atomisation compressor";
-  ThermoSysPro.Units.AbsolutePressure Pscpat(start=1e5)
+  Modelica.SIunits.AbsolutePressure Pscpat(start=1e5)
     "Pressure at the inlet of the atomisation compressor";
   Modelica.SIunits.SpecificEntropy Secpat(start=1e3)
     "Entropy at the inlet of the atomisation compressor";
@@ -169,11 +166,11 @@ equation
 
   /* Air density at the inlet */
   rhoea = ThermoSysPro.Properties.FlueGases.FlueGases_rho(Pea, Tea, XeaCO2, XeaH2O, XeaO2c, XeaSO2);
-  Vea = if (rhoea >0.001) then 1/rhoea else 1/1.1;
+  Vea = if (rhoea > 0.001) then 1/rhoea else 1/1.1;
 
   /* Flue gases density at the outlet */
   rhosf = ThermoSysPro.Properties.FlueGases.FlueGases_rho(Psf, Tsf, XsfCO2, XsfH2O, XsfO2, XsfSO2);
-  Vsf = if (rhosf >0.001) then 1/rhosf else 1/0.1;
+  Vsf = if (rhosf > 0.001) then 1/rhosf else 1/0.1;
 
   0 = if (eta_is > eps_a) then (eta_isc - eta_is) else (eta_isc - eps_a);
   0 = if (Acham > eps_s) then (Achamc - Acham) else (Achamc - eps_s);
@@ -212,7 +209,7 @@ equation
   deltaPccb = (kcham*(v^2))/(2*Vccbm);
 
   /* Fuel specific enthalpy at the inlet */
-  Hfuel = Cpfuel*Tfuel;
+  Hfuel = Cpfuel*(Tfuel - 273.16);
 
   if air_atomisation then
      /* Energy balance equation */
@@ -278,10 +275,7 @@ equation
 </ul>
 </html>
 ", info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end GTCombustionChamber;

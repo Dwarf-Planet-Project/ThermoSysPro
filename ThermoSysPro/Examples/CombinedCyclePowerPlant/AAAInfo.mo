@@ -1,7 +1,6 @@
 within ThermoSysPro.Examples.CombinedCyclePowerPlant;
-
-
 class AAAInfo "Info"
+
       annotation (DocumentationClass=true, Documentation(info="<html>
 <p><b><font style=\"font-size: 12pt; color: #008000; \">Combined cycle power plant model </font></b></p>
 <p><h4>Licensed by EDF under the Modelica License 2. </h4></p>
@@ -35,4 +34,3 @@ class AAAInfo "Info"
 <p>A conference paper explaining the two models can be found here: <a href=\"https://www.modelica.org/events/modelica2011/Proceedings/pages/papers/15_2_ID_115_a_fv.pdf\">https://www.modelica.org/events/modelica2011/Proceedings/pages/papers/15_2_ID_115_a_fv.pdf</a>. </p>
 </html>"));
 end AAAInfo;
-

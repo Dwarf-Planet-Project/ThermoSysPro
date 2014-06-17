@@ -1,8 +1,7 @@
 within ThermoSysPro.Properties.FlueGases;
 function FlueGases_a "Velocity of sound"
-  input ThermoSysPro.Units.AbsolutePressure PMF "Flue gases average pressure";
-  input ThermoSysPro.Units.AbsoluteTemperature TMF
-    "Flue gases average temperature";
+  input Modelica.SIunits.AbsolutePressure PMF "Flue gases average pressure";
+  input Modelica.SIunits.Temperature TMF "Flue gases average temperature";
   input Real Xco2 "CO2 mass fraction";
   input Real Xh2o "H2O mass fraction";
   input Real Xo2 "O2 mass fraction";

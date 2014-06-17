@@ -14,7 +14,7 @@ model StaticWallFlueGasesExchanger "Static wall/flue gases exchanger"
     "Minimum flue gases mass flow rate";
   parameter Integer exchanger_type=1
     "Exchanger type - 1:crossed flux - 2:longitudinal flux";
-  parameter ThermoSysPro.Units.AbsoluteTemperature Tp0=500
+  parameter Modelica.SIunits.Temperature Tp0=500
     "Wall temperature (active if the thermal connector is not connected)";
   parameter Real CSailettes=1
     "Increase factor of the heat exchange surface to to the fins";
@@ -51,18 +51,17 @@ protected
 
 public
   Modelica.SIunits.Density rho(start=1) "Flue gases density";
-  ThermoSysPro.Units.AbsoluteTemperature T[Ns + 1](start=fill(900, Ns + 1))
+  Modelica.SIunits.Temperature T[Ns + 1](start=fill(900, Ns + 1))
     "Flue gases temperature at the inlet of section i";
-  ThermoSysPro.Units.AbsoluteTemperature Tm[Ns](start=fill(900, Ns))
+  Modelica.SIunits.Temperature Tm[Ns](start=fill(900, Ns))
     "Average flue gases temperature in section i";
-  ThermoSysPro.Units.SpecificEnthalpy h[Ns + 1](start=fill(1e6, Ns + 1))
+  Modelica.SIunits.SpecificEnthalpy h[Ns + 1](start=fill(1e6, Ns + 1))
     "Flue gases specific enthalpy at the inlet of section i";
-  ThermoSysPro.Units.AbsoluteTemperature Tp[Ns](start=fill(500, Ns))
-    "Wall temperature";
-  ThermoSysPro.Units.AbsolutePressure Pe(start=1e5)
+  Modelica.SIunits.Temperature Tp[Ns](start=fill(500, Ns)) "Wall temperature";
+  Modelica.SIunits.AbsolutePressure Pe(start=1e5)
     "Flue gases partial pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pco2 "CO2 partial pressure";
-  ThermoSysPro.Units.AbsolutePressure Ph2o "H2O partial pressure";
+  Modelica.SIunits.AbsolutePressure Pco2 "CO2 partial pressure";
+  Modelica.SIunits.AbsolutePressure Ph2o "H2O partial pressure";
   Real Xh2o "H2O mass fraction";
   Real Xco2 "CO2 mass fraction";
   Real Xn2 "N2 mass fraction";
@@ -87,7 +86,7 @@ public
   Modelica.SIunits.Power W(start=0) "Total power exchanged";
   ThermoSysPro.Units.DifferentialTemperature DeltaT[Ns](start=fill(50, Ns))
     "Temperature difference between the fluid and the wall";
-  ThermoSysPro.Units.AbsoluteTemperature TFilm[Ns] "Film temperature";
+  Modelica.SIunits.Temperature TFilm[Ns] "Film temperature";
   Real Mmt "Total flue gases molar mass";
 
 public
@@ -149,7 +148,7 @@ equation
 
     /* Average temperature in section i */
     Tm[i] = 0.5*(T[i] + T[i+1]);
-    0 = noEvent(if (abs(Q) < Qmin) then Tm[i] - Tp[i] else Q*(h[i] - h[i + 1]) - 1/Coeff*K*(Tm[i] - Tp[i])*Surf_ext);
+    0 = noEvent(if (abs(Q) < Qmin) then Tm[i] - Tp[i] else Q*(h[i] - h[i + 1]) - Coeff*K*(Tm[i] - Tp[i])*Surf_ext);
 
     /* Temperature difference between the fluid and the wall */
     DeltaT[i] = Tm[i] - Tp[i];
@@ -175,7 +174,7 @@ equation
     TFilm[i] = 0.5*(Tm[i] + Tp[i]);
 
     /* Power exchanged for each section */
-    dW[i] = K*(Tm[i] - Tp[i])*Surf_ext;
+    dW[i] = Coeff*K*(Tm[i] - Tp[i])*Surf_ext;
   end for;
 
   /* Thermal exchange */
@@ -222,10 +221,7 @@ equation
 </ul>
 </html>
 ", info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end StaticWallFlueGasesExchanger;

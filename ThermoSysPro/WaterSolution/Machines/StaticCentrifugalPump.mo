@@ -27,7 +27,7 @@ protected
   constant Modelica.SIunits.Acceleration g=Modelica.Constants.g_n
     "Gravity constant";
   parameter Real eps=1.e-6 "Small number";
-  parameter Real rhmin=0.05 "Minimum efficiency to avoid zero crossings";
+  parameter Real rhmin=0.20 "Minimum efficiency to avoid zero crossings";
 
 public
   Real rh "Hydraulic efficiency";
@@ -37,12 +37,11 @@ public
   Modelica.SIunits.VolumeFlowRate Qv(start=0.5) "Volumetric flow";
   Modelica.SIunits.Power Wh "Hydraulic power";
   Modelica.SIunits.Power Wm "Motor power";
-  ThermoSysPro.Units.AbsolutePressure deltaP
+  Modelica.SIunits.AbsolutePressure deltaP
     "Pressure difference between the outlet and the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy h1 "Fluid specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy h2
-    "Fluid specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy deltaH
+  Modelica.SIunits.SpecificEnthalpy h1 "Fluid specific enthalpy at the inlet";
+  Modelica.SIunits.SpecificEnthalpy h2 "Fluid specific enthalpy at the outlet";
+  Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
   ThermoSysPro.WaterSolution.Connectors.WaterSolutionInlet C1
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
@@ -134,12 +133,10 @@ equation
       width=0.66,
       height=0.69),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

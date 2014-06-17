@@ -8,7 +8,10 @@ model TestWaterHammer
     L=600,
     D=0.5,
     lambda=0.018,
-    a=1200) annotation (Placement(transformation(extent={{-60,-20},{-40,0}},
+    a=1200,
+    Qv(start=fill(1.5, 21)),
+    H(start=fill(300, 21)))
+            annotation (Placement(transformation(extent={{-60,-20},{-40,0}},
           rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP PSink1(P0=2400000)
                                    annotation (Placement(transformation(extent=
@@ -39,8 +42,7 @@ equation
       points={{0,-10},{20,-10}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (experiment(StopTime=10),
-    Window(
+  annotation (             Window(
       x=0.17,
       y=0.16,
       width=0.6,

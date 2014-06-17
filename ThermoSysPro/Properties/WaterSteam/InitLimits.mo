@@ -41,15 +41,13 @@ package InitLimits
   constant Modelica.SIunits.Power POWMIN=-1.0e8 "Minimum power";
   constant Modelica.SIunits.Power POWMAX=1.0e8 "Maximum power";
   constant Modelica.SIunits.Power POWNOM=1.0e3 "Nominal power";
-  constant ThermoSysPro.Units.AbsolutePressure PMIN=100.0 "Minimum pressure";
-  constant ThermoSysPro.Units.AbsolutePressure PMAX=1.0e9 "Maximum pressure";
-  constant ThermoSysPro.Units.AbsolutePressure PNOM=1.0e5 "Nominal pressure";
-  constant ThermoSysPro.Units.AbsolutePressure COMPPMIN=-1.0*MINPOS
+  constant Modelica.SIunits.AbsolutePressure PMIN=100.0 "Minimum pressure";
+  constant Modelica.SIunits.AbsolutePressure PMAX=1.0e9 "Maximum pressure";
+  constant Modelica.SIunits.AbsolutePressure PNOM=1.0e5 "Nominal pressure";
+  constant Modelica.SIunits.AbsolutePressure COMPPMIN=-1.0*MINPOS
     "Minimum pressure";
-  constant ThermoSysPro.Units.AbsolutePressure COMPPMAX=1.0e8
-    "Maximum pressure";
-  constant ThermoSysPro.Units.AbsolutePressure COMPPNOM=1.0e5
-    "Nominal pressure";
+  constant Modelica.SIunits.AbsolutePressure COMPPMAX=1.0e8 "Maximum pressure";
+  constant Modelica.SIunits.AbsolutePressure COMPPNOM=1.0e5 "Nominal pressure";
   constant Modelica.SIunits.RatioOfSpecificHeatCapacities KAPPAMIN=1.0
     "Minimum isentropic exponent";
   constant Modelica.SIunits.RatioOfSpecificHeatCapacities KAPPAMAX=Modelica.Constants.inf
@@ -62,11 +60,11 @@ package InitLimits
     "Maximum specific energy";
   constant Modelica.SIunits.SpecificEnergy SENOM=1.0e6
     "Nominal specific energy";
-  constant ThermoSysPro.Units.SpecificEnthalpy SHMIN=-1.0e6
+  constant Modelica.SIunits.SpecificEnthalpy SHMIN=-1.0e6
     "Minimum specific enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy SHMAX=1.0e8
+  constant Modelica.SIunits.SpecificEnthalpy SHMAX=1.0e8
     "Maximum specific enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy SHNOM=1.0e6
+  constant Modelica.SIunits.SpecificEnthalpy SHNOM=1.0e6
     "Nominal specific enthalpy";
   constant Modelica.SIunits.SpecificEntropy SSMIN=-1.0e6
     "Minimum specific entropy";
@@ -80,12 +78,9 @@ package InitLimits
     "Maximum specific heat capacity";
   constant Modelica.SIunits.SpecificHeatCapacity CPNOM=1.0e3
     "Nominal specific heat capacity";
-  constant ThermoSysPro.Units.AbsoluteTemperature TMIN=200
-    "Minimum temperature";
-  constant ThermoSysPro.Units.AbsoluteTemperature TMAX=6000
-    "Maximum temperature";
-  constant ThermoSysPro.Units.AbsoluteTemperature TNOM=320.0
-    "Nominal temperature";
+  constant Modelica.SIunits.Temperature TMIN=200 "Minimum temperature";
+  constant Modelica.SIunits.Temperature TMAX=6000 "Maximum temperature";
+  constant Modelica.SIunits.Temperature TNOM=320.0 "Nominal temperature";
   constant Modelica.SIunits.ThermalConductivity LMIN=MINPOS
     "Minimum thermal conductivity";
   constant Modelica.SIunits.ThermalConductivity LMAX=500.0
@@ -103,36 +98,123 @@ package InitLimits
   annotation (
     Icon(graphics={
         Text(
-          extent={{-120,135},{120,70}},
-          lineColor={255,0,0},
+          extent={{-102,0},{24,-26}},
+          lineColor={242,148,0},
           textString=
-               "%name"),
-        Rectangle(
-          extent={{-100,-100},{80,50}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{-100,50},{-80,70},{100,70},{80,50},{-100,50}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
-          fillPattern=FillPattern.Solid),
-        Polygon(
-          points={{100,70},{100,-80},{80,-100},{80,50},{100,70}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
-          fillPattern=FillPattern.Solid),
+               "Thermo"),
         Text(
-          extent={{-90,40},{70,10}},
-          lineColor={160,160,164},
-          fillColor={0,0,0},
-          fillPattern=FillPattern.Solid,
+          extent={{-4,8},{68,-34}},
+          lineColor={46,170,220},
           textString=
-               "Library"),
-        Rectangle(extent={{-32,-6},{16,-35}}, lineColor={0,0,0}),
-        Rectangle(extent={{-32,-56},{16,-85}}, lineColor={0,0,0}),
-        Line(points={{16,-20},{49,-20},{49,-71},{16,-71}}, color={0,0,0}),
-        Line(points={{-32,-72},{-64,-72},{-64,-21},{-32,-21}}, color={0,0,0})}),
+               "SysPro"),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{42,
+              8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{-50,6},
+              {-62,2}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,8},
+              {-42,22},{-42,30},{-44,38}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,12},
+              {-26,12},{-28,12},{-26,20}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,30},{-6,26}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,36},{-6,32}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,42},{-6,38}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,48},{-6,44}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,32},{-2,28}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,38},{-2,34}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,44},{-2,40}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,50},{-2,46}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,20}},
+
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{42,
+              6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{-50,6},
+              {-62,2}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+          color={46,170,220},
+          thickness=0.5),
+        Polygon(
+          points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+        Line(
+          points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{80,80},{100,100}},
+          color={0,0,255},
+          smooth=Smooth.None)}),
     Window(
       x=0.45,
       y=0.01,

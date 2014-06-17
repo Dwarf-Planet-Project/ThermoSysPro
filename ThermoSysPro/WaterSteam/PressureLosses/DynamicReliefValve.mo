@@ -14,6 +14,8 @@ model DynamicReliefValve "Dynamic relief valve"
   parameter Modelica.SIunits.Mass m=0 "Valve mass";
   parameter Integer mode_caract=0
     "0:linear characteristics - 1:characteristics is given by caract[]";
+  parameter Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation (active if mode_caract=1)";
   parameter Boolean continuous_flow_reversal=false
     "true: continuous flow reversal - false: discontinuous flow reversal";
   parameter Modelica.SIunits.Density p_rho=0 "If > 0, fixed fluid density";
@@ -34,9 +36,9 @@ public
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
   ThermoSysPro.Units.DifferentialPressure deltaP "Singular pressure loss";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=290) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Fluid avreage pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Fluid avreage pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
 
 protected
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
@@ -105,7 +107,13 @@ equation
   if (mode_caract == 0) then
     Cv = Ouv*Cvmax;
   elseif (mode_caract == 1) then
-    Cv = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], Ouv);
+    if (option_interpolation == 1) then
+      Cv = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], Ouv);
+    elseif (option_interpolation == 2) then
+      Cv = ThermoSysPro.Functions.SplineInterpolation(caract[:, 1], caract[:, 2], Ouv);
+    else
+      assert(false, "DynamicReliefValve: incorrect interpolation option");
+    end if;
   else
     assert(false, "VanneReglante : mode de calcul du Cv incorrect");
   end if;
@@ -165,8 +173,8 @@ equation
       width=0.8,
       height=0.77),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

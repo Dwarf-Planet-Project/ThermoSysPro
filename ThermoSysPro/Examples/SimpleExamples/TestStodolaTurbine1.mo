@@ -1,7 +1,8 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStodolaTurbine1
 
-  ThermoSysPro.WaterSteam.Machines.StodolaTurbine stodolaTurbine
+  ThermoSysPro.WaterSteam.Machines.StodolaTurbine stodolaTurbine(pros1(x(start=
+            1)))
     annotation (Placement(transformation(extent={{-60,60},{-40,80}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP(                 mode=0, P0=45e5)
     annotation (Placement(transformation(extent={{-20,60},{0,80}}, rotation=0)));
@@ -13,7 +14,8 @@ model TestStodolaTurbine1
           rotation=0)));
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump
     DynamicCentrifugalPump1(                                                      C2(P(
-          start=3.e5)), Q(fixed=true, start=50))
+          start=3.e5)), Q(fixed=true, start=50),
+    Ch(start=300))
     annotation (Placement(transformation(extent={{20,-40},{40,-20}}, rotation=0)));
   ThermoSysPro.ElectroMechanics.Machines.Shaft Shaft1
     annotation (Placement(transformation(extent={{-20,-90},{0,-70}}, rotation=0)));
@@ -38,7 +40,7 @@ equation
     annotation (Line(points={{-80,70},{-60.1,70}}, color={0,0,255}));
   connect(stodolaTurbine.Cs, puitsP.C)
     annotation (Line(points={{-39.9,70},{-20,70}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

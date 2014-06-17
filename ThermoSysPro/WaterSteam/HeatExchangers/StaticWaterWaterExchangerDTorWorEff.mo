@@ -39,15 +39,15 @@ protected
 public
   Modelica.SIunits.Power W(start=1e6)
     "Power exchanged from the hot fluid to the cold fluid";
-  ThermoSysPro.Units.AbsoluteTemperature Tec(start=500)
+  Modelica.SIunits.Temperature Tec(start=500)
     "Fluid temperature at the inlet of the hot side";
-  ThermoSysPro.Units.AbsoluteTemperature Tsc(start=400)
+  Modelica.SIunits.Temperature Tsc(start=400)
     "Fluid temperature at the outlet of the hot side";
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=350)
+  Modelica.SIunits.Temperature Tef(start=350)
     "Fluid temperature at the inlet of the cold side";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=450)
+  Modelica.SIunits.Temperature Tsf(start=450)
     "Fluid temperature at the outlet of the cold side";
-  ThermoSysPro.Units.AbsoluteTemperature Tsatsf
+  Modelica.SIunits.Temperature Tsatsf
     "Saturation temperature at the outlet of the cold side";
   ThermoSysPro.Units.DifferentialPressure DPfc(start=1e3)
     "Friction pressure loss for the hot fluid";

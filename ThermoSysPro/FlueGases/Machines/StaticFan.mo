@@ -27,7 +27,7 @@ protected
   constant Modelica.SIunits.Acceleration g=Modelica.Constants.g_n
     "Gravity constant";
   parameter Real eps=1.e-6 "Small number";
-  parameter Real rhmin=0.05 "Minimum efficiency to avoid zero crossings";
+  parameter Real rhmin=0.20 "Minimum efficiency to avoid zero crossings";
 
 public
   Real rh( start=0.5) "Hydraulic efficiency";
@@ -40,16 +40,16 @@ public
    Modelica.SIunits.Density rho(start=998) "Fluid density";
   ThermoSysPro.Units.DifferentialPressure deltaP
     "Pressure variation between the outlet and the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy deltaH
+  Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000)
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000)
     "Fluid average specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy h1(start=100000)
+  Modelica.SIunits.SpecificEnthalpy h1(start=100000)
     "Fluid specific enthalpy in";
-  ThermoSysPro.Units.SpecificEnthalpy h2(start=100000)
+  Modelica.SIunits.SpecificEnthalpy h2(start=100000)
     "Fluid specific enthalpy out";
-  ThermoSysPro.Units.AbsoluteTemperature T( start=500) "Fluid temperature";
+  Modelica.SIunits.Temperature T( start=500) "Fluid temperature";
 
 public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputLogical commandeFan
@@ -164,12 +164,10 @@ equation
           fillColor={128,255,0},
           fillPattern=FillPattern.Backward)}),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

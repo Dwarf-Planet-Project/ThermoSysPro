@@ -1,17 +1,17 @@
 within ThermoSysPro.Properties.C3H3F5;
 function C3H3F5_Ps "11133-C3H3F5 physical properties as a function of P and s"
-  input ThermoSysPro.Units.AbsolutePressure P "Pressure";
+  input Modelica.SIunits.AbsolutePressure P "Pressure";
   input Modelica.SIunits.SpecificEntropy s "Specific entropy";
 
 protected
-  ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
-  ThermoSysPro.Units.AbsolutePressure Psc "Critical pressure";
-  ThermoSysPro.Units.AbsolutePressure Pcalc
+  Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
+  Modelica.SIunits.AbsolutePressure Psc "Critical pressure";
+  Modelica.SIunits.AbsolutePressure Pcalc
     "Variable for the computation of the pressure";
   Modelica.SIunits.SpecificEntropy scalc
     "Variable for the computation of the specific entropy";
-  ThermoSysPro.Units.SpecificEnthalpy hsatL "Boiling specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hsatV "Condensation specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hsatL "Boiling specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hsatV "Condensation specific enthalpy";
   Modelica.SIunits.SpecificEntropy ssatL "Boiling specific entropy";
   Modelica.SIunits.SpecificEntropy ssatV "Condensation specific entropy";
   Real x "Vapor mass fraction";
@@ -68,12 +68,14 @@ algorithm
 
   elseif (scalc < ssatL) then
       /* Liquid zone */
+      x := 0;
       h := 1000*(112.482*scalc^2 + 50.525*scalc + 39.292);
       if (h > hsatL) then
           h := 1000*hsatL;
       end if;
   else
       /* Steam zone */
+      x := 1;
       A :=  -0.0396219*Pcalc^2 + 0.2873498*Pcalc + 185.5998054;
       B := -0.1114991*Pcalc^2 + 12.8417980*Pcalc - 415.1029137;
       C :=   0.1219352*Pcalc^2 - 13.8031170*Pcalc + 540.5578010;

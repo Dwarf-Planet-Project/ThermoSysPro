@@ -4,6 +4,9 @@ block Table2D
   parameter Real Tu2[1,:]=[0, 0] "Entrées colonnes de la table";
   parameter Real Ty[size(Tu1, 1), size(Tu2, 2)]=[0, 0; 0, 0]
     "Sorties de la table";
+  parameter Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
+
 public
   ThermoSysPro.InstrumentationAndControl.Connectors.OutputReal y
                                        annotation (Placement(transformation(
@@ -16,7 +19,13 @@ public
           extent={{-120,-70},{-100,-50}}, rotation=0)));
 equation
 
-  y.signal = ThermoSysPro.Functions.TableLinearInterpolation(Tu1[:, 1], Tu2[1, :], Ty, u1.signal, u2.signal);
+  if (option_interpolation == 1) then
+    y.signal = ThermoSysPro.Functions.TableLinearInterpolation(Tu1[:, 1], Tu2[1, :], Ty, u1.signal, u2.signal);
+  elseif (option_interpolation == 2) then
+    y.signal = ThermoSysPro.Functions.TableSplineInterpolation(Tu1[:, 1], Tu2[1, :], Ty, u1.signal, u2.signal);
+  else
+    assert(false, "Table1D: incorrect interpolation option");
+  end if;
 
   annotation (
     Icon(coordinateSystem(
@@ -129,12 +138,9 @@ equation
         Line(points={{-80,-60},{-100,-60}}),
         Line(points={{-100,60},{-80,60}})}),
     Documentation(info="<html>
-<p><b>Adapted from the ModelicaAdditions.Blocks.Tables library</b></p>
-</HTML>
-<html>
-<p><b>Version 1.0</b></p>
-</HTML>
-"),           Icon(
+<p><b>Adapted from the ModelicaAdditions.Blocks.Tables library</b> </p>
+<p><h4>Version 3.1</h4></p>
+</html>"),    Icon(
       Rectangle(extent=[-80,80; 80,-80],   style(fillPattern=0)),
       Line(points=[-54,40; -54,-40; 54,-40; 54,40; 28,40; 28,-40; -28,-40; -28,
             40; -54,40; -54,20; 54,20; 54,0; -54,0; -54,-20; 54,-20; 54,-40;

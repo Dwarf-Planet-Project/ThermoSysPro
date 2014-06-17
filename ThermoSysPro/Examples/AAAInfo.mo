@@ -1,7 +1,6 @@
 within ThermoSysPro.Examples;
-
-
 class AAAInfo "Info"
+
       annotation (DocumentationClass=true, Documentation(info="<html>
 <p><b><font style=\"font-size: 12pt; color: #008000; \">Examples library </font></b></p>
 <p><h4>Licensed by EDF under the Modelica License 2. </h4></p>
@@ -15,4 +14,3 @@ class AAAInfo "Info"
 <p>This script can be found in the file ThermoSysPro\\Examples\\CombinedCyclePowerPlant\\AJ_D74_FD1.mos </p>
 </html>"));
 end AAAInfo;
-

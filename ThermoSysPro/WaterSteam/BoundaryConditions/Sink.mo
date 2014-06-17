@@ -1,12 +1,12 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
 model Sink "Water/steam sink"
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=100000
+  parameter Modelica.SIunits.SpecificEnthalpy h0=100000
     "Fluid specific enthalpy (active if IEnthalpy connector is not connected)";
 
-protected
-  ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
+public
+  Modelica.SIunits.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
-  ThermoSysPro.Units.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
 
 public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal ISpecificEnthalpy

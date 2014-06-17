@@ -5,13 +5,14 @@ model TestDynamicCentrifugalPump2
                                           width=200, period=400)
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}}, rotation
           =0)));
-  ThermoSysPro.ElectroMechanics.Machines.SynchronousMotor Motor1
+  ThermoSysPro.ElectroMechanics.Machines.SynchronousMotor Motor1(Im(start=1800))
                                            annotation (Placement(transformation(
           extent={{-40,-80},{-20,-60}}, rotation=0)));
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump
     DynamicCentrifugalPump1(         continuous_flow_reversal=true,
     J=10,
-    Cf0=1000)
+    Cf0=1000,
+    Ch(start=300))
     annotation (Placement(transformation(extent={{40,-40},{20,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Tank(
     ze2=10,
@@ -78,7 +79,7 @@ equation
   connect(feedback.y, pIsat.u) annotation (Line(points={{1,90},{19,90}}));
   connect(pIsat.y, Valve1.Ouv)
     annotation (Line(points={{41,90},{80,90},{80,60},{-10,60},{-10,53}}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

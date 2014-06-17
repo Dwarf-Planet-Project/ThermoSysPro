@@ -35,5 +35,5 @@ equation
     annotation (Line(points={{40,30},{60,30}}, color={0,0,255}));
   connect(singularPressureLoss3.C2, sink.C)
     annotation (Line(points={{20,-10},{40,-10}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestSteamExtractionSplitter;

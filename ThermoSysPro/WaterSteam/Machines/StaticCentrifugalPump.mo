@@ -11,7 +11,7 @@ model StaticCentrifugalPump "Static centrifugal pump"
   parameter Integer fixed_rot_or_power=1
     "1: fixed rotational speed - 2: fixed mechanical power";
   parameter Boolean adiabatic_compression=false
-    "true: adiabatic compression - false: non adiabatic compression";
+    "true: compression at constant enthalpy - false: compression with varying enthalpy";
   parameter Boolean continuous_flow_reversal=false
     "true: continuous flow reversal - false: discontinuous flow reversal";
   parameter Integer fluid=1 "1: water/steam - 2: C3H3F5";
@@ -38,7 +38,7 @@ protected
     "Gravity constant";
   constant Real pi=Modelica.Constants.pi "pi";
   parameter Real eps=1.e-6 "Small number";
-  parameter Real rhmin=0.05 "Minimum efficiency to avoid zero crossings";
+  parameter Real rhmin=0.20 "Minimum efficiency to avoid zero crossings";
   parameter Modelica.SIunits.MassFlowRate Qeps=1.e-3
     "Small mass flow for continuous flow reversal";
 
@@ -54,10 +54,10 @@ public
   Modelica.SIunits.Density rho(start=998) "Fluid density";
   ThermoSysPro.Units.DifferentialPressure deltaP
     "Pressure variation between the outlet and the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy deltaH
+  Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pm(start=1.e5) "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000)
+  Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000)
     "Fluid average specific enthalpy";
   Connectors.FluidInlet C1
                           annotation (Placement(transformation(extent={{-110,
@@ -173,12 +173,10 @@ equation
         Line(points={{80,0},{2,60}}),
         Line(points={{80,0},{0,-60}})}),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

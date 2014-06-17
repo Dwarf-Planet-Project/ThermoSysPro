@@ -3,6 +3,8 @@ function WBCorrectiveDiameterCoefficient "Corrective diameter coefficient"
   input Real PasTD "Transverse step on the diameter";
   input Real PasLD "Longitudinal steap on the diameter";
   input Modelica.SIunits.Diameter Dext "Pipes external diameter";
+  input Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation";
 
   output Real Optl;
 
@@ -14,8 +16,14 @@ protected
   Real Opt "Interpolated parameter";
 algorithm
 
-  if PasLD > 0 then
-    Opt := ThermoSysPro.Functions.TableLinearInterpolation(TabLD, TabTD, TabOpt, PasLD, PasTD);
+  if (PasLD > 0) then
+    if (option_interpolation == 1) then
+      Opt := ThermoSysPro.Functions.TableLinearInterpolation(TabLD, TabTD, TabOpt, PasLD, PasTD);
+    elseif (option_interpolation == 2) then
+      Opt := ThermoSysPro.Functions.TableSplineInterpolation(TabLD, TabTD, TabOpt, PasLD, PasTD);
+    else
+      assert(false, "WBCorrectiveDiameterCoefficient: incorrect interpolation option");
+    end if;
     Optl := Opt*Dext;
   else
     Optl := 0;
@@ -24,12 +32,9 @@ algorithm
   annotation (
     smoothOrder=2,
     Icon(graphics),        Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-",        revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>", revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

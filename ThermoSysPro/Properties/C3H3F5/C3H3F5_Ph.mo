@@ -1,17 +1,17 @@
 within ThermoSysPro.Properties.C3H3F5;
 function C3H3F5_Ph "11133-C3H3F5 physical properties as a function of P and h"
-  input ThermoSysPro.Units.AbsolutePressure P "Pressure";
-  input ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+  input Modelica.SIunits.AbsolutePressure P "Pressure";
+  input Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
 
 protected
-  ThermoSysPro.Units.AbsoluteTemperature Tsat "Saturation temperature";
-  ThermoSysPro.Units.AbsolutePressure Psc "Critical pressure";
-  ThermoSysPro.Units.AbsolutePressure Pcalc
+  Modelica.SIunits.Temperature Tsat "Saturation temperature";
+  Modelica.SIunits.AbsolutePressure Psc "Critical pressure";
+  Modelica.SIunits.AbsolutePressure Pcalc
     "Variable for the computation of the pressure";
-  ThermoSysPro.Units.SpecificEnthalpy hcalc
+  Modelica.SIunits.SpecificEnthalpy hcalc
     "Variable for the computation of the specific  enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hsatL "Boiling specific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hsatV "Condensation specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hsatL "Boiling specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hsatV "Condensation specific enthalpy";
   Modelica.SIunits.SpecificEntropy ssatL "Boiling specific entropy";
   Modelica.SIunits.SpecificEntropy ssatV "Condensation specific entropy";
   Modelica.SIunits.Density rhoSatL "Boiling density";

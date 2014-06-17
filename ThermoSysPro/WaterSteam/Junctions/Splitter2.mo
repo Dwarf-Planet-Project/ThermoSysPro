@@ -6,9 +6,9 @@ model Splitter2 "Splitter with two outlets"
 
 public
   Real alpha1 "Extraction coefficient for outlet 1 (<=1)";
-  ThermoSysPro.Units.AbsolutePressure P(start=10e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=10e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
 
 public
   Connectors.FluidInlet Ce
@@ -31,7 +31,7 @@ public
 equation
 
   if (cardinality(Ialpha1) == 0) then
-    Ialpha1.signal = 1;
+    Ialpha1.signal = 0.5;
   end if;
 
   /* Fluid pressure */
@@ -55,7 +55,7 @@ equation
     Cs1.Q = Ialpha1.signal*Ce.Q;
   end if;
 
-  alpha1 =  Cs1.Q/Ce.Q;
+  alpha1 = Cs1.Q/Ce.Q;
   Oalpha1.signal = alpha1;
 
   /* Fluid thermodynamic properties */
@@ -98,12 +98,10 @@ equation
       width=0.71,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

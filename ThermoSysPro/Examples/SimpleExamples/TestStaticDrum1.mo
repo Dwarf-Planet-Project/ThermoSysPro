@@ -1,5 +1,6 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStaticDrum1
+
   ThermoSysPro.WaterSteam.Junctions.StaticDrum StaticDrumTh1
     annotation (Placement(transformation(extent={{-54,0},{-34,20}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
@@ -61,5 +62,5 @@ equation
         color={0,0,255}));
   connect(sourcePlug.C, refQ.C1) annotation (Line(points={{-70,-80},{-56,-80}},
         color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestStaticDrum1;

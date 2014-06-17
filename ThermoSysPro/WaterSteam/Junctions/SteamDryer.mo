@@ -1,13 +1,17 @@
 within ThermoSysPro.WaterSteam.Junctions;
 model SteamDryer "Steam dryer"
-  parameter Real eta=1 "Steam dryer efficiency (0 < eta <= 1)";
+  parameter Real eta=1
+    "Vapor mass fraction at outlet (0 < eta <= 1 and eta > Vapor mass fraction at the inlet)";
   parameter Integer mode_e=0
     "IF97 region at the inlet. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P(start=10e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
+  Modelica.SIunits.AbsolutePressure P(start=10e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=10e5) "Fluid specific enthalpy";
   Real xe(start=1.0) "Vapor mass fraction at the inlet";
+  Real eta1(start=1.0) "Vapor mass fraction at outlet (0 < eta <= 1)";
+
+  Modelica.SIunits.SpecificEnthalpy he(start=10e5) "Fluid specific enthalpy";
 
 public
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph proe
@@ -30,6 +34,9 @@ public
 equation
   assert((eta > 0) and (eta <= 1), "SteamDryer - Parameter eta should be > 0 and <= 1");
 
+  /* Vapor mass fraction at outlet steam */
+  eta1 = noEvent(max(xe, eta));
+
   /* Fluid pressure */
   P = Cev.P;
   P = Csv.P;
@@ -38,10 +45,13 @@ equation
   /* Fluid specific enthalpy (singular if all flows = 0) */
   Cev.h_vol = h;
   Csv.h_vol = h;
-  Csl.h_vol = lsat1.h;
+
+  // erreur Csl.h_vol = lsat1.h;
+  Csl.h_vol = noEvent(if
+                        (Csv.Q > 0) then (if (xe > 0) then lsat1.h else Cev.h) else  h);
 
   /* Mass flow at the vapor outlet */
-  Csv.Q = Cev.Q*xe/eta;
+  Csv.Q = Cev.Q*xe/eta1;
 
   /* Mass balance equation */
   0 = Cev.Q - Csv.Q - Csl.Q;
@@ -57,6 +67,8 @@ equation
 
   /* Fluid thermodynamic properties at the saturation point */
   (lsat1,vsat1) = ThermoSysPro.Properties.WaterSteam.IF97.Water_sat_P(Cev.P);
+
+  he = (Csv.Q*Csv.h + Csl.Q*Csl.h)/ Cev.Q;
 
   annotation (
     Diagram(coordinateSystem(
@@ -81,12 +93,10 @@ equation
       width=0.76,
       height=0.76),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

@@ -1,10 +1,10 @@
 within ThermoSysPro.Properties.WaterSolution;
 function Pressure_eq_TX
   "Equilibrium pressure of the H2O/LiBr solution as a funciton of T and Xh2o"
-  input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+  input Modelica.SIunits.Temperature T "Temperature";
   input Real X "Water mass fraction in the solution";
 
-  output ThermoSysPro.Units.AbsolutePressure Pe
+  output Modelica.SIunits.AbsolutePressure Pe
     "Equilibrium pressure of the solution";
 
 protected

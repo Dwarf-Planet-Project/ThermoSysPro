@@ -4,7 +4,7 @@ model SimpleDynamicCondenser
   parameter Modelica.SIunits.Area A=1 "Cavity cross-sectional area";
   parameter Real Vf0=0.5
     "Fraction of initial water volume in the drum (active if steady_state=false)";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=0.1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=0.1e5
     "Fluid initial pressure (active if steady_state=false)";
   parameter Boolean gravity_pressure=false
     "true: fluid pressure at the bottom of the cavity includes gravity term - false: without gravity term";
@@ -27,7 +27,8 @@ model SimpleDynamicCondenser
   parameter Real lambda= 0.03
     "Friction pressure loss coefficient (active if lambda_fixed=true)";
   parameter Integer ntubes=1 "Number of pipes in parallel";
-  parameter Modelica.SIunits.Area At=ntubes*pi*D^2/4 "Internal pipe diameter";
+  parameter Modelica.SIunits.Area At=ntubes*pi*D^2/4
+    "Internal pipe cross-section area";
   parameter Boolean steady_state=true
     "true: start from steady state - false: start from (P0, Vl0)";
   parameter Integer mode=0
@@ -48,13 +49,13 @@ public
   ThermoSysPro.Units.DifferentialPressure dpf "Friction pressure loss";
   ThermoSysPro.Units.DifferentialPressure dpg "Gravity pressure loss";
   Real khi "Hydraulic pressure loss coefficient";
-  ThermoSysPro.Units.AbsolutePressure P "Fluid average pressure";
-  ThermoSysPro.Units.AbsolutePressure Pfond
+  Modelica.SIunits.AbsolutePressure P "Fluid average pressure";
+  Modelica.SIunits.AbsolutePressure Pfond
     "Fluid pressure at the bottom of the cavity";
-  ThermoSysPro.Units.SpecificEnthalpy hl "Liquid phase spepcific enthalpy";
-  ThermoSysPro.Units.SpecificEnthalpy hv "Gas phase spepcific enthalpy";
-  ThermoSysPro.Units.AbsoluteTemperature Tl "Liquid phase temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Tv "Gas phase temperature";
+  Modelica.SIunits.SpecificEnthalpy hl "Liquid phase spepcific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy hv "Gas phase spepcific enthalpy";
+  Modelica.SIunits.Temperature Tl "Liquid phase temperature";
+  Modelica.SIunits.Temperature Tv "Gas phase temperature";
   Modelica.SIunits.Volume Vl "Liquid phase volume";
   Modelica.SIunits.Volume Vv "Gas phase volume";
   Real xl(start=0.0) "Mass vapor fraction in the liquid phase";
@@ -195,8 +196,8 @@ equation
   yNiveau.signal = Vl/A;
 
   /* Thermal power exchanged from the steam to the pipes */
-  Wout = - Cv.Q*(Cv.h - hl);
-  Wout = Cee.Q*(Cse.h - Cee.h);
+  Wout = -Cv.Q*(Cv.h - hl);
+  Wout = -Cee.Q*(Cse.h - Cee.h);
 
   /* Pressure losses in the pipes */
   dpf = khi*ThermoSysPro.Functions.ThermoSquare(Cee.Q,eps)/(2*At^2*rhom);
@@ -386,10 +387,7 @@ equation
       width=0.78,
       height=0.88),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end SimpleDynamicCondenser;

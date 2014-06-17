@@ -1,6 +1,6 @@
 within ThermoSysPro.WaterSteam.Volumes;
 model Tank "Open tank"
-  parameter ThermoSysPro.Units.AbsolutePressure Patm=1.013e5
+  parameter Modelica.SIunits.AbsolutePressure Patm=1.013e5
     "Pressure above the fluid level";
   parameter Modelica.SIunits.Area A=1 "Tank cross sectional area";
   parameter Modelica.SIunits.Position ze1=40 "Altitude of inlet 1";
@@ -9,8 +9,16 @@ model Tank "Open tank"
   parameter Modelica.SIunits.Position zs2=0 "Altitude of outlet 2";
   parameter Modelica.SIunits.Position z0=30
     "Initial fluid level (active if steady_state=false)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1.e5
+  parameter Modelica.SIunits.SpecificEnthalpy h0=1.e5
     "Initial fluid specific enthalpy (active if steady_state=false)";
+  parameter ThermoSysPro.Units.PressureLossCoefficient ke1=1
+    "Pressure loss coefficient for inlet e1";
+  parameter ThermoSysPro.Units.PressureLossCoefficient ke2=1
+    "Pressure loss coefficient for inlet e2";
+  parameter ThermoSysPro.Units.PressureLossCoefficient ks1=1
+    "Pressure loss coefficient for outlet s1";
+  parameter ThermoSysPro.Units.PressureLossCoefficient ks2=1
+    "Pressure loss coefficient for outlet s2";
   parameter Boolean steady_state=false
     "true: start from steady state - false: start from h0";
   parameter Boolean steady_state_mech=false
@@ -24,17 +32,14 @@ protected
   parameter Modelica.SIunits.Acceleration g=Modelica.Constants.g_n
     "Gravity constant";
   parameter Modelica.SIunits.Thickness e=0.25 "Inlet/outlet thickness";
-  parameter ThermoSysPro.Units.PressureLossCoefficient k=
-                                                        1
-    "Inlet/outlet pressure loss coefficient";
   parameter Real eps=1.e-0 "Small number for ths square function";
   parameter Modelica.SIunits.Position zmin=1.e-6 "Minimum fluid level";
 
 public
   Modelica.SIunits.Position z "Fluid level";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000)
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000)
     "Fluid average specific enthalpy";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
   Modelica.SIunits.MassFlowRate BQ
@@ -106,7 +111,7 @@ equation
     Ce1.P = Patm + rho*g*max(z - ze1, 0);
     Oe1 = 0;
   else
-    (Ce1.P - (Patm + rho*g*max(z - ze1, 0)))*Oe1 = k*
+    (Ce1.P - (Patm + rho*g*max(z - ze1, 0)))*Oe1 = ke1*
       ThermoSysPro.Functions.ThermoSquare(Ce1.Q, eps)/2/rho;
     Oe1 = if ((Ce1.Q >= 0) or (z > ze1 + e)) then 1 else if (z < ze1) then 0 else
             (z - ze1)/e;
@@ -116,7 +121,7 @@ equation
     Ce2.P = Patm + rho*g*max(z - ze2, 0);
     Oe2 = 0;
   else
-    (Ce2.P - (Patm + rho*g*max(z - ze2, 0)))*Oe2 = k*
+    (Ce2.P - (Patm + rho*g*max(z - ze2, 0)))*Oe2 = ke2*
       ThermoSysPro.Functions.ThermoSquare(Ce2.Q, eps)/2/rho;
     Oe2 = if ((Ce2.Q >= 0) or (z > ze2 + e)) then 1 else if (z < ze2) then 0 else
             (z - ze2)/e;
@@ -126,7 +131,7 @@ equation
     Cs1.P = Patm + rho*g*max(z - zs1, 0);
     Os1 = 0;
   else
-    (Patm + rho*g*max(z - zs1, 0) - Cs1.P)*Os1 = k*
+    (Patm + rho*g*max(z - zs1, 0) - Cs1.P)*Os1 = ks1*
       ThermoSysPro.Functions.ThermoSquare(Cs1.Q, eps)/2/rho;
     Os1 = if ((Cs1.Q <= 0) or (z > zs1 + e)) then 1 else if (z < zs1) then 0 else
             (z - zs1)/e;
@@ -136,7 +141,7 @@ equation
     Cs2.P = Patm + rho*g*max(z - zs2, 0);
     Os2 = 0;
   else
-    (Patm + rho*g*max(z - zs2, 0) - Cs2.P)*Os2 = k*
+    (Patm + rho*g*max(z - zs2, 0) - Cs2.P)*Os2 = ks2*
       ThermoSysPro.Functions.ThermoSquare(Cs2.Q, eps)/2/rho;
     Os2 = if ((Cs2.Q <= 0) or (z > zs2 + e)) then 1 else if (z < zs2) then 0 else
             (z - zs2)/e;
@@ -201,12 +206,10 @@ equation
       width=0.81,
       height=0.9),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

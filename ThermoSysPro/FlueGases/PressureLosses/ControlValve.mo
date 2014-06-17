@@ -6,6 +6,8 @@ model ControlValve "Control valve"
     "Position vs. Cv characteristics (active if mode_caract=1)";
   parameter Integer mode_caract=0
     "0:linear characteristics - 1:characteristics is given by caract[]";
+  parameter Integer option_interpolation=1
+    "1: linear interpolation - 2: spline interpolation (active if mode_caract=1)";
   parameter Modelica.SIunits.Density p_rho=0 "If > 0, fixed fluid density";
 
 protected
@@ -17,8 +19,8 @@ public
   ThermoSysPro.Units.DifferentialPressure deltaP(start=10)
     "Singular pressure loss";
   Modelica.SIunits.Density rho(start=1) "Fluid density";
-  ThermoSysPro.Units.AbsoluteTemperature T(start=300) "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid average pressure";
+  Modelica.SIunits.Temperature T(start=300) "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid average pressure";
 
 public
   ThermoSysPro.InstrumentationAndControl.Connectors.InputReal Ouv
@@ -51,9 +53,15 @@ equation
   if (mode_caract == 0) then
     Cv = Ouv.signal*Cvmax;
   elseif (mode_caract == 1) then
-    Cv = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], Ouv.signal);
+    if (option_interpolation == 1) then
+      Cv = ThermoSysPro.Functions.LinearInterpolation(caract[:, 1], caract[:, 2], Ouv.signal);
+    elseif (option_interpolation == 2) then
+      Cv = ThermoSysPro.Functions.SplineInterpolation(caract[:, 1], caract[:, 2], Ouv.signal);
+    else
+      assert(false, "ControlValve: incorrect interpolation option");
+    end if;
   else
-    assert(false, "VanneReglante : mode de calcul du Cv incorrect");
+    assert(false, "ControlValve : incorrect option for the computation of Cv");
   end if;
 
   /* Fluid thermodynamic properties */
@@ -123,8 +131,8 @@ equation
       width=0.8,
       height=0.77),
     Documentation(info="<html>
-<p><h4>Copyright &copy; EDF 2002 - 2012</h4></p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><h4>Copyright &copy; EDF 2002 - 2013</h4></p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

@@ -1,9 +1,9 @@
 within ThermoSysPro.WaterSteam.Volumes;
 model VolumeATh "Mixing volume with 2 inlets and 2 outlets and thermal input"
   parameter Modelica.SIunits.Volume V=1 "Volume";
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=1e5
     "Initial fluid pressure (active if dynamic_mass_balance=true and steady_state=false)";
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1e5
+  parameter Modelica.SIunits.SpecificEnthalpy h0=1e5
     "Initial fluid specific enthalpy (active if steady_state=false)";
   parameter Boolean dynamic_mass_balance=false
     "true: dynamic mass balance equation - false: static mass balance equation";
@@ -15,9 +15,9 @@ model VolumeATh "Mixing volume with 2 inlets and 2 outlets and thermal input"
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
-  ThermoSysPro.Units.AbsolutePressure P(start=1.e5) "Fluid pressure";
-  ThermoSysPro.Units.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
+  Modelica.SIunits.Temperature T "Fluid temperature";
+  Modelica.SIunits.AbsolutePressure P(start=1.e5) "Fluid pressure";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
   Modelica.SIunits.Density rho(start=998) "Fluid density";
   Modelica.SIunits.MassFlowRate BQ
     "Right hand side of the mass balance equation";

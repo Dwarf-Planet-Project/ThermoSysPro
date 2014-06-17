@@ -1,6 +1,6 @@
 within ThermoSysPro.WaterSteam.BoundaryConditions;
 model RefH "Fixed specific enthalpy reference"
-  parameter ThermoSysPro.Units.SpecificEnthalpy h0=1.e5
+  parameter Modelica.SIunits.SpecificEnthalpy h0=1.e5
     "Fixed fluid specific enthalpy";
   parameter Boolean continuous_flow_reversal=false
     "true: continuous flow reversal - false: discontinuous flow reversal";

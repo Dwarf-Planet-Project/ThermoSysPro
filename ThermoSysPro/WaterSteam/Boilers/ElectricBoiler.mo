@@ -7,10 +7,10 @@ model ElectricBoiler "Electric boiler"
     "IF97 region. 1:liquid - 2:steam - 4:saturation line - 0:automatic";
 
 public
-  ThermoSysPro.Units.AbsoluteTemperature Te(start=300) "Inlet temperature";
-  ThermoSysPro.Units.AbsoluteTemperature Ts(start=500) "Outlet temperature";
+  Modelica.SIunits.Temperature Te(start=300) "Inlet temperature";
+  Modelica.SIunits.Temperature Ts(start=500) "Outlet temperature";
   Modelica.SIunits.MassFlowRate Q(start=100) "Mass flow";
-  ThermoSysPro.Units.SpecificEnthalpy deltaH
+  Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
 
 public
@@ -37,8 +37,8 @@ equation
   /* Flow reversal */
   0 = if (Q > 0) then Ce.h - Ce.h_vol else Cs.h - Cs.h_vol;
 
-  /* Calcul de l'enthalpie en sortie */
-  W = Q*deltaH/eta/100;
+  /* Specific enthalpy variation between the outlet and the inlet */
+  W*eta/100 = Q*deltaH;
 
   /* Fluid thermodynamic properties */
   proe = ThermoSysPro.Properties.WaterSteam.IF97.Water_Ph(Ce.P, Ce.h, mode);
@@ -92,8 +92,8 @@ equation
       width=0.93,
       height=0.87),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b> </p>
-<p><b>ThermoSysPro Version 2.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>",
    revisions="<html>
 <u><p><b>Authors</u> : </p></b>

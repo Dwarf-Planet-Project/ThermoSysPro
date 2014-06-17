@@ -3,7 +3,7 @@ model DynamicCondenser "Dynamic condenser"
   parameter Modelica.SIunits.Volume Vc=4510 "Condenser total volume";
   parameter Real Vf0=0.066
     "Fraction of initial liquid volume in the condenser (0 < Vf0 < 1)";
-  parameter ThermoSysPro.Units.AbsolutePressure P0c=9326
+  parameter Modelica.SIunits.AbsolutePressure P0c=9326
     "Initial pressure in the condenser";
   parameter Modelica.SIunits.Area Ac=200 "Condenser cross-sectional area";
   parameter Modelica.SIunits.Length Lc=13.5 "Length of the cooling pipes";

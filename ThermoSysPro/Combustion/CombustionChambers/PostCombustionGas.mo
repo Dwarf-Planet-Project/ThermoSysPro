@@ -10,7 +10,7 @@ protected
   constant Real HfCO2=3.275e+07 "CO2 formation specific enthalpy";
   constant Real HfCO=9.201e+06 "CO formation specific enthalpy";
   constant Real HfH2O=2.418e+08 "H2O steam formation specific enthalpy";
-  constant ThermoSysPro.Units.SpecificEnthalpy H0v=2501551.43
+  constant Modelica.SIunits.SpecificEnthalpy H0v=2501551.43
     "Vaporisation specific enthalpy at 0°C";
   constant Modelica.SIunits.MassFlowRate Qeps=0.0001 "Minimum value for Qmel";
   Modelica.SIunits.MassFlowRate Qmelc(start=10)
@@ -22,7 +22,7 @@ protected
 public
   Modelica.SIunits.MassFlowRate Qef(start=10)
     "Flue gases mass flow rate at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=1700)
+  Modelica.SIunits.Temperature Tef(start=1700)
     "Flue gases temperature at the inlet";
   Real XefCO2(start=0.5) "CO2 mass fraction at the flue gases inlet";
   Real XefH2O(start=0) "H2O mass fraction at the flue gases inlet";
@@ -30,9 +30,9 @@ public
   Real XefSO2(start=0) "SO2 mass fraction at the flue gases inlet";
   Modelica.SIunits.MassFlowRate Qsf(start=10)
     "Flue gases mass flow rate at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=1700)
+  Modelica.SIunits.Temperature Tsf(start=1700)
     "Flue gases temperature at the outlet";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=1e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=1e5)
     "Flue gases pressure at the outlet";
   Real XsfCO2(start=0.2) "CO2 mass fraction at the flue gases outlet";
   Real XsfCO(start=0.1) "CO mass fraction at the flue gases outlet";
@@ -43,18 +43,15 @@ public
   Real XsfSO2(start=0.1) "SO2 mass fraction at the flue gases outlet";
   Modelica.SIunits.MassFlowRate Qea(start=0.2)
     "Air mass flow rate at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tea(start=300)
-    "Air temperature at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pea(start=1e5)
-    "Air pressure at the inlet";
+  Modelica.SIunits.Temperature Tea(start=300) "Air temperature at the inlet";
+  Modelica.SIunits.AbsolutePressure Pea(start=1e5) "Air pressure at the inlet";
   Real XeaCO2(start=0.2) "CO2 mass fraction at the air inlet";
   Real XeaH2O(start=0.2) "H20 mass fraction at the air inlet";
   Real XeaO2(start=0.2) "O2 mass fraction at the air inlet";
   Real XeaSO2(start=0.2) "SO2 mass fraction at the air inlet";
   Modelica.SIunits.MassFlowRate Qec(start=0.1)
     "Fuel mass flow rate at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tec(start=1700)
-    "Fuel temperature at the inlet";
+  Modelica.SIunits.Temperature Tec(start=1700) "Fuel temperature at the inlet";
   Modelica.SIunits.SpecificHeatCapacity Cpfuel(start=1000)
     "Fuel specific heat capacity";
   Modelica.SIunits.SpecificEnergy LHVfuel( start=1e6) "Fuel LHV";
@@ -65,9 +62,9 @@ public
   Real XNfuel(start=0) "N mass fraction in fuel";
   Real XSfuel(start=0) "S mass fraction in fuel";
   Modelica.SIunits.Power Wrad(start=1e6) "Power radiated";
-  ThermoSysPro.Units.SpecificEnthalpy Hea(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hea(start=1e3)
     "Humid air specific enthalpy at the temperature of the input air";
-  ThermoSysPro.Units.SpecificEnthalpy Hef(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hef(start=1e3)
     "Flue gases specific enthalpy at the inlet";
   Modelica.SIunits.MassFlowRate Qmel(start=10)
     "Mass flow rate of the air/flue gases mixture";
@@ -76,13 +73,13 @@ public
   Real XmelH2O(start=0.1) "H2O pass fraction in the air/flue gases mixture";
   Real XmelSO2(start=0.1) "SO2 pass fraction in the air/flue gases mixture";
   Real XmelN2(start=0.1) "N2 pass fraction in the air/flue gases mixture";
-  ThermoSysPro.Units.SpecificEnthalpy Hmel(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hmel(start=1e3)
     "Specific enthalpy of the air/flue gases mixture";
-  ThermoSysPro.Units.AbsoluteTemperature Tmel(start=500)
+  Modelica.SIunits.Temperature Tmel(start=500)
     "Temperature of the air/flue gases mixture";
-  ThermoSysPro.Units.SpecificEnthalpy Hwfuel(start=1e3)
+  Modelica.SIunits.SpecificEnthalpy Hwfuel(start=1e3)
     "Specific enthalpy of the water in fuel";
-  ThermoSysPro.Units.SpecificEnthalpy Hfuel(start=1e3) "Fuel specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy Hfuel(start=1e3) "Fuel specific enthalpy";
   Modelica.SIunits.MassFlowRate Q1H2O(start=10)
     "H2O mass flow rate at the outlet of zone 1";
   Modelica.SIunits.MassFlowRate Q1O2(start=10)
@@ -263,7 +260,7 @@ equation
   Hwfuel = pro1.h;
 
   /* Fuel specific enthalpy */
-  Hfuel = Cpfuel*(Tec - 273.15);
+  Hfuel = Cpfuel*(Tec - 273.16);
 
   // Mass flow rates leaving zone 1
   // - - - - - - - - - - - - - - - -
@@ -488,10 +485,7 @@ equation
 </ul>
 </html>
 ", info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-"));
+<p><b>Copyright &copy; EDF 2002 - 2013</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>"));
 end PostCombustionGas;

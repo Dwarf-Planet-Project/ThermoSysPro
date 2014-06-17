@@ -3,7 +3,7 @@ model TestDynamicCentrifugalPump1
 
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump
     DynamicCentrifugalPump1(                                                      C2(P(
-          start=3.e5)))
+          start=3.e5)), Ch(start=300))
     annotation (Placement(transformation(extent={{0,-40},{-20,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Tank(
     ze2=10,
@@ -43,7 +43,7 @@ equation
     annotation (Line(points={{-19,-70},{-10,-70},{-10,-41}}));
   connect(sourceTorque.M, Shaft1.C1) annotation (Line(points={{-49,-70},{-41,
           -70}}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

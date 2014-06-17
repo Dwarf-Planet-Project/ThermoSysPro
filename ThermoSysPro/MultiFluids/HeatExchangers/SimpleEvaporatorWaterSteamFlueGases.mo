@@ -10,30 +10,28 @@ protected
   parameter Real eps=1.e-0 "Small number for pressure loss equation";
 
 public
-  ThermoSysPro.Units.AbsolutePressure Pef(start=3e5)
+  Modelica.SIunits.AbsolutePressure Pef(start=3e5)
     "Flue gases pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Psf(start=2.5e5)
+  Modelica.SIunits.AbsolutePressure Psf(start=2.5e5)
     "Flue gases pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tef(start=600)
+  Modelica.SIunits.Temperature Tef(start=600)
     "Flue gases temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tsf(start=400)
+  Modelica.SIunits.Temperature Tsf(start=400)
     "Flue gases temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hsf(start=3e5)
+  Modelica.SIunits.SpecificEnthalpy Hsf(start=3e5)
     "Flue gases specific enthalpy at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hef(start=6e5)
+  Modelica.SIunits.SpecificEnthalpy Hef(start=6e5)
     "Flue gases specific enthalpy at the inlet";
   Modelica.SIunits.MassFlowRate Qf(start=10) "Flue gases mass flow rate";
-  ThermoSysPro.Units.AbsolutePressure Pee(start=2e6)
+  Modelica.SIunits.AbsolutePressure Pee(start=2e6)
     "Water pressure at the inlet";
-  ThermoSysPro.Units.AbsolutePressure Pse(start=2e6)
+  Modelica.SIunits.AbsolutePressure Pse(start=2e6)
     "Water pressure at the outlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tee(start=400)
-    "Water temperature at the inlet";
-  ThermoSysPro.Units.AbsoluteTemperature Tse(start=450)
-    "Water temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hee(start=3e5)
+  Modelica.SIunits.Temperature Tee(start=400) "Water temperature at the inlet";
+  Modelica.SIunits.Temperature Tse(start=450) "Water temperature at the outlet";
+  Modelica.SIunits.SpecificEnthalpy Hee(start=3e5)
     "Water specific enthalpy at the inlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hse(start=20e5)
+  Modelica.SIunits.SpecificEnthalpy Hse(start=20e5)
     "Water specific enthalpy at the outlet";
   Modelica.SIunits.MassFlowRate Qe(start=10) "Water mass flow rate";
   Modelica.SIunits.Density rhof(start=0.9) "Flue gases density";

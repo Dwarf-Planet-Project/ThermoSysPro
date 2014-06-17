@@ -16,7 +16,7 @@ equation
     IPower.signal = W0;
   end if;
 
-  M.Ctr*abs(M.w) = IPower.signal;
+  M.Ctr*M.w = IPower.signal;
 
   annotation (Diagram(graphics={
         Rectangle(
@@ -51,12 +51,10 @@ equation
         Line(points={{100,0},{80,-20}}, color={0,0,255}),
         Line(points={{100,0},{80,20}}, color={0,0,255})}),
     Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2010</b></p>
-</HTML>
-<html>
-<p><b>ThermoSysPro Version 2.0</b></p>
-</HTML>
-", revisions="<html>
+<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
+</html>",
+   revisions="<html>
 <u><p><b>Authors</u> : </p></b>
 <ul style='margin-top:0cm' type=disc>
 <li>

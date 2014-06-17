@@ -4,7 +4,7 @@ package Common
 
   record HelmholtzData
     Modelica.SIunits.Density d;
-    ThermoSysPro.Units.AbsoluteTemperature T;
+    Modelica.SIunits.Temperature T;
     Modelica.SIunits.SpecificHeatCapacity R;
     annotation (
       Window(
@@ -36,8 +36,8 @@ package Common
   end HelmholtzData;
 
   record GibbsData
-    ThermoSysPro.Units.AbsolutePressure p;
-    ThermoSysPro.Units.AbsoluteTemperature T;
+    Modelica.SIunits.AbsolutePressure p;
+    Modelica.SIunits.Temperature T;
     Modelica.SIunits.SpecificHeatCapacity R;
     annotation (
       Window(
@@ -101,7 +101,7 @@ package Common
   end HelmholtzDerivs;
 
   record ThermoProperties_ph
-    ThermoSysPro.Units.AbsoluteTemperature T(
+    Modelica.SIunits.Temperature T(
       min=InitLimits.TMIN,
       max=InitLimits.TMAX,
       nominal=InitLimits.TNOM) "Temperature";
@@ -214,8 +214,8 @@ package Common
   end gibbsToProps_ph;
 
   record NewtonDerivatives_ph
-    ThermoSysPro.Units.AbsolutePressure p;
-    ThermoSysPro.Units.SpecificEnthalpy h;
+    Modelica.SIunits.AbsolutePressure p;
+    Modelica.SIunits.SpecificEnthalpy h;
     Real pd;
     Real pt;
     Real hd;
@@ -411,8 +411,8 @@ package Common
     input PhaseBoundaryProperties liq;
     input PhaseBoundaryProperties vap;
     input Real x "Vapor mass fraction";
-    input ThermoSysPro.Units.AbsoluteTemperature T;
-    input ThermoSysPro.Units.AbsolutePressure p;
+    input Modelica.SIunits.Temperature T;
+    input Modelica.SIunits.AbsolutePressure p;
     output Modelica.SIunits.SpecificHeatCapacity cv;
 
   protected
@@ -466,7 +466,7 @@ package Common
   end cv2Phase;
 
   record NewtonDerivatives_ps
-    ThermoSysPro.Units.AbsolutePressure p;
+    Modelica.SIunits.AbsolutePressure p;
     Modelica.SIunits.SpecificEntropy s;
     Real pd;
     Real pt;
@@ -557,10 +557,10 @@ package Common
   end HelmholtzOfps;
 
   record PropThermoSat
-    ThermoSysPro.Units.AbsolutePressure P "Pressure";
-    ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+    Modelica.SIunits.AbsolutePressure P "Pressure";
+    Modelica.SIunits.Temperature T "Temperature";
     Modelica.SIunits.Density rho "Density";
-    ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+    Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
     Modelica.SIunits.SpecificHeatCapacity cp
       "Specific heat capacity at constant pressure";
     Real pt "Derivative of pressure wrt. temperature";
@@ -568,7 +568,7 @@ package Common
       "Specific heat capacity at constant volume";
     /*
   Modelica.SIunits.SpecificEnergy u "Specific inner energy";
-  Modelica.SIunits.SpecificEntropy s "Specific entropy";
+  Modelica.SIunits.SpecificEntropy s "Specific entropy"; 
   Real pd "Derivative of pressure wrt. density";
   */
     annotation (
@@ -601,8 +601,8 @@ package Common
   end PropThermoSat;
 
   function gibbsRho
-    input ThermoSysPro.Units.AbsolutePressure P "Pressure";
-    input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+    input Modelica.SIunits.AbsolutePressure P "Pressure";
+    input Modelica.SIunits.Temperature T "Temperature";
 
     output Modelica.SIunits.Density rho "density";
     input GibbsDerivs g "Dérivées de la fonction de Gibbs"
@@ -644,8 +644,8 @@ package Common
   end gibbsRho;
 
   function gibbsPropsSat
-    input ThermoSysPro.Units.AbsolutePressure P "Pressure";
-    input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+    input Modelica.SIunits.AbsolutePressure P "Pressure";
+    input Modelica.SIunits.Temperature T "Temperature";
 
     input GibbsDerivs g "Dérivées de la fonction de Gibbs"
       annotation (Placement(transformation(extent={{-85,15},{-15,85}}, rotation
@@ -758,7 +758,7 @@ package Common
       min=InitLimits.DMIN,
       max=InitLimits.DMAX,
       nominal=InitLimits.DNOM) "Density";
-    ThermoSysPro.Units.SpecificEnthalpy h(
+    Modelica.SIunits.SpecificEnthalpy h(
       min=InitLimits.SHMIN,
       max=InitLimits.SHMAX,
       nominal=InitLimits.SHNOM) "Specific enthalpy";
@@ -861,7 +861,7 @@ package Common
   end gibbsToProps_ps;
 
   record ThermoProperties_ps
-    ThermoSysPro.Units.AbsoluteTemperature T(
+    Modelica.SIunits.Temperature T(
       min=InitLimits.TMIN,
       max=InitLimits.TMAX,
       nominal=InitLimits.TNOM) "Temperature";
@@ -873,7 +873,7 @@ package Common
       min=InitLimits.SEMIN,
       max=InitLimits.SEMAX,
       nominal=InitLimits.SENOM) "Specific inner energy";
-    ThermoSysPro.Units.SpecificEnthalpy h(
+    Modelica.SIunits.SpecificEnthalpy h(
       min=InitLimits.SHMIN,
       max=InitLimits.SHMAX,
       nominal=InitLimits.SHNOM) "Specific enthalpy";
@@ -1017,11 +1017,11 @@ package Common
   end gibbsToProps_dT;
 
   record ThermoProperties_dT
-    ThermoSysPro.Units.AbsolutePressure p(
+    Modelica.SIunits.AbsolutePressure p(
       min=InitLimits.PMIN,
       max=InitLimits.PMAX,
       nominal=InitLimits.PNOM) "Pressure";
-    ThermoSysPro.Units.SpecificEnthalpy h(
+    Modelica.SIunits.SpecificEnthalpy h(
       min=InitLimits.SHMIN,
       max=InitLimits.SHMAX,
       nominal=InitLimits.SHNOM) "Specific enthalpy";
@@ -1115,7 +1115,7 @@ package Common
   end helmholtzToProps_dT;
 
   record NewtonDerivatives_pT
-    ThermoSysPro.Units.AbsolutePressure p "Pressure";
+    Modelica.SIunits.AbsolutePressure p "Pressure";
     ThermoSysPro.Units.DerPressureByDensity pd
       "derivative of pressure wrt. density";
     annotation (
@@ -1241,7 +1241,7 @@ package Common
   end helmholtzToProps_pT;
 
   record miniProp "Test record for derivatives"
-    ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+    Modelica.SIunits.Temperature T "Temperature";
     Modelica.SIunits.Density d "Density";
   end miniProp;
 
@@ -1268,8 +1268,8 @@ package Common
   end IF97PhaseBoundaryProperties;
 
   function water_ph_r4
-    input ThermoSysPro.Units.AbsolutePressure p;
-    input ThermoSysPro.Units.SpecificEnthalpy h;
+    input Modelica.SIunits.AbsolutePressure p;
+    input Modelica.SIunits.SpecificEnthalpy h;
 
   protected
     Real x;
@@ -1340,7 +1340,7 @@ package Common
   end water_ph_r4;
 
   function water_ps_r4
-    input ThermoSysPro.Units.AbsolutePressure p "pressure";
+    input Modelica.SIunits.AbsolutePressure p "pressure";
     input Modelica.SIunits.SpecificEntropy s "specific entropy";
 
   protected
@@ -1645,39 +1645,127 @@ package Common
   annotation (
     Icon(coordinateSystem(
         preserveAspectRatio=false,
-        extent={{0,0},{442,394}},
-        grid={2,2}), graphics={
+        extent={{-100,-100},{100,100}},
+        grid={2,2},
+        initialScale=0.1), graphics={
+        Text(
+          extent={{-102,0},{24,-26}},
+          lineColor={242,148,0},
+          textString=
+               "Thermo"),
+        Text(
+          extent={{-4,8},{68,-34}},
+          lineColor={46,170,220},
+          textString=
+               "SysPro"),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{42,
+              8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{-50,6},
+              {-62,2}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,8},
+              {-42,22},{-42,30},{-44,38}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,12},
+              {-26,12},{-28,12},{-26,20}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
         Rectangle(
-          extent={{-100,-100},{80,50}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
+          extent={{-8,30},{-6,26}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,36},{-6,32}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,42},{-6,38}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,48},{-6,44}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
           fillPattern=FillPattern.Solid),
         Polygon(
-          points={{-100,50},{-80,70},{100,70},{80,50},{-100,50}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
+          points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,32},{-2,28}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,38},{-2,34}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,44},{-2,40}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,50},{-2,46}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
           fillPattern=FillPattern.Solid),
         Polygon(
-          points={{100,70},{100,-80},{80,-100},{80,50},{100,70}},
-          lineColor={0,0,255},
-          fillColor={235,235,235},
+          points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,20}},
+
+          lineColor={46,170,220},
+          fillColor={46,170,220},
           fillPattern=FillPattern.Solid),
-        Text(
-          extent={{-90,40},{70,10}},
-          lineColor={160,160,164},
-          fillColor={0,0,0},
-          fillPattern=FillPattern.Solid,
-          textString=
-               "Library"),
-        Rectangle(extent={{-32,-6},{16,-35}}, lineColor={0,0,0}),
-        Rectangle(extent={{-32,-56},{16,-85}}, lineColor={0,0,0}),
-        Line(points={{16,-20},{49,-20},{49,-71},{16,-71}}, color={0,0,0}),
-        Line(points={{-32,-72},{-64,-72},{-64,-21},{-32,-21}}, color={0,0,0}),
-        Text(
-          extent={{-120,135},{120,70}},
-          lineColor={255,0,0},
-          textString=
-               "%name")}),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{42,
+              6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{-50,6},
+              {-62,2}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+          color={46,170,220},
+          thickness=0.5),
+        Polygon(
+          points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+        Line(
+          points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{80,80},{100,100}},
+          color={0,0,255},
+          smooth=Smooth.None)}),
     Window(
       x=0.45,
       y=0.01,

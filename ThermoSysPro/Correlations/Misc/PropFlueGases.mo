@@ -1,8 +1,7 @@
 within ThermoSysPro.Correlations.Misc;
 function PropFlueGases "Computation of the flue gases properties"
-  input ThermoSysPro.Units.AbsolutePressure Pmf "Flue gases average pressure";
-  input ThermoSysPro.Units.AbsoluteTemperature Tmf
-    "Flue gases average temperature";
+  input Modelica.SIunits.AbsolutePressure Pmf "Flue gases average pressure";
+  input Modelica.SIunits.Temperature Tmf "Flue gases average temperature";
   input Real XefCO2 "CO2 mass fraction";
   input Real XefH2O "H2O mass fraction";
   input Real XefO2 "O2 mass fraction";

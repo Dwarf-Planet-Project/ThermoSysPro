@@ -12,7 +12,7 @@ model TestStodolaTurbine
     P0=48.e5) annotation (Placement(transformation(extent={{-100,60},{-80,80}},
           rotation=0)));
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump
-    DynamicCentrifugalPump1
+    DynamicCentrifugalPump1(Ch(start=300))
     annotation (Placement(transformation(extent={{20,-40},{0,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Bache1(
                                         ze2=10, zs2=10)
@@ -40,7 +40,7 @@ equation
   connect(stodolaTurbine.M, DynamicCentrifugalPump1.M)
     annotation (Line(points={{-50,60},{-50,-60},{10,-60},{10,-41}}, smooth=
           Smooth.None));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

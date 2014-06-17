@@ -61,15 +61,15 @@ package IF97_packages
         16.7343150270632; 16.8752144692458; 16.9266730020941; 16.9094578790152]);
 
     function Water_Ph
-      input ThermoSysPro.Units.AbsolutePressure p "Pressure";
-      input ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+      input Modelica.SIunits.AbsolutePressure p "Pressure";
+      input Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
       input Integer mode = 0 "IF97 region. 0:automatic";
 
     protected
       Integer phase;
       Integer region;
       Integer error;
-      ThermoSysPro.Units.AbsoluteTemperature T;
+      Modelica.SIunits.Temperature T;
       Modelica.SIunits.Density d;
       Boolean supercritical;
 
@@ -155,7 +155,7 @@ package IF97_packages
     end Water_Ph;
 
     function Water_Ps
-      input ThermoSysPro.Units.AbsolutePressure p "Pressure";
+      input Modelica.SIunits.AbsolutePressure p "Pressure";
       input Modelica.SIunits.SpecificEntropy s "Specific entropy";
       input Integer mode = 0 "IF97 region. 0:automatic";
 
@@ -163,7 +163,7 @@ package IF97_packages
       Integer phase;
       Integer region;
       Integer error;
-      ThermoSysPro.Units.AbsoluteTemperature T;
+      Modelica.SIunits.Temperature T;
       Modelica.SIunits.Density d;
       Boolean supercritical;
 
@@ -243,10 +243,10 @@ package IF97_packages
     end Water_Ps;
 
     function Water_sat_P
-      input ThermoSysPro.Units.AbsolutePressure P "Pressure";
+      input Modelica.SIunits.AbsolutePressure P "Pressure";
 
     protected
-      ThermoSysPro.Units.AbsoluteTemperature T;
+      Modelica.SIunits.Temperature T;
 
     public
       output ThermoSysPro.Properties.WaterSteam.Common.PropThermoSat
@@ -312,7 +312,7 @@ package IF97_packages
 
     function DynamicViscosity_rhoT
       input Modelica.SIunits.Density rho "Density";
-      input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+      input Modelica.SIunits.Temperature T "Temperature";
 
       output Modelica.SIunits.DynamicViscosity mu "Dynamic viscosity";
     algorithm
@@ -352,8 +352,8 @@ package IF97_packages
 
     function ThermalConductivity_rhoT
       input Modelica.SIunits.Density rho "Density";
-      input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
-      input ThermoSysPro.Units.AbsolutePressure P "Pressure";
+      input Modelica.SIunits.Temperature T "Temperature";
+      input Modelica.SIunits.AbsolutePressure P "Pressure";
       input Integer region = 0 "IF97 region. 0:automatic";
 
       output Modelica.SIunits.ThermalConductivity lambda "Thermal conductivity";
@@ -393,7 +393,7 @@ package IF97_packages
     end ThermalConductivity_rhoT;
 
     function SurfaceTension_T
-      input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+      input Modelica.SIunits.Temperature T "Temperature";
 
       output Modelica.SIunits.SurfaceTension sigma "Surface tension";
     algorithm
@@ -432,11 +432,11 @@ package IF97_packages
     end SurfaceTension_T;
 
     function SpecificEnthalpy_PT
-      input ThermoSysPro.Units.AbsolutePressure p "Pressure";
-      input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
+      input Modelica.SIunits.AbsolutePressure p "Pressure";
+      input Modelica.SIunits.Temperature T "Temperature";
       input Integer mode = 0 "IF97 region. 0:automatic";
 
-      output ThermoSysPro.Units.SpecificEnthalpy H "Specific enthalpy";
+      output Modelica.SIunits.SpecificEnthalpy H "Specific enthalpy";
 
     protected
       ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_pT
@@ -470,13 +470,13 @@ package IF97_packages
     end SpecificEnthalpy_PT;
 
     function Pressure_sat_hl
-      input ThermoSysPro.Units.SpecificEnthalpy hl
+      input Modelica.SIunits.SpecificEnthalpy hl
         "Liquid specific enthalpy on the saturation line";
 
-      output ThermoSysPro.Units.AbsolutePressure P
+      output Modelica.SIunits.AbsolutePressure P
         "Liquid pressure on the saturation line";
     protected
-      ThermoSysPro.Units.AbsolutePressure tmp[1];
+      Modelica.SIunits.AbsolutePressure tmp[1];
     algorithm
 
       assert(hl > ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hl_p(ThermoSysPro.Properties.WaterSteam.BaseIF97.triple.ptriple),
@@ -515,44 +515,38 @@ package IF97_packages
     end Pressure_sat_hl;
 
     function Water_PT
-      input ThermoSysPro.Units.AbsolutePressure p "Pressure";
-      input ThermoSysPro.Units.AbsoluteTemperature T "Temperature";
-      input Integer mode = 0 "IF97 region. 0:automatic";
-      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_pT
-                                        pro;
+      input Modelica.SIunits.AbsolutePressure p "Pressure";
+      input Modelica.SIunits.Temperature T "Temperature";
+      input Integer mode=0 "IF97 region. 0:automatic";
+      output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_pT pro;
+
     protected
       Integer region;
       Boolean supercritical;
       Integer error;
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs
-                             f;
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs f;
       Modelica.SIunits.Density d;
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
-                         g;
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs g;
     algorithm
 
       supercritical := (p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT);
       region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(p, T, mode);
       if (region == 1) then
         g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(
-                                      g);
+        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(g);
         pro.x := if (supercritical) then -1 else 0;
       elseif (region == 2) then
         g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(
-                                      g);
+        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(g);
         pro.x := if (supercritical) then -1 else 1;
       elseif (region == 3) then
         (d,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(p=p, T=T, delp=ThermoSysPro.Properties.WaterSteam.BaseIF97.IterationData.DELP);
         f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(d, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_pT(
-                                          f);
+        pro := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToProps_pT(f);
         pro.x := if (supercritical) then -1 else 0;
       elseif (region == 5) then
         g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(p, T);
-        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(
-                                      g);
+        pro := ThermoSysPro.Properties.WaterSteam.Common.gibbsToProps_pT(g);
         pro.x := if (supercritical) then -1 else 1;
       else
         assert(false, "Water_PT: Incorrect region number");
@@ -583,13 +577,13 @@ package IF97_packages
     end Water_PT;
 
       function Pressure_sat_hl_der
-        input ThermoSysPro.Units.SpecificEnthalpy hl
+        input Modelica.SIunits.SpecificEnthalpy hl
         "Liquid specific enthalpy on the saturation line";
         input Real hl_der;
 
         output Real P_der;
     protected
-        ThermoSysPro.Units.AbsolutePressure P[1]
+        Modelica.SIunits.AbsolutePressure P[1]
         "Liquid pressure on the saturation line";
         Real tmp[1];
       algorithm
@@ -630,8 +624,8 @@ package IF97_packages
       end Pressure_sat_hl_der;
 
     function Water_Ph_der "Derivative function of Water_Ph"
-      input ThermoSysPro.Units.AbsolutePressure p "Pressure";
-      input ThermoSysPro.Units.SpecificEnthalpy h "Specific enthalpy";
+      input Modelica.SIunits.AbsolutePressure p "Pressure";
+      input Modelica.SIunits.SpecificEnthalpy h "Specific enthalpy";
       input Integer mode = 0 "Région IF97 - 0:calcul automatique";
       //input CombiPlant.ThermoFluidPro.Media.Common.IF97TwoPhaseAnalytic aux "auxiliary record";
 
@@ -646,11 +640,9 @@ package IF97_packages
       Integer region;
       Boolean supercritical;
 
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               g
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   f
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd f
         "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
       Modelica.SIunits.Temperature T;
       Modelica.SIunits.SpecificHeatCapacity R "gas constant";
@@ -688,28 +680,22 @@ package IF97_packages
       Modelica.SIunits.SpecificEnthalpy h_vap "vapour specific enthalpy";
       Modelica.SIunits.Density d_vap "vapour density";
       Real x "dryness fraction";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
-                                                           liq
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd liq
         "phase boundary property record";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
-                                                           vap
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd vap
         "phase boundary property record";
 
       Modelica.SIunits.Temperature t1
         "temperature at phase boundary, using inverse from region 1";
       Modelica.SIunits.Temperature t2
         "temperature at phase boundary, using inverse from region 2";
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               gl
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd gl
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               gv
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd gv
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   fl
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd fl
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   fv
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd fv
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Modelica.SIunits.SpecificVolume v;
 
@@ -760,19 +746,16 @@ package IF97_packages
 
     algorithm
       supercritical := (p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT);
-      phase := if ((h < ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hl_p(
-                                        p)) or (h > ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hv_p(
-                                                                    p)) or
-        supercritical) then 1 else 2;
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ph(
-                                    p, h, phase, mode);
+      phase := if ((h < ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hl_p(p)) or
+                   (h > ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.hv_p(p)) or
+                   supercritical) then 1 else 2;
+      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ph(p, h, phase, mode);
 
       R :=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O;
       if (region == 1) then
         // get variables
         T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph1(p,h);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                                                                 p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(p, T);
         rho := p/(R*T*g.pi*g.gpi);
         rho2 := rho*rho;
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gpitau);
@@ -804,10 +787,8 @@ package IF97_packages
         ddhp := -pt/detPH;
         dtph := -dhd/detPH;
         dthp := pd/detPH;
-        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho)
-            -ptt*pd) *T/(rho2);
-        detPH_t := cvt*pd + cv*ptd +
-            (pt + 2.0*T*ptt)*pt/rho2;
+        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho) - ptt*pd)*T/(rho2);
+        detPH_t := cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/rho2;
         dhtt := cvt + ptt*v;
         dhtd := (ptd - (T * ptt + pt)*v) *v;
         ddhp_t := ddhp * (ptt / pt - detPH_t / detPH);
@@ -840,9 +821,8 @@ package IF97_packages
 
       elseif (region == 2) then
         // get variables
-        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(p,h);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                                                                 p, T);
+        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(p, h);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(p, T);
         rho := p/(R*T*g.pi*g.gpi);
         rho2 := rho*rho;
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gpitau);
@@ -874,10 +854,8 @@ package IF97_packages
         ddhp := -pt/detPH;
         dtph := -dhd/detPH;
         dthp := pd/detPH;
-        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho)
-            -ptt*pd) *T/(rho2);
-        detPH_t := cvt*pd + cv*ptd +
-            (pt + 2.0*T*ptt)*pt/rho2;
+        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho) - ptt*pd)*T/(rho2);
+        detPH_t := cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/rho2;
         dhtt := cvt + ptt*v;
         dhtd := (ptd - (T * ptt + pt)*v) *v;
         ddhp_t := ddhp * (ptt / pt - detPH_t / detPH);
@@ -901,8 +879,7 @@ package IF97_packages
            (ddph * ddhp_d + dtph * ddhp_t)*h_der;
         der_pro.ddhp := (ddhp * ddhp_d + dthp * ddhp_t)*h_der +
            (ddph * ddhp_d + dtph * ddhp_t)*p_der;
-        der_pro.cp := (-(T * vtt * cp + cpt/rho - cpt * T * vt) / cp)*p_der +
-          cpt/cp*h_der;
+        der_pro.cp := (-(T * vtt * cp + cpt/rho - cpt * T * vt) / cp)*p_der + cpt/cp*h_der;
         der_pro.s := -1/(rho*T)*p_der + 1/T*h_der;
         der_pro.u := (-(p*vp*cp + cp*v - p*vt*v + p*vt2 *T)/cp)*p_der + ((cp - p*vt)/cp)*h_der;
         der_pro.T := ((-v + T*vt)/cp)*p_der + (1/cp)*h_der;
@@ -910,12 +887,12 @@ package IF97_packages
 
       elseif (region == 3) then
         // get variables
-        (rho,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofph3(p,h,delp= 1.0e-7,delh=1.0e-6);
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                                                 rho, T);
+        (rho,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofph3(p,h,delp=1.0e-7,delh=1.0e-6);
+        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(rho, T);
 
         rho2 := rho*rho;
         rho3 := rho*rho2;
+        v := 1/rho;
         pd := R*T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta);
         pt := R*rho*f.delta*(f.fdelta - f.tau*f.fdeltatau);
         pt2 := pt*pt;
@@ -929,8 +906,7 @@ package IF97_packages
         ptd := R*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta - 2.0*f.tau*f.fdeltatau
              -f.delta*f.tau*f.fdeltadeltatau);
         cvt := R*f.tau*f.tau/T*(2.0*f.ftautau + f.tau*f.ftautautau);
-        cpt := (cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/(rho2)
-             - cp*ptd)/pd;
+        cpt := (cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/(rho2) - cp*ptd)/pd;
 
         // not in cache
         detPH := cp*pd;
@@ -940,10 +916,8 @@ package IF97_packages
         ddhp := -pt/detPH;
         dtph := -dhd/detPH;
         dthp := pd/detPH;
-        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho)
-            -ptt*pd) *T/(rho2);
-        detPH_t := cvt*pd + cv*ptd +
-            (pt + 2.0*T*ptt)*pt/rho2;
+        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho) - ptt*pd) *T/(rho2);
+        detPH_t := cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/rho2;
         dhtt := cvt + ptt*v;
         dhtd := (ptd - (T * ptt + pt)*v) *v;
         ddhp_t := ddhp * (ptt / pt - detPH_t / detPH);
@@ -1003,14 +977,10 @@ package IF97_packages
         if p <ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PLIMIT4A then
           t1 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph1(p, h_liq);
           t2 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tph2(p, h_vap);
-          gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                                                                    p, t1);
-          gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                                                                    p, t2);
-          liq := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(
-                                                                   gl);
-          vap := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(
-                                                                   gv);
+          gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(p, t1);
+          gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(p, t2);
+          liq := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(gl);
+          vap := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(gv);
           T := t1 + x*(t2 - t1);
         else
           T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(p);
@@ -1018,14 +988,10 @@ package IF97_packages
 
           d_liq := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.rhol_T(T);
           d_vap := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.rhov_T(T);
-          fl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                                                    d_liq, T);
-          fv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                                                    d_vap, T);
-          liq := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(
-                                                                       fl);
-          vap := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(
-                                                                       fv);
+          fl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(d_liq, T);
+          fv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(d_vap, T);
+          liq := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(fl);
+          vap := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(fv);
           //  dpT := BaseIF97.Basic.dptofT(T);
         end if;
 
@@ -1034,8 +1000,7 @@ package IF97_packages
         rho3 := rho*rho2;
         v := 1/rho;
         dxv := if (liq.d <> vap.d) then liq.d*vap.d/(liq.d-vap.d) else 0.0;
-        dpT := if (liq.d <> vap.d) then (vap.s - liq.s)*dxv else ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(
-                                                                                                    T);
+        dpT := if (liq.d <> vap.d) then (vap.s - liq.s)*dxv else ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(T);
 
         dvTl := (liq.pt -dpT)/(liq.pd*liq.d*liq.d);
         dvTv := (vap.pt -dpT)/(vap.pd*vap.d*vap.d);
@@ -1095,8 +1060,7 @@ package IF97_packages
         (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofph5(p,h,reldh=1.0e-7);
         assert(error == 0, "error in inverse iteration of steam tables");
 
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(
-                                                                 p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(p, T);
         rho := p/(R*T*g.pi*g.gpi);
         rho2 := rho*rho;
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gpitau);
@@ -1128,10 +1092,8 @@ package IF97_packages
         ddhp := -pt/detPH;
         dtph := -dhd/detPH;
         dthp := pd/detPH;
-        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho)
-            -ptt*pd) *T/(rho2);
-        detPH_t := cvt*pd + cv*ptd +
-            (pt + 2.0*T*ptt)*pt/rho2;
+        detPH_d := cv*pdd + (2.0*pt *(ptd - pt/rho) - ptt*pd)*T/(rho2);
+        detPH_t := cvt*pd + cv*ptd + (pt + 2.0*T*ptt)*pt/rho2;
         dhtt := cvt + ptt*v;
         dhtd := (ptd - (T * ptt + pt)*v) *v;
         ddhp_t := ddhp * (ptt / pt - detPH_t / detPH);
@@ -1155,8 +1117,7 @@ package IF97_packages
            (ddph * ddhp_d + dtph * ddhp_t)*h_der;
         der_pro.ddhp := (ddhp * ddhp_d + dthp * ddhp_t)*h_der +
            (ddph * ddhp_d + dtph * ddhp_t)*p_der;
-        der_pro.cp := (-(T * vtt * cp + cpt/rho - cpt * T * vt) / cp)*p_der +
-          cpt/cp*h_der;
+        der_pro.cp := (-(T * vtt * cp + cpt/rho - cpt * T * vt) / cp)*p_der + cpt/cp*h_der;
         der_pro.s := -1/(rho*T)*p_der + 1/T*h_der;
         der_pro.u := (-(p*vp*cp + cp*v - p*vt*v + p*vt2 *T)/cp)*p_der + ((cp - p*vt)/cp)*h_der;
         der_pro.T := ((-v + T*vt)/cp)*p_der + (1/cp)*h_der;
@@ -1198,7 +1159,7 @@ package IF97_packages
     end Water_Ph_der;
 
     function Water_Ps_der
-      input ThermoSysPro.Units.AbsolutePressure p "Pression";
+      input Modelica.SIunits.AbsolutePressure p "Pression";
       input Modelica.SIunits.SpecificEntropy s "Entropie spécifique";
       input Integer mode = 0 "Région IF97 - 0:calcul automatique";
 
@@ -1242,23 +1203,17 @@ package IF97_packages
       Modelica.SIunits.Density d_liq "liquid density";
       Modelica.SIunits.SpecificEntropy s_vap "vapour specific entropy";
       Modelica.SIunits.Density d_vap "vapour density";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
-                                                           liq
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd liq
         "phase boundary property record";
-      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd
-                                                           vap
+      ThermoSysPro.Properties.WaterSteam.Common.PhaseBoundaryProperties3rd vap
         "phase boundary property record";
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               gl
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd gl
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               gv
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd gv
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   fl
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd fl
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   fv
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd fv
         "dimensionless Helmholtz function and dervatives wrt delta and tau";
       Modelica.SIunits.Temperature t1
         "temperature at phase boundary, using inverse from region 1";
@@ -1322,21 +1277,17 @@ package IF97_packages
     algorithm
       //assert(false,"Water_ph: Derivatives of cp not yet functional");
       supercritical := (p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT);
-      phase := if ((s < ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sl_p(
-                                        p)) or (s > ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sv_p(
-                                                                    p)) or
-        supercritical) then 1 else 2;
+      phase := if ((s < ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sl_p(p)) or
+                   (s > ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sv_p(p)) or
+                    supercritical) then 1 else 2;
 
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ps(
-                                    p, s, phase, mode);
+      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_ps(p, s, phase, mode);
 
       R :=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O;
       auxs := s;
       if (region == 1) then
-        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps1(
-                                     p, s);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                               p, T);
+        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps1(p, s);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(p, T);
 
         h := R*T*g.tau*g.gtau;
         rho := p/(R*T*g.pi*g.gpi);
@@ -1372,10 +1323,8 @@ package IF97_packages
         pro_der.T := (T*cpinv)*(vt*p_der  + s_der);
 
       elseif (region == 2) then
-        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps2(
-                                     p, s);
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                               p, T);
+        T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps2(p, s);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(p, T);
 
         h := R*T*g.tau*g.gtau;
         rho := p/(R*T*g.pi*g.gpi);
@@ -1411,11 +1360,8 @@ package IF97_packages
         pro_der.T := (T*cpinv)*(vt*p_der  + s_der);
 
       elseif (region == 3) then
-        (rho,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofps3(
-                                                           p,s,delp=1.0e-7,dels=
-          1.0e-6);
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                               rho, T);
+        (rho,T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dtofps3(p,s,delp=1.0e-7,dels=1.0e-6);
+        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(rho, T);
 
         rho2 := rho*rho;
         h := R*T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -1470,50 +1416,33 @@ package IF97_packages
                 2.0*rho*pd*T^2*pt2*ptt - rho2*rho*pd^2*pt*cv - ptt*rho2*rho*T*pd^2*cv -
                 T*pt2*rho2*rho*cv*pdd - T^2*pt3*rho*ptd + 2.0*T^2*pt2*pt2)*s_der);
         pro_der.h := p_der/rho + T*s_der;
-        pro_der.u := quotient*((cv*rho2*pd-pt*p + pt2*T)*T*s_der +
-                cv*p*p_der);
+        pro_der.u := quotient*((cv*rho2*pd-pt*p + pt2*T)*T*s_der + cv*p*p_der);
         pro_der.d := rho2*quotient*(-T*pt*s_der + cv*p_der);
         pro_der.T := T*quotient*(pt*p_der + rho2*pd*s_der);
 
       elseif (region == 4) then
-        s_liq := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sl_p(
-                                       p);
-        s_vap := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sv_p(
-                                       p);
+        s_liq := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sl_p(p);
+        s_vap := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.sv_p(p);
         x := if (s_vap <> s_liq) then (s - s_liq)/(s_vap - s_liq) else 1.0;
-        if p <ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PLIMIT4A then
-          t1 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps1(
-                                    p, s_liq);
-          t2 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps2(
-                                    p, s_vap);
-          gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                                  p, t1);
-          gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                                  p, t2);
-          liq := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(
-                                                                   gl);
-          vap := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(
-                                                                   gv);
+        if p < ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PLIMIT4A then
+          t1 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps1(p, s_liq);
+          t2 := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tps2(p, s_vap);
+          gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(p, t1);
+          gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(p, t2);
+          liq := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(gl);
+          vap := ThermoSysPro.Properties.WaterSteam.Common.gibbsToBoundaryProps3rd(gv);
           T := t1 + x*(t2 - t1);
         else
-          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(
-                                       p);
+          T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(p);
           d_liq := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.rhol_T(T);
           d_vap := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.rhov_T(T);
-          fl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                  d_liq, T);
-          fv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                  d_vap, T);
-          liq :=
-            ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(
-                                                                  fl);
-          vap :=
-            ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(
-                                                                  fv);
+          fl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(d_liq, T);
+          fv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(d_vap, T);
+          liq := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(fl);
+          vap := ThermoSysPro.Properties.WaterSteam.Common.helmholtzToBoundaryProps3rd(fv);
         end if;
         dpT := if (liq.d <> vap.d) then (vap.s - liq.s)*liq.d*vap.d/(liq.d - vap.d) else
-             ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(
-                                   T);
+             ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(T);
         h := h + x*(vap.h - liq.h);
         rho := liq.d*vap.d/(vap.d + x*(liq.d - vap.d));
         rho2 := rho*rho;
@@ -1523,8 +1452,7 @@ package IF97_packages
 
         dxv := if (liq.d <> vap.d) then liq.d*vap.d/(liq.d-vap.d) else 0.0;
         dxd := -dxv/(rho2);
-        dpT := if (liq.d <> vap.d) then (vap.s - liq.s)*dxv else ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(
-                                                                                                    T);
+        dpT := if (liq.d <> vap.d) then (vap.s - liq.s)*dxv else ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(T);
         dvTl := (liq.pt -dpT)/(liq.pd*liq.d*liq.d);
         dvTv := (vap.pt -dpT)/(vap.pd*vap.d*vap.d);
         dxT := -dxv*(dvTl + x*(dvTv-dvTl));
@@ -1567,11 +1495,9 @@ package IF97_packages
         pro_der.T := dtps*p_der;
 
       elseif (region == 5) then
-        (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofps5(
-                                                  p,s,relds= 1.0e-7);
+        (T,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.tofps5(p,s,relds=1.0e-7);
         assert(error == 0, "error in inverse iteration of steam tables");
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(
-                               p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(p, T);
         h := R*T*g.tau*g.gtau;
         rho := p/(R*T*g.pi*g.gpi);
         rho2 := rho*rho;
@@ -1639,9 +1565,8 @@ package IF97_packages
     end Water_Ps_der;
 
     function Water_PT_der
-      input ThermoSysPro.Units.AbsolutePressure p "pressure";
-      input ThermoSysPro.Units.AbsoluteTemperature
-                                           T "Temperature";
+      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.SIunits.Temperature   T "Temperature";
       input Integer mode = 0 "Région IF97 - 0:calcul automatique";
 
       input Real p_der "Pression";
@@ -1683,11 +1608,9 @@ package IF97_packages
       Real dpT "dp/dT derivative of saturation curve";
 
       // needed
-      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd
-                                               g
+      ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs3rd g
         "dimensionless Gibbs funcion and dervatives wrt pi and tau";
-      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd
-                                                   f
+      ThermoSysPro.Properties.WaterSteam.Common.HelmholtzDerivs3rd f
         "dimensionless Helmholtz funcion and dervatives wrt delta and tau";
       Real vp3 "vp^3";
       Real ivp3 "1/vp3";
@@ -1703,12 +1626,10 @@ package IF97_packages
     algorithm
 
       supercritical := (p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT);
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(
-                                    p, T, mode);
+      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(p, T, mode);
       R :=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O;
       if (region == 1) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(p, T);
         x := 0.0;
 
         h := R*T*g.tau*g.gtau;
@@ -1749,8 +1670,7 @@ package IF97_packages
         pro_der.d := -rho2*(vp*p_der + vt*T_der);
 
       elseif (region == 2) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(p, T);
         x := 1.0;
 
         h := R*T*g.tau*g.gtau;
@@ -1790,10 +1710,8 @@ package IF97_packages
         pro_der.h := (v - T*vt)*p_der + cp*T_der;
         pro_der.d := -rho2*(vp*p_der + vt*T_der);
       elseif (region == 3) then
-        (rho,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(
-                                                    p,T,delp= 1.0e-7);
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(
-                                 rho, T);
+        (rho,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(p,T,delp= 1.0e-7);
+        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3L3(rho, T);
 
         rho2 := rho*rho;
         h := R*T*(f.tau*f.ftau + f.delta*f.fdelta);
@@ -1844,8 +1762,7 @@ package IF97_packages
         pro_der.d := (1/pd)*(p_der - pt*T_der);
 
       elseif (region == 5) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5L3(p, T);
         x := 1.0;
 
         h := R*T*g.tau*g.gtau;
@@ -1913,14 +1830,12 @@ package IF97_packages
     end Water_PT_der;
 
     function Water_sat_P_der
-      input ThermoSysPro.Units.AbsolutePressure P "Pression";
+      input Modelica.SIunits.AbsolutePressure P "Pression";
 
       input Real P_der "derivative of pressure";
 
     protected
-      ThermoSysPro.Units.AbsoluteTemperature
-                                     T;
-
+      Modelica.SIunits.Temperature T;
       ThermoSysPro.Units.DerPressureByTemperature dpT
         "dp/dT derivative of saturation curve";
       Modelica.SIunits.Density d "density";
@@ -1980,14 +1895,11 @@ package IF97_packages
     assert(false, "Eau_sat_P: Pression > 16.5292e6 Pa");
   end if;*/
 
-      T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(
-                          P);
+      T := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.tsat(P);
 
       // get Gibbs derivatives of third order
-      gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(
-                         P, T);
-      gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(
-                         P, T);
+      gl := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1L3(P, T);
+      gv := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2L3(P, T);
 
       // Precalculs
       dpT := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.dptofT(T);
@@ -2115,9 +2027,8 @@ package IF97_packages
     end Water_sat_P_der;
 
     function SpecificEnthalpy_PT_der
-      input ThermoSysPro.Units.AbsolutePressure p "pressure";
-      input ThermoSysPro.Units.AbsoluteTemperature
-                                           T "Temperature";
+      input Modelica.SIunits.AbsolutePressure p "pressure";
+      input Modelica.SIunits.Temperature   T "Temperature";
       input Integer mode = 0 "Région IF97 - 0:calcul automatique";
 
       input Real p_der "Pression";
@@ -2150,12 +2061,10 @@ package IF97_packages
 
     algorithm
       supercritical := (p >ThermoSysPro.Properties.WaterSteam.BaseIF97.data.PCRIT);
-      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(
-                                    p, T, mode);
+      region := ThermoSysPro.Properties.WaterSteam.BaseIF97.Regions.region_pT(p, T, mode);
       R :=ThermoSysPro.Properties.WaterSteam.BaseIF97.data.RH2O;
       if (region == 1) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g1(p, T);
 
         rho := p/(R*T*g.pi*g.gpi);
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gtaupi);
@@ -2164,19 +2073,16 @@ package IF97_packages
         H := (1/rho - T*vt)*p_der + cp*T_der;
 
       elseif (region == 2) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g2(p, T);
         rho := p/(R*T*g.pi*g.gpi);
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gtaupi);
         cp := -R*g.tau*g.tau*g.gtautau;
 
         H := (1/rho - T*vt)*p_der + cp*T_der;
       elseif (region == 3) then
-        (rho,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(
-                                                    p,T,delp= 1.0e-7);
+        (rho,error) := ThermoSysPro.Properties.WaterSteam.BaseIF97.Inverses.dofpt3(p,T,delp= 1.0e-7);
         rho2 := rho*rho;
-        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(
-                                 rho, T);
+        f := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.f3(rho, T);
 
         pd := R*T*f.delta*(2.0*f.fdelta + f.delta*f.fdeltadelta);
         pt := R*rho*f.delta*(f.fdelta - f.tau*f.fdeltatau);
@@ -2186,8 +2092,7 @@ package IF97_packages
               (rho2*pd*cv + T*pt*p)*T_der);
 
       elseif (region == 5) then
-        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(
-                                   p, T);
+        g := ThermoSysPro.Properties.WaterSteam.BaseIF97.Basic.g5(p, T);
         rho := p/(R*T*g.pi*g.gpi);
         vt := R/p*(g.pi*g.gpi - g.tau*g.pi*g.gtaupi);
         cp := -R*g.tau*g.tau*g.gtautau;
@@ -2225,7 +2130,7 @@ package IF97_packages
       "unused functions for which no analytic derivative can be provided"
       function Water_rhoT
         input Modelica.SIunits.Density rho "Masse volumique";
-        input ThermoSysPro.Units.AbsoluteTemperature T "Température";
+        input Modelica.SIunits.Temperature T "Température";
         input Integer phase "2: diphasique, 1 sinon";
         input Integer mode = 0 "Région IF97 - 0:calcul automatique";
         output ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_dT
@@ -2235,7 +2140,7 @@ package IF97_packages
         Integer region;
         Integer error;
         Boolean supercritical;
-        ThermoSysPro.Units.AbsolutePressure p;
+        Modelica.SIunits.AbsolutePressure p;
       protected
         ThermoSysPro.Properties.WaterSteam.Common.GibbsDerivs
                            g annotation (Placement(transformation(extent={{-90,
@@ -2312,16 +2217,16 @@ package IF97_packages
       end Water_rhoT;
 
       function Water_h_is
-        input ThermoSysPro.Units.AbsolutePressure p;
+        input Modelica.SIunits.AbsolutePressure p;
         input Modelica.SIunits.SpecificEntropy s;
         input Integer phase;
         input Integer mode = 0;
-        output ThermoSysPro.Units.SpecificEnthalpy h;
+        output Modelica.SIunits.SpecificEnthalpy h;
 
       protected
         Integer region;
         Integer error;
-        ThermoSysPro.Units.AbsoluteTemperature T;
+        Modelica.SIunits.Temperature T;
         Modelica.SIunits.Density d;
       protected
         ThermoSysPro.Properties.WaterSteam.Common.HelmholtzData
@@ -2388,6 +2293,125 @@ package IF97_packages
 </HTML>
 "));
       end Water_h_is;
+      annotation (Icon(graphics={
+            Text(
+              extent={{-102,0},{24,-26}},
+              lineColor={242,148,0},
+              textString=
+                   "Thermo"),
+            Text(
+              extent={{-4,8},{68,-34}},
+              lineColor={46,170,220},
+              textString=
+                   "SysPro"),
+            Polygon(
+              points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},
+                  {42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},
+                  {-50,6},{-62,2}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{
+                  -46,8},{-42,22},{-42,30},{-44,38}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{
+                  -12,12},{-26,12},{-28,12},{-26,20}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,30},{-6,26}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,36},{-6,32}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,42},{-6,38}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,48},{-6,44}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,32},{-2,28}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,38},{-2,34}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,44},{-2,40}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,50},{-2,46}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,
+                  20}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},
+                  {42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},
+                  {-50,6},{-62,2}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Line(
+              points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+              color={46,170,220},
+              thickness=0.5),
+            Line(
+              points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+              color={46,170,220},
+              thickness=0.5),
+            Line(
+              points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+              color={46,170,220},
+              thickness=0.5),
+            Polygon(
+              points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+            Line(
+              points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+              color={0,0,255},
+              smooth=Smooth.None),
+            Line(
+              points={{80,80},{100,100}},
+              color={0,0,255},
+              smooth=Smooth.None)}));
     end Unused;
 
     package Spline_Utilities
@@ -2732,6 +2756,125 @@ package IF97_packages
           end if;
         end n_findSpan;
 
+        annotation (Icon(graphics={
+              Text(
+                extent={{-102,0},{24,-26}},
+                lineColor={242,148,0},
+                textString=
+                     "Thermo"),
+              Text(
+                extent={{-4,8},{68,-34}},
+                lineColor={46,170,220},
+                textString=
+                     "SysPro"),
+              Polygon(
+                points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},
+                    {42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,
+                    10},{-50,6},{-62,2}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{
+                    -46,8},{-42,22},{-42,30},{-44,38}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{
+                    -12,12},{-26,12},{-28,12},{-26,20}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,30},{-6,26}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,36},{-6,32}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,42},{-6,38}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,48},{-6,44}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,32},{-2,28}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,38},{-2,34}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,44},{-2,40}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,50},{-2,46}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{
+                    -2,20}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},
+                    {42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},
+                    {-50,6},{-62,2}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Line(
+                points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+                color={46,170,220},
+                thickness=0.5),
+              Line(
+                points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+                color={46,170,220},
+                thickness=0.5),
+              Line(
+                points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+                color={46,170,220},
+                thickness=0.5),
+              Polygon(
+                points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+              Line(
+                points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+                color={0,0,255},
+                smooth=Smooth.None),
+              Line(
+                points={{80,80},{100,100}},
+                color={0,0,255},
+                smooth=Smooth.None)}));
       end Utilities;
 
       function linspace "Returns a vector with linear spacing"
@@ -3592,7 +3735,7 @@ end for;
             algorithm
               /*
   The NURBS Book: Global Interpolation (page 373)
-
+  
   */
               npoints := size(points,1);
 
@@ -4091,11 +4234,11 @@ Modelica in file \"Modelica/package.mo\".
         Lobatto rule.
         see Walter Gander: Adaptive Quadrature - Revisited, 1998
                         ftp.inf.ethz.ch in doc/tech-reports/1998/306.ps
-
+                        
         x[:] are the nodes
         y[:] = f(x[:]) are function values at the nodes
                 here (arc length computation): the integrand f is the
-                absolute value of the first derivative of the curve (Bspline)
+                absolute value of the first derivative of the curve (Bspline) 
         */
            tol := err;
             m := (a+b)/2;
@@ -4158,7 +4301,7 @@ Modelica in file \"Modelica/package.mo\".
               external "FORTRAN 77" dgbsv(n, kLower, kUpper, size(B, 2), Awork, size(
                   Awork, 1), ipiv, X, n, info) annotation (Library="Lapack");
                 annotation (
-                  Documentation(info="Lapack documentation:
+                  Documentation(info="Lapack documentation:  
 Purpose
 =======
 DGBSV computes the solution to a real system of linear equations
@@ -4244,47 +4387,47 @@ elements of U because of fill-in resulting from the row interchanges."),
                X, size(A, 1), info) annotation (Library="Lapack");
             annotation (
               Documentation(info="Lapack documentation:
-    Purpose
-    =======
-    DGESV computes the solution to a real system of linear equations
-       A * X = B,
-    where A is an N-by-N matrix and X and B are N-by-NRHS matrices.
-    The LU decomposition with partial pivoting and row interchanges is
-    used to factor A as
-       A = P * L * U,
-    where P is a permutation matrix, L is unit lower triangular, and U is
-
-    upper triangular.  The factored form of A is then used to solve the
-    system of equations A * X = B.
-    Arguments
-    =========
-    N       (input) INTEGER
-            The number of linear equations, i.e., the order of the
-            matrix A.  N >= 0.
-    NRHS    (input) INTEGER
-            The number of right hand sides, i.e., the number of columns
-            of the matrix B.  NRHS >= 0.
-    A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
-            On entry, the N-by-N coefficient matrix A.
-            On exit, the factors L and U from the factorization
-            A = P*L*U; the unit diagonal elements of L are not stored.
-    LDA     (input) INTEGER
-            The leading dimension of the array A.  LDA >= max(1,N).
-    IPIV    (output) INTEGER array, dimension (N)
-            The pivot indices that define the permutation matrix P;
-            row i of the matrix was interchanged with row IPIV(i).
-    B       (input/output) DOUBLE PRECISION array, dimension (LDB,NRHS)
-            On entry, the N-by-NRHS matrix of right hand side matrix B.
-            On exit, if INFO = 0, the N-by-NRHS solution matrix X.
-    LDB     (input) INTEGER
-            The leading dimension of the array B.  LDB >= max(1,N).
-    INFO    (output) INTEGER
-            = 0:  successful exit
-            < 0:  if INFO = -i, the i-th argument had an illegal value
-            > 0:  if INFO = i, U(i,i) is exactly zero.  The factorization
-
-                  has been completed, but the factor U is exactly
-                  singular, so the solution could not be computed.
+    Purpose   
+    =======   
+    DGESV computes the solution to a real system of linear equations   
+       A * X = B,   
+    where A is an N-by-N matrix and X and B are N-by-NRHS matrices.   
+    The LU decomposition with partial pivoting and row interchanges is   
+    used to factor A as   
+       A = P * L * U,   
+    where P is a permutation matrix, L is unit lower triangular, and U is 
+  
+    upper triangular.  The factored form of A is then used to solve the   
+    system of equations A * X = B.   
+    Arguments   
+    =========   
+    N       (input) INTEGER   
+            The number of linear equations, i.e., the order of the   
+            matrix A.  N >= 0.   
+    NRHS    (input) INTEGER   
+            The number of right hand sides, i.e., the number of columns   
+            of the matrix B.  NRHS >= 0.   
+    A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)   
+            On entry, the N-by-N coefficient matrix A.   
+            On exit, the factors L and U from the factorization   
+            A = P*L*U; the unit diagonal elements of L are not stored.   
+    LDA     (input) INTEGER   
+            The leading dimension of the array A.  LDA >= max(1,N).   
+    IPIV    (output) INTEGER array, dimension (N)   
+            The pivot indices that define the permutation matrix P;   
+            row i of the matrix was interchanged with row IPIV(i).   
+    B       (input/output) DOUBLE PRECISION array, dimension (LDB,NRHS)   
+            On entry, the N-by-NRHS matrix of right hand side matrix B.   
+            On exit, if INFO = 0, the N-by-NRHS solution matrix X.   
+    LDB     (input) INTEGER   
+            The leading dimension of the array B.  LDB >= max(1,N).   
+    INFO    (output) INTEGER   
+            = 0:  successful exit   
+            < 0:  if INFO = -i, the i-th argument had an illegal value   
+            > 0:  if INFO = i, U(i,i) is exactly zero.  The factorization 
+  
+                  has been completed, but the factor U is exactly   
+                  singular, so the solution could not be computed.   
 "),           Window(
                 x=0.4,
                 y=0.4,
@@ -4467,7 +4610,7 @@ elements of U because of fill-in resulting from the row interchanges."),
           algorithm
             (X,info) := dgbsv(size(A,2), kLower, kUpper, A, B);
             assert(info == 0, "Solving a linear system of equations with function
-\"Modelica_Interpolation.Utilities.solveBandedWithMatrix\" is not possible, since matrix A
+\"Modelica_Interpolation.Utilities.solveBandedWithMatrix\" is not possible, since matrix A 
 is singular, i.e., no unique solution exists.");
           end solveBandedWithMatrix;
 
@@ -4483,7 +4626,7 @@ is singular, i.e., no unique solution exists.");
           algorithm
             (X,info) := dgesv(A, B);
             assert(info == 0, "Solving a linear system of equations with function
-\"Modelica_Interpolation.Utilities.solveMatrix\" is not possible, since matrix A
+\"Modelica_Interpolation.Utilities.solveMatrix\" is not possible, since matrix A 
 is singular, i.e., no unique solution exists.");
           end solveMatrix;
 
@@ -4568,7 +4711,7 @@ The following functions are supported:
   curveLength                          Compute the length of a curve with adaptive quadrature
   dummy                                return a dummy Bspline with zero entries
   getNumberControlPoints        Compute the number of control points for the given data points
-  getNumberControlPoints2        Compute the number of control points for the given data points
+  getNumberControlPoints2        Compute the number of control points for the given data points 
                                                                                                   and transformation matrices
   quat2T                               Compute the transformation matrix of the given quaternions
   T2quat                               Compute the quaternions of the given transformation matrix
@@ -4582,7 +4725,7 @@ The following functions are supported:
 <li><i>Oct. 17, 2002</i>
        by Gerhard Schillhuber:<br>
        new functions: getNumberControlPoints, getNumberControlPoints2
-                               compute the number of control points for the given data points. It's needed
+                               compute the number of control points for the given data points. It's needed 
                                to initialize the curve.
 </li>
 </ul>
@@ -4597,6 +4740,125 @@ Modelica in file \"Modelica/package.mo\".
 </HTML>
 "));
         end Utilities;
+        annotation (Icon(graphics={
+              Text(
+                extent={{-102,0},{24,-26}},
+                lineColor={242,148,0},
+                textString=
+                     "Thermo"),
+              Text(
+                extent={{-4,8},{68,-34}},
+                lineColor={46,170,220},
+                textString=
+                     "SysPro"),
+              Polygon(
+                points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},
+                    {42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,
+                    10},{-50,6},{-62,2}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{
+                    -46,8},{-42,22},{-42,30},{-44,38}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{
+                    -12,12},{-26,12},{-28,12},{-26,20}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,30},{-6,26}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,36},{-6,32}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,42},{-6,38}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-8,48},{-6,44}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,32},{-2,28}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,38},{-2,34}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,44},{-2,40}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Rectangle(
+                extent={{-4,50},{-2,46}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{
+                    -2,20}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Polygon(
+                points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},
+                    {42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},
+                    {-50,6},{-62,2}},
+                lineColor={242,148,0},
+                fillColor={242,148,0},
+                fillPattern=FillPattern.Solid),
+              Line(
+                points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+                color={46,170,220},
+                thickness=0.5),
+              Line(
+                points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+                color={46,170,220},
+                thickness=0.5),
+              Line(
+                points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+                color={46,170,220},
+                thickness=0.5),
+              Polygon(
+                points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+                lineColor={46,170,220},
+                fillColor={46,170,220},
+                fillPattern=FillPattern.Solid),
+              Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+              Line(
+                points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+                color={0,0,255},
+                smooth=Smooth.None),
+              Line(
+                points={{80,80},{100,100}},
+                color={0,0,255},
+                smooth=Smooth.None)}));
       end Modelica_Interpolation;
 
       model PhaseBoundary "Model used to create the phase boundary"
@@ -4630,45 +4892,251 @@ Modelica in file \"Modelica/package.mo\".
         annotation (
           Icon(graphics));
       end PhaseBoundary;
+      annotation (Icon(graphics={
+            Text(
+              extent={{-102,0},{24,-26}},
+              lineColor={242,148,0},
+              textString=
+                   "Thermo"),
+            Text(
+              extent={{-4,8},{68,-34}},
+              lineColor={46,170,220},
+              textString=
+                   "SysPro"),
+            Polygon(
+              points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},
+                  {42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},
+                  {-50,6},{-62,2}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{
+                  -46,8},{-42,22},{-42,30},{-44,38}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{
+                  -12,12},{-26,12},{-28,12},{-26,20}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,30},{-6,26}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,36},{-6,32}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,42},{-6,38}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-8,48},{-6,44}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,32},{-2,28}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,38},{-2,34}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,44},{-2,40}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Rectangle(
+              extent={{-4,50},{-2,46}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,
+                  20}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Polygon(
+              points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},
+                  {42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},
+                  {-50,6},{-62,2}},
+              lineColor={242,148,0},
+              fillColor={242,148,0},
+              fillPattern=FillPattern.Solid),
+            Line(
+              points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+              color={46,170,220},
+              thickness=0.5),
+            Line(
+              points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+              color={46,170,220},
+              thickness=0.5),
+            Line(
+              points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+              color={46,170,220},
+              thickness=0.5),
+            Polygon(
+              points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+              lineColor={46,170,220},
+              fillColor={46,170,220},
+              fillPattern=FillPattern.Solid),
+            Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+            Line(
+              points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+              color={0,0,255},
+              smooth=Smooth.None),
+            Line(
+              points={{80,80},{100,100}},
+              color={0,0,255},
+              smooth=Smooth.None)}));
     end Spline_Utilities;
 
     annotation (
       Icon(coordinateSystem(
           preserveAspectRatio=false,
-          extent={{0,0},{312,220}},
-          grid={2,2}), graphics={
+          extent={{-100,-100},{100,100}},
+          grid={2,2},
+          initialScale=0.1), graphics={
+          Text(
+            extent={{-102,0},{24,-26}},
+            lineColor={242,148,0},
+            textString=
+                 "Thermo"),
+          Text(
+            extent={{-4,8},{68,-34}},
+            lineColor={46,170,220},
+            textString=
+                 "SysPro"),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{
+                42,8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{
+                -50,6},{-62,2}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,
+                8},{-42,22},{-42,30},{-44,38}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,
+                12},{-26,12},{-28,12},{-26,20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Polygon(
+            points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
           Rectangle(
-            extent={{-100,-100},{80,50}},
-            lineColor={0,0,255},
-            fillColor={235,235,235},
+            extent={{-8,30},{-6,26}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,36},{-6,32}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,42},{-6,38}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-8,48},{-6,44}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{-100,50},{-80,70},{100,70},{80,50},{-100,50}},
-            lineColor={0,0,255},
-            fillColor={235,235,235},
+            points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,32},{-2,28}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,38},{-2,34}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,44},{-2,40}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Rectangle(
+            extent={{-4,50},{-2,46}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
             fillPattern=FillPattern.Solid),
           Polygon(
-            points={{100,70},{100,-80},{80,-100},{80,50},{100,70}},
-            lineColor={0,0,255},
-            fillColor={235,235,235},
+            points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,
+                20}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
             fillPattern=FillPattern.Solid),
-          Text(
-            extent={{-90,40},{70,10}},
-            lineColor={160,160,164},
-            fillColor={0,0,0},
-            fillPattern=FillPattern.Solid,
-            textString=
-                 "Library"),
-          Rectangle(extent={{-32,-6},{16,-35}}, lineColor={0,0,0}),
-          Rectangle(extent={{-32,-56},{16,-85}}, lineColor={0,0,0}),
-          Line(points={{16,-20},{49,-20},{49,-71},{16,-71}}, color={0,0,0}),
-          Line(points={{-32,-72},{-64,-72},{-64,-21},{-32,-21}}, color={0,0,0}),
-
-          Text(
-            extent={{-116,133},{124,68}},
-            lineColor={255,0,0},
-            textString=
-                 "%name")}),
+          Polygon(
+            points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{
+                42,6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{
+                -50,6},{-62,2}},
+            lineColor={242,148,0},
+            fillColor={242,148,0},
+            fillPattern=FillPattern.Solid),
+          Line(
+            points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+            color={46,170,220},
+            thickness=0.5),
+          Line(
+            points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+            color={46,170,220},
+            thickness=0.5),
+          Polygon(
+            points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+            lineColor={46,170,220},
+            fillColor={46,170,220},
+            fillPattern=FillPattern.Solid),
+          Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+          Line(
+            points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+            color={0,0,255},
+            smooth=Smooth.None),
+          Line(
+            points={{80,80},{100,100}},
+            color={0,0,255},
+            smooth=Smooth.None)}),
       Window(
         x=0.05,
         y=0.51,
@@ -4681,4 +5149,123 @@ Modelica in file \"Modelica/package.mo\".
 </HTML>
 "));
   end IF97_wAJ;
+  annotation (Icon(graphics={
+        Text(
+          extent={{-102,0},{24,-26}},
+          lineColor={242,148,0},
+          textString=
+               "Thermo"),
+        Text(
+          extent={{-4,8},{68,-34}},
+          lineColor={46,170,220},
+          textString=
+               "SysPro"),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-32,12},{-16,14},{6,14},{26,12},{42,
+              8},{52,2},{42,6},{28,10},{6,12},{-12,12},{-16,12},{-34,10},{-50,6},
+              {-62,2}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-44,38},{-24,38},{-26,30},{-26,22},{-24,14},{-24,12},{-46,8},
+              {-42,22},{-42,30},{-44,38}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-26,20},{-20,20},{-20,22},{-14,22},{-14,20},{-12,20},{-12,12},
+              {-26,12},{-28,12},{-26,20}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-8,14},{-8,24},{-6,24},{-6,14},{-8,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,30},{-6,26}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,36},{-6,32}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,42},{-6,38}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-8,48},{-6,44}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-4,14},{-4,26},{-2,26},{-2,14},{-4,14}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,32},{-2,28}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,38},{-2,34}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,44},{-2,40}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Rectangle(
+          extent={{-4,50},{-2,46}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-2,20},{8,20},{8,22},{10,22},{18,22},{18,12},{-4,14},{-2,20}},
+
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Polygon(
+          points={{-62,2},{-58,4},{-48,8},{-36,10},{-18,12},{6,12},{26,10},{42,
+              6},{52,0},{42,4},{28,8},{6,10},{-12,10},{-18,10},{-38,8},{-50,6},
+              {-62,2}},
+          lineColor={242,148,0},
+          fillColor={242,148,0},
+          fillPattern=FillPattern.Solid),
+        Line(
+          points={{22,12},{22,14},{22,16},{24,14},{20,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{26,12},{26,14},{26,16},{28,14},{24,18}},
+          color={46,170,220},
+          thickness=0.5),
+        Line(
+          points={{30,10},{30,12},{30,14},{32,12},{28,16}},
+          color={46,170,220},
+          thickness=0.5),
+        Polygon(
+          points={{36,8},{36,30},{34,34},{36,38},{40,38},{40,8},{36,8}},
+          lineColor={46,170,220},
+          fillColor={46,170,220},
+          fillPattern=FillPattern.Solid),
+        Rectangle(extent={{-100,80},{80,-100}}, lineColor={0,0,255}),
+        Line(
+          points={{-100,80},{-80,100},{100,100},{100,-80},{80,-100}},
+          color={0,0,255},
+          smooth=Smooth.None),
+        Line(
+          points={{80,80},{100,100}},
+          color={0,0,255},
+          smooth=Smooth.None)}));
 end IF97_packages;

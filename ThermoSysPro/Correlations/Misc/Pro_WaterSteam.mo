@@ -1,13 +1,13 @@
 within ThermoSysPro.Correlations.Misc;
 record Pro_WaterSteam
   "Water/steam properties for the computation of correlations"
-  ThermoSysPro.Units.AbsoluteTemperature TEE
+  Modelica.SIunits.Temperature TEE
     "Water/steam temperature at the inlet of the exchanger";
-  ThermoSysPro.Units.AbsoluteTemperature TME "Average water/steam temperature";
+  Modelica.SIunits.Temperature TME "Average water/steam temperature";
   Modelica.SIunits.Density rhoME "Average water/steam density";
   Modelica.SIunits.Density rhoSE
     "Water/steam density at the outlet of the exchanger";
-  ThermoSysPro.Units.AbsolutePressure PME(start=100e5)
+  Modelica.SIunits.AbsolutePressure PME(start=100e5)
     "Average water/steam pressure";
   Modelica.SIunits.SpecificEntropy SME "Average water/steam specific entropy";
   Real xm "Average steam mass fraction";

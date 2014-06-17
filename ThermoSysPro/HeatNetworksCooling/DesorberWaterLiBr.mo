@@ -13,9 +13,9 @@ public
     "Maximum power acceptable by the solution";
   Modelica.SIunits.Power Wmaxc(start=1e6)
     "Maximum power releasable by the hot water";
-  ThermoSysPro.Units.AbsoluteTemperature Tsatc(start=400)
+  Modelica.SIunits.Temperature Tsatc(start=400)
     "Hot water saturation temperature at the outlet";
-  ThermoSysPro.Units.SpecificEnthalpy Hminc(start=1e5)
+  Modelica.SIunits.SpecificEnthalpy Hminc(start=1e5)
     "Minimum specific enthalpy reachable by the hot water";
   Real Xmin "Minimum mass fraction reachable by the solution";
   Modelica.SIunits.MassFlowRate Qs_min(start=100)

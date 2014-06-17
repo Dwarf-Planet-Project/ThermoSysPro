@@ -1,10 +1,10 @@
 within ThermoSysPro.Combustion.BoundaryConditions;
 model FuelSourcePQ "Fuel source with fixed pressure and mass flow rate"
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1e5
+  parameter Modelica.SIunits.AbsolutePressure P0=1e5
     "Fuel pressure (active if pressure input port is not connected)";
   parameter Modelica.SIunits.MassFlowRate Q0=10
     "Fuel mass flow rate (active if mass flow input port is not connected)";
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=300 "Fuel temperature";
+  parameter Modelica.SIunits.Temperature T0=300 "Fuel temperature";
   parameter Modelica.SIunits.SpecificEnergy LHV=48e6 "Lower heating value";
   parameter Modelica.SIunits.SpecificHeatCapacity Cp=1e3
     "Fuel specific heat capacity at 273.15K";

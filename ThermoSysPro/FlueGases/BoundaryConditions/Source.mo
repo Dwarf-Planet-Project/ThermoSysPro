@@ -1,15 +1,15 @@
 within ThermoSysPro.FlueGases.BoundaryConditions;
 model Source "Flue gas source"
-  parameter ThermoSysPro.Units.AbsoluteTemperature T0=400 "Source temperature";
+  parameter Modelica.SIunits.Temperature T0=400 "Source temperature";
   parameter Real Xco2=0.10 "CO2 mass fraction";
   parameter Real Xh2o=0.05 "H2O mass fraction";
   parameter Real Xo2=0.22 "O2 mass fraction";
   parameter Real Xso2=0.00 "SO2 mass fraction";
 
 public
-  ThermoSysPro.Units.AbsolutePressure P "Fluid pressure";
+  Modelica.SIunits.AbsolutePressure P "Fluid pressure";
   Modelica.SIunits.MassFlowRate Q "Mass flow";
-  ThermoSysPro.Units.AbsoluteTemperature T "Fluid temperature";
+  Modelica.SIunits.Temperature T "Fluid temperature";
   Real Xn2 "N2 mas fraction";
 
 public

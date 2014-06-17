@@ -107,8 +107,8 @@ equation
   connect(constante.y, separateur_Fumees.Ialpha1)
     annotation (Line(points={{-39.5,15},{-34,15},{-34,6},{-29,6}}));
   connect(Entree_KB, KettleBoiler.Cws1) annotation (Line(points={{-100,-80},{
-          -40,-80},{-40,-30},{6.12303e-016,-30},{6.12303e-016,-40}}));
-  connect(KettleBoiler.Cws2, Sortie_KB) annotation (Line(points={{-6.12303e-016,
+          -40,-80},{-40,-30},{6.12323e-016,-30},{6.12323e-016,-40}}));
+  connect(KettleBoiler.Cws2, Sortie_KB) annotation (Line(points={{-6.12323e-016,
           -60},{0,-60},{0,-80},{100,-80}}, color={0,0,255}));
   connect(KettleBoiler.Cfg1, separateur_Fumees.Cs2) annotation (Line(
       points={{-9,-50},{-26,-50},{-26,-10}},

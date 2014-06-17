@@ -1,6 +1,6 @@
 within ThermoSysPro.WaterSolution.BoundaryConditions;
 model RefP "Fixed pressure reference"
-  parameter ThermoSysPro.Units.AbsolutePressure P0=1.e5 "Fixed fluid pressure";
+  parameter Modelica.SIunits.AbsolutePressure P0=1.e5 "Fixed fluid pressure";
 
   Connectors.WaterSolutionInlet C1
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation

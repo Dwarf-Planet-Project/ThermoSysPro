@@ -692,10 +692,11 @@ model CombinedCycle_Load_100_50
   ThermoSysPro.WaterSteam.Machines.StaticCentrifugalPump PompeAlimBP(
     C2(P(fixed=false, start=22e5)),
     Qv(start=0.1),
-    Q(start=194.502),
     mode=1,
+    a3=400,
     a1(fixed=true) = -6000,
-    a3=400) annotation (Placement(transformation(extent={{742,-446},{762,-426}},
+    Q(start=194.502, fixed=false))
+            annotation (Placement(transformation(extent={{742,-446},{762,-426}},
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.PipePressureLoss perteChargeK2(
                                                          K=1e-4, mode=1)
@@ -897,62 +898,71 @@ model CombinedCycle_Load_100_50
     annotation (Placement(transformation(extent={{326,68},{352,98}}, rotation=0)));
   ThermoSysPro.Thermal.BoundaryConditions.HeatSource heatSource2(T0={303.16})
     annotation (Placement(transformation(extent={{585,64},{611,94}}, rotation=0)));
-  ThermoSysPro.Combustion.BoundaryConditions.FuelSourcePQ sourceCombustible(
-    Cp=1282,
+  ThermoSysPro.InstrumentationAndControl.Blocks.Math.Gain Gain_2GasTurbine(Gain=
+       2) annotation (Placement(transformation(extent={{-18,-448},{2,-428}},
+          rotation=0)));
+  Combustion.BoundaryConditions.FuelSourcePQ sourceCombustible(
     Hum=0,
     Xo=0,
     Xn=0,
     Xs=0,
-    Xc=0.7345402123,
-    Xh=0.2265526676,
     rho=0.838,
-    T0=454.058203125,
-    LHV=47274523.4375,
-    Q0=13.4368286133)
-          annotation (Placement(transformation(extent={{-420,26},{-384,62}},
+    Q0=13.4368286133,
+    T0=185 + 273.16,
+    Xc=0.755,
+    Xh=0.245,
+    Cp=2255,
+    LHV=46989e3)
+          annotation (Placement(transformation(extent={{-421,24},{-385,60}},
           rotation=0)));
-  ThermoSysPro.WaterSteam.BoundaryConditions.SourcePQ sourceEau(Q0=1e-4)
-          annotation (Placement(transformation(extent={{-470,22},{-442,52}},
+  WaterSteam.BoundaryConditions.SourcePQ sourceEau(             Q0=0.0)
+          annotation (Placement(transformation(extent={{-473,27},{-445,57}},
           rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Humidite(k=0.9231689453125)
-    annotation (Placement(transformation(extent={{-504,-16},{-483,4}}, rotation
+  InstrumentationAndControl.Blocks.Sources.Constante Humidite(k=0.93)
+    annotation (Placement(transformation(extent={{-539,23},{-518,43}}, rotation
           =0)));
-  ThermoSysPro.FlueGases.BoundaryConditions.SourcePQ SourceFumees(
+  FlueGases.BoundaryConditions.SourcePQ SourceFumees(
     Xso2=0,
-    T0=297.0679077148,
     Xco2=0,
     Xh2o=0,
     Xo2=0.20994,
-    P0=1.013e5,
-    Q0=600)
-    annotation (Placement(transformation(extent={{-538,-73},{-494,-27}},
+    Q0=600,
+    T0=29.4 + 273.16,
+    P0=1.013e5)
+    annotation (Placement(transformation(extent={{-539,-74},{-495,-28}},
           rotation=0)));
-  ThermoSysPro.FlueGases.TAC.GasTurbine GasTurbine(
-    Wpth=1e6,
-    comp_tau_n=13.784,
-    comp_eff_n=0.87375,
-    Kcham=1.114801,
-    exp_tau_n=0.0816,
-    TurbQred=0.01787,
-    exp_eff_n=0.89)
-    annotation (Placement(transformation(extent={{-468,-114},{-338,14}},
+  FlueGases.TAC.GasTurbine GasTurbine(
+    comp_tau_n=14.0178,
+    comp_eff_n=0.87004,
+    exp_tau_n=0.06458,
+    exp_eff_n=0.89045,
+    TurbQred=0.0175634,
+    Kcham=2.02088,
+    Compresseur(is_eff(fixed=false, start=0.88), Xtau(fixed=false, start=1.00)),
+    chambreCombustionTAC(Pea(fixed=false, start=14.0e5)),
+    TurbineAgaz(
+      Ps(fixed=false),
+      is_eff(fixed=false, start=0.87),
+      Pe(fixed=false, start=13.3e5),
+      Ts(fixed=false, start=893.16)),
+    Wpth=1e6)
+    annotation (Placement(transformation(extent={{-471,-115},{-341,13}},
           rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampeQfuel(
-    Initialvalue=13.4368286133,
-    Starttime=200,
-    Finalvalue=8.25,
-    Duration=800)    annotation (Placement(transformation(extent={{-548,60},{
-            -528,80}}, rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe rampeIQair(
+
+  InstrumentationAndControl.Blocks.Sources.Rampe rampeQfuel(
     Starttime=200,
     Duration=800,
-    Initialvalue=594,
-    Finalvalue=497.5)
-                   annotation (Placement(transformation(extent={{-548,-16},{
-            -528,4}}, rotation=0)));
-  ThermoSysPro.InstrumentationAndControl.Blocks.Math.Gain Gain_2GasTurbine(Gain=
-       2) annotation (Placement(transformation(extent={{-18,-448},{2,-428}},
-          rotation=0)));
+    Initialvalue=13.507,
+    Finalvalue=8.756)
+                     annotation (Placement(transformation(extent={{-539,64},{
+            -519,84}}, rotation=0)));
+  InstrumentationAndControl.Blocks.Sources.Rampe rampeIQair(
+    Starttime=200,
+    Duration=800,
+    Finalvalue=415.70,
+    Initialvalue=592.7)
+                   annotation (Placement(transformation(extent={{-541,-20},{
+            -521,0}}, rotation=0)));
 equation
   connect(SurchauffeurHP3.Cws1, SurchauffeurHP2.Cws2)
     annotation (Line(points={{-294,-30},{-294,-10},{-174,-10},{-174,-30}},
@@ -1262,28 +1272,6 @@ equation
           339,50}}, color={191,95,0}));
   connect(heatSource2.C[1], BallonBP.Cex) annotation (Line(points={{598,64.3},{
           598,50}}, color={191,95,0}));
-  connect(SourceFumees.C, GasTurbine.Entree_air)
-                                                annotation (Line(
-      points={{-494,-50},{-468,-50}},
-      color={0,0,0},
-      thickness=1));
-  connect(sourceCombustible.C, GasTurbine.Entree_combustible) annotation (Line(
-        points={{-384,44},{-372,44},{-372,42},{-364,42},{-364,14}}, color={0,0,
-          0}));
-  connect(sourceEau.C, GasTurbine.Entree_eau_combustion)
-    annotation (Line(points={{-442,37},{-442,14}}, color={0,0,255}));
-  connect(sourceCombustible.IMassFlow, rampeQfuel.y)
-    annotation (Line(points={{-402,53},{-402,70},{-527,70}}));
-  connect(Humidite.y, GasTurbine.Huminide)
-    annotation (Line(points={{-481.95,-6},{-470.6,-6},{-470.6,-11.6}}));
-  connect(rampeIQair.y, SourceFumees.IMassFlow)
-    annotation (Line(points={{-527,-6},{-516,-6},{-516,-38.5}}));
-  connect(GasTurbine.Sortie_fumees, SurchauffeurHP3.Cfg1) annotation (Line(
-      points={{-338,-50},{-304,-50}},
-      color={0,0,0},
-      thickness=1));
-  connect(GasTurbine.PuissanceMeca, Gain_2GasTurbine.u)
-    annotation (Line(points={{-335.4,-75.6},{-320,-75.6},{-320,-438},{-19,-438}}));
   connect(Gain_2GasTurbine.y, Alternateur.Wmec5)
     annotation (Line(points={{3,-438},{402,-438}}));
   connect(CapteurDebitEauHP.C1, EconomiseurHP4.Cws2)
@@ -1295,8 +1283,28 @@ equation
   connect(PompeAlimBP.rpm_or_mpower, arretPomesBP.y) annotation (Line(points={{
           752,-447},{754,-447},{754,-460},{878,-460},{878,-442},{905.1,-442}},
         smooth=Smooth.None));
-  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(
-        preserveAspectRatio=false,
-        extent={{-550,-460},{950,150}},
-        initialScale=0.1), graphics));
+  connect(SourceFumees.C,GasTurbine. Entree_air)
+                                                annotation (Line(
+      points={{-495,-51},{-471,-51}},
+      color={0,0,0},
+      thickness=1));
+  connect(sourceCombustible.C,GasTurbine. Entree_combustible) annotation (Line(
+        points={{-385,42},{-367,42},{-367,13}}, color={0,0,0}));
+  connect(sourceEau.C,GasTurbine. Entree_eau_combustion)
+    annotation (Line(points={{-445,42},{-445,13}}, color={0,0,255}));
+  connect(sourceCombustible.IMassFlow,rampeQfuel. y)
+    annotation (Line(points={{-403,51},{-403,74},{-518,74}}));
+  connect(rampeIQair.y,SourceFumees. IMassFlow)
+    annotation (Line(points={{-520,-10},{-520,-36},{-517,-36},{-517,-39.5}}));
+  connect(Humidite.y, GasTurbine.Huminide)
+    annotation (Line(points={{-516.95,33},{-487,33},{-487,-12.6},{-473.6,-12.6}}));
+  connect(GasTurbine.Sortie_fumees, SurchauffeurHP3.Cfg1) annotation (Line(
+      points={{-341,-51},{-290,-50},{-304,-50}},
+      color={0,0,0},
+      thickness=1));
+  connect(GasTurbine.PuissanceMeca, Gain_2GasTurbine.u)
+    annotation (Line(points={{-338.4,-76.6},{-326,-76.6},{-326,-438},{-19,-438}}));
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-550,
+            -460},{950,150}},
+        initialScale=0.1),     graphics));
 end CombinedCycle_Load_100_50;
