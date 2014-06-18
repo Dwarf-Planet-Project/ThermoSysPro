@@ -123,11 +123,11 @@ annotation (
         color={0,0,255},
         smooth=Smooth.None)}),
   Documentation(info="<html>
-<p><b>Copyright &copy; EDF 2002 - 2012</b> </p>
-<p><b>ThermoSysPro Version 3.0</b> </p>
+<p><b>Copyright &copy; EDF 2002 - 2014</b> </p>
+<p><b>ThermoSysPro Version 3.1</b> </p>
 </html>"),
   uses(Modelica(version="3.2.1")),
-  version="1",
+  version="3.1",
   conversion(noneFromVersion=""),
   __OpenModelica_messageOnLoad="ThermoSysPro is not yet fully operational with OpenModelica.
 The authors suggest using Dymola for full benefit of the library, in particular if you are experiencing difficulties.
