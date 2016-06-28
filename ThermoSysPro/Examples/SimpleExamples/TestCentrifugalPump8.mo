@@ -27,8 +27,7 @@ equation
     annotation (Line(points={{-59,-10},{-35,-10}}));
   connect(sourceAngularVelocity.M, centrifugalPump.M)
     annotation (Line(points={{-19,-10},{-10,-10},{-10,19}}));
-  annotation (experiment(StopTime=1000),
-    Diagram(graphics={
+  annotation (Diagram(graphics={
         Text(
           extent={{-100,100},{-60,80}},
           lineColor={0,0,255},

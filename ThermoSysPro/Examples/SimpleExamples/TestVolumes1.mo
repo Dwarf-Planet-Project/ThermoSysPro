@@ -10,12 +10,12 @@ model TestVolumes1
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve1
     annotation (Placement(transformation(extent={{-10,66},{10,86}}, rotation=0)));
-  WaterSteam.Volumes.VolumeD              volumeD     annotation (Placement(
+  WaterSteam.Volumes.VolumeD volumeD                  annotation (Placement(
         transformation(extent={{-50,20},{-30,0}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP puitsP
                                          annotation (Placement(transformation(
           extent={{20,60},{40,80}}, rotation=0)));
-  WaterSteam.Volumes.VolumeD              volumeD1
+  WaterSteam.Volumes.VolumeD volumeD1
     annotation (Placement(transformation(extent={{-50,-60},{-30,-40}}, rotation
           =0)));
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve4
@@ -35,7 +35,7 @@ model TestVolumes1
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve3
     annotation (Placement(transformation(extent={{-10,-54},{10,-34}}, rotation=
             0)));
-  WaterSteam.Volumes.VolumeC              volumeB1(dynamic_mass_balance=true)
+  WaterSteam.Volumes.VolumeC volumeB1(             dynamic_mass_balance=true)
     annotation (Placement(transformation(extent={{20,-30},{40,-10}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve valve5
     annotation (Placement(transformation(extent={{50,-24},{70,-4}}, rotation=0)));
@@ -110,5 +110,5 @@ equation
       points={{10,-50},{30,-50},{30,-30}},
       color={0,0,255},
       smooth=Smooth.None));
-  annotation (experiment(StopTime=10), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestVolumes1;

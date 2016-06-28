@@ -98,5 +98,5 @@ equation
       points={{-80,-70},{-60,-70}},
       color={0,0,0},
       thickness=1));
-  annotation (experiment(StopTime=200), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestFlueGasesJunctions;

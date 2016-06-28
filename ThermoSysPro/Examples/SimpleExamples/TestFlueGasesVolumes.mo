@@ -65,7 +65,7 @@ model TestFlueGasesVolumes
         origin={130,-30},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  FlueGases.Volumes.VolumeATh              dynamicExchanger1
+  FlueGases.Volumes.VolumeATh dynamicExchanger1
     annotation (Placement(transformation(extent={{-40,-40},{-20,-20}}, rotation
           =0)));
   ThermoSysPro.Thermal.BoundaryConditions.HeatSource heatSource1(
@@ -116,7 +116,7 @@ model TestFlueGasesVolumes
         origin={130,-130},
         extent={{10,-10},{-10,10}},
         rotation=180)));
-  FlueGases.Volumes.VolumeCTh              dynamicExchanger2
+  FlueGases.Volumes.VolumeCTh dynamicExchanger2
     annotation (Placement(transformation(extent={{-40,-140},{-20,-120}},
           rotation=0)));
   ThermoSysPro.Thermal.BoundaryConditions.HeatSource heatSource2(
@@ -253,7 +253,7 @@ equation
       color={0,0,0},
       thickness=1,
       smooth=Smooth.None));
-  annotation (experiment(StopTime=200), Diagram(coordinateSystem(
+  annotation (Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-200,-150},{200,150}},
         initialScale=0.1), graphics));

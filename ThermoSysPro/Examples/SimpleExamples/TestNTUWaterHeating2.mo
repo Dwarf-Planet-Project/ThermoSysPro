@@ -18,15 +18,15 @@ model TestNTUWaterHeating2
             annotation (Placement(transformation(extent={{-201,90},{-181,110}},
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss2(C2(
-      P(start=80e5),
-      h_vol(start=750e3),
-      Q(start=1800),
-      h(start=750e3)), K=1e-4)
-                          annotation (Placement(transformation(extent={{-160,
+    singularPressureLoss2(
+                       K=1e-4, C2(
+      Q(start=1780),
+      P(start=79e5),
+      h_vol(start=760000),
+      h(start=760000)))   annotation (Placement(transformation(extent={{-160,
             -10},{-140,10}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss3(K=1e-4)
+    singularPressureLoss3(K=1e-4, h(start=2600e3))
                           annotation (Placement(transformation(extent={{-100,90},
             {-80,110}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.Sink Puit_condenseur1
@@ -34,34 +34,54 @@ model TestNTUWaterHeating2
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
     singularPressureLoss4(K=1e-4, C1(
-      P(start=70e5),
-      h_vol(start=9e5),
-      Q(start=1800),
-      h(start=9e5)))      annotation (Placement(transformation(extent={{142,-10},
+      Q(start=1780),
+      P(start=72.8e5),
+      h_vol(start=9.7e5),
+      h(start=9.7e5)),
+    pro(d(start=838)),
+    Pm(start=72.87e5))    annotation (Placement(transformation(extent={{142,-10},
             {162,10}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss5(K=1e-4)
-                          annotation (Placement(transformation(extent={{140,
+    singularPressureLoss5(K=1e-4,
+    pro(d(start=886)),
+    Pm(start=16.5e5),
+    h(start=765298))      annotation (Placement(transformation(extent={{140,
             -100},{160,-80}}, rotation=0)));
 
   ThermoSysPro.WaterSteam.HeatExchangers.NTUWaterHeating nTUWaterHeating(
     SCondDes=6314,
     SPurge=656,
-    HeiF(start=900000),
-    HDesF(start=900000),
-    Ee(h_vol(start=880000), Q(start=1800), h(start=880000), P(start=80e5)),
     Ev(h_vol(start=3500000), P(start=27e5)),
-    Ep(Q(start=10)),
-    Se(P(start=80e5)),
-    h(start=910000),
-    Hep(start=910000),
     lambdaE=97,
     KCond=3260.23,
-    KPurge=1767.8)    annotation (Placement(transformation(extent={{22,-42},{
+    KPurge=1767.8,
+    SDes(start=0),
+    HeiF(start=873550),
+    HDesF(start=973600),
+    Hep(start=873550),
+    Se(
+      Q(start=1780),
+      h_vol(start=970000),
+      h(start=970000),
+      P(start=72.87e5)),
+    P(start=27e5),
+    h(start=879e3),
+    Ee(
+      Q(start=1780),
+      P(start=76.5e5),
+      h_vol(start=860000),
+      h(start=860000)),
+    Ep(
+      Q(start=0),
+      P(start=28e5),
+      h_vol(start=1000e3),
+      h(start=1000e3)))
+                      annotation (Placement(transformation(extent={{22,-42},{
             100,42}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss1(K=1e-4)
-                          annotation (Placement(transformation(extent={{18,68},
+    singularPressureLoss1(K=1e-4,
+    pro(d(start=858)),
+    Pm(start=28e5))       annotation (Placement(transformation(extent={{18,68},
             {38,88}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourcePQ Source_condenseur1(
     h0=1000e3,
@@ -69,41 +89,57 @@ model TestNTUWaterHeating2
     Q0=0) annotation (Placement(transformation(extent={{-43,68},{-23,88}},
           rotation=0)));
   ThermoSysPro.WaterSteam.HeatExchangers.NTUWaterHeating nTUWaterHeating1(
-    HeiF(start=900000),
-    HDesF(start=900000),
-    Ev(h_vol(start=3500000), P(start=27e5)),
     lambdaE=70,
     SCondDes=5750,
     KCond=7200,
-    Ee(
-      h_vol(start=880000),
-      Q(start=1800),
-      P(start=80e5),
-      h(start=750000)),
-    h(start=9e5),
-    Hep(start=890000),
-    Se(
-      P(start=80e5),
-      h_vol(start=8.9e5),
-      h(start=8.9e5)),
-    Ep(Q(start=10), P(start=18e5)),
     SPurge=1458,
-    KPurge=2048)      annotation (Placement(transformation(extent={{-118,-42},{
+    KPurge=2048,
+    SDes(start=0),
+    HeiF(start=772000),
+    HDesF(start=867000),
+    Hep(start=865000),
+    P(start=16.5e5),
+    h(start=765.3e3),
+    Se(
+      P(start=76.5e5),
+      Q(start=1780),
+      h_vol(start=8.67e5),
+      h(start=8.67e5)),
+    Ee(
+      Q(start=1780),
+      P(start=7900000),
+      h_vol(start=767000),
+      h(start=767000)),
+    Ev(
+      Q(start=109.1),
+      h_vol(start=2.4e6),
+      h(start=2.4e6),
+      P(start=16.5e5)),
+    Ep(
+      h_vol(start=765290),
+      Q(start=110),
+      P(start=27.e5),
+      h(start=878290)))
+                      annotation (Placement(transformation(extent={{-118,-42},{
             -40,42}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(
     option_temperature=2,
     mode=0,
     P0=16.5e5,
-    h0=2.4e6)
+    h0=2.4e6,
+    Q(start=109.11))
             annotation (Placement(transformation(extent={{-201,70},{-181,90}},
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss6(K=1e-4)
-                          annotation (Placement(transformation(extent={{-100,70},
+    singularPressureLoss6(K=1e-4,
+    Q(start=109),
+    h(start=2400e3))      annotation (Placement(transformation(extent={{-100,70},
             {-80,90}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
-    singularPressureLoss7(Q(start=100), K=1e-4)
-                          annotation (Placement(transformation(extent={{-10,-54},
+    singularPressureLoss7(              K=1e-4, Q(start=110),
+    pro(d(start=858)),
+    Pm(start=27e5),
+    h(start=879e3))       annotation (Placement(transformation(extent={{-10,-54},
             {-30,-34}}, rotation=0)));
 equation
   connect(Source_condenseur.C, singularPressureLoss2.C1)
@@ -137,6 +173,6 @@ equation
         points={{-102.4,-13.86},{-102.4,-90},{140,-90}}, color={0,0,255}));
   connect(singularPressureLoss1.C2, nTUWaterHeating.Ep) annotation (Line(points
         ={{38,78},{37.6,78},{37.6,14.28}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics));
 end TestNTUWaterHeating2;

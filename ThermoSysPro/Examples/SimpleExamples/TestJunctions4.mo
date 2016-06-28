@@ -33,5 +33,5 @@ equation
     annotation (Line(points={{-80,30},{-60,30}}, color={0,0,255}));
   connect(source.C, singularPressureLoss2.C1)
     annotation (Line(points={{-80,-10},{-60,-10}}, color={0,0,255}));
-  annotation (experiment(StopTime=10), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestJunctions4;

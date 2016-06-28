@@ -1,11 +1,18 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestStaticCondenser
 
-  WaterSteam.BoundaryConditions.SourceQ               Source_condenseur(
+  parameter Modelica.SIunits.AbsolutePressure Pin_1(fixed=false,start=20000)
+    "Flow pressure at inlet 1 (sourceP)";
+  parameter Modelica.SIunits.AbsolutePressure Pin_2(fixed=false,start=20000)
+    "Flow pressure at inlet 2 (sourceP1)";
+  parameter Modelica.SIunits.AbsolutePressure Pin_3(fixed=false,start=20000)
+    "Flow pressure at inlet 3 (sourceP2)";
+
+  WaterSteam.BoundaryConditions.SourceQ Source_condenseur(
     h0=60e3, Q0(fixed=true) = 4000)
           annotation (Placement(transformation(extent={{-180,0},{-160,20}},
           rotation=0)));
-  WaterSteam.BoundaryConditions.SinkP             Puit_condenseur
+  WaterSteam.BoundaryConditions.SinkP Puit_condenseur
              annotation (Placement(transformation(extent={{160,0},{180,20}},
           rotation=0)));
   ThermoSysPro.WaterSteam.HeatExchangers.StaticCondenser condenseur(
@@ -18,11 +25,11 @@ model TestStaticCondenser
     Pcond(fixed=false, start=2154.77))     annotation (Placement(transformation(
           extent={{-20,-16},{72,82}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
-    P0(fixed=false) = 1e5,
     option_temperature=2,
     mode=0,
     h0=2.5817e6,
-    C(Q(fixed=true, start=100)))
+    C(Q(fixed=true, start=100)),
+    P0=Pin_1)
             annotation (Placement(transformation(extent={{-100,140},{-80,160}},
           rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(
@@ -30,14 +37,14 @@ model TestStaticCondenser
     mode=0,
     h0=2.5481e6,
     C(Q(fixed=true, start=1e-5)),
-    P0(fixed=false) = 1e5)        annotation (Placement(transformation(extent={
+    P0=Pin_2)                     annotation (Placement(transformation(extent={
             {-182,80},{-162,100}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP2(
     option_temperature=2,
     mode=0,
     h0=2.5055e6,
     C(Q(fixed=true, start=1e-5)),
-    P0(fixed=false) = 44000)       annotation (Placement(transformation(extent=
+    P0=Pin_3)                      annotation (Placement(transformation(extent=
             {{-180,40},{-160,60}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
     singularPressureLoss(K=10)
@@ -92,6 +99,6 @@ equation
     annotation (Line(points={{60,-90},{100,-90}}, color={0,0,255}));
   connect(singularPressureLoss5.C1, condenseur.Cex)
     annotation (Line(points={{40,-90},{26.46,-90},{26.46,-16.98}}));
-  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics));
 end TestStaticCondenser;

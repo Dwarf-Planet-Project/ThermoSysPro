@@ -32,7 +32,7 @@ model TestStaticDrum1
   ThermoSysPro.WaterSteam.BoundaryConditions.RefQ refQ(Q0=100)
     annotation (Placement(transformation(extent={{-56,-90},{-36,-70}}, rotation
           =0)));
-  ThermoSysPro.WaterSteam.BoundaryConditions.PlugA      sourcePlug
+  ThermoSysPro.WaterSteam.BoundaryConditions.PlugA sourcePlug
     annotation (Placement(transformation(extent={{-90,-90},{-70,-70}}, rotation
           =0)));
 equation
@@ -62,5 +62,5 @@ equation
         color={0,0,255}));
   connect(sourcePlug.C, refQ.C1) annotation (Line(points={{-70,-80},{-56,-80}},
         color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestStaticDrum1;

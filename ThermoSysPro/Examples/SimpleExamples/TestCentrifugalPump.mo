@@ -3,12 +3,20 @@ model TestCentrifugalPump
 
   ThermoSysPro.WaterSteam.Machines.CentrifugalPump centrifugalPump1(mode_car_Cr=
        2, mode_car_hn=1,
-    mode_car=1)
+    mode_car=1,
+    Pm(start=262606),
+    Qv_a(start=0.79311),
+    Q(start=791.06))
     annotation (Placement(transformation(extent={{0,-40},{-20,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Bache1(
-                                        ze2=10, zs2=10)
+                                        ze2=10, zs2=10,
+    P(start=248019))
     annotation (Placement(transformation(extent={{-20,20},{0,40}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve VanneReglante1(
+    Cv(start=0.79311),
+    Q(start=791.06),
+    C2(P(start=228573)),
+    Pm(start=262593))
     annotation (Placement(transformation(extent={{40,20},{60,40}}, rotation=0)));
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Constante1(
                                                   k=0.5) annotation (Placement(
@@ -36,7 +44,7 @@ equation
     annotation (Line(points={{-79,-50},{-55,-50}}));
   connect(centrifugalPump1.M, sourceAngularVelocity.M)
     annotation (Line(points={{-10,-41},{-10,-50},{-39,-50}}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

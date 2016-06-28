@@ -3,33 +3,47 @@ model TestVolumes2
 
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP
     annotation (Placement(transformation(extent={{-98,40},{-78,60}}, rotation=0)));
-  ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1
+  ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(Q(start=1e-6))
     annotation (Placement(transformation(extent={{-100,-100},{-80,-80}},
           rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe
+  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe(
+      h(start=70990))
     annotation (Placement(transformation(extent={{-70,40},{-50,60}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe1
+  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe1(
+     Pm(start=3e5), h(start=71016))
     annotation (Placement(transformation(extent={{-70,-100},{-50,-80}},
           rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve(Q(start=1e-6), h(start=
+         70897))
     annotation (Placement(transformation(
         origin={-46,-10},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve1
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve1(Pm(start=
+          2e5),
+    C1(h_vol(start=71016), h(start=71016)),
+    h(start=71016))
     annotation (Placement(transformation(
         origin={-46,-70},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve2
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve2(Q(start=
+          1e-6), Pm(start=2e5),
+    h(start=70990),
+    C2(h_vol(start=70990), h(start=70990)))
     annotation (Placement(transformation(extent={{-20,16},{0,36}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve3
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve3(Pm(start=
+          1e5),
+    h(start=70990),
+    C2(h_vol(start=70990), h(start=70990)))
     annotation (Placement(transformation(extent={{20,16},{40,36}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve4
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve controlValve4(h(start=
+          70826))
     annotation (Placement(transformation(extent={{0,-44},{20,-24}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP
     annotation (Placement(transformation(extent={{40,-50},{60,-30}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe2
+  ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe lumpedStraightPipe2(
+     Pm(start=3e5))
     annotation (Placement(transformation(extent={{50,10},{70,30}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP1
     annotation (Placement(transformation(extent={{80,10},{100,30}}, rotation=0)));
@@ -50,9 +64,11 @@ model TestVolumes2
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Rampe V2
     annotation (Placement(transformation(extent={{-100,-80},{-80,-60}},
           rotation=0)));
-  ThermoSysPro.WaterSteam.Volumes.VolumeC volumeC(V=1e-18)
+  ThermoSysPro.WaterSteam.Volumes.VolumeC volumeC(         P(start=3e5),
+    h(start=70990),
+    V=1e-3)
     annotation (Placement(transformation(extent={{-50,10},{-30,30}}, rotation=0)));
-  ThermoSysPro.WaterSteam.Volumes.VolumeA volumeA(V=1e-18)
+  ThermoSysPro.WaterSteam.Volumes.VolumeA volumeA(         h(start=70897), V=1e-3)
     annotation (Placement(transformation(extent={{-50,-30},{-30,-50}}, rotation
           =0)));
 equation
@@ -90,5 +106,5 @@ equation
     annotation (Line(points={{-30,-40},{0,-40}}, color={0,0,255}));
   connect(volumeA.Ce2, controlValve1.C2)
     annotation (Line(points={{-40,-49.8},{-40,-60}}));
-  annotation (experiment(StopTime=10), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestVolumes2;

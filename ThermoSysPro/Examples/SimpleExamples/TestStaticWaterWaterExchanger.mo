@@ -28,5 +28,5 @@ equation
   connect(plateHeatExchanger.Sf, puitsP3.C)
                                            annotation (Line(points={{-5,48},{-6,
           48},{-6,34},{20,34}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestStaticWaterWaterExchanger;

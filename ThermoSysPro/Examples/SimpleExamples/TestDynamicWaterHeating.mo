@@ -1,5 +1,9 @@
 within ThermoSysPro.Examples.SimpleExamples;
 model TestDynamicWaterHeating
+  parameter ThermoSysPro.Units.Cv CvmaxWater(fixed=false,start=68.5297)
+    "Maximum CV (active if mode_caract=0)";
+  parameter Real LambdaPipe(fixed=false,start=0.003003)
+    "Friction pressure loss coefficient (active if lambda_fixed=true)";
 
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP(
     option_temperature=2,
@@ -13,10 +17,13 @@ model TestDynamicWaterHeating
              annotation (Placement(transformation(extent={{124,-202},{160,-162}},
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.ControlValve ControlValve_eau(
-    Q(fixed=false, start=56),
-    Cvmax(fixed=false) = 354.534,
     mode_caract=0,
-    Cv(start=70, fixed=false))
+    Cvmax=CvmaxWater,
+    Q(fixed=false, start=38.0656),
+    Pm(start=24.771e5),
+    h(start=906345),
+    C1(h_vol(start=906345), h(start=906345)),
+    Cv(start=34.26, fixed=false))
                           annotation (Placement(transformation(extent={{88,-186},
             {108,-166}}, rotation=0)));
 
@@ -30,14 +37,6 @@ model TestDynamicWaterHeating
     PasT=0.024,
     ntubes3=1500,
     Dc=0.018,
-    pipe_3(
-      steady_state=true,
-      mode=1,
-      dynamic_mass_balance=true,
-      simplified_dynamic_energy_balance=false,
-      inertia=false,
-      advection=false,
-      z2=1),
     ntubes1=400,
     ntubes2=400,
     L1=11,
@@ -48,13 +47,44 @@ model TestDynamicWaterHeating
       dynamic_mass_balance=true,
       simplified_dynamic_energy_balance=false,
       advection=false,
-      z2=0.4),
+      z2=0.4,
+         Tp(start={500,501,502,503,504,505,506,507,508,510}),
+         h(start={813e3,826e3,850e3,865e3,880e3,895e3,905e3,920e3,935e3,950e3,
+          965e3,980e3}),
+         hb(start={813e3,826e3,850e3,865e3,880e3,895e3,905e3,920e3,935e3,950e3,
+          965e3}),
+         Q(start={202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,
+          202.4}),
+      P(start={222.700e5,222.690e5,222.680e5,222.670e5,222.660e5,222.650e5,
+      222.640e5,222.630e5,222.620e5,222.610e5,222.600e5,222.590e5})),
     pipe_2(
       z2=0.4,
       mode=1,
       dynamic_mass_balance=true,
       simplified_dynamic_energy_balance=false,
-      advection=false),
+      advection=false,
+        Tp(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+         h(start={965e3,980e3,995e3,1010e3,1120e3,1130e3,1040e3,1050e3,1060e3,1070e3,1080e3,1080e3}),
+         hb(start={965e3,980e3,995e3,1010e3,1120e3,1130e3,1040e3,1050e3,1060e3,1070e3,1080e3}),
+         Q(start={57.57,57.57,57.57,57.57,57.57,57.57,57.57,57.57,57.57,57.57,57.57}),
+      P(start={222.600e5,222.590e5,222.580e5,222.570e5,
+      222.560e5,222.550e5,222.540e5,222.530e5,222.520e5,222.51e5,222.50e5,222.48e5})),
+    C2ex(P(start=3900000)),
+    Wall_1(
+      Tp(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+      Tp1(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+      Tp2(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4})),
+    Wall_2(
+      Tp(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+      Tp1(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+      Tp2(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4})),
+    Wall_3(
+      Tp(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4,   515,515.4,516,516.4,517,517.4,518,518.4,519,519.4}),
+      Tp1(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4,   515,515.4,516,516.4,517,517.4,518,518.4,519,519.4}),
+      Tp2(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4,   515,515.4,516,516.4,517,517.4,518,518.4,519,519.4})),
+    volumeC(h(start=1082.65e3), P(start=222.48e5)),
+    volumeD1(h(start=953939), P(start=222.48e5)),
+    volumeD(h(start=812750), P(start=222.72e5)),
     WaterHeating(
       steady_state=true,
       Vertical=false,
@@ -67,8 +97,36 @@ model TestDynamicWaterHeating
       Mp=50000,
       zl(fixed=true, start=0.5),
       P(fixed=true, start=39.5e5),
-      Cv(Q(fixed=false, start=35), P(fixed=false, start=39.5e5))),
-    C2ex(P(start=3900000)))
+      Cv(Q(fixed=false, start=35), P(fixed=false, start=39.5e5)),
+      hv(start=1463490),
+      hl(start=906345),
+      Pfond(start=39.542e5),
+      Tp1(start={500,501,502,503,504,505,506,507,508,510}),
+      Tp2(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4}),
+      Tp3(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4,   515,515.4,516,516.4,517,517.4,518,518.4,519,519.4}),
+      Tp(start=509)),
+    pipe_3(
+      steady_state=true,
+      mode=1,
+      dynamic_mass_balance=true,
+      simplified_dynamic_energy_balance=false,
+      advection=false,
+      z2=1,
+      Tp(start={510,510.4,511,511.4,512,512.4,513,513.4,514,514.4,515,515.4,516,
+            516.4,517,517.4,518,518.4,519,519.4}),
+      h(start={813e3,826e3,850e3,865e3,880e3,895e3,905e3,920e3,935e3,950e3,
+            965e3,980e3,995e3,1010e3,1120e3,1130e3,1040e3,1050e3,1060e3,1070e3,
+            1080e3,1080e3}),
+      hb(start={813e3,826e3,850e3,865e3,880e3,895e3,905e3,920e3,935e3,950e3,
+            965e3,980e3,995e3,1010e3,1120e3,1130e3,1040e3,1050e3,1060e3,1070e3,
+            1080e3}),
+      Q(start={202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,
+            202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4,202.4}),
+      P(start={222.700e5,222.690e5,222.680e5,222.670e5,222.660e5,222.650e5,
+            222.640e5,222.630e5,222.620e5,222.610e5,222.600e5,222.590e5,
+            222.580e5,222.570e5,222.560e5,222.550e5,222.540e5,222.530e5,
+            222.520e5,222.51e5,222.50e5,222.48e5}),
+      inertia=true))
     annotation (Placement(transformation(extent={{-58,-90},{162,96}}, rotation=
             0)));
 
@@ -78,12 +136,14 @@ model TestDynamicWaterHeating
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
     singularPressureLossWaterIn(                           K=35, Q(fixed=false,
         start=250),
-    Pm(start=20000000))      annotation (Placement(transformation(extent={{-99,
+    Pm(start=227e5))         annotation (Placement(transformation(extent={{-99,
             -48},{-79,-28}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
     singularPressureLossWaterOut(                           K=30, Q(fixed=false,
         start=250),
-    Pm(start=20000000))        annotation (Placement(transformation(extent={{
+    Pm(start=222.48e5),
+    C2(h_vol(start=1082650), h(start=1082650)))
+                               annotation (Placement(transformation(extent={{
             -80,34},{-100,54}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP1(
     option_temperature=1,
@@ -92,7 +152,8 @@ model TestDynamicWaterHeating
     T0=482.87)
     annotation (Placement(transformation(extent={{-192,-16},{-150,-60}},
           rotation=0)));
-  ThermoSysPro.WaterSteam.BoundaryConditions.RefQ refQ(Q0=53)
+  ThermoSysPro.WaterSteam.BoundaryConditions.RefQ refQ(Q0=53, C1(h_vol(start=
+            1082.65e3), h(start=1082.65e3)))
     annotation (Placement(transformation(extent={{-115,34},{-135,54}}, rotation
           =0)));
   ThermoSysPro.InstrumentationAndControl.Blocks.Tables.Table1DTemps Debit_eauA(
@@ -102,14 +163,17 @@ model TestDynamicWaterHeating
   ThermoSysPro.InstrumentationAndControl.Blocks.Sources.Constante Level(k=0.50)
                           annotation (Placement(transformation(extent={{135,
             -152},{113,-130}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.IdealCheckValve checkValve
+  ThermoSysPro.WaterSteam.PressureLosses.IdealCheckValve checkValve(Qmin=0.5, C2(h_vol(
+          start=2750.e3), h(start=2750.e3)))
     annotation (Placement(transformation(extent={{-100,122},{-84,138}},
           rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.SingularPressureLoss
     singularPressureLossPurge(                          K=1e-3,
     T(fixed=false, start=461.56),
     Q(fixed=false, start=35),
-    Pm(start=3900000))   annotation (Placement(transformation(
+    Pm(start=3900000),
+    C2(h_vol(start=906340), h(start=906340)))
+                         annotation (Placement(transformation(
         origin={54,-138},
         extent={{-10,-10},{10,10}},
         rotation=270)));
@@ -118,10 +182,13 @@ model TestDynamicWaterHeating
                    annotation (Placement(transformation(extent={{162,-178},{182,
             -158}}, rotation=0)));
   ThermoSysPro.WaterSteam.PressureLosses.LumpedStraightPipe PressureLoss_Steam(
-    lambda(fixed=false) = 0.03,
     Q(fixed=false, start=35),
     L=10,
-    D=0.1)               annotation (Placement(transformation(extent={{-48,162},
+    D=0.1,
+    lambda=LambdaPipe,
+    Pm(start=40.34e5),
+    C1(h_vol(start=2750e3), h(start=2750e3)))
+                         annotation (Placement(transformation(extent={{-48,162},
             {30,98}}, rotation=0)));
   InstrumentationAndControl.Blocks.Tables.Table1DTemps Pression_Turbine1(Table=
         [0,41.19e5; 378,41.19e5; 418,21.e5; 1145,5.e5; 2000,5.e5])
@@ -191,11 +258,10 @@ equation
     annotation (Line(points={{-174,88},{-125,88},{-125,55}}));
   connect(Level.y, ControlValve_eau.Ouv)
     annotation (Line(points={{111.9,-141},{98,-141},{98,-165}}));
-  annotation (experiment(StopTime=1000),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics={
         Text(
-          extent={{-124,222},{130,162}},
+          extent={{-124,244},{130,184}},
           lineColor={0,0,255},
           textString=
                "1 Ouv et 1 Cvmax =false  , Qvap et niveau=true ou P cavite"),
@@ -208,5 +274,17 @@ equation
           extent={{-202,-196},{-100,-210}},
           lineColor={0,0,255},
           textString=
-               "Qvap=true  ==> Erreur")}));
+               "Qvap=true  ==> Erreur"),
+        Text(
+          extent={{16,208},{130,194}},
+          lineColor={0,0,255},
+          textString=
+               "checkValve  Qmin =0.5"),
+        Text(
+          extent={{-134,210},{-6,192}},
+          lineColor={0,0,255},
+          textString=
+               "With Gusse Values")}),
+    experiment(StopTime=1, Tolerance=1e-004),
+    experimentSetupOutput);
 end TestDynamicWaterHeating;

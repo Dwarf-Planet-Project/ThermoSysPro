@@ -13,5 +13,4 @@ equation
           10},{-20,10}}, color={0,0,255}));
   connect(invSingularPressureLoss.C2, sinkQ.C) annotation (Line(points={{0,10},
           {40,10}}, color={0,0,255}));
-  annotation(experiment(StopTime=1000));
 end TestInvSingularPressureLoss;

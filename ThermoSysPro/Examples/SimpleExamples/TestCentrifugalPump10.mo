@@ -46,5 +46,5 @@ equation
     annotation (Line(points={{21,-10},{80,-10},{80,-50},{75,-50}}));
   connect(centrifugalPump1.C2, sinkP1.C)
     annotation (Line(points={{20,-50},{60,-50}}, color={0,0,255}));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestCentrifugalPump10;

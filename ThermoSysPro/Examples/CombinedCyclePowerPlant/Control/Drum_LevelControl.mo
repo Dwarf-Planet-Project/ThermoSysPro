@@ -75,15 +75,15 @@ equation
           fillColor={127,127,0},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-88,65},{74,-26}},
-          lineColor={0,0,255},
+          extent={{-79.5,54.5},{82.5,-36.5}},
+          lineColor={255,0,0},
           fillColor={255,255,170},
           fillPattern=FillPattern.Solid,
           textString=
-               "Régulation Niveau "),
+               "Regulation Niveau "),
         Text(
           extent={{-41,-9},{38,-58}},
-          lineColor={0,0,255},
+          lineColor={255,0,0},
           fillColor={255,255,170},
           fillPattern=FillPattern.Solid,
           textString=
@@ -94,7 +94,7 @@ equation
           textString=
                "Niveau ballon"),
         Text(
-          extent={{-101,-31},{-52,-64}},
+          extent={{-99,-45},{-50,-78}},
           lineColor={127,0,0},
           textString=
                "Consigne Niveau"),

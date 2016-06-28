@@ -115,12 +115,12 @@ equation
           extent={{-103,-21},{-65,-29}},
           lineColor={127,0,0},
           textString=
-               "Débit Eau"),
+               "Debit Eau"),
         Text(
           extent={{-99,-92},{-61,-100}},
           lineColor={127,0,0},
           textString=
-               "Débit Vapeur"),
+               "Debit Vapeur"),
         Text(
           extent={{64,-92},{102,-100}},
           lineColor={127,0,0},
@@ -138,12 +138,12 @@ equation
           fillColor={255,255,170},
           fillPattern=FillPattern.Solid),
         Text(
-          extent={{-88,65},{74,-26}},
+          extent={{-81.5,57.5},{80.5,-33.5}},
           lineColor={0,0,255},
           fillColor={255,255,170},
           fillPattern=FillPattern.Solid,
           textString=
-               "Régulation Niveau "),
+               "Regulation Niveau "),
         Text(
           extent={{-41,-9},{38,-58}},
           lineColor={0,0,255},
@@ -165,12 +165,12 @@ equation
           extent={{-103,-27},{-65,-35}},
           lineColor={127,0,0},
           textString=
-               "Débit Eau"),
+               "Debit Eau"),
         Text(
           extent={{-97,-86},{-59,-94}},
           lineColor={127,0,0},
           textString=
-               "Débit Vapeur"),
+               "Debit Vapeur"),
         Text(
           extent={{64,-86},{102,-94}},
           lineColor={127,0,0},

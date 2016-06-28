@@ -179,7 +179,7 @@ equation
       smooth=Smooth.None));
   connect(Qin.y, Source_Fumees.IMassFlow)
     annotation (Line(points={{-179,50},{-170,50},{-170,28},{-187,28},{-187,12}}));
-  annotation (experiment(StopTime=1000), Diagram(coordinateSystem(
+  annotation (Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-200,-150},{200,150}},
         initialScale=0.1), graphics));

@@ -79,7 +79,7 @@ equation
   connect(feedback.y, pIsat.u) annotation (Line(points={{1,90},{19,90}}));
   connect(pIsat.y, Valve1.Ouv)
     annotation (Line(points={{41,90},{80,90},{80,60},{-10,60},{-10,53}}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

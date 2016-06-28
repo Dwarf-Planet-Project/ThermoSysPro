@@ -42,5 +42,5 @@ equation
     annotation (Line(points={{20,30},{40,30}}, color={0,0,255}));
   connect(rampe3.y, sourceP.ISpecificEnthalpy)
     annotation (Line(points={{-79,10},{-70,10},{-70,25}}, smooth=Smooth.None));
-  annotation (experiment(StopTime=1000), Diagram(graphics));
+  annotation (Diagram(graphics));
 end TestCentrifugalPump11;

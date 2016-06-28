@@ -5,20 +5,29 @@ model TestCentrifugalPump7
                                           width=200, period=400)
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}}, rotation
           =0)));
-  ThermoSysPro.ElectroMechanics.Machines.SynchronousMotor Motor1(Im(start=2000))
-                                           annotation (Placement(transformation(
+  ThermoSysPro.ElectroMechanics.Machines.SynchronousMotor Motor1(Im(start=
+          2251.78))                        annotation (Placement(transformation(
           extent={{-40,-80},{-20,-60}}, rotation=0)));
   ThermoSysPro.WaterSteam.Machines.CentrifugalPump centrifugalPump(mode_car_hn=
         1, mode_car_Cr=1,
     mode_car=1,
     dynamic_energy_balance=true,
-    w_a(start=1))
+    w_a(start=1),
+    Qv_a(start=0.8649),
+    Q(start=862.736),
+    Pm(start=304161),
+    h(start=100067),
+    C2(h_vol(start=100134), h(start=100134)))
     annotation (Placement(transformation(extent={{40,-40},{20,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Tank(
     ze2=10,
-    zs2=10)
+    zs2=10,
+    P(start=248019))
     annotation (Placement(transformation(extent={{20,20},{40,40}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve(
+    Q(start=368.66),
+    Pm(start=200650),
+    h(start=100134))
     annotation (Placement(transformation(extent={{-80,20},{-60,40}}, rotation=0)));
   ThermoSysPro.ElectroMechanics.Machines.Shaft Shaft1
     annotation (Placement(transformation(extent={{0,-80},{20,-60}}, rotation=0)));
@@ -31,13 +40,16 @@ model TestCentrifugalPump7
   ThermoSysPro.WaterSteam.PressureLosses.DynamicReliefValve dynamicReliefValve(
     Cmin=1.e-20,
     dPOuvert=2.2e5,
-    dPFerme=2.1e5)                annotation (Placement(transformation(extent={
+    dPFerme=2.1e5,
+    h(start=100134))              annotation (Placement(transformation(extent={
             {-20,-10},{0,10}}, rotation=0)));
-  ThermoSysPro.WaterSteam.Volumes.VolumeA volumeA
+  ThermoSysPro.WaterSteam.Volumes.VolumeA volumeA(P(start=311770), h(start=
+          100134))
     annotation (Placement(transformation(extent={{0,-20},{-20,-40}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SinkP sinkP
     annotation (Placement(transformation(extent={{20,-10},{40,10}}, rotation=0)));
-  ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve1
+  ThermoSysPro.WaterSteam.PressureLosses.ControlValve Valve1(Pm(start=200650),
+      Q(start=0.0000001))
     annotation (Placement(transformation(extent={{-20,32},{0,52}}, rotation=0)));
   ThermoSysPro.WaterSteam.BoundaryConditions.SourceP sourceP
     annotation (Placement(transformation(extent={{-60,26},{-40,46}}, rotation=0)));
@@ -79,7 +91,7 @@ equation
     annotation (Line(points={{41,90},{80,90},{80,60},{-10,60},{-10,53}}));
   connect(centrifugalPump.C1, Tank.Cs2)
     annotation (Line(points={{40,-30},{80,-30},{80,24},{40,24}}));
-  annotation (experiment(StopTime=1000),
+  annotation (
     Window(
       x=0.32,
       y=0.02,

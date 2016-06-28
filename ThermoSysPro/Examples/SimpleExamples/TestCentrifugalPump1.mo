@@ -45,8 +45,7 @@ equation
     annotation (Line(points={{0,-50},{40,-50}}, color={0,0,255}));
   connect(rampe.y, sourceAngularVelocity.IAngularVelocity)
     annotation (Line(points={{-79,-10},{-55,-10}}));
-  annotation (experiment(StopTime=1000),
-    Diagram(graphics={
+  annotation (Diagram(graphics={
         Text(
           extent={{-100,100},{-60,80}},
           lineColor={0,0,255},

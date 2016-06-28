@@ -34,8 +34,7 @@ equation
   connect(echelon.yL, nONL.uL) annotation (Line(points={{-79,10},{-61,10}}));
   connect(nONL.yL, synchronousMotor.marche)
     annotation (Line(points={{-39,10},{-30,10},{-30,-5.6}}));
-  annotation (experiment(StopTime=1000),
-    Diagram(graphics={
+  annotation (Diagram(graphics={
         Text(
           extent={{-100,100},{-60,80}},
           lineColor={0,0,255},
