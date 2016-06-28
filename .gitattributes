@@ -1,0 +1,3 @@
+*.mo text eol=native
+*.mos text eol=native
+package.order text eol=native
