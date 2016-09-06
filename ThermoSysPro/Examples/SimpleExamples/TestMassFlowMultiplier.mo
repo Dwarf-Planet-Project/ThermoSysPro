@@ -22,4 +22,5 @@ equation
         points={{-40,10},{-20,10}}, color={0,0,255}));
   connect(massFlowMultiplier.Cs, singularPressureLoss1.C1) annotation (Line(
         points={{0,10},{20,10}}, color={0,0,255}));
+annotation(experiment(StopTime=1000));
 end TestMassFlowMultiplier;

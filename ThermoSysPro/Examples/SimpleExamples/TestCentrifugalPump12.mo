@@ -36,5 +36,5 @@ equation
     annotation (Line(points={{1,-10},{30,-10},{30,19}}));
   connect(rampe3.y, sourceP.IPressure)
     annotation (Line(points={{-39,30},{-15,30}}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestCentrifugalPump12;

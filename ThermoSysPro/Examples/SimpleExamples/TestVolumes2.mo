@@ -106,5 +106,5 @@ equation
     annotation (Line(points={{-30,-40},{0,-40}}, color={0,0,255}));
   connect(volumeA.Ce2, controlValve1.C2)
     annotation (Line(points={{-40,-49.8},{-40,-60}}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestVolumes2;

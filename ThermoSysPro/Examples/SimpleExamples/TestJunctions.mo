@@ -83,5 +83,5 @@ equation
     annotation (Line(points={{0,-50},{80,-50}}, color={0,0,255}));
   connect(splitter3.Ialpha2, constante2.y)
     annotation (Line(points={{-9,-56},{-14,-56},{-14,-70},{-19,-70}}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestJunctions;

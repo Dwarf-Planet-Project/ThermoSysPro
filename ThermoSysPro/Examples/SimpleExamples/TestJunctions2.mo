@@ -105,5 +105,5 @@ equation
     annotation (Line(points={{20,30},{40,30}}, color={0,0,255}));
   connect(singularPressureLoss8.C2, sinkP2.C)
     annotation (Line(points={{60,30},{80,30}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=10), Diagram(graphics));
 end TestJunctions2;

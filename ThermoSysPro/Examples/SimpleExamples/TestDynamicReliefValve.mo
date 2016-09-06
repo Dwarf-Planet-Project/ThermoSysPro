@@ -45,7 +45,7 @@ equation
   connect(ReliefValve.C2, Sink1.C)
     annotation (Line(points={{20,29.8},{30,29.8},{30,30},{40,30}}, color={0,0,
           255}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Diagram(coordinateSystem(
         preserveAspectRatio=false,
         extent={{-100,-100},{100,100}},

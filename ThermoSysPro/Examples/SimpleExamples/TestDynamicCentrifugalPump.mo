@@ -39,7 +39,7 @@ equation
     annotation (Line(points={{-59.8,-70},{-41,-70}}));
   connect(DynamicCentrifugalPump1.M, Shaft1.C2)
     annotation (Line(points={{-10,-41},{-10,-70},{-19,-70}}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

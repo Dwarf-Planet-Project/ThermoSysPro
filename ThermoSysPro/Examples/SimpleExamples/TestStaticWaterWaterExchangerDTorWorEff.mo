@@ -37,5 +37,5 @@ equation
         points={{-20,30},{-14,30},{-14,-5.9}}, color={0,0,255}));
   connect(exchangerWaterSteamDTorWorEFF.Sc, sinkWaterSteam_FC.C) annotation (Line(
         points={{-6,-5.9},{-6,30},{-2,30}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestStaticWaterWaterExchangerDTorWorEff;

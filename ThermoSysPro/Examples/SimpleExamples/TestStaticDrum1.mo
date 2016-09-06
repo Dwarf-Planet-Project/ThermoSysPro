@@ -62,5 +62,5 @@ equation
         color={0,0,255}));
   connect(sourcePlug.C, refQ.C1) annotation (Line(points={{-70,-80},{-56,-80}},
         color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestStaticDrum1;

@@ -1710,7 +1710,7 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-560,-460},
             {950,150}},
         initialScale=0.1),     graphics),
-    experiment(StopTime=1, Tolerance=1e-003),
+    experiment(StopTime=1000, Tolerance=1e-003),
     experimentSetupOutput);
 
 end CombinedCycle_TripTAC;

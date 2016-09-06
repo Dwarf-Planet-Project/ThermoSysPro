@@ -285,6 +285,6 @@ equation
           lineColor={0,0,255},
           textString=
                "With Gusse Values")}),
-    experiment(StopTime=1, Tolerance=1e-004),
+    experiment(StopTime=1000, Tolerance=1e-004),
     experimentSetupOutput);
 end TestDynamicWaterHeating;

@@ -128,5 +128,8 @@ annotation (
 </html>"),
   uses(Modelica(version="3.2.1")),
   version="3.1",
-  conversion(noneFromVersion=""));
+  conversion(noneFromVersion=""),
+  __OpenModelica_messageOnLoad="ThermoSysPro is not yet fully operational with OpenModelica.
+The authors suggest using Dymola for full benefit of the library, in particular if you are experiencing difficulties.
+The current operational status with OpenModelica of the included examples can be found at https://test.openmodelica.org/libraries/ThermoSysPro/BuildModelRecursive.html");
 end ThermoSysPro;

@@ -30,7 +30,8 @@ equation
         color={0,0,255}));
   connect(perteDP1.C2, PuitsP1.C) annotation (Line(points={{40,30},{60,30}},
         color={0,0,255}));
-  annotation (             Window(
+  annotation (experiment(StopTime=100),
+   Window(
       x=0.45,
       y=0.01,
       width=0.35,

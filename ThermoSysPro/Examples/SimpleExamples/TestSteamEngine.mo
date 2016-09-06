@@ -17,7 +17,7 @@ equation
   connect(steamEngine1.C2, puitsP.C)
     annotation (Line(points={{-43,70},{-31.5,70},{-31.5,70},{-20,70}}, color={0,
           0,255}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

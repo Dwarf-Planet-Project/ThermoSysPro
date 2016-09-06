@@ -34,7 +34,7 @@ equation
     annotation (Line(points={{-80,10},{-60.1,10}}, color={0,0,255}));
   connect(stodolaTurbine1.Cs, puitsP1.C)
     annotation (Line(points={{-39.9,10},{-20,10}}, color={0,0,255}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

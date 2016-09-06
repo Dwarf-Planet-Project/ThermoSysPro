@@ -52,7 +52,7 @@ equation
     annotation (Line(points={{-39.9,70},{-20,70}}, color={0,0,255}));
   connect(Pout.y, puitsP1.IPressure)
     annotation (Line(points={{68.6,-6},{88,-6},{88,-30},{75,-30}}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

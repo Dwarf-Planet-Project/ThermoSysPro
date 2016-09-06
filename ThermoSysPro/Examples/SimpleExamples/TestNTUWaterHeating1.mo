@@ -83,6 +83,6 @@ equation
     annotation (Line(points={{-181,60},{-100,60}}, color={0,0,255}));
   connect(singularPressureLoss1.C2, nTUWaterHeating.Ep) annotation (Line(points
         ={{-80,60},{-20.4,60},{-20.4,14.28}}, color={0,0,255}));
-  annotation (Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
+    annotation (experiment(StopTime=1000), Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-200,
             -200},{200,200}}), graphics));
 end TestNTUWaterHeating1;

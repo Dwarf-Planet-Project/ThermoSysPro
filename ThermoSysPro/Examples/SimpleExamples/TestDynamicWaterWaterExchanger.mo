@@ -28,5 +28,5 @@ equation
           20,50.2},{20,50},{40,50}}, color={0,0,255}));
   connect(echangeurAPlaques1D.Sf, puitsP1.C) annotation (Line(points={{-5,44},{
           -6,44},{-6,30},{20,30}}, color={0,0,255}));
-  annotation (Diagram(graphics));
+  annotation (experiment(StopTime=1000), Diagram(graphics));
 end TestDynamicWaterWaterExchanger;

@@ -46,7 +46,7 @@ equation
           -70}}));
   connect(sourceTorque.M, centrifugalPump1.M)
     annotation (Line(points={{-39,-70},{-10,-70},{-10,-41}}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.32,
       y=0.02,

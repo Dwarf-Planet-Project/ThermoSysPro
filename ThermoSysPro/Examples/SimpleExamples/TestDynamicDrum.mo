@@ -133,7 +133,7 @@ equation
     annotation (Line(points={{21,130},{50,130},{50,95}}, smooth=Smooth.None));
   connect(SteamMassFlowRate.y, sinkQ.IMassFlow)
     annotation (Line(points={{121,130},{136,130},{136,83}}));
-  annotation (
+  annotation (experiment(StopTime=1000),
     Window(
       x=0.43,
       y=0,

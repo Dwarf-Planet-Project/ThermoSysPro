@@ -1772,7 +1772,7 @@ equation
   annotation (Diagram(coordinateSystem(preserveAspectRatio=false,extent={{-550,
             -460},{950,150}},
         initialScale=0.1),     graphics),
-    experiment(StopTime=1, Tolerance=1e-003),
+    experiment(StopTime=1000, Tolerance=1e-003),
     experimentSetupOutput);
 
 end CombinedCycle_Load_100_50;
