@@ -48,7 +48,7 @@ public
   ThermoSysPro.Units.AngularVelocity_rpm VRot(start=VRotn) "Rotational speed";
   Modelica.SIunits.AngularVelocity w "Angular speed";
   Real R "Ratio VRot/VRotn (s.u.)";
-  Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
+  Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate" annotation(tearingSelect=avoid);
   Modelica.SIunits.VolumeFlowRate Qv(start=0.5) "Volume flow rate";
   Modelica.SIunits.Torque Cm "Motor torque";
   Modelica.SIunits.Torque Ch "Hydraulic torque";
