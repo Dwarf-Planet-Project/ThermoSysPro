@@ -61,7 +61,7 @@ public
     "Pressure variation between the outlet and the inlet";
   Modelica.SIunits.SpecificEnthalpy deltaH
     "Specific enthalpy variation between the outlet and the inlet";
-  Modelica.SIunits.AbsolutePressure Pm "Fluid average pressure";
+  Modelica.SIunits.AbsolutePressure Pm (start=100000) "Fluid average pressure";
   Modelica.SIunits.SpecificEnthalpy h "Fluid average specific enthalpy";
 
 public
