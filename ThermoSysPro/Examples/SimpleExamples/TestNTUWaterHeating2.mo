@@ -63,12 +63,12 @@ model TestNTUWaterHeating2
       Q(start=1780),
       h_vol(start=970000),
       h(start=970000),
-      P(start=72.87e5)),
+      P(start=7900000)),
     P(start=27e5),
     h(start=879e3),
     Ee(
       Q(start=1780),
-      P(start=76.5e5),
+      P(start=7900000),
       h_vol(start=860000),
       h(start=860000)),
     Ep(
