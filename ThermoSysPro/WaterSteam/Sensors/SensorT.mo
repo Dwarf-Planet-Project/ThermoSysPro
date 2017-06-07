@@ -14,7 +14,7 @@ public
   Modelica.SIunits.MassFlowRate Q(start=500) "Mass flow rate";
   Modelica.SIunits.Temperature T "Fluid temperature";
   Modelica.SIunits.AbsolutePressure P "Fluid average pressure";
-  Modelica.SIunits.SpecificEnthalpy h "Fluid specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy h(start=1.e7) "Fluid specific enthalpy";
   ThermoSysPro.Properties.WaterSteam.Common.ThermoProperties_ph pro
     "Propriétés de l'eau"
     annotation (Placement(transformation(extent={{-100,80},{-80,100}}, rotation
@@ -25,10 +25,10 @@ public
         origin={0,100},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Connectors.FluidInlet C1
+  Connectors.FluidInlet C1(h_vol(start=1.e7))
                           annotation (Placement(transformation(extent={{-110,
             -90},{-90,-70}}, rotation=0)));
-  Connectors.FluidOutlet C2
+  Connectors.FluidOutlet C2(h_vol(start=1.e7))
                           annotation (Placement(transformation(extent={{92,-90},
             {112,-70}}, rotation=0)));
 equation

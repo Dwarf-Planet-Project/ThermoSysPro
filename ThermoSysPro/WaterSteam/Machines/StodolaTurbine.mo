@@ -38,7 +38,7 @@ public
   Modelica.SIunits.MassFlowRate Q "Mass flow rate";
   Modelica.SIunits.SpecificEnthalpy His
     "Fluid specific enthalpy after isentropic expansion";
-  Modelica.SIunits.SpecificEnthalpy Hrs
+  Modelica.SIunits.SpecificEnthalpy Hrs(start=1.e5)
     "Fluid specific enthalpy after the real expansion";
   Modelica.SIunits.AbsolutePressure Pe(start=10e5,min=0)
     "Pressure at the inlet";
