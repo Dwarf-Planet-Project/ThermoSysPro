@@ -20,7 +20,7 @@ public
   Modelica.SIunits.Density rho(start=998) "Fluid density";
   Modelica.SIunits.Temperature T(start=290) "Fluid temperature";
   Modelica.SIunits.AbsolutePressure Pm(start=1.e5) "Average fluid pressure";
-  Modelica.SIunits.SpecificEnthalpy h(start=1.e7) "Fluid specific enthalpy";
+  Modelica.SIunits.SpecificEnthalpy h(start=100000) "Fluid specific enthalpy";
 
   Connectors.FluidInlet C1
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}}, rotation
