@@ -58,7 +58,7 @@ model TestNTUWaterHeating2
     SDes(start=0),
     HeiF(start=873550),
     HDesF(start=973600),
-    Hep(start=873550),
+    Hep(start=981240),
     Se(
       Q(start=1780),
       h_vol(start=970000),
