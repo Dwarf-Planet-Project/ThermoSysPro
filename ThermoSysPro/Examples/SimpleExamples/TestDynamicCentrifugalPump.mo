@@ -9,7 +9,11 @@ model TestDynamicCentrifugalPump
                                            annotation (Placement(transformation(
           extent={{-80,-80},{-60,-60}}, rotation=0)));
   ThermoSysPro.WaterSteam.Machines.DynamicCentrifugalPump
-    DynamicCentrifugalPump1(Ch(start=300))
+    DynamicCentrifugalPump1(
+    Ch(start=300),
+    R(start=1),
+    Pm(start=270000),
+    h(start=100000))
     annotation (Placement(transformation(extent={{0,-40},{-20,-20}}, rotation=0)));
   ThermoSysPro.WaterSteam.Volumes.Tank Tank(
     ze2=10,
